@@ -9,7 +9,7 @@
         "@schematics/angular:component": {
           "style": "scss"
         }
-      },q
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
