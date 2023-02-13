@@ -1,0 +1,53 @@
+<div class="container-fluid section">
+  <div class="container-fluid doctorBg">
+    <img src="../assets/image/bcgdoctor.png">
+    <div class="card info">
+      <h1> Votre santé est
+        notre priorité
+      </h1>
+
+      <h5> Notre plate-forme web communicative destinée
+        aux Médecins ayant pour but d’y assurer un soin optimal au client dans l’Afrique.
+      </h5>
+      <h5 >
+        Nou nous essayons de fournir et de faciliter
+        les meilleurs services de santé pour vous.</h5>
+
+    </div>
+  </div>
+</div>
+
+
+<!--2éme section -->
+<div class="card section2">
+
+  <h1>Nos Interventions</h1>
+
+  <div class="row content-card">
+    <div class="card card-info shadow-sm p-3 mb-5 bg-white rounded" *ngFor="let chirurgie of chirurgies">
+      <div class="image">
+        <img src="{{chirurgie.url}}">
+      </div>
+      <h5>{{chirurgie.titre}}</h5>
+      <button >Voir Plus</button>
+    </div>
+  </div>
+</div>
+
+<!-- section 3-->
+
+<div class=" card sectoin3">
+<h1>Séjour Médical</h1>
+  <div class="imgclnq">
+    <img src="../assets/image/cliniqueù.jfif">
+  </div>
+  <div class="divp">
+  <p>
+    Spécialisée dans le tourisme médical à l’étranger, notre plateforme-web  prend en charge la totalité</p>
+   <p> de votre séjour médical en Tunisie, pour votre type de chirurgie </p>
+
+</div>
+  <div class="divbtn">
+  <button>Voir Plus</button>
+</div>
+</div>

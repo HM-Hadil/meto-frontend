@@ -1,0 +1,196 @@
+@font-face {
+  font-family: Dosis;
+  src: url("/src/assets/fonts/Dosis-VariableFont_wght.ttf") format("opentype");
+}
+
+.section{
+  margin-top: -4rem;
+  height: 43rem;
+  background-image:url('https://img.freepik.com/free-vector/gradient-blur-pink-blue-abstract-background_53876-117324.jpg?w=740&t=st=1675856647~exp=1675857247~hmac=0bb917995133391f277ba7fdee0842773178ae8f1e75f93e4fad84ff0c9f9adb');
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation-name: animationBckg;
+  animation-duration: 2s;
+  box-sizing: border-box;
+
+}
+@keyframes animationBckg {
+  from {  background-image:url('https://img.freepik.com/free-vector/gradient-blur-pink-blue-abstract-background_53876-117324.jpg?w=740&t=st=1675856647~exp=1675857247~hmac=0bb917995133391f277ba7fdee0842773178ae8f1e75f93e4fad84ff0c9f9adb');
+  }
+  to {  background-image:url('https://img.freepik.com/free-vector/colorful-gradient-blur-background_53876-115218.jpg?t=st=1675847359~exp=1675847959~hmac=3b52490849ec2e4e9ab8b08e05885df447715a5c4b6bb329a9d652eadf34d354');
+    // si ona plusieurs images 0%   {background-color: red;}
+    //  25%  {background-color: yellow;}
+    //  50%  {background-color: blue;}
+    //  100% {background-color: green;}
+  }
+}
+
+.doctorBg{
+  //border: 1px solid black;
+  width: 100%;
+  height: 40rem;
+  float: right;
+  margin-top: 3rem;
+}
+.doctorBg img{
+  width: 100%;
+  height: 100%;
+}
+
+.info{
+  margin-top: -30rem;
+  margin-left: 4rem;
+  width: 25rem;
+  background-color: transparent;
+  border: none;
+  color: #001B35;
+
+
+}
+.info h5{
+  margin-top: 1rem;
+}
+
+.section2{
+  margin-top: 3rem;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: none;
+  box-sizing: content-box !important;
+
+
+}
+.section2 h1{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.content-card{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border:none;
+  background-color: #FBFBFB;
+}
+.card-info{
+  width: 20rem;
+  height: 19rem;
+  margin: 1rem;
+  border: none;
+  border-radius:50px;
+  transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+
+}
+.card-info:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+  color: #0066FF;
+}
+.card-info h5{
+  margin-top: 1rem;
+}
+.card-info button{
+  margin-top: 1.5rem;
+  width: 10rem;
+  height: 2rem;
+  text-align: center;
+  margin-left: 4rem;
+  border: none;
+  border-radius:15px;
+  background-color: #1580EB;
+  color: white;
+}
+
+.card-info button:hover{
+
+  background-color:white ;
+  color: #1580EB;
+  transition: 1s;
+  border: 1px solid #1580EB;
+
+}
+
+.image{
+  margin-left: -1rem;
+  width: 20rem;
+  height: 10rem;
+  margin-top: -1rem;
+}
+
+.image img{
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  box-sizing: content-box;
+}
+
+//section 3
+
+.sectoin3{
+  width: 100%;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  text-line-through: single;
+  background-color: #E1EDFA;
+  border: none;
+
+}
+.sectoin3 h1{
+  margin-top: 2.5rem;
+}
+.imgclnq{
+  width: 30rem;
+  height: 16rem;
+  text-align: center;
+  border-radius: 15px;
+  margin: auto;
+}
+.imgclnq:hover{
+    opacity: 30%;
+  transition: 1s;
+    cursor: pointer;
+}
+.imgclnq img{
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.sectoin3 button{
+  width: 16rem;
+  height: 2.5rem;
+  background-color: #0066FF;
+  color: white;
+  border-radius: 15px;
+  border: none;
+  text-align: center;
+
+}
+.sectoin3 button:hover{
+  background-color: white;
+  color: #0066FF;
+  border: 1px solid #0066FF;
+  cursor: pointer;
+  transition: 1s;
+}
+.divp{
+  margin: auto;
+   width: auto;
+  height: auto;
+  margin-top: -1rem;
+}
+.divbtn{
+  margin-bottom: 3rem;
+}
