@@ -15,6 +15,8 @@ h1{
   background-color: #F6FCFB;
   border: none;
   border-radius: 15px;
+  padding:1rem;
+  justify-content: center;
 }
 .content-info{
 
@@ -51,7 +53,7 @@ img:hover{
   width: 28rem;
   height: 16rem;
   text-align: justify;
-  margin-right: 1rem;
+
 }
 .btn button{
   width: 14rem;
@@ -71,8 +73,30 @@ img:hover{
   transition: 1s;
   border: 1px solid #1580EB;
 }
+.btn{
+  border: none;
+}
 h5{
 margin-top: 2rem;
   text-align: left !important;
   color: #1580EB;
+}
+.btn2 button{
+  width: 14rem;
+  height: 2rem;
+  text-align: center;
+  border: none;
+  border-radius:20px;
+  background-color: white;
+  color: #1580EB;
+  margin-left: 4rem;
+  border: 1px solid #1580EB;
+
+}
+
+.btn2 button:hover{
+  background-color:#1580EB ;
+  color: white;
+  transition: 1s;
+  border: 1px solid #1580EB;
 }

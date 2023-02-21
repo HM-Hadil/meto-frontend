@@ -1,0 +1,47 @@
+.all-content{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+}
+.content {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin: auto;
+  border: none;
+}
+.image{
+  width: 30rem;
+  height:20rem;
+  margin: auto;
+
+
+}
+.image img{
+  width: 100%;
+  height: 100%;
+}
+h2{
+  color:#0066FF;
+}
+.btn{
+  border:none;
+  margin-top: 1rem;
+}
+.btn button{
+  width: 14rem;
+  height: 2.5rem;
+  text-align: center;
+  border: none;
+  border-radius:15px;
+  background-color:#0066FF ;
+  color: white;
+  margin-bottom: 1rem;
+}
+.btn button:hover{
+  background-color: white;
+  color: #1580EB;
+  transition: 1s;
+  border: 1px solid white;
+}

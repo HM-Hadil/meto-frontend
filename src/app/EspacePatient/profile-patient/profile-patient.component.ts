@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-profile-patient',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePatientComponent implements OnInit {
 
-  constructor() { }
+  constructor(private observer: BreakpointObserver, private router: Router) { }
 
   ngOnInit(): void {
+
   }
 
 }

@@ -1,0 +1,64 @@
+.all-content{
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  background-color: transparent;
+}
+.first-info{
+  width: auto;
+  height: auto;
+  margin:auto;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+}
+.image{
+  width: 20rem;
+  height: 16rem;
+  margin: auto;
+  border-radius: 15px;
+}
+.image img{
+  width: 100%;
+  height: 100%;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.scnd-info{
+  text-align: justify;
+  border: none;
+  padding: 2rem;
+  background-color: transparent;
+}
+.parcoursExp{
+  width: auto;
+  height: auto;
+  margin: auto;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+
+}
+.parcours{
+  background-color: #EAF9F8 !important;
+  text-align: justify;
+  padding: 2rem !important;
+  border: none;
+}
+
+h5{
+  color: #0066FF;
+
+}
+h3{
+  color: #0066FF;
+
+}
+h6{
+  color: #001B35;
+}
+p{
+  color: #3F6589;
+}

@@ -1,0 +1,96 @@
+.main-container{
+  margin: 30px;
+}
+main-content{
+  margin: auto;
+}
+.min-height-600{
+  min-height: 600px;
+}
+.min-height-80{
+  min-height: 80px;
+}
+.border-no{
+  border: none !important;
+}
+.no-flex-wrap{
+  flex-wrap: inherit !important;
+}
+.right-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.min-height-480{
+  min-height: 800px;
+}
+
+.leftCard{
+  width: 218px;
+  background-color: #0066FF;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  padding-top: 1rem;
+  left: 0;
+
+}
+.image{
+  width: 6rem;
+  height: 6rem;
+  border-radius: 100%;
+  margin: auto;
+  align-content: center;
+}
+.image img{
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 100%;
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+
+}
+ul{
+  margin-top: 4rem;
+  text-align: justify;
+  margin-left: -2rem;
+}
+li a {
+  color: white !important;
+  text-decoration: none;
+
+}
+ul li {
+  list-style: none;
+  padding:0.5rem;
+  width: 100%;
+}
+@media screen and (max-width: 940px) {
+  .leftCard{
+    width: 200px;
+    height: 100% !important;
+    display: none;
+    z-index: 1;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    min-height: 1200px;
+  }
+  .openNav{
+    display: flex !important;
+
+  }
+
+  .closebtn {
+    font-size: 40px;
+    display: none;
+  }
+  .closebtn:hover{
+   cursor: pointer;
+  }
+
+
+
+}

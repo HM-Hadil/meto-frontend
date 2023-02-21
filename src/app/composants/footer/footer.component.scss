@@ -4,21 +4,23 @@ footer{
   background-color: #001B35;
   color: white;
   margin-top: 4rem;
+
 }
+
 .content{
-  width: 15rem;
-  height: 15rem;
+  width: auto;
+  height: auto;
   background-color: transparent;
   border:none;
   padding: 1rem;
+  margin: auto;
 
 }
 .content li{
   margin-top: 1rem;
 }
 
-h4{
- // margin-left: 8rem;
+h4{margin-left: -2rem;
 }
 .rowcard{
   text-align: center;
@@ -29,6 +31,8 @@ h4{
 
 .rowaall{
   width: 100%;
+  padding-left: 20rem;
+  padding-top: 2rem;
 }
 .contentSejours{
   width: auto;
