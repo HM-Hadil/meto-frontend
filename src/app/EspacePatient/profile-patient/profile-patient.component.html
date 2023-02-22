@@ -78,7 +78,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">
+          <a class="nav-link" href="javascript:void(0)" routerLink="/messagesfromAdmin" routerLinkActive="active">
             <i class="bi bi-envelope-fill text-primary"></i>Message
           </a>
         </li>
@@ -126,9 +126,10 @@
               <span>Support</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#!" class="dropdown-item">
+            <a
+              class="dropdown-item" >
               <i class="ni ni-user-run"></i>
-              <span>Logout</span>
+              <span  routerLink="/loginPatient" routerLinkActive="active">Logout</span>
             </a>
           </div>
         </li>
@@ -139,7 +140,7 @@
 
   <!--content-->
   <div class="container-fluid text-center">
-    <p class="mt-5">Add your content here...</p>
+
     <router-outlet></router-outlet>
   </div>
 

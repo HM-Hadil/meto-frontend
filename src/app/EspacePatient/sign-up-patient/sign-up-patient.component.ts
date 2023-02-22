@@ -11,5 +11,8 @@ export class SignUpPatientComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  inscrirePatient(){
+
+  }
 
 }

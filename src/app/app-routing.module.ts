@@ -21,6 +21,11 @@ import {MessagesMComponent} from "./detail-profile/detail-profileM/messages-m/me
 import {DetailMessageComponent} from "./detail-profile/detail-profileM/detail-message/detail-message.component";
 import {ProfilePatientComponent} from "./EspacePatient/profile-patient/profile-patient.component";
 import {ProfilAdminComponent} from "./Admin/profil-admin/profil-admin.component";
+import {ResetPasswordComponent} from "./composants/reset-password/reset-password.component";
+import {FormuleRndvComponent} from "./detail-profile/detail-profileP/formule-rndv/formule-rndv.component";
+import {
+  MessagesfromAdminComponent
+} from "./detail-profile/detail-profileP/messagesfrom-admin/messagesfrom-admin.component";
 
 const routes: Routes = [
   {path : '', component: AcceuilContentComponent},
@@ -33,7 +38,7 @@ const routes: Routes = [
   {path : 'signPatient' , component : SignUpPatientComponent},
   {path : '' , component : ProfileMedecinComponent ,
     children:[
-      {path : 'show' , component : ShowProfileMComponent},
+      {path : 'showProfileMedecin' , component : ShowProfileMComponent},
       {path : 'messagesM' , component : MessagesMComponent},
       {path : 'dashboardMed' , component : DashboardComponent},
       {path : 'parametreMed' , component : ParametresMComponent},
@@ -42,6 +47,17 @@ const routes: Routes = [
   },
   {path : 'profileP' , component : ProfilePatientComponent},
   {path : 'profileA' , component : ProfilAdminComponent},
+  {path : 'resetPassword' , component : ResetPasswordComponent},
+
+  {path: '', component:ProfilePatientComponent ,
+    children:[
+      {path : 'formuleRndv', component : FormuleRndvComponent},
+      { path: 'messagesfromAdmin' , component: MessagesfromAdminComponent
+
+      }
+    ]
+
+  },
 
 
   {path : 'chirurgieSelecionnee',  component : ChirurgieSelecionneeComponent},

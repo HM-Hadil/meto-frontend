@@ -32,6 +32,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import { ResetPasswordComponent } from './composants/reset-password/reset-password.component';
+import { FormuleRndvComponent } from './detail-profile/detail-profileP/formule-rndv/formule-rndv.component';
+import { MessagesfromAdminComponent } from './detail-profile/detail-profileP/messagesfrom-admin/messagesfrom-admin.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { ResetPasswordComponent } from './composants/reset-password/reset-passwo
     ShowProfilePComponent,
     ChirurgieSelecionneeComponent,
     DetailParcoursMedcComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    FormuleRndvComponent,
+    MessagesfromAdminComponent
   ],
   imports: [
     BrowserModule,
