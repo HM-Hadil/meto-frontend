@@ -21,7 +21,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="dashboardAdmin">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
@@ -38,13 +38,14 @@
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
          aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
-        <span>Components</span>
+        <i class="bi bi-person-fill-gear" style="color: white"></i>
+        <span style="margin-left: 0.5rem">Comptes</span>
       </a>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Custom Components:</h6>
-          <a class="collapse-item" href="cards.html">Cards</a>
+          <h6 class="collapse-header">Gérer comptes</h6>
+          <a class="collapse-item" href="comptesMedecins">Medecins</a>
+          <a class="collapse-item" href="comptesPatients">Patients</a>
         </div>
       </div>
     </li>
@@ -53,14 +54,14 @@
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
          aria-expanded="true" aria-controls="collapseUtilities">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>Utilities</span>
+        <i class="bi bi-envelope-fill" style="color: white"></i>
+        <span style="margin-left: 0.5rem">Messages</span>
       </a>
       <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
            data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Custom Utilities:</h6>
-          <a class="collapse-item" href="">Colors</a>
+          <h6 class="collapse-header">Gérer messages</h6>
+          <a class="collapse-item" href="">Demande Rendez-vous</a>
 
         </div>
       </div>
@@ -74,15 +75,7 @@
       Addons
     </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapsePages"
-         aria-expanded="true" aria-controls="collapsePages">
-        <i class="fas fa-fw fa-folder"></i>
-        <span>Pages</span>
-      </a>
 
-    </li>
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
@@ -252,9 +245,9 @@
       <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+   <router-outlet></router-outlet>
         <!-- DataTales Example -->
-        <div class="card shadow mb-4">
+      <!--  <div class="card shadow mb-4">
           <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
           </div>
@@ -309,21 +302,12 @@
 
 
       </div>
-      <!-- /.container-fluid -->
+      /.container-fluid -->
 
 
     </div>
     <!-- End of Main Content -->
 
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-      <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-          <span style="color: #1DA1F2 !important;">Copyright &copy; Your Website 2023</span>
-        </div>
-      </div>
-    </footer>
-    <!-- End of Footer -->
 
   </div>
   <!-- End of Content Wrapper -->
@@ -357,8 +341,6 @@
   </div>
 </div>
 
-
-</body>
 
 
 

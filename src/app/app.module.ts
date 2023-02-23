@@ -34,6 +34,9 @@ import {MatIconModule} from "@angular/material/icon";
 import { ResetPasswordComponent } from './composants/reset-password/reset-password.component';
 import { FormuleRndvComponent } from './detail-profile/detail-profileP/formule-rndv/formule-rndv.component';
 import { MessagesfromAdminComponent } from './detail-profile/detail-profileP/messagesfrom-admin/messagesfrom-admin.component';
+import { ComptesPatientsComponent } from './detail-profile/detail-profileA/Comptes/comptes-patients/comptes-patients.component';
+import { ComptesMedecinsComponent } from './detail-profile/detail-profileA/Comptes/comptes-medecins/comptes-medecins.component';
+import { DashboardAdminComponent } from './detail-profile/detail-profileA/dashboard-admin/dashboard-admin.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,10 @@ import { MessagesfromAdminComponent } from './detail-profile/detail-profileP/mes
     DetailParcoursMedcComponent,
     ResetPasswordComponent,
     FormuleRndvComponent,
-    MessagesfromAdminComponent
+    MessagesfromAdminComponent,
+    ComptesPatientsComponent,
+    ComptesMedecinsComponent,
+    DashboardAdminComponent,
   ],
   imports: [
     BrowserModule,

@@ -26,6 +26,13 @@ import {FormuleRndvComponent} from "./detail-profile/detail-profileP/formule-rnd
 import {
   MessagesfromAdminComponent
 } from "./detail-profile/detail-profileP/messagesfrom-admin/messagesfrom-admin.component";
+import {
+  ComptesMedecinsComponent
+} from "./detail-profile/detail-profileA/Comptes/comptes-medecins/comptes-medecins.component";
+import {
+  ComptesPatientsComponent
+} from "./detail-profile/detail-profileA/Comptes/comptes-patients/comptes-patients.component";
+import {DashboardAdminComponent} from "./detail-profile/detail-profileA/dashboard-admin/dashboard-admin.component";
 
 const routes: Routes = [
   {path : '', component: AcceuilContentComponent},
@@ -46,15 +53,23 @@ const routes: Routes = [
     ]
   },
   {path : 'profileP' , component : ProfilePatientComponent},
-  {path : 'profileA' , component : ProfilAdminComponent},
+
+  {path : '' , component : ProfilAdminComponent
+
+  , children:[
+      {path : 'dashboardAdmin' , component: DashboardAdminComponent},
+    {path : 'comptesMedecins' , component: ComptesMedecinsComponent},
+      {path : 'comptesPatients' , component: ComptesPatientsComponent}
+    ]
+  },
+
   {path : 'resetPassword' , component : ResetPasswordComponent},
 
   {path: '', component:ProfilePatientComponent ,
     children:[
       {path : 'formuleRndv', component : FormuleRndvComponent},
-      { path: 'messagesfromAdmin' , component: MessagesfromAdminComponent
-
-      }
+      { path: 'messagesfromAdmin' , component: MessagesfromAdminComponent},
+      {path : 'dashboardAdmin' , component: DashboardAdminComponent}
     ]
 
   },
