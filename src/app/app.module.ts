@@ -76,3 +76,4 @@ import { ResetPasswordComponent } from './composants/reset-password/reset-passwo
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
