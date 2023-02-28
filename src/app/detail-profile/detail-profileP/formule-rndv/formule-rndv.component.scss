@@ -33,13 +33,13 @@
   }
 }
 .btn{
-  margin-top: 2rem;
+  width: 12rem;
+  margin: 2rem auto;
   background-color: #5e72e4;
   height: 2.5rem;
   color: white;
   text-align: center;
- margin-bottom: 2rem;
-  border-radius: 0px;
+  border-radius: 20px;
 }
 .btn:hover
 {
@@ -47,4 +47,24 @@
   background-color: transparent;
   border: 1px solid #5e72e4;
   transition: 1s;
+}
+
+select{
+  border-radius: 10px;
+  color: #5e72e4;
+  height: 2rem;
+  width: 14rem;
+  border: 1px solid  white;
+  border: none;
+
+}
+option{
+  color: black;
+}
+.file{
+  width: 18rem;
+  height: 2rem;
+  border: 1px solid white;
+  border: none;
+
 }

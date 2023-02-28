@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-sign-up-patient',
@@ -7,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpPatientComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-  inscrirePatient(){
 
-  }
 
 }
+

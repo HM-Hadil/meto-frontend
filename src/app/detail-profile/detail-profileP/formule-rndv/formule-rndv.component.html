@@ -89,18 +89,34 @@
                 <div class="p-5">
                   <h3 class="fw-normal mb-5">Information Sensible</h3>
 
-                  <div class="mb-6 pb-2">
+                  <div class="mb-6 pb-2 ">
                     <div class="form-outline form-white">
-                      <label class="form-label" for="form3Examplea2">type chirurgie</label>
-                      <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                      <div><label class="form-label" >Type de chirurgie</label></div>
 
+                      <select >
+                        <option >chirurgie des valves cardiaque</option>
+                        <option>chirurgie orphépidique</option>
+                        <option>chirurgie esthetique</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="mb-6 pb-2 mt-4">
+                    <div class="form-outline form-white">
+                      <div><label class="form-label" >choisire Médecin</label></div>
+
+                      <select>
+                        <option >Docteur Ben Hassen</option>
+                        <option>Docteur Mohammed karim </option>
+                        <option>Docteur Maya rjab</option>
+                      </select>
                     </div>
                   </div>
 
 
 
                   <div class="row">
-                    <div class="col-md-5 mb-4 pb-2">
+                    <div class="col-md-5 mt-4 mb-4 pb-2">
                       <label for="Customization">Reserver date</label>
                       <div class="md-form md-outline input-with-post-icon datepicker" id="customDays">
                         <input placeholder="Select date" type="date" id="Customization" class="form-control">
@@ -109,30 +125,43 @@
 
                     </div>
 
-                  </div>
-
-
-                    <div class="col-md-4 mb-4 pb-2 mb-md-0 pb-md-0">
+                    <div class="col-md-4 mb-4 ml-4 pt-4 mb-md-0 pb-md-0">
                       <div class="form-outline">
                         <div><label class="form-label" for="form3Examplev11">Type de sang</label></div>
 
-                        <input type="radio" name="gender" value="A" id="form3Examplev11" > A
-                        <input type="radio" name="gender" value="B"> B   <input type="radio" name="gender" value="female">AB
-                        <input type="radio" name="gender" value="female">O
-                        <input type="radio" name="gender" value="inconnu"> inconnu
+                        <input type="radio" name="sang" value="A" id="form3Examplev11" > A
+                        <input type="radio" name="sang" value="B"> B
+                        <input type="radio" name="sang" value="AB">AB
+                        <input type="radio" name="sang" value="O">O
+                        <input type="radio" name="sang" value="inconnu"> inconnu
 
                       </div>
                     </div>
 
+                    <div class="col-md-4 mb-4 ml-0 pt-4 mb-md-0 pb-md-0">
+                      <div class="form-outline">
+                        <div><label class="form-label" >Importer dossier</label></div>
+                        <input type="file" class="file">
 
 
+                      </div>
+                    </div>
 
+                  </div>
 
+                  <div class="col-md-4 mb-4 ml-0 pt-4 mb-md-0 pb-md-0 " >
+                    <div class="form-outline form-white">
+                      <div><label class="form-label" >Votre poids</label></div>
+
+                      <input type="number" >
+                    </div>
+                  </div>
 
                 </div>
               </div>
-              <button type="button" class="btn  btn-lg"
-                               data-mdb-ripple-color="dark">Prendre rendez-vous</button>
+
+
+              <button type="button" class="btn" >Prendre rendez-vous</button>
 
             </div>
           </div>

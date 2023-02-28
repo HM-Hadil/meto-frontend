@@ -1,0 +1,48 @@
+.all-content{
+  width: auto;
+  height: auto;
+  margin:auto;
+  padding: 1rem;
+  background-color: transparent !important;
+  border: none;
+}
+all-card{
+  width: auto;
+  height: auto;
+  margin: auto;
+  border: none !important;
+  background-color: transparent !important;
+}
+h5, h3{
+  color: #0066FF;
+
+}
+.one-card{
+  background-color: #FFF9F3;
+  text-align: justify;
+  width: 35rem;
+  height: 14rem;
+  padding: 1rem;
+  border: none;
+  margin: auto;
+  margin-top: 1rem;
+}
+.btn button{
+  width: 10rem;
+  height: 2rem;
+  text-align: center;
+  border: none;
+  border-radius:10px;
+  background-color: #1580EB;
+  color: white;
+}
+.btn{
+  border: none;
+  margin-top: 2rem;
+}
+.btn button:hover{
+  background-color:white ;
+  color: #1580EB;
+  transition: 1s;
+  border: 1px solid #1580EB;
+}

@@ -4,6 +4,8 @@
   text-align: center;
   border: none;
 }
+
+
 h1{
   margin-top: 1rem;
   margin-bottom: 2rem;
@@ -11,7 +13,7 @@ h1{
 .one-card{
   width: auto;
   height: auto;
-  margin: auto;
+  margin: 2rem auto;
   background-color: #F6FCFB;
   border: none;
   border-radius: 15px;
@@ -33,11 +35,11 @@ h1{
 }
 img:hover{
 
-    -ms-transform: scale(1.5); /* IE 9 */
-    -webkit-transform: scale(1.5); /* Safari 3-8 */
-    transform: scale(1.5);
-    transition: 1s;
-    cursor: col-resize;
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5);
+  transition: 1s;
+  cursor: col-resize;
 
 
 }
@@ -77,7 +79,7 @@ img:hover{
   border: none;
 }
 h5{
-margin-top: 2rem;
+  margin-top: 2rem;
   text-align: left !important;
   color: #1580EB;
 }
@@ -98,6 +100,41 @@ margin-top: 2rem;
 .btn2 button:hover{
   background-color:#1580EB ;
   color: white;
+  transition: 1s;
+  border: 1px solid #1580EB;
+}
+.btn3{
+  width: 8rem;
+  height: 2rem;
+  text-align: center;
+  border: none;
+  border-radius:20px;
+  background-color: white;
+  color: #1580EB;
+  margin-left: 6rem;
+  border: 1px solid #1580EB;
+
+}
+.btn3:hover{
+  background-color:#1580EB ;
+  color: white;
+  transition: 1s;
+  border: 1px solid #1580EB;
+}
+.btn4 {
+  width: 8rem;
+  height: 2rem;
+  text-align: center;
+  margin-left: 1rem;
+  border: none;
+  border-radius:15px;
+  background-color: #1580EB;
+  color: white;
+
+}
+.btn4:hover{
+  background-color:white ;
+  color: #1580EB;
   transition: 1s;
   border: 1px solid #1580EB;
 }

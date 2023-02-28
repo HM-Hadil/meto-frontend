@@ -1,0 +1,26 @@
+.btn button{
+  width: 14rem;
+  height: 2rem;
+  text-align: center;
+  border: none;
+  border-radius:15px;
+  background-color:#1580EB ;
+  color:white ;
+  margin-bottom: 1rem;
+
+}
+.btn{
+  border:none !important;
+  width: 14rem;
+  height: 2rem;
+  margin-left: 24rem;
+
+}
+
+.btn button:hover{
+  background-color:white;
+  color:#1580EB  ;
+  transition: 1s;
+  border: 1px solid #0066FF;
+
+}

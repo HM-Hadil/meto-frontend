@@ -37,6 +37,14 @@ import { MessagesfromAdminComponent } from './detail-profile/detail-profileP/mes
 import { ComptesPatientsComponent } from './detail-profile/detail-profileA/Comptes/comptes-patients/comptes-patients.component';
 import { ComptesMedecinsComponent } from './detail-profile/detail-profileA/Comptes/comptes-medecins/comptes-medecins.component';
 import { DashboardAdminComponent } from './detail-profile/detail-profileA/dashboard-admin/dashboard-admin.component';
+import { ComptesMedecinDetailComponent } from './detail-profile/detail-profileA/Comptes/comptes-medecin-detail/comptes-medecin-detail.component';
+import { ComptesPatientsDetailComponent } from './detail-profile/detail-profileA/Comptes/comptes-patients-detail/comptes-patients-detail.component';
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import { AjoutChirurgieComponent } from './detail-profile/detail-profileA/ajout-chirurgie/ajout-chirurgie.component';
+import { ModifierChirurgieComponent } from './detail-profile/detail-profileA/modifier-chirurgie/modifier-chirurgie.component';
+import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -71,6 +79,10 @@ import { DashboardAdminComponent } from './detail-profile/detail-profileA/dashbo
     ComptesPatientsComponent,
     ComptesMedecinsComponent,
     DashboardAdminComponent,
+    ComptesMedecinDetailComponent,
+    ComptesPatientsDetailComponent,
+    AjoutChirurgieComponent,
+    ModifierChirurgieComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,7 +91,15 @@ import { DashboardAdminComponent } from './detail-profile/detail-profileA/dashbo
     MatDividerModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatOptionModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
+
+
+
 
   ],
   providers: [],

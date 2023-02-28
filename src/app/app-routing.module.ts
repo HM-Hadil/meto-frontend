@@ -33,6 +33,14 @@ import {
   ComptesPatientsComponent
 } from "./detail-profile/detail-profileA/Comptes/comptes-patients/comptes-patients.component";
 import {DashboardAdminComponent} from "./detail-profile/detail-profileA/dashboard-admin/dashboard-admin.component";
+import {
+  ComptesMedecinDetailComponent
+} from "./detail-profile/detail-profileA/Comptes/comptes-medecin-detail/comptes-medecin-detail.component";
+import {MessagesMedComponent} from "./detail-profile/detail-profileA/messages-med/messages-med.component";
+import {AjoutChirurgieComponent} from "./detail-profile/detail-profileA/ajout-chirurgie/ajout-chirurgie.component";
+import {
+  ModifierChirurgieComponent
+} from "./detail-profile/detail-profileA/modifier-chirurgie/modifier-chirurgie.component";
 
 const routes: Routes = [
   {path : '', component: AcceuilContentComponent},
@@ -42,6 +50,7 @@ const routes: Routes = [
   {path : 'authentifier' , component : AuthentifierComponent},
   {path : 'login' , component: LoginComponent},
   {path : 'loginPatient', component:LoginPatientComponent},
+
   {path : 'signPatient' , component : SignUpPatientComponent},
   {path : '' , component : ProfileMedecinComponent ,
     children:[
@@ -54,12 +63,17 @@ const routes: Routes = [
   },
   {path : 'profileP' , component : ProfilePatientComponent},
 
+  //admin
   {path : '' , component : ProfilAdminComponent
 
   , children:[
       {path : 'dashboardAdmin' , component: DashboardAdminComponent},
     {path : 'comptesMedecins' , component: ComptesMedecinsComponent},
-      {path : 'comptesPatients' , component: ComptesPatientsComponent}
+      {path : 'comptesPatients' , component: ComptesPatientsComponent},
+      {path : 'detail-compte-Medecin' , component: ComptesMedecinDetailComponent},
+      {path :'rendez-vous' , component:MessagesMedComponent },
+      {path : 'ajoutchirurgie' , component: AjoutChirurgieComponent },
+      {path : 'modifierchirurgie' , component:ModifierChirurgieComponent }
     ]
   },
 
