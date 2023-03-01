@@ -8,7 +8,7 @@ import {environment} from "../../environments/environment";
   providedIn: 'root'
 })
 export class ShareServiceService {
-  Url = 'http://localhost:8080/api/GetChirurgieById/';
+  Url = 'http://localhost:8080/api/GetChirurgieById';
 //  Urldel= 'http://localhost:8080/api/deleteChirurgie/';
   constructor(private http: HttpClient) { }
 

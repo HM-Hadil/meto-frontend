@@ -1,5 +1,5 @@
 <div class="card all-card">
-  <div class="card align-content-center one-card" *ngFor="let chirurgie of chirurgieModel" >
+  <div class="card align-content-center one-card" *ngFor="let chirurgie of ModelChirurgie" >
     <h4>{{chirurgie.nomChirurgie}}</h4>
     <div class="row align-content-center content-info">
       <div class="image">
@@ -17,14 +17,13 @@
       </div>
 
       <div class="btn col-md-6">
-        <button (click) = "updateChirurgie(chirurgie.id, chirurgie)" data-toggle="modal" data-target="#exampleModalCenter">Modifier</button>
+        <button (click) = "updateChirurgie(chirurgie.id)"  data-toggle="modal" data-target="#exampleModalCenter">Modifier</button>
       </div>
 
     </div>
-  </div>
 
-</div>
 
+<!-- Update chirurgie-->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -36,31 +35,31 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
 
-
-        <form>
+        <div class="modal-body">
+        <form [formGroup]="chirurgieForm"
+              (ngSubmit)="updatedChirurgie(chirurgie.id)" >
           <div class="form-group">
             <label for="exampleFormControlInput1">Type chirurgie</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" >
+            <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="nomChirurgie">
           </div>
 
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Description de chirurgie</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
           </div>
           <div class="form-group mt-4">
             <label for="exampleFormControlFile1">Choisir image</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" formControlName="imageChirurgie">
           </div>
           <div class="form-group mt-4">
             <label for="exampleFormControlInput3">Durée de chirurgie</label>
-            <input type="text" class="form-control" id="exampleFormControlInput3" >
+            <input type="text" class="form-control" id="exampleFormControlInput3"  formControlName="dureeChirurgie">
           </div>
 
           <div class="row" style="margin: auto">
-            <button type="button" class="btn3" data-dismiss="modal" >Annuler</button>
-            <button type="button" class="btn4 ">Enregister</button>
+            <button type="reset" class="btn3" data-dismiss="modal"  id="closebtn">Annuler</button>
+            <button type="submit" class="btn4 " >Enregister</button>
           </div>
 
 
@@ -72,4 +71,8 @@
 
     </div>
   </div>
+</div>
+
+  </div>
+
 </div>

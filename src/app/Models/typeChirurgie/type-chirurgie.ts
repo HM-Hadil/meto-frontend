@@ -3,7 +3,7 @@ export class TypeChirurgie {
    nomChirurgie!: string;
    description!: string;
    imageChirurgie!: string;
-   dureeChirurgie! : string;
+   dureeChirurgie!: string;
 
   public constructor(){}
 
