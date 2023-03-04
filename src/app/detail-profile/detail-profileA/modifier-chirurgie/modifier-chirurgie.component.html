@@ -13,7 +13,7 @@
     <h5>{{chirurgie.dureeChirurgie}}</h5>
     <div class="row col-md-12">
       <div class="btn2 col-md-6">
-        <button   (click) = "deleteChirurgie(chirurgie.id)" >Supprimer</button>
+        <button    (click) = "deleteChirurgie(chirurgie)" >Supprimer</button>
       </div>
 
       <div class="btn col-md-6">
@@ -22,10 +22,10 @@
 
     </div>
 
+    <!-- Update chirurgie-->
 
-<!-- Update chirurgie-->
 
-<!-- Modal -->
+<!-- Modal
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -37,8 +37,8 @@
       </div>
 
         <div class="modal-body">
-        <form [formGroup]="chirurgieForm"
-              (ngSubmit)="updatedChirurgie(chirurgie.id)" >
+        <form  [formGroup]="ChirurgieForm"
+              (ngSubmit)="updatedChirurgie()" >
           <div class="form-group">
             <label for="exampleFormControlInput1">Type chirurgie</label>
             <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="nomChirurgie">
@@ -49,8 +49,9 @@
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
           </div>
           <div class="form-group mt-4">
-            <label for="exampleFormControlFile1">Choisir image</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1" formControlName="imageChirurgie">
+           <div> <label for="exampleFormControlFile1"> image</label></div>
+            <img [src]="imgURL" style="width: 150px; height:100px ; margin-bottom: 2rem">
+            <input type="file" accept="image/*" (change)="onSelectFile($event)"   class="form-control-file" id="exampleFormControlFile1" formControlName="imageChirurgie">
           </div>
           <div class="form-group mt-4">
             <label for="exampleFormControlInput3">Durée de chirurgie</label>
@@ -72,6 +73,7 @@
     </div>
   </div>
 </div>
+-->
 
   </div>
 

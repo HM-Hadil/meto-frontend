@@ -1,24 +1,26 @@
-<form #chirurgieForm="ngForm" (ngSubmit)="addChirurgie(chirurgieForm)"><!-- [formGroup]="ChirurgieForm"-->
+<form [formGroup]="ChirurgieForm" (ngSubmit)="addChirurgie()">
   <div class="form-group">
     <label for="exampleFormControlInput1">Nom chirurgie</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="chirurgieModel.nomChirurgie" name="nomChirurgie" >
+    <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="nomChirurgie">
   </div>
 
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Description de chirurgie</label>
-    <textarea type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="chirurgieModel.description" name="description"  ></textarea>
+    <textarea type="text" class="form-control" id="exampleFormControlTextarea1" rows="3"
+              formControlName="description"></textarea>
   </div>
   <div class="form-group mt-4">
-   <div> <label for="exampleFormControlFile1" >Choisir image</label></div>
+    <div> <label for="exampleFormControlFile1">Choisir image</label></div>
     <img [src]="imgURL" style="width: 225px; height:200px ; margin-bottom: 1rem">
 
-    <input type="file" accept="image/*" (change)="onSelectFile($event)" class="form-control-file" id="exampleFormControlFile1" [(ngModel)]="chirurgieModel.imageChirurgie" name="imageChirurgie"  >
+    <input type="file" accept="image/*" (change)="onSelectFile($event)" class="form-control-file"
+           id="exampleFormControlFile1" formControlName="imageChirurgie">
   </div>
   <div class="form-group mt-4">
     <label for="exampleFormControlInput3">Durée de chirurgie</label>
-    <input type="text" class="form-control" id="exampleFormControlInput3"  [(ngModel)]="chirurgieModel.dureeChirurgie" name="dureeChirurgie">
+    <input type="text" class="form-control" id="exampleFormControlInput3" formControlName="dureeChirurgie">
   </div>
-  <div class="btn" >
-    <button type="submit">Envoyer</button>
+  <div class="btn">
+    <button type="submit" >Envoyer</button>
   </div>
 </form>

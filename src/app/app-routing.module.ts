@@ -41,6 +41,7 @@ import {AjoutChirurgieComponent} from "./detail-profile/detail-profileA/ajout-ch
 import {
   ModifierChirurgieComponent
 } from "./detail-profile/detail-profileA/modifier-chirurgie/modifier-chirurgie.component";
+import {UpdateChirurgieComponent} from "./detail-profile/detail-profileA/update-chirurgie/update-chirurgie.component";
 
 const routes: Routes = [
   {path : '', component: AcceuilContentComponent},
@@ -73,7 +74,8 @@ const routes: Routes = [
       {path : 'detail-compte-Medecin' , component: ComptesMedecinDetailComponent},
       {path :'rendez-vous' , component:MessagesMedComponent },
       {path : 'ajoutchirurgie' , component: AjoutChirurgieComponent },
-      {path : 'modifierchirurgie' , component:ModifierChirurgieComponent }
+      {path : 'modifierchirurgie' , component:ModifierChirurgieComponent },
+      {path : 'updatedchirurgie/:id' , component: UpdateChirurgieComponent}
     ]
   },
 

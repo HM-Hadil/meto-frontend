@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, Subject, tap} from "rxjs";
 import {TypeChirurgie} from "../Models/typeChirurgie/type-chirurgie";
 import {environment} from "../../environments/environment";
 
@@ -9,14 +9,24 @@ import {environment} from "../../environments/environment";
 })
 export class ShareServiceService {
   Url = 'http://localhost:8080/api/GetChirurgieById';
-//  Urldel= 'http://localhost:8080/api/deleteChirurgie/';
+ urlPut='http://localhost:8080/api/UpdateChirurgie';
+
+  private _refreshrequired = new Subject<void>();
+  get RequiredRefresh(){
+    return this._refreshrequired;
+  }
+
   constructor(private http: HttpClient) { }
 
 
   // Add chirurgie
 
   AddChirurgie(chirurgie: TypeChirurgie):Observable<any>{
-  return this.http.post(environment.api+"addChirurgie",chirurgie);
+  return this.http.post(environment.api+"addChirurgie",chirurgie).pipe(
+    tap(()=>{
+      this._refreshrequired.next()
+    })
+  );
 }
 
   //Get chirurgie By Id
@@ -33,12 +43,20 @@ export class ShareServiceService {
 
   //Update Chirurgie by id
 
-  updateChirurgie(id : number , chirurgie : TypeChirurgie):Observable<any>{
-    return this.http.put(environment.api+'UpdateChirurgie/'+id,chirurgie);
+  updateChirurgie(id : number , chirurgie : TypeChirurgie):Observable<Object>{
+    return this.http.put(`${this.urlPut}/${id}`,chirurgie).pipe(
+      tap(()=>{
+        this._refreshrequired.next()
+      })
+    );
   }
 
   //delete Chirurgie
   deleteChirurgie(id:number):Observable<any>{
-    return this.http.delete(environment.api+'DeleteChirurgie/'+id,{responseType:'text'});
+    return this.http.delete(environment.api+'DeleteChirurgie/'+id,{responseType:'text'}).pipe(
+      tap(()=>{
+        this._refreshrequired.next()
+      })
+    );
   }
 }

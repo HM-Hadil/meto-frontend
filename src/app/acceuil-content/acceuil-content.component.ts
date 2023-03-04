@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {TypeChirurgie} from "./TypeChirurgie";
+import {ShareServiceService} from "../Services/share-service.service";
+import {TypeChirurgie} from "../Models/typeChirurgie/type-chirurgie";
 
 @Component({
   selector: 'app-acceuil-content',
@@ -7,40 +8,25 @@ import {TypeChirurgie} from "./TypeChirurgie";
   styleUrls: ['./acceuil-content.component.scss']
 })
 export class AcceuilContentComponent implements OnInit {
-  public chirurgies : Array<TypeChirurgie> =[
-
-    {
-      id:'1',
-      titre:'Chirurgie dentaire',
-      url:'../assets/image/chirurgie dentaire.jfif'
-    },
-    {   id:'2',
-      titre:' Chirurgie de l’obésité',
-      url:'../assets/image/CHIRURGIE DE L’OBÉSITÉ.jfif'
-    },
-    {  id:'3',
-      titre:' Chirurgie digestive',
-      url:'../assets/image/La chirurgie digestive.jfif'
-    },
-    {
-      id:'4',
-      titre:' Chirurgie ophtalmologique',
-      url:'../assets/image/la chirurgie ophtamologique4.jfif'
-    },
-    {
-      id:'5',
-      titre:' Chirurgie orthopédique',
-      url:'../assets/image/Chirurgie orthopédique2.jfif'
-    },
-    {
-      id:'6',
-      titre:' Chirurgie des vales cardiaques ',
-      url:'../assets/image/CHIRURGIE CARDIO VASCULAIRE.jfif'
-    }
-  ];
-  constructor() { }
+  ModelChirurgie: TypeChirurgie[]= [];
+  constructor(private share:ShareServiceService ) { }
 
   ngOnInit(): void {
-  }
+    this.reloadData();
 
+  }
+  //get All Chirurgie
+  reloadData() {
+    this.share.getAllChirurgie().subscribe(
+      (response) => {
+        this.ModelChirurgie = response;
+        console.log('reload data ==>>', this.ModelChirurgie);
+      },
+
+      (err) => {
+        console.error('Error ', err);
+      }
+    );
+  }
 }
+

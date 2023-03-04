@@ -1,11 +1,11 @@
 export class TypeChirurgie {
-   id: any;
-   nomChirurgie!: string;
-   description!: string;
-   imageChirurgie!: string;
-   dureeChirurgie!: string;
-
-  public constructor(){}
+  public constructor(
+    public id: number,
+    public nomChirurgie?: String,
+    public description?: String,
+    public imageChirurgie?: String,
+    public dureeChirurgie?: String
+  ) {}
 
 
 

@@ -25,12 +25,13 @@
   <h1>Nos Interventions</h1>
 
   <div class="row content-card">
-    <div class="card card-info shadow-sm p-3 mb-5 bg-white rounded" *ngFor="let chirurgie of chirurgies">
+    <div class="card card-info shadow-sm p-3 mb-5 bg-white rounded" *ngFor="let chirurgies of ModelChirurgie">
       <div class="image">
-        <img src="{{chirurgie.url}}">
+        <img src="{{chirurgies.imageChirurgie}}">
       </div>
-      <h5>{{chirurgie.titre}}</h5>
-      <button >Voir Plus</button>
+      <h5>{{chirurgies.nomChirurgie}}</h5>
+      <button
+       [routerLink] = "['/chirurgie']" fragment="{{chirurgies.id}}"> Voir Plus</button>
     </div>
   </div>
 </div>

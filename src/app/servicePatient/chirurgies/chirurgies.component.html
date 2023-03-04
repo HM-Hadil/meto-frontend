@@ -1,56 +1,19 @@
 <app-header></app-header>
 <div class="card all-card">
   <h1> Tous Nos Services Chirurgicaux</h1>
-  <div class="card align-content-center one-card" >
-    <h4>Chirurgie des valves cardiaque</h4>
-    <div class="row align-content-center content-info">
-      <div class="image">
-        <img src='../assets/image/CHIRURGIE DES VALVES CARDIAQUES.jfif'>
-      </div>
-      <div class="content" >
-         <p>La chirurgie valvulaire concerne les opérations de remplacement ou de
-           réparation des différentes valves du cœur. Relativement rares avant 60 ans,
-           les affections des valves se développent avec l'âge. Et lorsque l'une d'elles est abîmée,
-           le ou la patient-e peut voir apparaître des troubles l'affectant dans sa vie quotidienne.
-           C'est à ce moment-là qu'une opération des valvules est envisagée.Selon les cas, on procède
-           à la réparation chirurgicale de la valve cardiaque existante, à son élargissement forcé par ballonnet
-           ou à son remplacement
-           par une valve artificielle ou une valvule biologique (tissus d'origine humaine ou animale)</p>
-      </div>
 
-    </div>
-    <h5>La chirurgie valvulaire 5 nuits / 6 jours</h5>
-    <div class="row col-md-12">
-      <div class="btn2 col-md-6">
-      <button onclick="window.location.href ='chirurgieSelecionnee';">Choisir un Médecin</button>
-    </div>
-
-    <div class="btn col-md-6">
-      <button onclick="window.location.href ='signPatient';">Prendre Rendez-vous</button>
-    </div>
-
-    </div>
-  </div>
-
-  <div class="card align-content-center one-card"  style="margin-top: 1rem">
-    <h4> chirurgie ophtamologique</h4>
-    <div class="row align-content-center content-info">
+  <div class="card align-content-center one-card"  style="margin-top: 1rem" *ngFor="let chirurgie of ModelChirurgie">
+    <h4> {{chirurgie.nomChirurgie}}</h4>
+    <div class="row align-content-center content-info" id="{{chirurgie.id}}">
 
       <div class="content" >
-        <p>La chirurgie ophtalmologique désigne l’ensemble des opérations pratiquées sur les yeux.
-          Le chirurgien ophtalmologue peut intervenir sur le globe oculaire, les voies lacrymales,
-          sur l’orbite ou encore les paupières. L’opération de la cataracte est l’intervention la plus
-          fréquemment pratiquée chaque année en France et dans le monde. La chirurgie réfractive
-          (opérations laser des yeux), est utilisée pour ne plus porter de lunettes. Les interventions de paupières
-          (chirurgies, laser, injections) peuvent être réalisées à visée esthétique, réparatrice ou fonctionnelle.
-          Les interventions de la rétine, du glaucome,
-          du strabisme et de la cornée sont plus confidentielles</p>
+        <p>{{chirurgie.description}}</p>
       </div>
       <div class="image" style="margin-top: 1rem" >
-        <img src='../assets/image/la chirurgie ophtamologique3.jfif'>
+        <img src="{{chirurgie.imageChirurgie}}">
       </div>
     </div>
-    <h5 style="margin-top:3rem">La chirurgie  ophtamologique 5 nuits / 6 jours</h5>
+    <h5 style="margin-top:3rem">{{chirurgie.dureeChirurgie}}</h5>
     <div class="row col-md-12">
       <div class="btn2 col-md-6">
         <button onclick="window.location.href ='chirurgieSelecionnee';">Choisir un Médecin</button>
@@ -65,127 +28,6 @@
 
 
 
-  <div class="card align-content-center one-card"  style="margin-top: 1rem">
-    <h4>Chirurgie orthopédique</h4>
-    <div class="row align-content-center content-info">
 
-
-        <div class="image">
-        <img src='../assets/image/CHIRURGIE ORTHOPÉDIQUE 2.jfif'>
-      </div><div class="content">
-        <p>La chirurgie orthopédique et traumatologique porte sur le traitement chirurgical des
-          déformations (orthopédie) et des accidents (traumatologie) de l’appareil locomoteur :
-          squelette, muscles et ce qui les relie (tendons et ligaments)
-          il fait un bilan préopératoire soigneux afin de déterminer les gestes et techniques auxquels
-          il va recourir, préciser les modalités de l’anesthésie avec l’anesthésiste
-          Au bloc il dispose de nombreuses techniques en constante évolution permettant aujourd’hui,
-          pour un nombre croissant d’interventions (prothèse de hanche, prothèse de genou, opération
-          du canal carpien, arthroscopie…) de diminuer :
-          la taille de l’incision (chirurgie mini-invasive)
-          les risques liés à l’intervention (douleur, infection…)
-          la durée d’hospitalisation, etc.</p>
-          </div>
-
-    </div>
-    <h5 style="margin-top:6rem">La chirurgie orthopédique  3 nuits / 4 jours</h5>
-    <div class="row col-md-12">
-      <div class="btn2 col-md-6">
-        <button onclick="window.location.href ='chirurgieSelecionnee';">Choisir un Médecin</button>
-      </div>
-
-      <div class="btn col-md-6">
-        <button onclick="window.location.href ='signPatient';">Prendre Rendez-vous</button>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="card align-content-center one-card"  style="margin-top: 1rem">
-    <h4> La chirurgie digestive</h4>
-    <div class="row align-content-center content-info">
-
-      <div class="content" >
-        <p>La chirurgie viscérale et digestive, est une branche particulière de la chirurgie.
-          Elle s’intéresse à la prise en charge chirurgicale des affections de l’abdomen et du pelvis,
-          c’est-à-dire à la « partie basse du ventre ».
-          Actuellement, la majorité des interventions en chirurgie digestive ont lieu par cœlioscopie ou
-          vidéochirurgie, c'est à dire par l'intermédiaire de 3 à 4 petites incisions permettant d'introduire une
-          caméra et des instruments
-          en insufflant du gaz dans l'abdomen. Le chirurgien opère ainsi en regardant un écran.</p>
-      </div>
-      <div class="image" >
-        <img src='../assets/image/chirurgie-viscerale-(personnalise).jpg'>
-      </div>
-    </div>
-    <h5 style="margin-top:3rem">La chirurgie digestive 6 nuits / 7 jours</h5>
-    <div class="row col-md-12">
-      <div class="btn2 col-md-6">
-        <button onclick="window.location.href ='chirurgieSelecionnee';">Choisir un Médecin</button>
-      </div>
-
-      <div class="btn col-md-6">
-        <button onclick="window.location.href ='signPatient';">Prendre Rendez-vous</button>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="card align-content-center one-card"  style="margin-top: 1rem">
-    <h4>La chirurgie dentaire</h4>
-    <div class="row align-content-center content-info">
-
-
-      <div class="image">
-        <img src='../assets/image/La chirurgie dentaire 2.jfif'>
-      </div><div class="content">
-      <p>La chirurgie dentaire ou odontologie est la spécialité médicale qui étudie et traite les affections
-        des dents et de la mâchoire. Elle comporte plusieurs disciplines, dont l’implantologie – pose de prothèses
-        et implants –, l’orthodontie – correction de l’alignement des dents – et la médecine bucco-dentaire intervenant
-        spécifiquement sur des patients dont la prise en charge est délicate pour raisons médicales ou techniques.</p>
-    </div>
-
-    </div>
-    <h5 style="margin-top:2rem">La chirurgie dentaire  3 nuits / 4 jours</h5>
-    <div class="row col-md-12">
-      <div class="btn2 col-md-6">
-        <button onclick="window.location.href ='chirurgieSelecionnee';">Choisir un Médecin</button>
-      </div>
-
-      <div class="btn col-md-6">
-        <button onclick="window.location.href ='signPatient';">Prendre Rendez-vous</button>
-      </div>
-
-    </div>
-  </div>
-
-
-  <div class="card align-content-center one-card"  style="margin-top: 1rem">
-    <h4> Chirurgie de l’obésité</h4>
-    <div class="row align-content-center content-info">
-
-      <div class="content" >
-        <p>Technique de chirurgie de l’obésité,
-          la Sleeve gastrique est une opération qui, sous anesthésie générale du patient, retire les 2/3 de l’estomac,
-          dont les cellules qui sécrètent l’hormone stimulant l’appétit: la ghréline.
-          Il s'agit d'une intervention réservée aux obèses dont la vie est menacée par leur condition et pour
-          lesquels tous les traitements ont échoué.</p>
-      </div>
-      <div class="image" >
-        <img src='../assets/image/CHIRURGIE DE lobesite 2.jfif'>
-      </div>
-    </div>
-    <h5 style="margin-top:3rem"> Chirurgie de l’obésité  2 nuits / 3 jours</h5>
-    <div class="row col-md-12">
-      <div class="btn2 col-md-6">
-        <button onclick="window.location.href ='chirurgieSelecionnee';">Choisir un Médecin</button>
-      </div>
-
-      <div class="btn col-md-6">
-        <button onclick="window.location.href ='signPatient';">Prendre Rendez-vous</button>
-      </div>
-
-    </div>
-
-  </div>
 
 </div>
