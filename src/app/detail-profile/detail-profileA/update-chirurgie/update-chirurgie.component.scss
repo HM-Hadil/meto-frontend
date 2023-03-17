@@ -1,0 +1,80 @@
+.btn button{
+  width: 14rem;
+  height: 2rem;
+  text-align: center;
+  margin-left: 1rem;
+  border: none;
+  border-radius:15px;
+  background-color: #1580EB;
+  color: white;
+
+  margin-top: 1rem;
+}
+.btn button:hover{
+  background-color:white ;
+  color: #1580EB;
+  transition: 1s;
+  border: 1px solid #1580EB;
+}
+.btn{
+  border: none;
+}
+h2{
+  color: #0066FF;
+  text-align: center;
+}
+
+.btn2 button{
+  width: 14rem;
+  height: 2rem;
+  text-align: center;
+  border: none;
+  border-radius:20px;
+  background-color: white;
+  color: #1580EB;
+  margin-left: 6rem;
+  border: 1px solid #1580EB;
+  margin-top: 1.2rem;
+
+}
+
+.btn2 button:hover{
+  background-color:#1580EB ;
+  color: white;
+  transition: 1s;
+  border: 1px solid #1580EB;
+}
+.btn3{
+  width: 12rem;
+  height: 2rem;
+  text-align: center;
+  border: none;
+  border-radius:20px;
+  background-color: white;
+  color: #1580EB;
+  margin: auto;
+
+
+}
+.btn3:hover{
+  background-color:#1580EB ;
+  color: white;
+  transition: 1s;
+  border: 1px solid #1580EB;
+}
+.btn4 {
+  width: 12rem;
+  height: 2rem;
+  margin: auto;
+  border: none;
+  border-radius:15px;
+  background-color: #1580EB;
+  color: white;
+
+}
+.btn4:hover{
+  background-color:white ;
+  color: #1580EB;
+  transition: 1s;
+  border: 1px solid #1580EB;
+}

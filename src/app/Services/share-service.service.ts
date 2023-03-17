@@ -8,8 +8,8 @@ import {environment} from "../../environments/environment";
   providedIn: 'root'
 })
 export class ShareServiceService {
-  Url = 'http://localhost:8080/api/GetChirurgieById';
- urlPut='http://localhost:8080/api/UpdateChirurgie';
+  Url = 'http://localhost:8800/api/GetChirurgieById';
+ urlPut='http://localhost:8800/api/UpdateChirurgie';
 
   private _refreshrequired = new Subject<void>();
   get RequiredRefresh(){
@@ -44,7 +44,7 @@ export class ShareServiceService {
   //Update Chirurgie by id
 
   updateChirurgie(id : number , chirurgie : TypeChirurgie):Observable<Object>{
-    return this.http.put(`${this.urlPut}/${id}`,chirurgie).pipe(
+    return this.http.put(`${this.urlPut}/${id}`,chirurgie, ).pipe(
       tap(()=>{
         this._refreshrequired.next()
       })
@@ -53,7 +53,7 @@ export class ShareServiceService {
 
   //delete Chirurgie
   deleteChirurgie(id:number):Observable<any>{
-    return this.http.delete(environment.api+'DeleteChirurgie/'+id,{responseType:'text'}).pipe(
+    return this.http.delete(environment.api+'DeleteChirurgie/'+id).pipe(
       tap(()=>{
         this._refreshrequired.next()
       })
