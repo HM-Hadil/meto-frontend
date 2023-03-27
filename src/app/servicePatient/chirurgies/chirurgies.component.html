@@ -3,17 +3,17 @@
   <h1> Tous Nos Services Chirurgicaux</h1>
 
   <div class="card align-content-center one-card"  style="margin-top: 1rem" *ngFor="let chirurgie of ModelChirurgie">
-    <h4> {{chirurgie.nomChirurgie}}</h4>
+    <h4> {{chirurgie.name}}</h4>
     <div class="row align-content-center content-info" id="{{chirurgie.id}}">
 
       <div class="content" >
         <p>{{chirurgie.description}}</p>
       </div>
       <div class="image" style="margin-top: 1rem" >
-        <img src="{{chirurgie.imageChirurgie}}">
+        <img src="{{chirurgie.image}}">
       </div>
     </div>
-    <h5 style="margin-top:3rem">{{chirurgie.dureeChirurgie}}</h5>
+  <!---- <h5 style="margin-top:3rem">{{chirurgie.du}}</h5>-->
     <div class="row col-md-12">
       <div class="btn2 col-md-6">
         <button onclick="window.location.href ='chirurgieSelecionnee';">Choisir un Médecin</button>

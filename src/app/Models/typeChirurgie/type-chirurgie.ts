@@ -1,10 +1,16 @@
+
 export class TypeChirurgie {
   public constructor(
     public id: number,
-    public nomChirurgie?: String,
+    public name?: String,
     public description?: String,
-    public imageChirurgie?: String,
-    public dureeChirurgie?: String
+    public image?: String,
+    public duration?: {
+      days: number,
+      hours: number,
+      minutes: number,
+      seconds: number
+    }
   ) {}
 
 

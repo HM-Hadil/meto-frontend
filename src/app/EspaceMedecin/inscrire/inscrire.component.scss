@@ -18,7 +18,7 @@
 .card-form{
   width: auto;
   height: auto;
-  margin: auto;
+  margin:-0.00px auto;
   background-color: white;
   border-radius: 8px;
   padding: 2rem;
@@ -57,7 +57,20 @@ label{
 h5{
   color: #0066FF;
   margin-bottom: 2rem;
+}
+
+.btn-add button{
+  width: 10rem;
+  height: 2rem;
+  margin-top: 1.5rem;
+  background-color: transparent;
+  color: #0066FF;
+  border: 1px solid #0066FF;
+  border-radius: 8px;
+
+}
+.btn-add button:hover{
+cursor: pointer;
 
 
 }
-

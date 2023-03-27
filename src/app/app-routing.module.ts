@@ -42,6 +42,7 @@ import {
   ModifierChirurgieComponent
 } from "./detail-profile/detail-profileA/modifier-chirurgie/modifier-chirurgie.component";
 import {UpdateChirurgieComponent} from "./detail-profile/detail-profileA/update-chirurgie/update-chirurgie.component";
+import { SignUpComponent } from './Admin/sign-up/sign-up.component';
 
 const routes: Routes = [
   {path : '', component: AcceuilContentComponent},
@@ -50,6 +51,7 @@ const routes: Routes = [
   {path : 'inscrire', component: InscrireComponent},
   {path : 'authentifier' , component : AuthentifierComponent},
   {path : 'login' , component: LoginComponent},
+  {path : 'signUpA' , component : SignUpComponent},
   {path : 'loginPatient', component:LoginPatientComponent},
 
   {path : 'signPatient' , component : SignUpPatientComponent},

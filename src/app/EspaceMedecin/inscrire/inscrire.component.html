@@ -2,73 +2,125 @@
   <div class="zoneRouge">
     <h6>Cette inscription et seulement pour les medecins  ! </h6>
   </div>
- <h3 style="margin-top: 3rem;">Inscription</h3>
-<div class="card-form">
-  <form>
+  <h3 style="margin-top: 3rem;margin-bottom: 2rem;">Inscription</h3>
+  <div class="card-form" >
+<form [formGroup]="MedecinForm" (ngSubmit)="signUpMedecin()">
     <h5>Information Personnelle :</h5>
     <div class="form-row " style="justify-content: center;">
 
       <div class="form-group col-md-4 " >
         <label for="inputEmail4" >Nom</label>
-        <input type="text" class="form-control" id="inputEmail4" placeholder="Nom">
+        <input type="text" class="form-control" id="inputEmail4" placeholder="Nom" formControlName="firstname"  required
+        >
       </div>
       <div class="form-group col-md-4" style="justify-content: center;">
         <label for="inputPassword4">Prénom</label>
-        <input type="text" class="form-control" id="inputPassword4" placeholder="Prénom">
+        <input type="text" class="form-control" id="inputPassword4" placeholder="Prénom" formControlName="lastname"  required>
       </div>
     </div>
     <div class="form-row " style="justify-content: center;">
     <div class="form-group col-md-4" >
       <label for="inputAddress">Ville</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="ville">
+      <input type="text" class="form-control" id="inputAddress" placeholder="ville" formControlName="ville"  required>
     </div>
     <div class="form-group col-md-4">
       <label for="inputAddress2">Address</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="">
+      <input type="text" class="form-control" id="inputAddress2" placeholder="adresse"formControlName="adresse"  required>
     </div>
     </div>
     <div class="form-row" style="justify-content: center;">
       <div class="form-group col-md-4">
         <label for="telephone">Téléphone</label>
-        <input type="text" class="form-control" id="telephone">
+        <input type="text" class="form-control" id="telephone" formControlName="telephone"  required>
       </div>
       <div class="form-group col-md-4">
-        <label for="inputCity">Email</label>
-        <input type="text" class="form-control" id="inputCity">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" formControlName="email"  required>
       </div>
     </div>
       <div class="form-row" style="justify-content: center;">
       <div class="form-group col-md-4" >
         <label for="pass">Password</label>
-        <input type="password" class="form-control" id="pass">
-      </div>
+        <input type="password" class="form-control" id="pass" formControlName="password"  required>
       </div>
 
-    <h5 style="margin-top: 1rem">Information Professionnelle :</h5>
+        <div class="form-group col-md-4" >
+         <label for="gender" >Sexe</label>
+
+         <input type="radio" name="gender" value="MALE" id="gender"  formControlName="gender" style="margin-top: 2rem;"> Male
+          <input type="radio" name="gender" value="FEMALE"  formControlName="gender" > Female
+
+        </div>
+      </div>
+
     <div class="form-row " style="justify-content: center;">
       <div class="form-group col-md-4 " >
         <label for="inputEmail8" >Specialité</label>
-        <input type="text" class="form-control" id="inputEmail8" placeholder="">
+        <input type="text" class="form-control" id="inputEmail8" placeholder="" formControlName="specialite"  required>
       </div>
-      <div class="form-group col-md-4" style="justify-content: center;">
-        <label for="inputPassword9">Etablissement</label>
-        <input type="text" class="form-control" id="inputPassword9" placeholder="">
-      </div>
-    </div>
-    <div class="form-row " style="justify-content: center;">
       <div class="form-group col-md-4 " >
-        <label for="inputEmail10" >Clinique</label>
-        <input type="text" class="form-control" id="inputEmail10" placeholder="">
+        <label for="inputEmail8" >Image</label>
+        <input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control" formControlName="image"  required>
       </div>
-      <div class="form-group col-md-4" style="justify-content: center;">
-        <label for="inputPassword12">Parcours</label>
-        <input type="text" class="form-control" id="inputPassword12" placeholder="">
-      </div>
+
+
     </div>
 
-    <div class="btn">
-    <button type="submit" class="btn"  routerLink="/authentifier" routerLinkActive="active">Inscrire</button>
+
+    <!-- For experience form array -->
+  <ng-container formArrayName="experience">
+    <ng-container *ngFor="let experienceFormGroup of experience.controls; let index = index">
+      <div [formGroupName]="index">
+        <div class="form-row " style="justify-content: center;margin-top: 2rem">
+
+          <div>
+            <label>Nom Compagnie:</label>
+            <input formControlName="establishment" type="text" required></div>
+          <div>
+            <label>Profession:</label>
+            <input formControlName="specialty" type="text" required></div>
+        </div>
+      </div>
+      <div class="btn-add">
+        <button type="button" (click)="removeEx(index)">Supprimer experience</button></div>
+
+    </ng-container>
+    <div class="btn-add">
+      <button type="button" (click)="addNewExperience()" >Ajouter experience</button>
     </div>
-  </form>
+  </ng-container>
+
+
+<!-- For parcours form array -->
+  <ng-container formArrayName="parcours">
+  <ng-container *ngFor="let parcoursFormGroup of parcours.controls; let index = index">
+   <div [formGroupName]="index">
+    <div class="form-row " style="justify-content: center;margin-top: 2rem">
+      <div>
+      <label>Diploma:</label>
+      <input formControlName="diploma" type="text" required></div>
+      <div>
+      <label>Nom Compagnie:</label>
+      <input formControlName="establishment" type="text" required></div>
+      <div>
+      <label>Date:</label>
+      <input formControlName="field" type="text" required></div>
+    </div>
+    </div>
+    <div class="btn-add">
+      <button type="button" (click)="remove(index)">Supprimer parcours</button></div>
+
+  </ng-container>
+  <div class="btn-add">
+  <button type="button" (click)="addNewParcours()" >Ajouter parcours</button>
+  </div>
+  </ng-container>
+
+
+
+    <div class="btn">
+    <button type="submit" class="btn" [disabled]="MedecinForm!.valid" >Inscrire</button>
+    </div> <!--routerLink="/authentifier" routerLinkActive="active"-->
+</form>
 </div>
 </div>

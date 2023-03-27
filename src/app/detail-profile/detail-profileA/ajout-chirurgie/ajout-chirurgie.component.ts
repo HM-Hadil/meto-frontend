@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder,FormControl,FormGroup, Validators,} from '@angular/forms';
+import {FormArray, FormBuilder,FormControl,FormGroup, Validators,} from '@angular/forms';
 import { ShareServiceService } from '../../../Services/share-service.service';
 import { TypeChirurgie } from '../../../Models/typeChirurgie/type-chirurgie';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -24,14 +24,21 @@ export class AjoutChirurgieComponent implements OnInit {
     private http: HttpClient,
     private fb: FormBuilder
   ) {
-    let formControles = {
-      nomChirurgie: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-      imageChirurgie: new FormControl('', [Validators.required]),
-      dureeChirurgie: new FormControl('', [Validators.required]),
-    };
-    this.ChirurgieForm = this.fb.group(formControles);
+    this.ChirurgieForm = this.fb.group({
+      name:['',Validators.required],
+      description:['',Validators.required] ,
+      image:['',Validators.required],
+      duration: this.fb.group({
+        days: [''],
+        hours: [''],
+        minutes: [''],
+        seconds: ['']
+      }),
+
+    });
+
   }
+  
 
   ngOnInit(): void {}
 
@@ -42,10 +49,11 @@ export class AjoutChirurgieComponent implements OnInit {
     console.log(this.imgURL);
     let typeChirurgie = new TypeChirurgie(
       data.id,
-      data.nomChirurgie,
+      data.name,
       data.description,
       this.imgURL,
-      data.dureeChirurgie
+      data.duration,
+ 
     );
     console.log(typeChirurgie);
 
@@ -76,5 +84,7 @@ export class AjoutChirurgieComponent implements OnInit {
         this.imgURL = reader.result;
       };
     }
+    
   }
+
 }

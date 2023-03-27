@@ -3,7 +3,7 @@
        (ngSubmit)="updatedChirurgie()" >
   <div class="form-group">
     <label for="exampleFormControlInput1">Type chirurgie</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="nomChirurgie">
+    <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="name">
   </div>
 
   <div class="form-group">
@@ -13,13 +13,16 @@
   <div class="form-group mt-4">
     <div> <label for="exampleFormControlFile1"> image</label></div>
     <img [src]="imgURL" style="width: 150px; height:100px ; margin-bottom: 2rem">
-    <input type="file" accept="image/*" (change)="onSelectFile($event)"   class="form-control-file" id="exampleFormControlFile1" formControlName="imageChirurgie">
+    <input type="file" accept="image/*" (change)="onSelectFile($event)"   class="form-control-file" id="exampleFormControlFile1" formControlName="image">
   </div>
   <div class="form-group mt-4">
-    <label for="exampleFormControlInput3">Durée de chirurgie</label>
-    <input type="text" class="form-control" id="exampleFormControlInput3"  formControlName="dureeChirurgie">
-  </div>
-
+    <label>Duration:</label>
+    <div formGroupName="duration">
+      <input formControlName="days" type="number" placeholder="Days">
+      <input formControlName="hours" type="number" placeholder="Hours">
+      <input formControlName="minutes" type="number" placeholder="Minutes">
+      <input formControlName="seconds" type="number" placeholder="Seconds">
+    </div></div>
   <div class="row" style="margin-bottom: 2rem;margin-top: 2rem; text-align: center">
     <button type="reset" class="btn3" data-dismiss="modal"  id="closebtn">Annuler</button>
     <button type="submit" class="btn4 " >Enregister</button>

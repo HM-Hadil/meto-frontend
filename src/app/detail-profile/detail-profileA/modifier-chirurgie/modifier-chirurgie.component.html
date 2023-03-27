@@ -1,16 +1,19 @@
 <div class="card all-card">
   <div class="card align-content-center one-card" *ngFor="let chirurgie of ModelChirurgie" >
-    <h4>{{chirurgie.nomChirurgie}}</h4>
+    <h4>{{chirurgie.name}}</h4>
     <div class="row align-content-center content-info">
       <div class="image">
-        <img src="{{chirurgie.imageChirurgie}}">
+        <img src="{{chirurgie.image}}">
       </div>
       <div class="content" >
         <p>{{chirurgie.description}}</p>
       </div>
 
     </div>
-    <h5>{{chirurgie.dureeChirurgie}}</h5>
+    <h5>La  {{chirurgie.name}} ,
+       {{chirurgie.duration?.days}} jours ,{{chirurgie.duration?.hours}} heurs,{{chirurgie.duration?.minutes}} minutes,
+      {{chirurgie.duration?.seconds}} seconds
+    </h5>
     <div class="row col-md-12">
       <div class="btn2 col-md-6">
         <button    (click) = "deleteChirurgie(chirurgie)" >Supprimer</button>

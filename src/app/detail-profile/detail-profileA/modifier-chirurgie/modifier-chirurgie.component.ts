@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TypeChirurgie} from "../../../Models/typeChirurgie/type-chirurgie";
+import { TypeChirurgie} from "../../../Models/typeChirurgie/type-chirurgie";
 import {Observable} from "rxjs";
 import {ShareServiceService} from "../../../Services/share-service.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
@@ -20,13 +20,14 @@ export class ModifierChirurgieComponent implements OnInit {
   public imagePath: any;
   imgURL: any = '';
 
+
   constructor(private share: ShareServiceService , private fb:FormBuilder ,
               private router : Router , private route: ActivatedRoute,) {
     let formControles = {
-      nomChirurgie: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
-      imageChirurgie: new FormControl('', [Validators.required]),
-      dureeChirurgie: new FormControl('', [Validators.required]),
+      image: new FormControl('', [Validators.required]),
+      duration: new FormControl('', [Validators.required]),
     };
     this.ChirurgieForm = this.fb.group(formControles);
   }
@@ -42,10 +43,11 @@ export class ModifierChirurgieComponent implements OnInit {
   //get All Chirurgie
   reloadData() {
     this.share.getAllChirurgie().subscribe(
-      (response) => {
-        this.ModelChirurgie = response;
+      (data )=> { 
+        this.ModelChirurgie = data;
         console.log('reload data ==>>', this.ModelChirurgie);
-
+        
+      
       },
 
       (err) => {
@@ -59,80 +61,26 @@ export class ModifierChirurgieComponent implements OnInit {
   //delete chirurgie
 
   deleteChirurgie(item: any) {
-    alertify.confirm("Supprimer Chirurgie","voulez-vous supprimer ?",()=>{},
-      () =>{
-        this.share.deleteChirurgie(item.id).subscribe((data) => {
-          console.log("data to delete ==>",data);
-          console.log("id ===>",data.id); });
+  
+      this.share.deleteChirurgie(item.id).subscribe();
+        
 
-        console.log("item =====>" ,item);
-        let index = this.ModelChirurgie.indexOf(item);
+        console.log("item =====>" ,item.id);
+        let index = this.ModelChirurgie.indexOf(item.id);
         //delete from front end
         this.ModelChirurgie.splice(index, 1);
-        alertify.success("chirurgie supprimée ")
-    })
+        alertify.success("chirurgie supprimée ");
+    }
 
-  }
+  
 
 
  //submit id from button "modifier"
   updateChirurgie(id:number) {
-    this.router.navigate(['updatedchirurgie',id])
-
-  /**  console.log('the id submitted is ', id);
-    this.share.getChirurgirById(id).subscribe((olddata) => {
-      console.log('>>>>old data :', olddata);
-      this.chirurgieModel= olddata;
-      this.ChirurgieForm.setValue({nomChirurgie:this.chirurgieModel.nomChirurgie,
-        description:this.chirurgieModel.description,imageChirurgie:this.imgURL, dureeChirurgie:this.chirurgieModel.dureeChirurgie})
-**/
-      // Initialize the form with data from the backend // get All data
-
-    /**  this.ChirurgieForm.controls['nomChirurgie'].patchValue(this.chirurgieModel.nomChirurgie);
-      this.ChirurgieForm.controls['description'].patchValue(this.chirurgieModel.description);
-      this.ChirurgieForm.controls['imageChirurgie'].patchValue(this.imgURL);
-      this.ChirurgieForm.controls['dureeChirurgie'].setValue(this.chirurgieModel.dureeChirurgie);
-      console.log('initForm ===>', this.ChirurgieForm);**/
-
+    this.router.navigate(['updatedchirurgie',id]);
 
     }
 
-
-
-
-  //update chirurgie from button "enregister"
-   /** updatedChirurgie( ) {
-
-   let data = this.ChirurgieForm.value;
-      console.log(data);
-      console.log(this.imgURL);
-      let typeChirurgie = new TypeChirurgie(
-        data.id,
-        data.nomChirurgie,
-        data.description,
-        this.imgURL,
-        data.dureeChirurgie
-      );
-      console.log('data from the form to the model==>',typeChirurgie);
-      this.share.updateChirurgie(data.id, data).subscribe((response) => {
-        console.log("updated data ==>",response);
-
-        const closebtn = document.getElementById(
-          'closebtn'
-        ) as HTMLButtonElement | null;
-
-        if (closebtn != null) {
-          console.log(' button closed');
-          closebtn.click();
-        }
-        alertify.success("chirurgie modifiée ")
-        this.router.navigate(['modifierchirurgie']);
-      });
-    }
-
-       //// window.location.reload();
-
-**/
 
 
 

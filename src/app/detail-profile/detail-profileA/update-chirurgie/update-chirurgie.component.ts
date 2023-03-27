@@ -18,13 +18,18 @@ export class UpdateChirurgieComponent implements OnInit {
   id!:number;
   constructor(private share: ShareServiceService , private fb:FormBuilder ,
               private router : Router , private route: ActivatedRoute,) {
-    let formControles = {
-      nomChirurgie: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-      imageChirurgie: new FormControl('', [Validators.required]),
-      dureeChirurgie: new FormControl('', [Validators.required]),
-    };
-    this.ChirurgieForm = this.fb.group(formControles);
+                this.ChirurgieForm = this.fb.group({
+                  name:['',Validators.required],
+                  description:['',Validators.required] ,
+                  image:['',Validators.required],
+                  duration: this.fb.group({
+                    days: [''],
+                    hours: [''],
+                    minutes: [''],
+                    seconds: ['']
+                  }),
+            
+                });
   }
 
   ngOnInit(): void {
@@ -33,8 +38,8 @@ export class UpdateChirurgieComponent implements OnInit {
     this.share.getChirurgirById(this.id).subscribe((olddata) => {
       console.log('>>>>old data :', olddata);
       this.chirurgieModel= olddata;
-      this.ChirurgieForm.setValue({nomChirurgie:this.chirurgieModel.nomChirurgie,
-        description:this.chirurgieModel.description,imageChirurgie:this.imgURL,dureeChirurgie:this.chirurgieModel.dureeChirurgie})
+      this.ChirurgieForm.setValue({name:this.chirurgieModel.name,
+        description:this.chirurgieModel.description,image:this.imgURL,duration:this.chirurgieModel.duration})
 
     });
   }
@@ -48,10 +53,10 @@ export class UpdateChirurgieComponent implements OnInit {
     console.log(this.imgURL);
     let typeChirurgie = new TypeChirurgie(
       data.id,
-      data.nomChirurgie,
+      data.name,
       data.description,
       this.imgURL,
-      data.dureeChirurgie
+      data.duration
     );
     console.log('data from the form to the model==>',typeChirurgie);
     this.share.updateChirurgie(this.id, typeChirurgie).subscribe((response) => {
