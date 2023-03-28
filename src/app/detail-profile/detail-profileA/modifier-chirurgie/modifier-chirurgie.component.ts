@@ -14,7 +14,6 @@ import alertify from "alertifyjs";
 export class ModifierChirurgieComponent implements OnInit {
   ChirurgieForm!: FormGroup;
   ModelChirurgie: TypeChirurgie[]= [];
-  chirurgieModel!  : TypeChirurgie;
   userFile: any;
   id!:number;
   public imagePath: any;
@@ -43,11 +42,11 @@ export class ModifierChirurgieComponent implements OnInit {
   //get All Chirurgie
   reloadData() {
     this.share.getAllChirurgie().subscribe(
-      (data )=> { 
+      (data )=> {
         this.ModelChirurgie = data;
         console.log('reload data ==>>', this.ModelChirurgie);
-        
-      
+
+
       },
 
       (err) => {
@@ -61,9 +60,9 @@ export class ModifierChirurgieComponent implements OnInit {
   //delete chirurgie
 
   deleteChirurgie(item: any) {
-  
+
       this.share.deleteChirurgie(item.id).subscribe();
-        
+
 
         console.log("item =====>" ,item.id);
         let index = this.ModelChirurgie.indexOf(item.id);
@@ -72,7 +71,7 @@ export class ModifierChirurgieComponent implements OnInit {
         alertify.success("chirurgie supprimée ");
     }
 
-  
+
 
 
  //submit id from button "modifier"

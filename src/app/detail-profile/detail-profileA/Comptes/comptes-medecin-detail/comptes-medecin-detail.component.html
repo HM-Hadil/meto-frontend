@@ -1,14 +1,14 @@
-<div class="col allCard>" >
+<div class="col allCard>"  *ngIf="medecin">
 
   <div class="image">
-    <img src="../assets/image/medcin4.jfif">
+    <img src="{{medecin.image}}">
   </div>
-  <div class="card infotxt">
-  <h5>Ben Hassen Mohammed </h5>
-  <h6>chirurgie des valves cardiaques</h6>
-  <address>tunisie bardou</address>
-  <p><b>Téléphone :</b> 24308496</p>
-  <p><b>Etablissement :</b> clinique l Ben arous</p>
+  <div class="card infotxt" >
+  <h5>{{medecin.firstname}} {{medecin.lastname}}</h5>
+  <h6>{{medecin.specialite}}</h6>
+  <address>{{medecin.ville}}</address>
+  <p><b>Téléphone :</b> {{medecin.telephone}}</p>
+  <!--<p><b>Etablissement :</b> clinique l Ben arous</p>-->
   </div>
 
     <div class="col content">
@@ -16,11 +16,7 @@
    <h5 style="text-align: center ; color: #3F6589">Parcours</h5>
 
 
-    <p>Diplôme de docteur en médecine – Juin 2005 faculté de médecine de Tunis
-
-    <p> Diplôme de médecin spécialiste en gynécologie obstétrique – Avril 2007 faculté de médecine de Tunis
-
-    <p>Certificat de compétence en échographie de 12SA « The Fetal Medicine Foundation » – Londres Angleterre</p>
+    <p >{{medecin.parcours}}</p>
 
   </div>
 
@@ -28,11 +24,7 @@
 
     <h5 style="text-align: center ; color: #3F6589 ; margin-top: 1rem;">Expérience Professionnelle</h5>
 
-    <p>Diplôme de docteur en médecine – Juin 2005 faculté de médecine de Tunis
-
-     <p> Diplôme de médecin spécialiste en gynécologie obstétrique – Avril 2007 faculté de médecine de Tunis
-
-    <p>Certificat de compétence en échographie de 12SA « The Fetal Medicine Foundation » – Londres Angleterre</p>
+    <p>Diplôme de docteur en médecine – Juin 2005 faculté de médecine de Tunis</p>
   </div>
 
   <div class="row btns">

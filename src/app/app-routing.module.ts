@@ -43,6 +43,10 @@ import {
 } from "./detail-profile/detail-profileA/modifier-chirurgie/modifier-chirurgie.component";
 import {UpdateChirurgieComponent} from "./detail-profile/detail-profileA/update-chirurgie/update-chirurgie.component";
 import { SignUpComponent } from './Admin/sign-up/sign-up.component';
+import {
+  DetailMsgPatientComponent
+} from "./detail-profile/detail-profileA/detail-msg-patient/detail-msg-patient.component";
+import {AffecterMedecinComponent} from "./detail-profile/detail-profileA/affecter-medecin/affecter-medecin.component";
 
 const routes: Routes = [
   {path : '', component: AcceuilContentComponent},
@@ -73,11 +77,14 @@ const routes: Routes = [
       {path : 'dashboardAdmin' , component: DashboardAdminComponent},
     {path : 'comptesMedecins' , component: ComptesMedecinsComponent},
       {path : 'comptesPatients' , component: ComptesPatientsComponent},
-      {path : 'detail-compte-Medecin' , component: ComptesMedecinDetailComponent},
+      {path : 'detail-compte-Medecin/:id' , component: ComptesMedecinDetailComponent},
       {path :'rendez-vous' , component:MessagesMedComponent },
       {path : 'ajoutchirurgie' , component: AjoutChirurgieComponent },
       {path : 'modifierchirurgie' , component:ModifierChirurgieComponent },
-      {path : 'updatedchirurgie/:id' , component: UpdateChirurgieComponent}
+      {path : 'updatedchirurgie/:id' , component: UpdateChirurgieComponent},
+      {path : 'detailMsgPatient' , component:  DetailMsgPatientComponent},
+      {path : 'affecterMedecin' , component: AffecterMedecinComponent}
+
     ]
   },
 

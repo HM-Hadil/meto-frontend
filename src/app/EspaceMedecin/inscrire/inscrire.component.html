@@ -36,6 +36,9 @@
       <div class="form-group col-md-4">
         <label for="email">Email</label>
         <input type="text" class="form-control" id="email" formControlName="email"  required>
+       <!-- <div *ngIf="emailExists" style="color: red;">Email already exists</div>-->
+
+
       </div>
     </div>
       <div class="form-row" style="justify-content: center;">
@@ -52,6 +55,7 @@
 
         </div>
       </div>
+  <h5 style="margin-top: 1rem">Information Professionnel :</h5>
 
     <div class="form-row " style="justify-content: center;">
       <div class="form-group col-md-4 " >
@@ -119,7 +123,8 @@
 
 
     <div class="btn">
-    <button type="submit" class="btn" [disabled]="MedecinForm!.valid" >Inscrire</button>
+    <button type="submit" class="btn"  style="margin-top: 2rem" [disabled]="MedecinForm.invalid">
+      Inscrire</button>
     </div> <!--routerLink="/authentifier" routerLinkActive="active"-->
 </form>
 </div>

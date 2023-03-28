@@ -1,21 +1,21 @@
 <div class="container col">
   <h2>Listes des comptes Médecins</h2>
   <div class="row">
-    <div class="card one-card">
+    <div class="card one-card" *ngFor="let medecin of MedecinModel">
     <div class="row">
 
-      <div class="col" style="margin-top: 1rem">
-        <h5> <i> <b>Docteur Ben Hassen</b></i></h5>
-        <h6>Chirurgies des valves cardiques</h6>
-        <address>tunis bardou 6185</address>
+      <div class="col" style="margin-top: 1rem" >
+        <h5> <i> <b>Dr {{medecin.firstname}} {{medecin.lastname}}</b></i></h5>
+        <h6>{{medecin.specialite}}</h6>
+        <address>{{medecin.ville}}</address>
       </div>
 
       <div class="col">
         <div class="image">
-           <img src="../assets/image/medcin4.jfif">
+           <img src="{{medecin.image}}">
         </div>
         <div class="row btn">
-          <button routerLink="/detail-compte-Medecin" routerLinkActive="active">Voir détail</button>
+          <button (click)="seeDetails(medecin.id)" >Voir détail</button>
 
         </div>
 
@@ -23,122 +23,6 @@
     </div>
 
     </div>
-
-    <div class="card one-card">
-      <div class="row">
-
-        <div class="col" style="margin-top: 1rem">
-          <h5> <i> <b>Docteur Ben Hassen</b></i></h5>
-          <h6>Chirurgies des valves cardiques</h6>
-          <address>tunis bardou 6185</address>
-        </div>
-
-        <div class="col">
-          <div class="image">
-            <img src="../assets/image/medcin4.jfif">
-          </div>
-          <div class="row btn">
-            <button routerLink="/detail-compte-Medecin" routerLinkActive="active">Voir détail</button>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-    <div class="card one-card">
-      <div class="row">
-
-        <div class="col" style="margin-top: 1rem">
-          <h5> <i> <b>Docteur Ben Hassen</b></i></h5>
-          <h6>Chirurgies des valves cardiques</h6>
-          <address>tunis bardou 6185</address>
-        </div>
-
-        <div class="col">
-          <div class="image">
-            <img src="../assets/image/medcin4.jfif">
-          </div>
-          <div class="row btn">
-            <button routerLink="/detail-compte-Medecin" routerLinkActive="active">Voir détail</button>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-    <div class="card one-card">
-      <div class="row">
-
-        <div class="col" style="margin-top: 1rem">
-          <h5> <i> <b>Docteur Ben Hassen</b></i></h5>
-          <h6>Chirurgies des valves cardiques</h6>
-          <address>tunis bardou 6185</address>
-        </div>
-
-        <div class="col">
-          <div class="image">
-            <img src="../assets/image/medcin4.jfif">
-          </div>
-          <div class="row btn">
-            <button>Voir détail</button>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-
-    <div class="card one-card">
-      <div class="row">
-
-        <div class="col" style="margin-top: 1rem">
-          <h5> <i> <b>Docteur Ben Hassen</b></i></h5>
-          <h6>Chirurgies des valves cardiques</h6>
-          <address>tunis bardou 6185</address>
-        </div>
-
-        <div class="col">
-          <div class="image">
-            <img src="../assets/image/medcin4.jfif">
-          </div>
-          <div class="row btn">
-            <button>Voir détail</button>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-    <div class="card one-card">
-      <div class="row">
-
-        <div class="col" style="margin-top: 1rem">
-          <h5> <i> <b>Docteur Ben Hassen</b></i></h5>
-          <h6>Chirurgies des valves cardiques</h6>
-          <address>tunis bardou 6185</address>
-        </div>
-
-        <div class="col">
-          <div class="image">
-            <img src="../assets/image/medcin4.jfif">
-          </div>
-          <div class="row btn">
-            <button>Voir détail</button>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
 
   </div>
 

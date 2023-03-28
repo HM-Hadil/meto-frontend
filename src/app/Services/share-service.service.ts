@@ -14,6 +14,7 @@ import { Authentication } from '../Models/Authentication';
 export class ShareServiceService {
   Url = 'http://localhost:8800/chirurgies/GetChirurgieById';
  urlPut='http://localhost:8800/chirurgies/UpdateChirurgie';
+ UrlDr = "http://localhost:8800/accounts/doctor";
 
   private _refreshrequired = new Subject<void>();
   get RequiredRefresh(){
@@ -66,27 +67,43 @@ export class ShareServiceService {
 
 
 
-//add patient 
+//add patient
     signUpPatient(usersP : PatientModel):Observable<any>{
       return this.http.post(environment.api+"register/patient",usersP);
 
     }
 
-    //add medecins 
+    //add medecins
     signUpMedecin(usersM : MedecinModel):Observable<any>{
       return this.http.post(environment.api+"register/doctor",usersM);
 
     }
 
-      //add admin 
+      //add admin
       signUpAdmin(usersA : AdminModel):Observable<any>{
         return this.http.post(environment.api+"register/admin",usersA);
-  
       }
+
+  checkEmailExists(email: string) {
+    return this.http.get<boolean>(`http://localhost:8800/register/checkEmailExists/${email}`);
+  }
 
       //login
 
      login(request : Authentication):Observable<any>{
       return this.http.post(environment.api+"authenticate",request);
      }
+     // get all accounts doctors
+     getDisableddoctor():Observable<MedecinModel[]>{
+    return  this.http.get<MedecinModel[]>(environment.api+"accounts/disabledDoctor");
+     }
+
+     //get account doctor by id
+     getDoctorByIdAndEnabledFalse(id: number):Observable<MedecinModel>{
+    return  this.http.get<MedecinModel>(`${this.UrlDr}/${id}`)
+
+  }
+
+
+
 }

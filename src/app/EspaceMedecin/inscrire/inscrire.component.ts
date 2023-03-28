@@ -17,17 +17,7 @@ export class InscrireComponent implements OnInit {
   userFile: any;
   public imagePath: any;
   imgURL: any = '';
-
-  parcoursFormGroup: {} =  this.fb.group({
-                                diploma: ['', Validators.required],
-                                establishment: ['', Validators.required],
-                                field: ['', Validators.required]
-                              });
-
-  experienceFormGroup: {} = this.fb.group({
-    establishment: ['', Validators.required],
-    specialty: ['', Validators.required]
-  })
+  emailExists = false;
 
   constructor(private share: ShareServiceService,
     private router: Router,
@@ -43,7 +33,7 @@ export class InscrireComponent implements OnInit {
         image: ['', Validators.required],
         lastname: ['', Validators.required],
 
-       experience: this.fb.array([]),
+        experience: this.fb.array([]),
 
         parcours: this.fb.array([]),
         password: ['', Validators.required],
@@ -71,12 +61,22 @@ export class InscrireComponent implements OnInit {
   }
 
   addNewParcours(){
-this.parcours.push(this.parcoursFormGroup);
+    const parcoursFormGroup =this.fb.group({
+      diploma: ['', Validators.required],
+      establishment: ['', Validators.required],
+      field: ['', Validators.required],
+    });
+    this.parcours.push(parcoursFormGroup);
 
   }
 
   addNewExperience(){
-    this.experience.push(this.experienceFormGroup);
+    const experienceFormGroup = this.fb.group({
+      establishment: ['', Validators.required],
+      specialty: ['', Validators.required],
+    });
+
+    this.experience.push(experienceFormGroup);
 
   }
 
@@ -112,7 +112,7 @@ this.parcours.push(this.parcoursFormGroup);
 
     );
 
-
+    this.share.checkEmailExists(medecins.email).subscribe();
    console.log("medecinModel-->", medecins);
     this.share.signUpMedecin(medecins).subscribe();
     console.log('>>>> Add medecins to backend', medecins);

@@ -46,6 +46,8 @@ import { ModifierChirurgieComponent } from './detail-profile/detail-profileA/mod
 import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { UpdateChirurgieComponent } from './detail-profile/detail-profileA/update-chirurgie/update-chirurgie.component';
+import { DetailMsgPatientComponent } from './detail-profile/detail-profileA/detail-msg-patient/detail-msg-patient.component';
+import { AffecterMedecinComponent } from './detail-profile/detail-profileA/affecter-medecin/affecter-medecin.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +87,8 @@ import { UpdateChirurgieComponent } from './detail-profile/detail-profileA/updat
     AjoutChirurgieComponent,
     ModifierChirurgieComponent,
     UpdateChirurgieComponent,
+    DetailMsgPatientComponent,
+    AffecterMedecinComponent,
   ],
   imports: [
     BrowserModule,
