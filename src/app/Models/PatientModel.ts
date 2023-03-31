@@ -9,6 +9,7 @@ export class PatientModel{
     public  email:string,
 
     public  password:string,
+    public gender:string
 
     ){}
 

@@ -11,6 +11,7 @@ import {MedecinModel} from "../../../../Models/MedecinModel";
 export class ComptesMedecinDetailComponent implements OnInit {
   id!:number;
   medecin!: MedecinModel  ;
+  user! : MedecinModel;
   constructor(private share: ShareServiceService  ,
               private router : Router , private route: ActivatedRoute) { }
 
@@ -22,6 +23,21 @@ export class ComptesMedecinDetailComponent implements OnInit {
       this.medecin = data;
     });
   }
+
+
+  activateDoctor(id: number) {
+    this.share.activateAccountDoctor(id).subscribe(data => {
+      this.user = data;
+    }, error => {
+      console.log('Error activating doctor:', error);
+    });
+  }
+
+  deleteUser(id : number){
+    this.share.deleteAccount(id).subscribe();
+    alert("deleted");
+  }
+
 
 
 }

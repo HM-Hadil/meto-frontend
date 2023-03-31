@@ -48,6 +48,14 @@
                 <label >Prénom</label>
                 <input type="text" formControlName="lastname" required>
               </div>
+
+              <div>
+                <label for="gender" >Sexe</label>
+                <div style="margin-top: -1.5rem ; margin-bottom: 1rem">
+                <input type="radio" name="gender" value="MALE" id="gender"  formControlName="gender" style="margin-top: 2rem;"> Male
+                <input type="radio" name="gender" value="FEMALE"  formControlName="gender" > Female
+              </div>
+              </div>
               <div class="field padding-bottom--24">
                 <label >Email</label>
                 <input type="email" formControlName="email" required>

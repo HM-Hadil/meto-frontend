@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,6 +48,10 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { UpdateChirurgieComponent } from './detail-profile/detail-profileA/update-chirurgie/update-chirurgie.component';
 import { DetailMsgPatientComponent } from './detail-profile/detail-profileA/detail-msg-patient/detail-msg-patient.component';
 import { AffecterMedecinComponent } from './detail-profile/detail-profileA/affecter-medecin/affecter-medecin.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -102,13 +106,15 @@ import { AffecterMedecinComponent } from './detail-profile/detail-profileA/affec
     MatSelectModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    CommonModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule,
 
-
-
-
-  ],
+],
   providers: [],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

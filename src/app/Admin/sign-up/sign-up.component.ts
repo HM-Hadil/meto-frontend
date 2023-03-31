@@ -17,12 +17,13 @@ AdminForm!:FormGroup;
   constructor( private share: ShareServiceService,
     private router: Router,
     private http: HttpClient,
-    private fb: FormBuilder) { 
+    private fb: FormBuilder) {
       let formControles = {
         firstname: new FormControl('', [Validators.required]),
         lastname: new FormControl('', [Validators.required]),
         email: new FormControl('', [Validators.required]),
-        password: new FormControl('', [Validators.required]),
+
+        gender: new FormControl('', [Validators.required]),
       };
       this.AdminForm = this.fb.group(formControles);
     }
@@ -39,14 +40,17 @@ AdminForm!:FormGroup;
         data.firstname,
         data.lastname,
         data.email,
-        data.password
+        data.password,
+        data.gender
       );
-     
+
       console.log("AdminModel--->",usersAdmin);
 
       this.share.signUpAdmin(usersAdmin).subscribe();
       console.log('>>>> Add admin', usersAdmin);
       alertify.success("votre inscription a réussi  ")
+      this.router.navigate(['/login']);
+
 
 
   }

@@ -3,6 +3,7 @@ export class AdminModel{
     public  id:any,
 
     public  firstname:string,
+    public gender:string,
 
     public  lastname:string,
 

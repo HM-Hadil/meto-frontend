@@ -24,11 +24,12 @@ export class SignUpPatientComponent implements OnInit {
         lastname: new FormControl('', [Validators.required]),
         email: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required]),
+        gender: new FormControl('', [Validators.required]),
       };
       this.patientForm = this.fb.group(formControles);
     }
 
-  
+
 
   ngOnInit(): void {
   }
@@ -43,9 +44,10 @@ export class SignUpPatientComponent implements OnInit {
         data.firstname,
         data.lastname,
         data.email,
-        data.password
+        data.password,
+        data.gender
       );
-     
+
       console.log("PatientModel--->",usersPatient);
 
       this.share.signUpPatient(usersPatient).subscribe();

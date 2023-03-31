@@ -17,8 +17,12 @@
 }
 .image{
   width: 16rem;
-  height: 10rem;
+  height: 12rem;
   margin: auto;
+}
+.image img{
+  width: 100%;
+  height: 100%;
 }
 .infotxt{
   width: 16rem;
@@ -51,10 +55,10 @@
   border: none;
   margin-left: 1rem;
 }
-h5{
+h4{
   color: #0066FF;
 }
-h6{ color: #5e72e4}
+h5{ color: #5e72e4}
 .btn2:hover{
   background-color: transparent;
   color: #0066FF;

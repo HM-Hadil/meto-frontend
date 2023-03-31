@@ -4,9 +4,10 @@
     <img src="{{medecin.image}}">
   </div>
   <div class="card infotxt" >
-  <h5>{{medecin.firstname}} {{medecin.lastname}}</h5>
-  <h6>{{medecin.specialite}}</h6>
-  <address>{{medecin.ville}}</address>
+  <h4>{{medecin.firstname}} {{medecin.lastname}}</h4>
+  <h5>{{medecin.specialite}}</h5>
+    <address><b>Ville : {{medecin.ville}}</b></address>
+    <p><b>Email :</b> {{medecin.email}}</p>
   <p><b>Téléphone :</b> {{medecin.telephone}}</p>
   <!--<p><b>Etablissement :</b> clinique l Ben arous</p>-->
   </div>
@@ -16,20 +17,20 @@
    <h5 style="text-align: center ; color: #3F6589">Parcours</h5>
 
 
-    <p >{{medecin.parcours}}</p>
+    <p  *ngFor="let par of medecin.parcours">- {{par.field}} {{par.diploma}} ,  {{par.establishment}} </p>
 
   </div>
 
   <div class="card parcours" style="text-align: justify ; margin-top: 1rem;">
 
-    <h5 style="text-align: center ; color: #3F6589 ; margin-top: 1rem;">Expérience Professionnelle</h5>
+    <h5 style="text-align: center ; color: #3F6589 ;">Expérience Professionnelle</h5>
 
-    <p>Diplôme de docteur en médecine – Juin 2005 faculté de médecine de Tunis</p>
+    <p *ngFor="let exp of medecin.experience">- {{exp.specialty}} , {{exp.establishment}}</p>
   </div>
 
   <div class="row btns">
-    <button class="btn1">Supprimer</button>
-    <button class="btn2">Valider</button>
+    <button class="btn1" (click)="deleteUser(medecin.id)">Supprimer</button>
+    <button class="btn2" (click)="activateDoctor(medecin.id)">Valider</button>
   </div>
   </div>
 

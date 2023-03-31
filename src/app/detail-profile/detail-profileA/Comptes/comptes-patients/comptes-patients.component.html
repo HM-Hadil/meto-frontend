@@ -1,78 +1,28 @@
 <div class="container col">
   <h2>Listes des comptes Patients</h2>
-  <div class="row">
-    <div class="card one-card">
-      <div class="row">
 
-        <div class="col" style="margin-top: 1rem">
-          <h5> <i> <b>Amita Bindar</b></i></h5>
-          <h6>Chirurgies des valves cardiques</h6>
-          <address>Kinia</address>
-        </div>
+  <table class="table table-success table-striped">
+    <tr>
+    <td>
+      Nom et Prénom
+    </td>
+      <td>Email</td>
+      <td>Sexe</td>
+      <td>Action</td>
+    </tr>
+    <tr *ngFor="let patient of patient" style="background-color: white ; color: dimgrey">
+      <td>{{patient.firstname}} {{patient.lastname}}</td>
+      <td>{{patient.email}}</td>
+      <td>{{patient.gender}}</td>
+      <td>
+        <button class="btnSup" (click)="deleteUser(patient.id)">Supprimer</button>
+        <button class="btnActv" (click)="activatePatient(patient.id)">Activer</button>
+      </td>
 
-        <div class="col">
-          <div class="image">
-            <img src="../assets/image/blank-profile-picture-973460_1280 .jpg">
-          </div>
-          <div class="row btn">
-            <button>Voir détail</button>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
+    </tr>
+  </table>
 
 
-    <div class="card one-card">
-      <div class="row">
-
-        <div class="col" style="margin-top: 1rem">
-          <h5> <i> <b>Amita Bindar</b></i></h5>
-          <h6>Chirurgies des valves cardiques</h6>
-          <address>Kinia</address>
-        </div>
-
-        <div class="col">
-          <div class="image">
-            <img src="../assets/image/blank-profile-picture-973460_1280 .jpg">
-          </div>
-          <div class="row btn">
-            <button>Voir détail</button>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-    <div class="card one-card">
-      <div class="row">
-
-        <div class="col" style="margin-top: 1rem">
-          <h5> <i> <b>Amita Bindar</b></i></h5>
-          <h6>Chirurgies des valves cardiques</h6>
-          <address>Kinia</address>
-        </div>
-
-        <div class="col">
-          <div class="image">
-            <img src="../assets/image/blank-profile-picture-973460_1280 .jpg">
-          </div>
-          <div class="row btn">
-            <button>Voir détail</button>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-
-  </div>
 
 </div>
 

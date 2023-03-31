@@ -15,6 +15,10 @@ export class ShareServiceService {
   Url = 'http://localhost:8800/chirurgies/GetChirurgieById';
  urlPut='http://localhost:8800/chirurgies/UpdateChirurgie';
  UrlDr = "http://localhost:8800/accounts/doctor";
+  UrlDelete = "http://localhost:8800/accounts/deleteAccount"
+  UrlActivate = "http://localhost:8800/accounts/activateAccount"
+
+
 
   private _refreshrequired = new Subject<void>();
   get RequiredRefresh(){
@@ -89,21 +93,39 @@ export class ShareServiceService {
   }
 
       //login
-
      login(request : Authentication):Observable<any>{
       return this.http.post(environment.api+"authenticate",request);
      }
+
      // get all accounts doctors
      getDisableddoctor():Observable<MedecinModel[]>{
     return  this.http.get<MedecinModel[]>(environment.api+"accounts/disabledDoctor");
      }
 
+  // get all accounts patients
+  getDisabledPatient():Observable<PatientModel[]>{
+    return  this.http.get<PatientModel[]>(environment.api+"accounts/disabledPatient");
+  }
      //get account doctor by id
      getDoctorByIdAndEnabledFalse(id: number):Observable<MedecinModel>{
-    return  this.http.get<MedecinModel>(`${this.UrlDr}/${id}`)
+    return  this.http.get<MedecinModel>(`${this.UrlDr}/${id}`);
 
   }
 
+  //delete Account
+  deleteAccount(id : number):Observable<any>{
+    return this.http.delete(`${this.UrlDelete}/${id}`);
+  }
+
+  //activate accounts patient
+  activateAccountPatient(id: number):Observable<PatientModel>{
+    return this.http.put<PatientModel>(`${this.UrlActivate}/${id}`, null);
+  }
+
+  //activate accounts doctor
+  activateAccountDoctor(id: number):Observable<MedecinModel>{
+    return this.http.put<MedecinModel>(`${this.UrlActivate}/${id}`, null);
+  }
 
 
 }

@@ -1,15 +1,18 @@
 <app-header></app-header>
 
 <div class="container">
+  <form  [formGroup]="authenticateForm" (ngSubmit)="loginPatient()">
   <div class="inputs">
     <label>EMAIL</label>
-    <input type="email" placeholder="example@test.com" />
+    <input type="email" formControlName="email" />
     <label>PASSWORD</label>
-    <input type="password" placeholder="Min 6 charaters long" />
+    <input type="password"  formControlName="password" />
     <a href="" style="color: #0066FF; margin-left: 8rem; margin-top: 2rem !important;"  routerLink="/resetPassword" routerLinkActive="active">Mot de passe oublié </a>
 
-    <button type="submit" routerLink="/formuleRndv" routerLinkActive="active">Connnexion</button>
+    <button type="submit" >Connnexion</button>
     <button type="submit" class="btn2"  routerLink="/signPatient" routerLinkActive="active">Inscrire</button>
   </div>
+  </form>
+
 
 </div>

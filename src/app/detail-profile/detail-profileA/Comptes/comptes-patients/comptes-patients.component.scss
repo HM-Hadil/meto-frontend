@@ -5,22 +5,21 @@
   margin-top: 1rem;
 
 }
-.btn button{
+.btnActv {
   width: 6rem;
-  height: 1.5rem;
+  height: 2rem;
   background-color: #5e72e4;
-  color: white;
+  color: black;
   border-radius: 8px;
-  text-align: center;
+  text-align: center !important;
   border: none;
-  font-size: 13px;
-  margin-left: 1.5rem;
-  margin-top: 1rem;
+  margin-left: 1rem;
+
 }
-.btn{
+.btnAll{
   border: none;
 }
-.btn button:hover{
+.btnActv:hover{
   color: #0066FF;
   background-color: transparent;
   border: 1px solid #0066FF;
@@ -30,7 +29,7 @@
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   margin-left: 2rem;
 }
 .image img{
@@ -44,3 +43,21 @@
 h6{
   color: #5e72e4;
 }
+.btnSup{
+  background-color: lightcoral;
+  color: black;
+  width: 6rem;
+  height: 2rem;
+  text-align: center !important;
+  border-radius: 8px;
+  border: none;
+
+
+}
+.btnSup:hover{
+  color: black;
+  background-color: transparent;
+  transition: 1s;
+}
+
+
