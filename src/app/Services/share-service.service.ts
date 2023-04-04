@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable, Subject, tap} from "rxjs";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {map, Observable, of, Subject, tap} from "rxjs";
 import {TypeChirurgie} from "../Models/typeChirurgie/type-chirurgie";
 import {environment} from "../../environments/environment";
 import { PatientModel } from '../Models/PatientModel';
 import { MedecinModel } from '../Models/MedecinModel';
 import { AdminModel } from '../Models/AdminModel';
 import { Authentication } from '../Models/Authentication';
+import {UserAuthService} from "./interceptor/user-auth.service";
+import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -17,16 +19,20 @@ export class ShareServiceService {
  UrlDr = "http://localhost:8800/accounts/doctor";
   UrlDelete = "http://localhost:8800/accounts/deleteAccount"
   UrlActivate = "http://localhost:8800/accounts/activateAccount"
+  UrlgetActiveD = "http://localhost:8800/accounts/Activedoctor"
 
-
+  private user!: MedecinModel;
+  private errorMessage!: string;
+  requestHeader= new HttpHeaders(
+  {"No-Auth" :"true"}
+);
 
   private _refreshrequired = new Subject<void>();
   get RequiredRefresh(){
     return this._refreshrequired;
   }
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient, private  userAuthService : UserAuthService) { }
 
   // Add chirurgie
 
@@ -97,6 +103,22 @@ export class ShareServiceService {
       return this.http.post(environment.api+"authenticate",request);
      }
 
+  public roleMatch(allowedRoles: any): boolean {
+    let isMatch =false;
+    const userRole: any = this.userAuthService.getRole();
+    if (userRole != null && userRole) {
+      for (let i = 0; i < userRole.length; i++) {
+        if (allowedRoles.includes(userRole[i])) {
+          isMatch = true;
+          return isMatch;
+        }
+      }
+    }
+    return isMatch;
+  }
+
+
+
      // get all accounts doctors
      getDisableddoctor():Observable<MedecinModel[]>{
     return  this.http.get<MedecinModel[]>(environment.api+"accounts/disabledDoctor");
@@ -126,6 +148,30 @@ export class ShareServiceService {
   activateAccountDoctor(id: number):Observable<MedecinModel>{
     return this.http.put<MedecinModel>(`${this.UrlActivate}/${id}`, null);
   }
+
+  getActivateDoctor(id:number):Observable<MedecinModel>{
+    return this.http.get<MedecinModel>(`${this.UrlgetActiveD}/${id}`);
+  }
+  loginMed(id: number) {
+    return this.getActivateDoctor(id).pipe(
+      map((user) => {
+        this.user = user;
+        localStorage.setItem('user', JSON.stringify(this.user));
+        localStorage.setItem('token', 'JWT');
+        return true;
+      }),
+      catchError((error) => {
+        this.errorMessage = <any>error;
+        return of(false);
+      })
+    );
+  }
+
+
+
+
+
+
 
 
 }

@@ -1,4 +1,8 @@
 import { Component, OnInit , ElementRef , ViewChild} from '@angular/core';
+import {UserAuthService} from "../../Services/interceptor/user-auth.service";
+import {Router} from "@angular/router";
+import {ShareServiceService} from "../../Services/share-service.service";
+import {MedecinModel} from "../../Models/MedecinModel";
 
 @Component({
   selector: 'app-profile-medecin',
@@ -6,11 +10,17 @@ import { Component, OnInit , ElementRef , ViewChild} from '@angular/core';
   styleUrls: ['./profile-medecin.component.scss']
 })
 export class ProfileMedecinComponent implements OnInit {
+  infoMed! :MedecinModel;
 
   element!: HTMLElement;
-  constructor() { }
+  constructor(private authService :UserAuthService,private  share : ShareServiceService,
+              private router : Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+this.getUserInfo();
+
+
   }
 
    openNav() {
@@ -85,7 +95,37 @@ export class ProfileMedecinComponent implements OnInit {
 
 
    }
+   logOut(){
+    this.authService.clear();
+    this.router.navigate(['authentifier']);
 
 
+   }
 
+
+   getUserInfo():any {
+    const token = this.getToken();
+    console.log("token:", token);
+    if (token) {
+      //Decode the token to get the payload (which contains user information
+     const payload =JSON.parse(window.atob(token.split('.')[1]));
+      const id = payload.sub;
+      console.log("decoded payload:", payload);
+      this.share.getActivateDoctor(id).subscribe((data)=>{
+        this.infoMed = data;
+        console.log("info users by id :",this.infoMed)
+      });
+
+      return payload;
+
+
+    } else {
+      return null;
+    }
+  }
+
+
+   getToken() {
+    return localStorage.getItem("token") ;
+  }
 }

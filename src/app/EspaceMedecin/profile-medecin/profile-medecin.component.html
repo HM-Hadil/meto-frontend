@@ -8,18 +8,18 @@
     <div class="card col-md-2  mr-2 leftCard" style="margin-top: 0.5rem" id="Sidenav" >
 
       <div class="col">
-        <div class="image">
-          <img src="../assets/image/medcin4.jfif">
+        <div class="image" *ngIf="infoMed">
+          <img src="{{infoMed.image}}">
         </div>
-        <h5 style="margin-top: 1rem">Dr Ben Hassen</h5>
-        <h6>Chirurgie des valves cardiaque</h6>
+        <h5 style="margin-top: 1rem">Dr {{infoMed.firstname}} {{infoMed.lastname}}</h5>
+        <h6>{{infoMed.specialite}}</h6>
         <div>
          <ul>
            <li><a href="showProfileMedecin"><i class="bi bi-person-fill" style="color: white; margin-right: 0.5rem"></i>Profile</a></li>
            <li><a href="messagesM"><i class="bi bi-envelope-fill" style="color: white; margin-right: 0.5rem"></i>Messages</a></li>
            <li><a href="dashboardMed"><i class="bi bi-pie-chart-fill" style="color: white; margin-right: 0.5rem"></i>Dashboard</a></li>
            <li><a href="parametreMed"><i class="bi bi-gear-fill" style="color: white; margin-right: 0.5rem"></i>Paramètres</a></li>
-           <li style="margin-top: 5rem"><a href="" routerLink="/authentifier" routerLinkActive="active"><i class="bi bi-box-arrow-left" style="color: white; margin-right:5px" ></i>Déconnexion</a></li>
+           <li style="margin-top: 5rem"><a href="" (click)="logOut()"><i class="bi bi-box-arrow-left" style="color: white; margin-right:5px" ></i>Déconnexion</a></li>
          </ul>
         </div>
       </div>

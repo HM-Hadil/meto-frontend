@@ -4,6 +4,8 @@ import {ShareServiceService} from "../../Services/share-service.service";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Authentication} from "../../Models/Authentication";
+import {UserAuthService} from "../../Services/interceptor/user-auth.service";
+import {MedecinModel} from "../../Models/MedecinModel";
 
 @Component({
   selector: 'app-authentifier',
@@ -11,13 +13,14 @@ import {Authentication} from "../../Models/Authentication";
   styleUrls: ['./authentifier.component.scss']
 })
 export class AuthentifierComponent implements OnInit {
-
+  infoMed! :MedecinModel;
   authenticationForm!: FormGroup;
 
   constructor(private share: ShareServiceService,
               private router: Router,
               private http: HttpClient,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private authService : UserAuthService) {
     this.authenticationForm = this.fb.group({
 
       email: ['', [Validators.required, Validators.email]],
@@ -38,6 +41,9 @@ export class AuthentifierComponent implements OnInit {
     this.share.login(authentication).subscribe((response) => {
       let auth = response;
       console.log('reload data ==>>', auth);
+      this.authService.setRole(response.role);
+      this.authService.setToken(response.token);
+      this.router.navigate(['/showProfileMedecin'])
 
     });
     console.log("authentication-->",authentication);
@@ -46,3 +52,4 @@ export class AuthentifierComponent implements OnInit {
   }
 
 }
+

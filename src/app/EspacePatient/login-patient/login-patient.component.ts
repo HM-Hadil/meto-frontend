@@ -4,6 +4,7 @@ import {ShareServiceService} from "../../Services/share-service.service";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Authentication} from "../../Models/Authentication";
+import {UserAuthService} from "../../Services/interceptor/user-auth.service";
 
 @Component({
   selector: 'app-login-patient',
@@ -17,7 +18,8 @@ export class LoginPatientComponent implements OnInit {
   constructor(private share: ShareServiceService,
               private router: Router,
               private http: HttpClient,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private userAuth : UserAuthService) {
     this.authenticateForm = this.fb.group({
 
       email: ['', [Validators.required, Validators.email]],
@@ -39,6 +41,9 @@ export class LoginPatientComponent implements OnInit {
     this.share.login(authentication).subscribe((response) => {
       let auth = response;
       console.log('reload data ==>>', auth);
+      this.userAuth.setRole(response.role);
+      this.userAuth.setToken(response.token);
+      this.router.navigate(['/formuleRndv']);
 
     });
     console.log("authentication-->",authentication);

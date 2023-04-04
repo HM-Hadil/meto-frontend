@@ -44,7 +44,7 @@ import {MatSelectModule} from "@angular/material/select";
 import { AjoutChirurgieComponent } from './detail-profile/detail-profileA/ajout-chirurgie/ajout-chirurgie.component';
 import { ModifierChirurgieComponent } from './detail-profile/detail-profileA/modifier-chirurgie/modifier-chirurgie.component';
 import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import { UpdateChirurgieComponent } from './detail-profile/detail-profileA/update-chirurgie/update-chirurgie.component';
 import { DetailMsgPatientComponent } from './detail-profile/detail-profileA/detail-msg-patient/detail-msg-patient.component';
 import { AffecterMedecinComponent } from './detail-profile/detail-profileA/affecter-medecin/affecter-medecin.component';
@@ -52,6 +52,9 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CommonModule} from "@angular/common";
+import {AuthGuard} from "./Auth/auth.guard";
+import {AuthInterceptor} from "./Auth/auth.interceptor";
+import {UserAuthService} from "./Services/interceptor/user-auth.service";
 
 @NgModule({
   declarations: [
@@ -113,7 +116,14 @@ import {CommonModule} from "@angular/common";
     BrowserAnimationsModule,
 
 ],
-  providers: [],
+  providers: [AuthGuard],
+
+   /**   { provide: HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi:true
+    },
+    UserAuthService
+  ],**/
 
   bootstrap: [AppComponent]
 })

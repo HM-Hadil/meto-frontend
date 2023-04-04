@@ -47,6 +47,7 @@ import {
   DetailMsgPatientComponent
 } from "./detail-profile/detail-profileA/detail-msg-patient/detail-msg-patient.component";
 import {AffecterMedecinComponent} from "./detail-profile/detail-profileA/affecter-medecin/affecter-medecin.component";
+import {AuthGuard} from "./Auth/auth.guard";
 
 const routes: Routes = [
   {path : '', component: AcceuilContentComponent},
@@ -59,6 +60,8 @@ const routes: Routes = [
   {path : 'loginPatient', component:LoginPatientComponent},
 
   {path : 'signPatient' , component : SignUpPatientComponent},
+
+  //doctor
   {path : '' , component : ProfileMedecinComponent ,
     children:[
       {path : 'showProfileMedecin' , component : ShowProfileMComponent},
@@ -66,9 +69,9 @@ const routes: Routes = [
       {path : 'dashboardMed' , component : DashboardComponent},
       {path : 'parametreMed' , component : ParametresMComponent},
       {path : 'detailMsg' , component : DetailMessageComponent},
-    ]
+    ] , canActivate:[AuthGuard], data:{role:['DOCTOR']}
   },
-  {path : 'profileP' , component : ProfilePatientComponent},
+  {path : 'profileP' , component : ProfilePatientComponent },
 
   //admin
   {path : '' , component : ProfilAdminComponent
@@ -92,9 +95,9 @@ const routes: Routes = [
 
   {path: '', component:ProfilePatientComponent ,
     children:[
-      {path : 'formuleRndv', component : FormuleRndvComponent},
+      {path : 'formuleRndv', component : FormuleRndvComponent, canActivate:[AuthGuard], data:{role:['PATIENT']}},
       { path: 'messagesfromAdmin' , component: MessagesfromAdminComponent},
-      {path : 'dashboardAdmin' , component: DashboardAdminComponent}
+      {path : 'dashboardAdmin' , component: DashboardAdminComponent , canActivate:[AuthGuard], data:{role:['PATIENT']}}
     ]
 
   },
@@ -103,7 +106,7 @@ const routes: Routes = [
   {path : 'chirurgieSelecionnee',  component : ChirurgieSelecionneeComponent},
   {path : 'detailParcoursMedecin' , component : DetailParcoursMedcComponent},
 
-  {path : '**' , component: NotFound404Component},
+  {path : '**' , component: NotFound404Component ,pathMatch: 'full' },
 ];
 
 

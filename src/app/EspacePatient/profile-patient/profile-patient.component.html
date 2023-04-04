@@ -4,7 +4,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand pt-0 text-primary" target="_blank">
-      Profile Patient
+     <b *ngIf="isLoggedIn()"> connecté <i class="bi bi-circle-fill" style="color: green ; font-size: 12px"></i></b>
+      <b *ngIf="!isLoggedIn()"> déconnecté <i class="bi bi-circle-fill" style="color: red ; font-size: 12px"></i></b>
+
     </a>
     <ul class="nav align-items-center d-md-none">
       <li class="nav-item dropdown">
@@ -82,6 +84,11 @@
             <i class="bi bi-envelope-fill text-primary"></i>Message
           </a>
         </li>
+        <li class="nav-item">
+        <a routerLink="/loginPatient" routerLinkActive="active" class="nav-link" (click)="logOut()">logout</a>
+
+        </li>
+
       </ul>
     </div>
   </div>
