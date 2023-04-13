@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {map, Observable, of, Subject, tap} from "rxjs";
 import {TypeChirurgie} from "../Models/typeChirurgie/type-chirurgie";
 import {environment} from "../../environments/environment";
@@ -20,6 +20,8 @@ export class ShareServiceService {
   UrlDelete = "http://localhost:8800/accounts/deleteAccount"
   UrlActivate = "http://localhost:8800/accounts/activateAccount"
   UrlgetActiveD = "http://localhost:8800/accounts/Activedoctor"
+  UrlgetActiveP = "http://localhost:8800/accounts/ActivePatient"
+  UrlDesactivateD="http://localhost:8800/accounts/desactivateAccount"
 
   private user!: MedecinModel;
   private errorMessage!: string;
@@ -118,21 +120,40 @@ export class ShareServiceService {
   }
 
 
-
-     // get all accounts doctors
+     // get all disabled accounts doctors
      getDisableddoctor():Observable<MedecinModel[]>{
     return  this.http.get<MedecinModel[]>(environment.api+"accounts/disabledDoctor");
      }
 
-  // get all accounts patients
+  // get all disabled accounts patients
   getDisabledPatient():Observable<PatientModel[]>{
     return  this.http.get<PatientModel[]>(environment.api+"accounts/disabledPatient");
   }
      //get account doctor by id
      getDoctorByIdAndEnabledFalse(id: number):Observable<MedecinModel>{
     return  this.http.get<MedecinModel>(`${this.UrlDr}/${id}`);
-
   }
+
+  // get all active accounts patients
+  getAllActivePatient():Observable<PatientModel[]>{
+    return  this.http.get<PatientModel[]>(environment.api+"accounts/AllActivePatient");
+  }
+  // get all active accounts Doctors
+  getAllActiveDoctor(searchKeyWord: string =""):Observable<MedecinModel[]>{
+ let params = new HttpParams();
+    params = params.append('searchKeyWord', searchKeyWord || ''); // add search keyword as a query parameter
+ /**
+ let params = new HttpParams();
+
+      params = params.append('firstNameSearch', firstNameSearch || '');
+
+
+      params = params.append('specialitySearch', specialitySearch || '');
+  **/
+
+    return  this.http.get<MedecinModel[]>(environment.api+"accounts/AllActiveDoctor", { params });
+  }
+
 
   //delete Account
   deleteAccount(id : number):Observable<any>{
@@ -149,8 +170,17 @@ export class ShareServiceService {
     return this.http.put<MedecinModel>(`${this.UrlActivate}/${id}`, null);
   }
 
+  //desactivate accounts doctor
+  desactivateAccountDoctor(id: number):Observable<MedecinModel>{
+    return this.http.put<MedecinModel>(`${this.UrlDesactivateD}/${id}`, null);
+  }
+
   getActivateDoctor(id:number):Observable<MedecinModel>{
     return this.http.get<MedecinModel>(`${this.UrlgetActiveD}/${id}`);
+  }
+
+  getActivatePatient(id:number):Observable<PatientModel>{
+    return this.http.get<PatientModel>(`${this.UrlgetActiveP}/${id}`);
   }
   loginMed(id: number) {
     return this.getActivateDoctor(id).pipe(
@@ -168,8 +198,21 @@ export class ShareServiceService {
   }
 
 
+  searchDoctors(fistname: string): Observable<MedecinModel[]> {
+    return this.http.get<MedecinModel[]>(environment.api+"accounts/search")
 
+  }
+  getCountPatientPerGender() {
+    return this.http.get<Object[]>(environment.api+"accounts/count-patients-per-gender");
+  }
 
+  changePassword(email: string, oldPassword: string, newPassword: string): Observable<any> {
+    const body = {
+      oldPassword: oldPassword,
+      newPassword: newPassword
+    };
+    return this.http.put(`${environment.api}accounts/users/${email}/password`, body);
+  }
 
 
 

@@ -55,6 +55,11 @@ import {CommonModule} from "@angular/common";
 import {AuthGuard} from "./Auth/auth.guard";
 import {AuthInterceptor} from "./Auth/auth.interceptor";
 import {UserAuthService} from "./Services/interceptor/user-auth.service";
+import { ListeRendezVousComponent } from './detail-profile/detail-profileP/liste-rendez-vous/liste-rendez-vous.component';
+import { ListPatientComponent } from './detail-profile/detail-profileA/patient/list-patient/list-patient.component';
+import { ListMedecinComponent } from './detail-profile/detail-profileA/medecin/list-medecin/list-medecin.component';
+import { DetailMedecinComponent } from './detail-profile/detail-profileA/medecin/detail-medecin/detail-medecin.component';
+import {HighchartsChartModule} from "highcharts-angular";
 
 @NgModule({
   declarations: [
@@ -96,6 +101,10 @@ import {UserAuthService} from "./Services/interceptor/user-auth.service";
     UpdateChirurgieComponent,
     DetailMsgPatientComponent,
     AffecterMedecinComponent,
+    ListeRendezVousComponent,
+    ListPatientComponent,
+    ListMedecinComponent,
+    DetailMedecinComponent,
   ],
   imports: [
     BrowserModule,
@@ -114,8 +123,10 @@ import {UserAuthService} from "./Services/interceptor/user-auth.service";
     CommonModule,
     MatPaginatorModule,
     BrowserAnimationsModule,
+    HighchartsChartModule,
 
-],
+
+  ],
   providers: [AuthGuard],
 
    /**   { provide: HTTP_INTERCEPTORS,

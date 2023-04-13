@@ -1,4 +1,4 @@
-<h5 style="color: #1DA1F2 ; padding: 1rem">Paramétre</h5>
+<h5 style="color: #1DA1F2 ; padding: 1rem" xmlns="http://www.w3.org/1999/html">Paramétre</h5>
 
 <section style="background-color: transparent;">
   <div class="container py-5">
@@ -6,11 +6,12 @@
     <div class="row">
       <div class="col-lg-4">
         <div class="card mb-4">
-          <div class="card-body text-center">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+          <div class="card-body text-center" *ngIf="medecin">
+            <img src="{{medecin.image}}" alt="avatar"
                  class="rounded-circle img-fluid" style="width: 150px;">
-            <div class="d-flex justify-content-center mb-2 mt-4">
-              <button type="button" class="btn btn-primary">changer photo</button>
+            <div class=" justify-content-center mb-2 mt-4">
+              <input type="file" accept="image/*" (change)="onSelectFile($event)"  mt-4>
+              <button type="button" class="btn btn-primary mt-4" >changer photo</button>
             </div>
           </div>
         </div>
@@ -19,40 +20,69 @@
             <ul class="list-group list-group-flush rounded-3">
 
               <li class="list-group-item d-flex justify-content-center align-items-center p-3">
-                <h6 style="text-align: center ; color: #0066FF">Changer Mot De Passe</h6>
+                <h5 style="text-align: center ; color: #0066FF">Changer Mot De Passe</h5>
               </li>
 
             </ul>
 
           </div>
-          <div class="d-flex justify-content-center mb-2">
-          <button type="button" class="btn btn-primary">changer</button>
-          <button type="button" class="btn btn-outline-primary ms-1">Annuler</button>
+          <div class="container">
+            <form [formGroup]="changePasswordForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="oldPassword">Ancien Mot de passe:</label>
+                <input type="password" class="form-control" formControlName="oldPassword" required>
+                <div *ngIf="(changePasswordForm.controls['oldPassword'].touched || changePasswordForm.controls['oldPassword'].dirty) && changePasswordForm.controls['oldPassword'].invalid" class="alert alert-danger">
+                  <div *ngIf="changePasswordForm.controls['oldPassword'].errors?.['required']">Old password is required.</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="newPassword">nouveau Mot de passe:</label>
+                <input type="password" class="form-control" formControlName="newPassword" required>
+                <div *ngIf="(changePasswordForm.controls['newPassword'].touched || changePasswordForm.controls['newPassword'].dirty) && changePasswordForm.controls['newPassword'].invalid" class="alert alert-danger">
+                  <div *ngIf="changePasswordForm.controls['newPassword'].errors?.['required']">new password is required.</div>
+
+                  <div *ngIf="changePasswordForm.controls['newPassword'].errors?.['minlength']">New password must be at least 6 characters long.</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="confirmPassword">Confirme Mot de passe:</label>
+                <input type="password" class="form-control" formControlName="confirmPassword" required>
+                <div *ngIf="(changePasswordForm.controls['confirmPassword'].touched || changePasswordForm.controls['confirmPassword'].dirty) && changePasswordForm.controls['confirmPassword'].invalid" class="alert alert-danger">
+                  <div *ngIf="changePasswordForm.controls['confirmPassword'].errors?.['required']">confirm Password is required.</div>
+                  <div *ngIf="changePasswordForm.hasError('passwordMismatch')">Passwords must match.</div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 8rem ; margin-left:6rem;margin-bottom: 1rem">Changer</button>
+            </form>
           </div>
+
         </div>
       </div>
 
 
-
-
       <div class="col-lg-8">
+        <form  [formGroup]="MedecinForm">
         <div class="card mb-4">
+
           <div class="card-body">
             <div class="row">
+
               <div class="col-sm-3">
-                <p class="mb-0">Full Name</p>
+                <p class="mb-0">Nom</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">Johnatan Smith</p>
+                <input type="text" class="text-muted mb-0" formControlName="firstname" />
               </div>
             </div>
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Email</p>
+                <p class="mb-0">Prénom</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">example@example.com</p>
+                <input type="text" class="text-muted mb-0" formControlName="lastname" />
               </div>
             </div>
             <hr>
@@ -61,7 +91,7 @@
                 <p class="mb-0">Phone</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">(097) 234-5678</p>
+                <input class="text-muted mb-0" formControlName="telephone"/>
               </div>
             </div>
             <hr>
@@ -70,7 +100,7 @@
                 <p class="mb-0">Specialité</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">Chirurgie des valves cardiques</p>
+                <input type="text" class="text-muted mb-0" formControlName="specialite"/>
               </div>
             </div>
             <hr>
@@ -79,7 +109,7 @@
                 <p class="mb-0">Address</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                <input class="text-muted mb-0" type="text " formControlName="adresse" />
               </div>
             </div>
             <hr>
@@ -87,37 +117,73 @@
               <div class="col-sm-3">
                 <p class="mb-0">Parcours</p>
               </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">parcours medical</p>
+
+                <!-- For parcours form array -->
+                <ng-container formArrayName="parcours">
+                  <ng-container *ngFor="let parcoursFormGroup of parcours.controls; let index = index">
+                    <div [formGroupName]="index">
+                      <div class="form-row " style="justify-content: center;margin-top: 2rem">
+                        <div>
+
+                          <label  style="color: gray">Diploma:</label>
+                          <input formControlName="diploma" type="text" required></div>
+                        <div>
+                          <label style="color: gray">Nom Compagnie:</label>
+                          <input formControlName="establishment" type="text" required></div>
+                        <div>
+                          <label style="color: gray">Date:</label>
+                          <input formControlName="field" type="text" required></div>
+                      </div>
+                    </div>
+                    <div class="btn-add">
+                      <button type="button" (click)="remove(index)">Supprimer parcours</button></div>
+
+                  </ng-container>
+                  <div class="btn-add">
+                    <button type="button"  (click)="addNewParcours()"  >Ajouter parcours</button>
+                  </div>
+                </ng-container>
+
               </div>
             </div>
             <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Expérience professionnelle</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">Expérience professionnelle</p>
-              </div>
+          <div class="row">
+            <div class="col-sm-3" style="margin-left: 1rem">
+              <p class="mb-0">Expérience</p>
             </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Etablissment</p>
+
+            <!-- For experience form array -->
+            <ng-container formArrayName="experience">
+              <ng-container *ngFor="let experienceFormGroup of experience.controls; let index = index">
+                <div [formGroupName]="index">
+                  <div class="form-row " style="justify-content: center;margin-top: 2rem">
+                    <div>
+                      <label style="color: gray">Nom Compagnie:</label>
+                      <input formControlName="establishment" type="text" required></div>
+                    <div>
+                      <label  style="color: gray">Profession:</label>
+                      <input formControlName="specialty" type="text" required></div>
+                  </div>
+                </div>
+                <div class="btn-add" style="margin-left: 1rem">
+                  <button type="button" (click)="removeEx(index)">Supprimer experience</button></div>
+
+              </ng-container>
+              <div class="btn-add" style="margin-left: 1rem ; margin-bottom: 1rem">
+                <button type="button"  (click)="addNewExperience()"  >Ajouter experience</button>
               </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">Etablissement</p>
-              </div>
-            </div>
+            </ng-container>
 
           </div>
-          <button type="button" class="btn btn-primary">Mettre à jours</button>
-
         </div>
 
+            <div>
+              <button type="button" class="btn btn-primary">Mettre à jours</button>
+            </div>
 
-
+        </form>
       </div>
+
     </div>
   </div>
 </section>

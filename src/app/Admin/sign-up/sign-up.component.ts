@@ -28,6 +28,7 @@ AdminForm!:FormGroup;
       this.AdminForm = this.fb.group(formControles);
     }
 
+
   ngOnInit(): void {
   }
   signUpAdmin(){
@@ -39,9 +40,9 @@ AdminForm!:FormGroup;
         data.id,
         data.firstname,
         data.lastname,
-        data.email,
+        data.email,data.gender,
         data.password,
-        data.gender
+
       );
 
       console.log("AdminModel--->",usersAdmin);
@@ -50,8 +51,6 @@ AdminForm!:FormGroup;
       console.log('>>>> Add admin', usersAdmin);
       alertify.success("votre inscription a réussi  ")
       this.router.navigate(['/login']);
-
-
 
   }
   else {

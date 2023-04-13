@@ -1,0 +1,37 @@
+<div class="col allCard>"  *ngIf="medecin">
+
+  <div class="image">
+    <img src="{{medecin.image}}">
+  </div>
+  <div class="card infotxt" >
+    <h4>{{medecin.firstname}} {{medecin.lastname}}</h4>
+    <h5>{{medecin.specialite}}</h5>
+    <address><b>Ville : {{medecin.ville}}</b></address>
+    <p><b>Email :</b> {{medecin.email}}</p>
+    <p><b>Téléphone :</b> {{medecin.telephone}}</p>
+    <!--<p><b>Etablissement :</b> clinique l Ben arous</p>-->
+  </div>
+
+  <div class="col content">
+    <div class="card parcours">
+      <h5 style="text-align: center ; color: #3F6589">Parcours</h5>
+
+
+      <p  *ngFor="let par of medecin.parcours">- {{par.field}} {{par.diploma}} ,  {{par.establishment}} </p>
+
+    </div>
+
+    <div class="card parcours" style="text-align: justify ; margin-top: 1rem;">
+
+      <h5 style="text-align: center ; color: #3F6589 ;">Expérience Professionnelle</h5>
+
+      <p *ngFor="let exp of medecin.experience">- {{exp.specialty}} , {{exp.establishment}}</p>
+    </div>
+
+
+  </div>
+
+</div>
+
+
+

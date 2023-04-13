@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ShareServiceService} from "../../../../Services/share-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MedecinModel} from "../../../../Models/MedecinModel";
-
+import alertify from "alertifyjs";
 @Component({
   selector: 'app-comptes-medecin-detail',
   templateUrl: './comptes-medecin-detail.component.html',
@@ -28,6 +28,9 @@ export class ComptesMedecinDetailComponent implements OnInit {
   activateDoctor(id: number) {
     this.share.activateAccountDoctor(id).subscribe(data => {
       this.user = data;
+      alertify.success('compte est activer avec succée ')
+      this.router.navigate(['comptesMedecins']);
+
     }, error => {
       console.log('Error activating doctor:', error);
     });

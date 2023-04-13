@@ -13,31 +13,116 @@
         <label for="inputEmail4" >Nom</label>
         <input type="text" class="form-control" id="inputEmail4" placeholder="Nom" formControlName="firstname"  required
         >
+
+
+        <div
+          *ngIf="
+        MedecinForm.controls['firstname'].invalid &&
+        (MedecinForm.controls['firstname'].dirty ||
+          MedecinForm.controls['firstname'].touched)
+      "
+          class="alert-danger"
+          style="color: red; margin-top: 0.2rem"
+        >
+          <div *ngIf="MedecinForm.controls['firstname'].errors?.['required']"  >
+            le nom est obligatoire !.
+          </div>
+        </div>
       </div>
+
+
       <div class="form-group col-md-4" style="justify-content: center;">
         <label for="inputPassword4">Prénom</label>
         <input type="text" class="form-control" id="inputPassword4" placeholder="Prénom" formControlName="lastname"  required>
+        <div
+          *ngIf="
+        MedecinForm.controls['lastname'].invalid &&
+        (MedecinForm.controls['lastname'].dirty ||
+          MedecinForm.controls['lastname'].touched)
+      "
+          class="alert-danger"
+          style="color: red; margin-top: 0.2rem"
+        >
+          <div *ngIf="MedecinForm.controls['lastname'].errors?.['required']"  >
+            le prénom est obligatoire !.
+          </div>
+        </div>
       </div>
     </div>
     <div class="form-row " style="justify-content: center;">
     <div class="form-group col-md-4" >
       <label for="inputAddress">Ville</label>
       <input type="text" class="form-control" id="inputAddress" placeholder="ville" formControlName="ville"  required>
+
+
+      <div
+        *ngIf="
+        MedecinForm.controls['ville'].invalid &&
+        (MedecinForm.controls['ville'].dirty ||
+          MedecinForm.controls['ville'].touched)
+      "
+        class="alert-danger"
+        style="color: red; margin-top: 0.2rem"
+      >
+        <div *ngIf="MedecinForm.controls['ville'].errors?.['required']"  >
+          le village est obligatoire !.
+        </div>
+      </div>
     </div>
     <div class="form-group col-md-4">
       <label for="inputAddress2">Address</label>
       <input type="text" class="form-control" id="inputAddress2" placeholder="adresse"formControlName="adresse"  required>
+
+      <div
+        *ngIf="
+        MedecinForm.controls['adresse'].invalid &&
+        (MedecinForm.controls['adresse'].dirty ||
+          MedecinForm.controls['adresse'].touched)
+      "
+        class="alert-danger"
+        style="color: red; margin-top: 0.2rem"
+      >
+        <div *ngIf="MedecinForm.controls['adresse'].errors?.['required']"  >
+          Ce champ est obligatoire !.
+        </div>
+      </div>
     </div>
     </div>
     <div class="form-row" style="justify-content: center;">
       <div class="form-group col-md-4">
         <label for="telephone">Téléphone</label>
         <input type="text" class="form-control" id="telephone" formControlName="telephone"  required>
+        <div
+          *ngIf="
+        MedecinForm.controls['telephone'].invalid &&
+        (MedecinForm.controls['telephone'].dirty ||
+          MedecinForm.controls['telephone'].touched)
+      "
+          class="alert-danger"
+          style="color: red; margin-top: 0.2rem"
+        >
+          <div *ngIf="MedecinForm.controls['telephone'].errors?.['required']"  >
+            Ce champ est obligatoire !.
+          </div>
+        </div>
       </div>
       <div class="form-group col-md-4">
         <label for="email">Email</label>
         <input type="text" class="form-control" id="email" formControlName="email"  required>
        <!-- <div *ngIf="emailExists" style="color: red;">Email already exists</div>-->
+        <div
+          *ngIf="
+        MedecinForm.controls['email'].invalid &&
+        (MedecinForm.controls['email'].dirty ||
+          MedecinForm.controls['email'].touched)
+      "
+          class="alert-danger"
+          style="color: red; margin-top: 0.2rem"
+        >
+          <div *ngIf="MedecinForm.controls['email'].errors?.['required']"  >
+            Ce champ est obligatoire !.
+          </div>
+        </div>
 
 
       </div>
@@ -46,6 +131,20 @@
       <div class="form-group col-md-4" >
         <label for="pass">Password</label>
         <input type="password" class="form-control" id="pass" formControlName="password"  required>
+        <div
+          *ngIf="
+        MedecinForm.controls['password'].invalid &&
+        (MedecinForm.controls['password'].dirty ||
+          MedecinForm.controls['password'].touched)
+      "
+          class="alert-danger"
+          style="color: red; margin-top: 0.2rem"
+        >
+          <div *ngIf="MedecinForm.controls['password'].errors?.['required']"  >
+            Ce champ est obligatoire !.
+          </div>
+        </div>
+
       </div>
 
         <div class="form-group col-md-4" >
@@ -62,6 +161,20 @@
       <div class="form-group col-md-4 " >
         <label for="inputEmail8" >Specialité</label>
         <input type="text" class="form-control" id="inputEmail8" placeholder="" formControlName="specialite"  required>
+
+        <div
+          *ngIf="
+        MedecinForm.controls['specialite'].invalid &&
+        (MedecinForm.controls['specialite'].dirty ||
+          MedecinForm.controls['specialite'].touched)
+      "
+          class="alert-danger"
+          style="color: red; margin-top: 0.2rem"
+        >
+          <div *ngIf="MedecinForm.controls['specialite'].errors?.['required']"  >
+            Ce champ est obligatoire !.
+          </div>
+        </div>
       </div>
       <div class="form-group col-md-4 " >
         <label for="inputEmail8" >Image</label>

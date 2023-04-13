@@ -30,20 +30,19 @@ a{
 nav{
 
   margin-top: 0.5rem;
-  z-index: 1;
+
   height: 3rem;
   background-color: transparent;
-  position: fixed;
-  top: 0;
+
   width: 100%;
   padding: 15px 50px;
   font-size: 17px;
-  left: 0;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index:1111;
-  transition: .5s ease-in-out;
+
   box-shadow: -1px 0px 0px #DDD;
 
 }

@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Liste des Patients</h2>
+  <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-1">Email</div>
+      <div class="col col-2">Nom et prenom</div>
+      <div class="col col-3">Sexe</div>
+      <div class="col col-4">Action</div>
+    </li>
+    <li class="table-row" *ngFor="let patient of patient">
+      <div class="col col-1" data-label="Email">
+        <div>
+      <p>{{patient.email}}</p>
+        </div>
+
+      </div>
+      <div class="col col-2" data-label="Nom et Prénom">{{patient.firstname}} {{patient.lastname}}</div>
+      <div class="col col-3" data-label="Status">{{patient.gender}}</div>
+      <div class="col col-4" data-label="Action">
+        <div class="dropdown  col col-4"  data-label="Action">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                  style="background-color: white;border: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16" style="color:#000 ;">
+              <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item"  (click)="desactiver(patient.id)"> <i class="bi bi-person-fill-dash" style="color: #3F6589"></i>  Désactiver</a>
+            <a class="dropdown-item" ><i class="bi bi-trash3-fill"  style="color: #3F6589"></i>  Supprimer</a>
+          </div>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</div>

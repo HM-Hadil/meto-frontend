@@ -25,9 +25,6 @@ return this.share.getDisableddoctor().subscribe(
   (data )=> {
     this.MedecinModel = data;
     console.log('reload data ==>>', this.MedecinModel);
-
-
-
   },
 
   (err) => {

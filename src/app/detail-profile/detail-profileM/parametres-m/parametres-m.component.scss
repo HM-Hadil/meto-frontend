@@ -1,4 +1,22 @@
 p{
   color: #95a5a6;
+}
+input {
+  border: none;
+}
+
+.btn-add button{
+  width: 10rem;
+  height: 2rem;
+  margin-top: 1.5rem;
+  background-color: transparent;
+  color: #0066FF;
+  border: 1px solid #0066FF;
+  border-radius: 8px;
+
+}
+.btn-add button:hover{
+  cursor: pointer;
+
 
 }

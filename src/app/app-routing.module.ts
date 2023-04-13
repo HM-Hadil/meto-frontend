@@ -48,6 +48,9 @@ import {
 } from "./detail-profile/detail-profileA/detail-msg-patient/detail-msg-patient.component";
 import {AffecterMedecinComponent} from "./detail-profile/detail-profileA/affecter-medecin/affecter-medecin.component";
 import {AuthGuard} from "./Auth/auth.guard";
+import {ListPatientComponent} from "./detail-profile/detail-profileA/patient/list-patient/list-patient.component";
+import {ListMedecinComponent} from "./detail-profile/detail-profileA/medecin/list-medecin/list-medecin.component";
+import {DetailMedecinComponent} from "./detail-profile/detail-profileA/medecin/detail-medecin/detail-medecin.component";
 
 const routes: Routes = [
   {path : '', component: AcceuilContentComponent},
@@ -77,8 +80,9 @@ const routes: Routes = [
   {path : '' , component : ProfilAdminComponent
 
   , children:[
+
       {path : 'dashboardAdmin' , component: DashboardAdminComponent},
-    {path : 'comptesMedecins' , component: ComptesMedecinsComponent},
+     {path : 'comptesMedecins' , component: ComptesMedecinsComponent},
       {path : 'comptesPatients' , component: ComptesPatientsComponent},
       {path : 'detail-compte-Medecin/:id' , component: ComptesMedecinDetailComponent},
       {path :'rendez-vous' , component:MessagesMedComponent },
@@ -86,7 +90,10 @@ const routes: Routes = [
       {path : 'modifierchirurgie' , component:ModifierChirurgieComponent },
       {path : 'updatedchirurgie/:id' , component: UpdateChirurgieComponent},
       {path : 'detailMsgPatient' , component:  DetailMsgPatientComponent},
-      {path : 'affecterMedecin' , component: AffecterMedecinComponent}
+      {path : 'affecterMedecin' , component: AffecterMedecinComponent},
+      {path : 'listePatient', component: ListPatientComponent},
+      {path : 'listeMedecin' , component: ListMedecinComponent},
+      {path : 'detailMedecin/:id' , component: DetailMedecinComponent},
 
     ]
   },

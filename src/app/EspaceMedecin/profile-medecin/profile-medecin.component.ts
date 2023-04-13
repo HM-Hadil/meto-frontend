@@ -97,8 +97,7 @@ this.getUserInfo();
    }
    logOut(){
     this.authService.clear();
-    this.router.navigate(['authentifier']);
-
+    this.router.navigate(['/authentifier']);
 
    }
 

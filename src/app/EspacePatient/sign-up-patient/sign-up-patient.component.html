@@ -43,10 +43,36 @@
               <div class="field padding-bottom--24">
                 <label >Nom</label>
                 <input type="text" formControlName="firstname" required>
+                <div
+                  *ngIf="
+        patientForm.controls['firstname'].invalid &&
+        (patientForm.controls['firstname'].dirty ||
+          patientForm.controls['firstname'].touched)
+      "
+                  class="alert-danger"
+                  style="color: red ;margin-top: 0.2rem"
+                >
+                  <div *ngIf="patientForm.controls['firstname'].errors?.['required']">
+                    Ce champ est obligatoire !.
+                  </div>
+                </div>
               </div>
               <div class="field padding-bottom--24">
                 <label >Prénom</label>
                 <input type="text" formControlName="lastname" required>
+                <div
+                  *ngIf="
+        patientForm.controls['lastname'].invalid &&
+        (patientForm.controls['lastname'].dirty ||
+          patientForm.controls['lastname'].touched)
+      "
+                  class="alert-danger"
+                  style="color: red ;margin-top: 0.2rem"
+                >
+                  <div *ngIf="patientForm.controls['lastname'].errors?.['required']">
+                    Ce champ est obligatoire !.
+                  </div>
+                </div>
               </div>
 
               <div>
@@ -59,12 +85,38 @@
               <div class="field padding-bottom--24">
                 <label >Email</label>
                 <input type="email" formControlName="email" required>
+                <div
+                  *ngIf="
+        patientForm.controls['email'].invalid &&
+        (patientForm.controls['email'].dirty ||
+          patientForm.controls['email'].touched)
+      "
+                  class="alert-danger"
+                  style="color: red;margin-top: 0.2rem"
+                >
+                  <div *ngIf="patientForm.controls['email'].errors?.['required']">
+                    Ce champ est obligatoire !.
+                  </div>
+                </div>
               </div>
               <div class="field padding-bottom--24">
                 <div class="grid--50-50">
                   <label >Password</label>
                 </div>
                 <input type="password" formControlName="password" required>
+
+                <div
+                  *ngIf="
+        patientForm.controls['password'].invalid &&
+        (patientForm.controls['password'].dirty ||
+          patientForm.controls['password'].touched)
+      "
+                  class="alert-danger"
+                  style="color: red; margin-top: 0.2rem"
+                >
+                  <div *ngIf="patientForm.controls['password'].errors?.['required']">
+                    Ce champ est obligatoire !.                  </div>
+                </div>
               </div>
 
               <div class="field padding-bottom--24 btn">

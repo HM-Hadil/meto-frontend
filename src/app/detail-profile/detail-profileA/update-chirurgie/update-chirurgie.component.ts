@@ -13,7 +13,7 @@ export class UpdateChirurgieComponent implements OnInit {
   ChirurgieForm!: FormGroup;
   chirurgieModel!  : TypeChirurgie;
   userFile: any;
-  public imagePath: any;
+   imagePath: any ='';
   imgURL: any = '';
   id!:number;
   constructor(private share: ShareServiceService , private fb:FormBuilder ,
@@ -28,7 +28,7 @@ export class UpdateChirurgieComponent implements OnInit {
                     minutes: [''],
                     seconds: ['']
                   }),
-            
+
                 });
   }
 
@@ -37,10 +37,14 @@ export class UpdateChirurgieComponent implements OnInit {
 
     this.share.getChirurgirById(this.id).subscribe((olddata) => {
       console.log('>>>>old data :', olddata);
-      this.chirurgieModel= olddata;
-      this.ChirurgieForm.setValue({name:this.chirurgieModel.name,
-        description:this.chirurgieModel.description,image:this.imgURL,duration:this.chirurgieModel.duration})
-
+      this.chirurgieModel = olddata;
+      this.imgURL=olddata.image;
+      this.ChirurgieForm.setValue({
+        name: this.chirurgieModel.name,
+        description: this.chirurgieModel.description,
+        image: this.imagePath,
+        duration: this.chirurgieModel.duration
+      });
     });
   }
 
@@ -49,18 +53,19 @@ export class UpdateChirurgieComponent implements OnInit {
 
   updatedChirurgie( ) {
     let data = this.ChirurgieForm.value;
-    console.log(data);
+    console.log("data form =>" ,data);
     console.log(this.imgURL);
     let typeChirurgie = new TypeChirurgie(
       data.id,
       data.name,
       data.description,
-      this.imgURL,
+      this.imagePath,
       data.duration
     );
     console.log('data from the form to the model==>',typeChirurgie);
     this.share.updateChirurgie(this.id, typeChirurgie).subscribe((response) => {
       console.log("updated data ==>",response);
+      console.log(this.imagePath);
 
       alertify.success("chirurgie modifiée ")
       this.router.navigate(['modifierchirurgie']);
@@ -70,16 +75,11 @@ export class UpdateChirurgieComponent implements OnInit {
 
   //upload Image
   onSelectFile(event: any) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.userFile = file;
-
-      var reader = new FileReader();
-
-      this.imagePath = file;
-      reader.readAsDataURL(file);
-      reader.onload = (_event) => {
-        this.imgURL = reader.result;
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.imagePath = e.target.result;
       };
     }
   }
