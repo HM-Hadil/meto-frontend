@@ -13,7 +13,8 @@
   <div class="form-group mt-4">
     <div> <label for="exampleFormControlFile1"> image</label></div>
     <img [src]="imgURL" style="width: 150px; height:100px ; margin-bottom: 2rem">
-    <input type="file" accept="image/*" (change)="onSelectFile($event)"   class="form-control-file" id="exampleFormControlFile1" formControlName="image">
+    <input type="file" accept="image/*" (change)="onSelectFile($event)"   class="form-control-file"
+           id="exampleFormControlFile1" formControlName="image">
   </div>
   <div class="form-group mt-4">
     <label>Duration:</label>

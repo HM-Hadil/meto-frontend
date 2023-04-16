@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ShareServiceService} from "../../Services/share-service.service";
 import {TypeChirurgie} from "../../Models/typeChirurgie/type-chirurgie";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-chirurgies',
@@ -12,7 +12,8 @@ export class ChirurgiesComponent implements OnInit {
   ModelChirurgie: TypeChirurgie[]= [];
  private fragment!: string ;
 
-  constructor(private share: ShareServiceService,private route: ActivatedRoute ) {
+  constructor(private share: ShareServiceService,private route: ActivatedRoute,
+  private router:Router) {
     this.route.fragment.subscribe(fragment => {
       if (fragment != null) {
         this.fragment = fragment;
@@ -34,6 +35,14 @@ export class ChirurgiesComponent implements OnInit {
 
     } catch (e) {}
   }
+
+  prendreRDV(id:number){
+    this.router.navigate(['signPatient'])
+    this.share.idChirurgie=id;
+    console.log('id chirurgie', id)
+
+  }
+
   //get All Chirurgie
   reloadData() {
     this.share.getAllChirurgie().subscribe(

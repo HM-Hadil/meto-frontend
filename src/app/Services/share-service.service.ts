@@ -9,6 +9,9 @@ import { AdminModel } from '../Models/AdminModel';
 import { Authentication } from '../Models/Authentication';
 import {UserAuthService} from "./interceptor/user-auth.service";
 import {catchError} from "rxjs/operators";
+import {AppointmentRequest} from "../Models/AppointmentRequest";
+import {AppointementResult} from "../Models/AppointementResult";
+import {UpdateAppointmentRequest} from "../Models/UpdateAppointmentRequest";
 
 @Injectable({
   providedIn: 'root'
@@ -22,12 +25,20 @@ export class ShareServiceService {
   UrlgetActiveD = "http://localhost:8800/accounts/Activedoctor"
   UrlgetActiveP = "http://localhost:8800/accounts/ActivePatient"
   UrlDesactivateD="http://localhost:8800/accounts/desactivateAccount"
+  urlApntmntByDoctor="http://localhost:8800/appointments/getAppointmentByDoctor"
+  urlApntmntById="http://localhost:8800/appointments/getAppointmentById"
+  urlAffecterMedecin="http://localhost:8800/appointments/affecterMedecin"
+  urlRdvPatient="http://localhost:8800/appointments/getAppointmentByPatient"
+
+  idChirurgie!:number;
 
   private user!: MedecinModel;
   private errorMessage!: string;
+  //without auth
   requestHeader= new HttpHeaders(
   {"No-Auth" :"true"}
 );
+
 
   private _refreshrequired = new Subject<void>();
   get RequiredRefresh(){
@@ -102,7 +113,9 @@ export class ShareServiceService {
 
       //login
      login(request : Authentication):Observable<any>{
-      return this.http.post(environment.api+"authenticate",request);
+
+
+       return this.http.post(environment.api+"authenticate",request,{headers:this.requestHeader});
      }
 
   public roleMatch(allowedRoles: any): boolean {
@@ -131,7 +144,7 @@ export class ShareServiceService {
   }
      //get account doctor by id
      getDoctorByIdAndEnabledFalse(id: number):Observable<MedecinModel>{
-    return  this.http.get<MedecinModel>(`${this.UrlDr}/${id}`);
+    return  this.http.get<MedecinModel>(`${this.UrlDr}/${id}`,{headers:this.requestHeader});
   }
 
   // get all active accounts patients
@@ -214,6 +227,43 @@ export class ShareServiceService {
     return this.http.put(`${environment.api}accounts/users/${email}/password`, body);
   }
 
+
+
+  createAppointment(appointment: AppointmentRequest): Observable<AppointmentRequest> {
+    const apiUrl = `${environment.api}Appointements/createAppointement`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const token = this.userAuthService.getToken();
+
+    if (token) {
+      headers.set('Authorization', `Bearer ${token}`);
+    }
+    return this.http.post<AppointmentRequest>(apiUrl, appointment);
+  }
+
+  getAllAppointments():Observable<AppointementResult[]>{
+    return this.http.get<AppointementResult[]>(environment.api+"appointments/")
+  }
+
+  getAllAppointementByDcotorId(id:number):Observable<AppointementResult[]>{
+    return this.http.get<AppointementResult[]>(`${this.urlApntmntByDoctor}/${id}`);
+  }
+
+  getAppointementById(id:string):Observable<AppointementResult>{
+    return this.http.get<AppointementResult>(`${this.urlApntmntById}/${id}`);
+  }
+
+  getAllAppointementWithoutDcotorId():Observable<AppointementResult[]>{
+    return this.http.get<AppointementResult[]>(environment.api+"appointments/appointmentsWithoutdoctor");
+  }
+
+  affecterMedecin(id:string,request:UpdateAppointmentRequest):Observable<UpdateAppointmentRequest>{
+    return this.http.put<UpdateAppointmentRequest>(`${this.urlAffecterMedecin}/${id}`,request);
+  }
+
+
+  getRdvByPatient(id:string):Observable<AppointementResult[]>{
+    return this.http.get<AppointementResult[]>(`${this.urlRdvPatient}/${id}`);
+  }
 
 
 

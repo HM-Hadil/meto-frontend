@@ -3,10 +3,11 @@
 <body id="page-top" >
 
 <!-- Page Wrapper -->
-<div id="wrapper" style="">
+<div id="wrapper" >
 
   <!-- Sidebar -->
-  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+     style="width:24rem !important; padding-left: 1rem !important;" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -38,7 +39,6 @@
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
          aria-expanded="true" aria-controls="collapseTwo">
-        <i class="bi bi-person-fill-gear" style="color: white"></i>
         <span style="margin-left: 0.5rem">Comptes</span>
       </a>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -54,14 +54,15 @@
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
          aria-expanded="true" aria-controls="collapseUtilities">
-        <i class="bi bi-envelope-fill" style="color: white"></i>
-        <span style="margin-left: 0.5rem">Demande Rendez-vous</span>
+        <span style="margin-left: 0.5rem">Liste des Rendez-vous</span>
       </a>
       <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
            data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Gérer messages</h6>
-          <a class="collapse-item" href="rendez-vous">Demande Rendez-vous</a>
+          <h6 class="collapse-header">Rendez-vous sans médecin</h6>
+          <a class="collapse-item" href="rendez-vous">Rendez-vous sans médecin</a>
+
+          <a class="collapse-item" href="rdvAvecMedecin">Rendez-vous avec médecin</a>
 
         </div>
       </div>
@@ -258,7 +259,7 @@
               </a>
 
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+              <a class="dropdown-item" (click)="logOut()" data-toggle="modal" data-target="#logoutModal">
                 <i class="bi bi-box-arrow-right mr-2 text-gray-400"></i>
                 Logout
               </a>
@@ -275,8 +276,9 @@
 
         <!-- Page Heading -->
    <router-outlet></router-outlet>
-        <!-- DataTales Example -->
-      <!--  <div class="card shadow mb-4">
+        <!-- DataTales Example
+
+        <div class="card shadow mb-4">
           <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
           </div>
@@ -314,14 +316,7 @@
                   <td>$645,750</td>
                 </tr>
 
-                <tr>
-                  <td>Bruno Nash</td>
-                  <td>Software Engineer</td>
-                  <td>London</td>
-                  <td>38</td>
-                  <td>2011/05/03</td>
-                  <td>$163,500</td>
-                </tr>
+
                 </tbody>
               </table>
             </div>
@@ -331,7 +326,7 @@
 
 
       </div>
-      /.container-fluid -->
+      -->
 
 
     </div>
@@ -350,25 +345,7 @@
 
 </a>
 
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <a class="btn btn-primary" href="">Logout</a>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 
 

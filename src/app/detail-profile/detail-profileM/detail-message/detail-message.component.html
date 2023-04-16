@@ -1,35 +1,82 @@
 
-<div class="col">
-  <div class="row" >
-    <h3 style="color: #0066FF">Aminata Diango</h3>
-    <h5 style="color: #3F6589">Chirurgie des valves cardiaques </h5>
-
+<div class="col" >
+  <div class="row"  *ngIf="apntmnt" style="margin-top: 2rem">
+    <div style="float: left">
+    <h3 style="color: #0066FF">{{apntmnt.patient.firstname}} {{apntmnt.patient.lastname}}</h3>
+    <h5 style="color: #3F6589">{{apntmnt.surgery.name}} </h5>
+    </div>
     <div style="float: right">
-    <span style="color: #336DA5">
-      Email
+    <span style="color: #336DA5 ; margin-top: 1rem">
+      Email:
     </span>
-    <p >Aminto.Diango@gmail.com</p>
+    <p >{{apntmnt.patient.email}}</p>
     </div>
 
   </div>
-  <h6 style="font-weight: bold">20.03.2023
-    <span><i class="bi bi-calendar-date-fill" style="color: indianred  ;"></i></span>
-  </h6>
-<div class="card content" >
-  <h5 style="color: #3F6589">Description</h5>
-  <p>
-    apparaître des troubles l'affectant dans sa vie quotidienne. C'est à ce moment-là qu'une opération
-    des valvules est envisagée.Selon les cas, on procède à la réparation chirurgicale de la valve
-  </p>
+
+  <div >
+    <span style="color: #336DA5 ; margin-top: 1rem">
+      Age:
+    </span>
+    <h6 style="font-weight: bold">{{apntmnt.age}} ans</h6>
+  </div>
+
+  <div >
+    <span style="color: #336DA5 ; margin-top: 1rem">
+      Ville :
+    </span>
+    <h6 style="font-weight: bold">{{apntmnt.ville}} </h6>
+  </div>
+
+  <div >
+    <span style="color: #336DA5 ; margin-top: 1rem">
+      Poids :
+    </span>
+    <h6 style="font-weight: bold">{{apntmnt.weight}} Kg</h6>
+  </div>
 
 
-</div>
-  <div class="card contentimg" >
-  <div class="image">
-  <img src="../assets/image/istockphoto-1198973699-612x612.jpg">
-</div>
+  <div >
+    <span style="color: #336DA5 ; margin-top: 1rem">
+      Type de sang:
+    </span>
+    <h6 style="font-weight: bold">{{apntmnt.typeSang}} </h6>
+  </div>
+  <div >
+    <span style="color: #336DA5 ; margin-top: 1rem">
+      téléphone :
+    </span>
+    <h6 style="font-weight: bold">{{apntmnt.phone}} </h6>
+  </div>
+
+
+
+  <div >
+    <span style="color: #336DA5 ; margin-top: 1rem">
+      Date de rendez-vous
+    </span>
+   <h6 style="font-weight: bold">{{apntmnt.dateRDV}}
+    <span><i class="bi bi-calendar-date-fill" style="color: indianred ;"></i></span>
+   </h6>
+  </div>
+
+
+    <div class="card content" >
+      <h5 style="color: #3F6589">Description</h5>
+       <p>
+          {{apntmnt.note}}
+       </p>
+
+     </div>
+
+     <div class="card contentimg" >
+      <div class="image">
+      <img src="{{apntmnt.image}}">
+      </div>
+
     <div class="btn">
     <button >Télécharger image</button>
     </div>
-  </div>
-</div>
+
+     </div>
+

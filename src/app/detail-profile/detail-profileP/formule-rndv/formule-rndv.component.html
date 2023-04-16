@@ -2,7 +2,7 @@
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12">
-        <form>
+        <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
         <div class="card card-registration card-registration-2" style="border-radius: 15px;">
           <div class="card-body p-0">
             <div class="row g-0">
@@ -12,27 +12,6 @@
 
 
 
-                  <div class="row">
-                    <div class="col-md-6 mb-4 pb-2">
-
-
-                      <div class="form-outline">
-                        <label class="form-label" for="form3Examplev2">Nom</label>
-                        <input type="text" id="form3Examplev2" class="form-control form-control-lg" />
-
-                      </div>
-
-                    </div>
-                    <div class="col-md-6 mb-4 pb-2">
-
-                      <div class="form-outline">
-                        <label class="form-label" for="form3Examplev3">Prénom</label>
-                        <input type="text" id="form3Examplev3" class="form-control form-control-lg" />
-
-                      </div>
-
-                    </div>
-                  </div>
 
 
 
@@ -41,7 +20,7 @@
 
                       <div class="form-outline">
                         <label class="form-label" for="form3Examplev5">Ville</label>
-                        <input type="text" id="form3Examplev5" class="form-control form-control-lg" />
+                        <input type="text" id="form3Examplev5" class="form-control form-control-lg" formControlName="ville" required/>
 
                       </div>
 
@@ -50,7 +29,7 @@
 
                       <div class="form-outline">
                         <label class="form-label" for="form3Examplev6">Age</label>
-                        <input type="text" id="form3Examplev6" class="form-control form-control-lg" />
+                        <input type="text" id="form3Examplev6" class="form-control form-control-lg" formControlName="age" required/>
 
                       </div>
 
@@ -63,22 +42,30 @@
 
                       <div class="form-outline">
                         <label class="form-label" for="form3Examplev7">Numéro téléphone</label>
-                        <input type="text" id="form3Examplev7" class="form-control form-control-lg" />
+                        <input type="text" id="form3Examplev7" class="form-control form-control-lg" formControlName="phone" required/>
 
                       </div>
 
                     </div>
-
                     <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
-                      <div class="form-outline">
-                       <div><label class="form-label" for="form3Examplev8">Sexe</label></div>
 
-                      <input type="radio" name="gender" value="male" id="form3Examplev8" style="margin-top: 1rem"> Male
-                        <input type="radio" name="gender" value="female"> Female
+                      <div class="form-outline">
+                        <label class="form-label" for="form3Examplev77">Poids</label>
+                        <input type="number" id="form3Examplev77" class="form-control form-control-lg" formControlName="weight" required />
 
                       </div>
-                    </div>
 
+                    </div>
+                    <input type="text" formControlName="patientId"  required style="display: none"/>
+
+                    <input type="text" formControlName="surgeryId"  required style="display: none"/>
+                    <input type="text" formControlName="doctorId"  required style="display: none"/>
+
+                  </div>
+                  <div class="form-group mt-4">
+                    <label for="exampleFormControlTextarea1">Description</label>
+                    <textarea type="text" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                              formControlName="note" required></textarea>
                   </div>
 
                 </div>
@@ -89,59 +76,89 @@
                 <div class="p-5">
                   <h3 class="fw-normal mb-5">Information Sensible</h3>
 
-                  <div class="mb-6 pb-2 ">
-                    <div class="form-outline form-white">
-                      <div><label class="form-label" >Type de chirurgie</label></div>
+                  <div class="row">
+                    <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
 
-                      <select >
-                        <option >chirurgie des valves cardiaque</option>
-                        <option>chirurgie orphépidique</option>
-                        <option>chirurgie esthetique</option>
-                      </select>
+                      <div class="mb-6 pb-2 ">
+                        <div class="form-outline form-white">
+                          <div><label class="form-label" >Type de chirurgie</label></div>
+                          <h5>{{name}}</h5>
+                          <!--  <select >
+                              <option >chirurgie des valves cardiaque</option>
+                              <option>chirurgie orphépidique</option>
+                              <option>chirurgie esthetique</option>
+                            </select>-->
+                        </div>
+                      </div>
+
                     </div>
+                    <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
+
+                      <div class="mb-6 pb-2 ">
+                        <div class="form-outline form-white">
+                          <div><label class="form-label" >choisire Médecin</label></div>
+
+                          <select disabled>
+                            <option >---</option>
+                            <option>Docteur Mohammed karim </option>
+                            <option>Docteur Maya rjab</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
 
-                  <div class="mb-6 pb-2 mt-4">
-                    <div class="form-outline form-white">
-                      <div><label class="form-label" >choisire Médecin</label></div>
 
-                      <select>
-                        <option >Docteur Ben Hassen</option>
-                        <option>Docteur Mohammed karim </option>
-                        <option>Docteur Maya rjab</option>
-                      </select>
-                    </div>
-                  </div>
+
 
 
 
                   <div class="row">
                     <div class="col-md-5 mt-4 mb-4 pb-2">
-                      <label for="Customization">Reserver date</label>
+                      <label >Reserver date</label>
                       <div class="md-form md-outline input-with-post-icon datepicker" id="customDays">
-                        <input placeholder="Select date" type="date" id="Customization" class="form-control">
-
+                        <input type="datetime-local" id="datetime" name="datetime" formControlName="dateRDV">
                       </div>
 
                     </div>
-
                     <div class="col-md-4 mb-4 ml-4 pt-4 mb-md-0 pb-md-0">
                       <div class="form-outline">
                         <div><label class="form-label" for="form3Examplev11">Type de sang</label></div>
 
-                        <input type="radio" name="sang" value="A" id="form3Examplev11" > A
-                        <input type="radio" name="sang" value="B"> B
-                        <input type="radio" name="sang" value="AB">AB
-                        <input type="radio" name="sang" value="O">O
-                        <input type="radio" name="sang" value="inconnu"> inconnu
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="typeSang" value="A" id="form3Examplev11" formControlName="typeSang">
+                          <label class="form-check-label" for="form3Examplev11">A</label>
+                        </div>
+
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="typeSang" value="B" id="form3Examplev12"  formControlName="typeSang">
+                          <label class="form-check-label" for="form3Examplev12">B</label>
+                        </div>
+
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="typeSang" value="AB" id="form3Examplev13" formControlName="typeSang">
+                          <label class="form-check-label" for="form3Examplev13">AB</label>
+                        </div>
+
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="typeSang" value="O" id="form3Examplev14"  formControlName="typeSang">
+                          <label class="form-check-label" for="form3Examplev14">O</label>
+                        </div>
+
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="typeSang" value="inconnu" id="form3Examplev15"  formControlName="typeSang">
+                          <label class="form-check-label" for="form3Examplev15">Inconnu</label>
+                        </div>
 
                       </div>
                     </div>
+
 
                     <div class="col-md-4 mb-4 ml-0 pt-4 mb-md-0 pb-md-0">
                       <div class="form-outline">
                         <div><label class="form-label" >Importer dossier</label></div>
-                        <input type="file" class="file">
+                        <input type="file" accept="image/*" (change)="onSelectFile($event)"   class="form-control-file" id="exampleFormControlFile1" formControlName="image">
 
 
                       </div>
@@ -149,19 +166,13 @@
 
                   </div>
 
-                  <div class="col-md-4 mb-4 ml-0 pt-4 mb-md-0 pb-md-0 " >
-                    <div class="form-outline form-white">
-                      <div><label class="form-label" >Votre poids</label></div>
 
-                      <input type="number" >
-                    </div>
-                  </div>
 
                 </div>
               </div>
 
 
-              <button type="button" class="btn" >Prendre rendez-vous</button>
+              <button type="submit" class="btn" >Prendre rendez-vous</button>
 
             </div>
           </div>

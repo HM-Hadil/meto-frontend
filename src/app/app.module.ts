@@ -24,7 +24,7 @@ import { MessagesMComponent } from './detail-profile/detail-profileM/messages-m/
 import { ParametresMComponent } from './detail-profile/detail-profileM/parametres-m/parametres-m.component';
 import { DetailMessageComponent } from './detail-profile/detail-profileM/detail-message/detail-message.component';
 import { DashboardComponent } from './detail-profile/detail-profileM/dashboard/dashboard.component';
-import { MessagesMedComponent } from './detail-profile/detail-profileA/messages-med/messages-med.component';
+import { MessagesMedComponent } from './detail-profile/detail-profileA/rendez-vous/messages-med/messages-med.component';
 import { ShowProfilePComponent } from './detail-profile/detail-profileP/show-profile-p/show-profile-p.component';
 import { ChirurgieSelecionneeComponent } from './servicePatient/chirurgie-selecionnee/chirurgie-selecionnee.component';
 import { DetailParcoursMedcComponent } from './servicePatient/detail-parcours-medc/detail-parcours-medc.component';
@@ -44,7 +44,7 @@ import {MatSelectModule} from "@angular/material/select";
 import { AjoutChirurgieComponent } from './detail-profile/detail-profileA/ajout-chirurgie/ajout-chirurgie.component';
 import { ModifierChirurgieComponent } from './detail-profile/detail-profileA/modifier-chirurgie/modifier-chirurgie.component';
 import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpClientXsrfModule} from "@angular/common/http";
 import { UpdateChirurgieComponent } from './detail-profile/detail-profileA/update-chirurgie/update-chirurgie.component';
 import { DetailMsgPatientComponent } from './detail-profile/detail-profileA/detail-msg-patient/detail-msg-patient.component';
 import { AffecterMedecinComponent } from './detail-profile/detail-profileA/affecter-medecin/affecter-medecin.component';
@@ -60,6 +60,7 @@ import { ListPatientComponent } from './detail-profile/detail-profileA/patient/l
 import { ListMedecinComponent } from './detail-profile/detail-profileA/medecin/list-medecin/list-medecin.component';
 import { DetailMedecinComponent } from './detail-profile/detail-profileA/medecin/detail-medecin/detail-medecin.component';
 import {HighchartsChartModule} from "highcharts-angular";
+import { RdvAvecMedecinComponent } from './detail-profile/detail-profileA/rendez-vous/rdv-sans-medecin/rdv-avec-medecin.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +106,7 @@ import {HighchartsChartModule} from "highcharts-angular";
     ListPatientComponent,
     ListMedecinComponent,
     DetailMedecinComponent,
+    RdvAvecMedecinComponent,
   ],
   imports: [
     BrowserModule,
@@ -124,18 +126,17 @@ import {HighchartsChartModule} from "highcharts-angular";
     MatPaginatorModule,
     BrowserAnimationsModule,
     HighchartsChartModule,
-
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-XSRF-TOKEN',
+    }),
 
   ],
-  providers: [AuthGuard],
-
-   /**   { provide: HTTP_INTERCEPTORS,
-      useClass:AuthInterceptor,
-      multi:true
-    },
-    UserAuthService
-  ],**/
-
+  providers: [AuthGuard,
+/**
+{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+**/
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

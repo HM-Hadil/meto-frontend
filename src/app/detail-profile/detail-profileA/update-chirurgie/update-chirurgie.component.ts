@@ -42,7 +42,7 @@ export class UpdateChirurgieComponent implements OnInit {
       this.ChirurgieForm.setValue({
         name: this.chirurgieModel.name,
         description: this.chirurgieModel.description,
-        image: this.imagePath,
+        image: this.imgURL,
         duration: this.chirurgieModel.duration
       });
     });
@@ -79,6 +79,7 @@ export class UpdateChirurgieComponent implements OnInit {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (e: any) => {
+
         this.imagePath = e.target.result;
       };
     }

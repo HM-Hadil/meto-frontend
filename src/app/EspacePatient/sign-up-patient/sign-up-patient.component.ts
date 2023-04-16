@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormControl,FormGroup, Validators,} from '@angular/forms';
 import * as alertify from "alertifyjs"
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 import { ShareServiceService } from 'src/app/Services/share-service.service';
 import { PatientModel } from 'src/app/Models/PatientModel';
 
@@ -14,9 +14,11 @@ import { PatientModel } from 'src/app/Models/PatientModel';
 })
 export class SignUpPatientComponent implements OnInit {
   patientForm!: FormGroup;
+  id!:number;
 
   constructor(  private share: ShareServiceService,
     private router: Router,
+    private route:ActivatedRoute,
     private http: HttpClient,
     private fb: FormBuilder) {
       let formControles = {
@@ -35,6 +37,7 @@ export class SignUpPatientComponent implements OnInit {
   }
 
   signUpPatient(){
+
     if (this.patientForm.valid){
 
       let data = this.patientForm.value;
@@ -51,8 +54,11 @@ export class SignUpPatientComponent implements OnInit {
       console.log("PatientModel--->",usersPatient);
 
       this.share.signUpPatient(usersPatient).subscribe();
+      this.router.navigate(['loginPatient']);
       console.log('>>>> Add patient', usersPatient);
       alertify.success("votre inscription a réussi  ")
+      alert("vos données ont été envoyées au admin " +
+        "Attendez, votre compte sera activé aprés la vérification ! ")
 
 
 

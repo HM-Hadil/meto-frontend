@@ -117,6 +117,8 @@ export class InscrireComponent implements OnInit {
     this.share.signUpMedecin(medecins).subscribe();
     console.log('>>>> Add medecins to backend', medecins);
       alertify.success("votre inscription a réussi  ")
+    alert("vos données ont été envoyées au admin " +
+      "Attendez, votre compte sera activé aprés la vérification ! ")
 
    }
   //upload Image

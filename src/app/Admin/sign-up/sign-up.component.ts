@@ -22,7 +22,7 @@ AdminForm!:FormGroup;
         firstname: new FormControl('', [Validators.required]),
         lastname: new FormControl('', [Validators.required]),
         email: new FormControl('', [Validators.required]),
-
+        password:new FormControl('', [Validators.required]),
         gender: new FormControl('', [Validators.required]),
       };
       this.AdminForm = this.fb.group(formControles);

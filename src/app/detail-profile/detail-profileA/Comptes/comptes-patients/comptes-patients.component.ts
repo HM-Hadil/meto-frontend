@@ -3,6 +3,7 @@ import {ShareServiceService} from "../../../../Services/share-service.service";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {PatientModel} from "../../../../Models/PatientModel";
+import alertify from "alertifyjs";
 
 
 
@@ -51,6 +52,8 @@ user! : PatientModel;
   activatePatient(id: number) {
     this.share.activateAccountPatient(id).subscribe(data => {
       this.user = data;
+      alertify.success('compte est activer avec succée ')
+      window.location.reload();
     }, error => {
       console.log('Error activating doctor:', error);
     });

@@ -6,6 +6,7 @@ import * as alertify from "alertifyjs";
 import { Authentication } from 'src/app/Models/Authentication';
 
 import { ShareServiceService } from 'src/app/Services/share-service.service';
+import {UserAuthService} from "../../Services/interceptor/user-auth.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(private share: ShareServiceService,
     private router: Router,
     private http: HttpClient,
-    private fb: FormBuilder) { 
+    private fb: FormBuilder, private authService : UserAuthService) {
       this.authForm = this.fb.group({
 
         email: ['', [Validators.required, Validators.email]],
@@ -38,8 +39,11 @@ export class LoginComponent implements OnInit {
     );
 
     this.share.login(authentication).subscribe((response) => {
-      let auth = response;  
+      let auth = response;
       console.log('reload data ==>>', auth);
+      this.authService.setRole(response.role);
+      this.authService.setToken(response.token);
+      this.router.navigate(['dashboardAdmin']);
 
     });
     console.log("authentication-->",authentication);

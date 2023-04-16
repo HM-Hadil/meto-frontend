@@ -36,7 +36,7 @@ import {DashboardAdminComponent} from "./detail-profile/detail-profileA/dashboar
 import {
   ComptesMedecinDetailComponent
 } from "./detail-profile/detail-profileA/Comptes/comptes-medecin-detail/comptes-medecin-detail.component";
-import {MessagesMedComponent} from "./detail-profile/detail-profileA/messages-med/messages-med.component";
+import {MessagesMedComponent} from "./detail-profile/detail-profileA/rendez-vous/messages-med/messages-med.component";
 import {AjoutChirurgieComponent} from "./detail-profile/detail-profileA/ajout-chirurgie/ajout-chirurgie.component";
 import {
   ModifierChirurgieComponent
@@ -51,6 +51,10 @@ import {AuthGuard} from "./Auth/auth.guard";
 import {ListPatientComponent} from "./detail-profile/detail-profileA/patient/list-patient/list-patient.component";
 import {ListMedecinComponent} from "./detail-profile/detail-profileA/medecin/list-medecin/list-medecin.component";
 import {DetailMedecinComponent} from "./detail-profile/detail-profileA/medecin/detail-medecin/detail-medecin.component";
+import {
+  RdvAvecMedecinComponent
+} from "./detail-profile/detail-profileA/rendez-vous/rdv-sans-medecin/rdv-avec-medecin.component";
+import {ListeRendezVousComponent} from "./detail-profile/detail-profileP/liste-rendez-vous/liste-rendez-vous.component";
 
 const routes: Routes = [
   {path : '', component: AcceuilContentComponent},
@@ -71,7 +75,7 @@ const routes: Routes = [
       {path : 'messagesM' , component : MessagesMComponent},
       {path : 'dashboardMed' , component : DashboardComponent},
       {path : 'parametreMed' , component : ParametresMComponent},
-      {path : 'detailMsg' , component : DetailMessageComponent},
+      {path : 'detailMsg/:id' , component : DetailMessageComponent},
     ] , canActivate:[AuthGuard], data:{role:['DOCTOR']}
   },
   {path : 'profileP' , component : ProfilePatientComponent },
@@ -82,29 +86,33 @@ const routes: Routes = [
   , children:[
 
       {path : 'dashboardAdmin' , component: DashboardAdminComponent},
-     {path : 'comptesMedecins' , component: ComptesMedecinsComponent},
+      {path : 'comptesMedecins' , component: ComptesMedecinsComponent},
       {path : 'comptesPatients' , component: ComptesPatientsComponent},
       {path : 'detail-compte-Medecin/:id' , component: ComptesMedecinDetailComponent},
       {path :'rendez-vous' , component:MessagesMedComponent },
       {path : 'ajoutchirurgie' , component: AjoutChirurgieComponent },
       {path : 'modifierchirurgie' , component:ModifierChirurgieComponent },
       {path : 'updatedchirurgie/:id' , component: UpdateChirurgieComponent},
-      {path : 'detailMsgPatient' , component:  DetailMsgPatientComponent},
+      {path : 'detailMsgPatient/:id' , component:  DetailMsgPatientComponent},
       {path : 'affecterMedecin' , component: AffecterMedecinComponent},
       {path : 'listePatient', component: ListPatientComponent},
       {path : 'listeMedecin' , component: ListMedecinComponent},
       {path : 'detailMedecin/:id' , component: DetailMedecinComponent},
+      {path : 'rdvAvecMedecin' , component:RdvAvecMedecinComponent },
 
     ]
   },
 
   {path : 'resetPassword' , component : ResetPasswordComponent},
 
+  //patient
+
   {path: '', component:ProfilePatientComponent ,
     children:[
       {path : 'formuleRndv', component : FormuleRndvComponent, canActivate:[AuthGuard], data:{role:['PATIENT']}},
       { path: 'messagesfromAdmin' , component: MessagesfromAdminComponent},
-      {path : 'dashboardAdmin' , component: DashboardAdminComponent , canActivate:[AuthGuard], data:{role:['PATIENT']}}
+      {path : 'dashboardAdmin' , component: DashboardAdminComponent , canActivate:[AuthGuard], data:{role:['PATIENT']}},
+      {path : "listRdv" , component: ListeRendezVousComponent ,  canActivate:[AuthGuard], data:{role:['PATIENT']}}
     ]
 
   },
