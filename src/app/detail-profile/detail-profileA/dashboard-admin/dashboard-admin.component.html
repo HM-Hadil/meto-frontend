@@ -13,17 +13,54 @@
       <!-- Area Chart -->
       <div class="card shadow mb-4">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Nombre des comptes par gendre</h6>
+          <h6 class="m-0 font-weight-bold text-primary">demande la plus fréquente </h6>
         </div>
-        <div class="card-body">
-          <div
-            id="doughnut"
-            style="width: 500px; height: 400px; display: block;"
-          >
+        <div class="card-body" style="display: flex ;flex-wrap: wrap; width: 850px !important; padding-left: 1rem;">
+
+          <div class="flip-card"  >
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="{{image}}" alt="Avatar" style="width:300px;height:300px;">
+
+              </div>
+              <div class="flip-card-back" style="padding-top: 3rem">
+                <h4>Chirurgie la plus requis</h4>
+                <h5>{{name}}</h5>
+                <h6>{{count}} patient ont choisi ce chirurgie.</h6>
+              </div>
+            </div>
+
+          </div>
+          <div class="flip-card">
+            <div class="flip-card-inner" >
+              <div class="flip-card-front" >
+                <img src="{{d_image}}" alt="Avatar" style="width:300px;height:300px;">
+
+              </div>
+              <div class="flip-card-back"style="padding-top: 3rem">
+                <h4>Médecin le plus requis</h4>
+                <h5>{{d_firstname}} {{d_lastname}}</h5>
+                <h6>{{d_count}} rendez-vous ont choisi ce Médecin.</h6>
+                <p>{{d_specialite}}</p>
+              </div>
+            </div>
+
+          </div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="{{image}}" alt="Avatar" style="width:300px;height:300px;">
+
+              </div>
+              <div class="flip-card-back" style="padding-top: 3rem">
+                <h4>pays le plus requis</h4>
+                <h5>{{city_name}}</h5>
+                <h6>{{city_count}} rendez-vous de méme pays</h6>
+              </div>
+            </div>
+
           </div>
 
-          <hr>
-          Styling for the area chart
         </div>
       </div>
 
@@ -66,3 +103,8 @@
 <!-- /.container-fluid -->
 
 <!-- End of Main Content -->
+<div
+>
+  <canvas id="doughnutChart" baseChart [data]="doughnutChartData" [options]="options"
+          [type]="'doughnut'" ></canvas>
+</div>

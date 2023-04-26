@@ -80,3 +80,47 @@ cursor: pointer;
   background-color: rgb(231, 67, 67);
   color: rgb(155, 25, 25);
 }
+/* Style the select element */
+select {
+  /* Define font and font size */
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+
+  /* Define width and height */
+  width: 200px;
+  height: 40px;
+
+  /* Remove default styling */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+
+  /* Add padding and border */
+  padding: 10px;
+  border: 1px solid #ccc;
+
+  /* Add hover effect */
+  cursor: pointer;
+}
+
+/* Style the options within the select element */
+select option {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+
+  padding: 10px;
+
+  cursor: pointer;
+
+  background-color: #f8f8f8;
+}
+
+/* Style the select element when it is opened */
+select:focus {
+  /* Add custom focus styling */
+  outline: none;
+  border-color: #007bff; /* Replace with your desired color */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Replace with your desired color and box shadow properties */
+}
+

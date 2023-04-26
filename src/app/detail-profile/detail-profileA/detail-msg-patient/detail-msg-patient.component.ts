@@ -53,7 +53,8 @@ export class DetailMsgPatientComponent implements OnInit {
     return localStorage.getItem("token") ;
   }
 
-  affecterMedecin(){
+  affecterMedecin(idD: string, idAp: string){
+    this.router.navigate(['affecterMedecin',idD,idAp])
 
   }
 }

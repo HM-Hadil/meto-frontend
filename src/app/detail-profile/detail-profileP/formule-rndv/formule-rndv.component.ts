@@ -12,7 +12,7 @@ import {PatientModel} from "../../../Models/PatientModel";
   styleUrls: ['./formule-rndv.component.scss']
 })
 export class FormuleRndvComponent implements OnInit {
-idCh!:number;
+idCh!:string;
 name!:any;
 idP!:string;
 patient! : PatientModel;
@@ -46,7 +46,7 @@ this.idCh=this.share.idChirurgie
     this.getChirurgieById();
     this.getPatientInfo();
     this.appointmentForm.patchValue({patientId:this.idP, surgeryId:this.idCh,
-    doctorId:"281bfa77-f22a-4340-874d-ab1c0526df92"});
+    doctorId:"dc6b55c3-99ae-48a5-b06b-a441f95d1cbd"});
   }
 
   getChirurgieById(){

@@ -159,23 +159,18 @@
 
     <div class="form-row " style="justify-content: center;">
       <div class="form-group col-md-4 " >
-        <label for="inputEmail8" >Specialité</label>
-        <input type="text" class="form-control" id="inputEmail8" placeholder="" formControlName="specialite"  required>
+        <label for="inputEmail8" >Specialité </label>
+        <select  formControlName="surgeries"
+                 (change)=" changeEventSpecialite($event)" >
 
-        <div
-          *ngIf="
-        MedecinForm.controls['specialite'].invalid &&
-        (MedecinForm.controls['specialite'].dirty ||
-          MedecinForm.controls['specialite'].touched)
-      "
-          class="alert-danger"
-          style="color: red; margin-top: 0.2rem"
-        >
-          <div *ngIf="MedecinForm.controls['specialite'].errors?.['required']"  >
-            Ce champ est obligatoire !.
-          </div>
-        </div>
+
+
+          <option value=""><span>Selectionner Chirurgie </span> </option>
+          <option *ngFor="let chirurgie of chirurgieList" [value]="chirurgie.id">{{ chirurgie.name }}</option>
+        </select>
       </div>
+
+
       <div class="form-group col-md-4 " >
         <label for="inputEmail8" >Image</label>
         <input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control" formControlName="image"  required>

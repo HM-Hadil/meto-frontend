@@ -15,7 +15,7 @@ export class UpdateChirurgieComponent implements OnInit {
   userFile: any;
    imagePath: any ='';
   imgURL: any = '';
-  id!:number;
+  id!:string;
   constructor(private share: ShareServiceService , private fb:FormBuilder ,
               private router : Router , private route: ActivatedRoute,) {
                 this.ChirurgieForm = this.fb.group({

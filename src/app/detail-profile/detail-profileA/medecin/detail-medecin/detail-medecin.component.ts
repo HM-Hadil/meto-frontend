@@ -24,7 +24,8 @@ export class DetailMedecinComponent implements OnInit {
       this.medecin = data;
     });
   }
-
+  getSpecialiteWithoutBrackets(specialite: string): string {
+    return specialite.replace(/\[|\]/g, '');}
 
 
 }

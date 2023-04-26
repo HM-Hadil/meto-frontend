@@ -1,0 +1,26 @@
+
+<div class="col all-content">
+  <h1>Les Chirurgiens de Chirurgie des valves cardiaque  </h1>
+
+  <div class="row card-med">
+    <div class="card card-content shadow-sm mb-5 bg-white rounded"
+         *ngFor="let medecin of medecins">
+      <div class="image">
+        <img src="{{medecin.image}}">
+      </div>
+      <h5>{{medecin.firstname}} {{medecin.lastname}}</h5>
+      <h5 >{{getSpecialiteWithoutBrackets(medecin.specialite)}}</h5>
+      <div class="btn">
+        <button (click)="voirDetails(medecin.id)">Voir detail</button>
+      </div>
+
+    </div>
+
+
+
+
+
+
+  </div>
+
+</div>

@@ -1,6 +1,6 @@
 <app-header></app-header>
-<div class="col all-content">
-  <h1>Les Meilleurs Chirurgiens Chirurgie des valves cardiaque  En Tunisie</h1>
+  <div class="col all-content">
+   <h1>Les Meilleurs Chirurgiens En Tunisie</h1>
   <div class="col-md-6 desc">
 
   <p>
@@ -8,45 +8,24 @@
   votre agence de tourisme médical, Médical-travel, vous dédie cet espace pour la découverte de ses
   partenaires. Nous avons sélectionné des professionnels compétents et expérimentés
   dans leurs spécialités et domaines respectifs : orthopédistes, cardiologues, plasticiens, etc.
-  </p></div>
+  </p>
+  </div>
 
 
    <div class="row card-med">
-       <div class="card card-content shadow-sm mb-5 bg-white rounded">
+       <div class="card card-content shadow-sm mb-5 bg-white rounded"
+       *ngFor="let medecin of medecins">
          <div class="image">
-           <img src="../assets/image/medcin4.jfif">
+           <img src="{{medecin.image}}">
          </div>
-         <h5>nom medecin</h5>
-         <h5>Specialté</h5>
-         <p>description de medecin</p>
+         <h5>{{medecin.firstname}} {{medecin.lastname}}</h5>
+         <h5 >{{getSpecialiteWithoutBrackets(medecin.specialite)}}</h5>
          <div class="btn">
-           <button onclick="window.location.href ='detailParcoursMedecin';">Voir detail</button>
+           <button (click)="voirDetails(medecin.id)">Voir detail</button>
          </div>
+
        </div>
 
-     <div class="card card-content shadow-sm mb-5 bg-white rounded">
-       <div class="image">
-         <img src="../assets/image/portrait-of-hansome-young-male-doctor-man.jpg">
-       </div>
-       <h5>nom medecin</h5>
-       <h5>Specialté</h5>
-       <p>description de medecin</p>
-       <div class="btn">
-         <button>Voir detail</button>
-       </div>
-     </div>
-
-     <div class="card card-content shadow-sm mb-5 bg-white rounded">
-       <div class="image">
-         <img src="../assets/image/medcin3.jfif">
-       </div>
-       <h5>nom medecin</h5>
-       <h5>Specialté</h5>
-       <p>description de medecin</p>
-       <div class="btn">
-         <button>Voir detail</button>
-       </div>
-     </div>
 
    </div>
 

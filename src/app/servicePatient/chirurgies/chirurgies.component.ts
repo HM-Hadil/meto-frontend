@@ -36,7 +36,7 @@ export class ChirurgiesComponent implements OnInit {
     } catch (e) {}
   }
 
-  prendreRDV(id:number){
+  prendreRDV(id:string){
     this.router.navigate(['signPatient'])
     this.share.idChirurgie=id;
     console.log('id chirurgie', id)
@@ -55,5 +55,9 @@ export class ChirurgiesComponent implements OnInit {
         console.error('Error ', err);
       }
     );
+  }
+
+  choisirMedecin(id: string) {
+    this.router.navigate(['chirurgieSelecionnee',id])
   }
 }

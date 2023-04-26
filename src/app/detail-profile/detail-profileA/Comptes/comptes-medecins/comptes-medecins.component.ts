@@ -9,8 +9,10 @@ import {MedecinModel} from "../../../../Models/MedecinModel";
   templateUrl: './comptes-medecins.component.html',
   styleUrls: ['./comptes-medecins.component.scss']
 })
+
 export class ComptesMedecinsComponent implements OnInit {
   MedecinModel: MedecinModel[]= [];
+  specialiteId! : string;
   constructor( private share: ShareServiceService,
                private router: Router,
                private http: HttpClient,) { }
@@ -20,11 +22,18 @@ export class ComptesMedecinsComponent implements OnInit {
 
   }
 
+
   getDisabledAccountsMedecins(){
 return this.share.getDisableddoctor().subscribe(
   (data )=> {
     this.MedecinModel = data;
+    let specialiteWithoutBrackets = this.MedecinModel.map(medecin=>medecin.specialite.replace(/\[|\]/g, ''));
+
+    console.log("without brakets", specialiteWithoutBrackets)
+
     console.log('reload data ==>>', this.MedecinModel);
+
+
   },
 
   (err) => {
@@ -33,7 +42,8 @@ return this.share.getDisableddoctor().subscribe(
 )
 
   }
-
+  getSpecialiteWithoutBrackets(specialite: string): string {
+    return specialite.replace(/\[|\]/g, '');}
   seeDetails(id:number){
     this.router.navigate(['detail-compte-Medecin',id]);
 

@@ -1,5 +1,5 @@
 export class MedecinModel{
-    public constructor(
+  public constructor(
     public  id:any,
 
     public  firstname:string,
@@ -14,27 +14,29 @@ export class MedecinModel{
 
     public adresse : string ,
 
-    public specialite:string,
+    public specialite: string,
 
     public gender:string,
 
     public image:string ,
 
     public telephone:string ,
-
    public experience: {
       establishment: string;
       specialty: string;
   }[],
+
+
   public parcours: {
       diploma: string;
       establishment: string;
       field: string;
-  }[]
+  }[],
+    public surgeries: string[] =[],
 
 
 
+){
 
-
-){}
+  }
 }

@@ -26,6 +26,8 @@ export class ListMedecinComponent implements OnInit {
     this.getAllActiveMedecins();
   }
 
+  getSpecialiteWithoutBrackets(specialite: string): string {
+    return specialite.replace(/\[|\]/g, '');}
 
   getAllActiveMedecins(searchKeyWord : string=""){
     return this.share.getAllActiveDoctor(searchKeyWord).subscribe(

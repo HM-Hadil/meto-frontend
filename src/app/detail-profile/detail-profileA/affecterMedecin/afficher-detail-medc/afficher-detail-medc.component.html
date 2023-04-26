@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="col allCard>"  *ngIf="medecin">
 
   <div class="image">
@@ -30,13 +29,12 @@
     </div>
 
     <div class="row btns">
-
-      <button class="btn2" style="margin-left: 4rem">prendre rendez-vous</button>
+      <button class="btn1" >Supprimer</button>
+      <button class="btn2" (click)="affecterMedcin()">Valider</button>
     </div>
   </div>
 
 </div>
-
 
 
 

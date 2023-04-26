@@ -5,7 +5,7 @@
   </div>
   <div class="card infotxt" >
   <h4>{{medecin.firstname}} {{medecin.lastname}}</h4>
-  <h5>{{medecin.specialite}}</h5>
+  <h5>{{getSpecialiteWithoutBrackets(medecin.specialite)}}</h5>
     <address><b>Ville : {{medecin.ville}}</b></address>
     <p><b>Email :</b> {{medecin.email}}</p>
   <p><b>Téléphone :</b> {{medecin.telephone}}</p>

@@ -15,7 +15,7 @@ export class ModifierChirurgieComponent implements OnInit {
   ChirurgieForm!: FormGroup;
   ModelChirurgie: TypeChirurgie[]= [];
   userFile: any;
-  id!:number;
+  id!:string;
   public imagePath: any;
   imgURL: any = '';
 
@@ -75,7 +75,7 @@ export class ModifierChirurgieComponent implements OnInit {
 
 
  //submit id from button "modifier"
-  updateChirurgie(id:number) {
+  updateChirurgie(id:string) {
     this.router.navigate(['updatedchirurgie',id]);
 
     }

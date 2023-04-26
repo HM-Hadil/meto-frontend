@@ -6,7 +6,7 @@
 
       <div class="col" style="margin-top: 1rem" >
         <h5> <i> <b>Dr {{medecin.firstname}} {{medecin.lastname}}</b></i></h5>
-        <h6>{{medecin.specialite}}</h6>
+        <h6>{{getSpecialiteWithoutBrackets(medecin.specialite)}}</h6>
         <address>{{medecin.ville}}</address>
       </div>
 

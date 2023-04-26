@@ -1,7 +1,7 @@
 
 export class TypeChirurgie {
   public constructor(
-    public id: number,
+    public id: string,
     public name?: String,
     public description?: String,
     public image?: String,

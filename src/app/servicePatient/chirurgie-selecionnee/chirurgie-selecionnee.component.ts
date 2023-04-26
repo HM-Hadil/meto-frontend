@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ShareServiceService} from "../../Services/share-service.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {MedecinModel} from "../../Models/MedecinModel";
 
 @Component({
   selector: 'app-chirurgie-selecionnee',
@@ -6,10 +9,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chirurgie-selecionnee.component.scss']
 })
 export class ChirurgieSelecionneeComponent implements OnInit {
-
-  constructor() { }
+id!:string;
+medecins: MedecinModel[]=[];
+  constructor(private share: ShareServiceService,private route: ActivatedRoute,
+              private router:Router) { }
 
   ngOnInit(): void {
+   this. getDoctorsByChirurgie();
   }
 
+  getSpecialiteWithoutBrackets(specialite: string): string {
+    return specialite.replace(/\[|\]/g, '');}
+
+  getDoctorsByChirurgie(){
+    this.id=this.route.snapshot.params['id'];
+    this.share.getDoctorsByChirurgie(this.id).subscribe(data=>{
+      this.medecins=data;
+      console.log("medecins", this.medecins)
+
+    })
+  }
+
+  voirDetails(id: string) {
+    this.router.navigate(['detailParcoursMedecin',id])
+
+  }
 }

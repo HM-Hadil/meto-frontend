@@ -12,6 +12,7 @@ import {catchError} from "rxjs/operators";
 import {AppointmentRequest} from "../Models/AppointmentRequest";
 import {AppointementResult} from "../Models/AppointementResult";
 import {UpdateAppointmentRequest} from "../Models/UpdateAppointmentRequest";
+import { AppointmentStatsResult } from '../Models/appointmentStatsResult';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class ShareServiceService {
   urlAffecterMedecin="http://localhost:8800/appointments/affecterMedecin"
   urlRdvPatient="http://localhost:8800/appointments/getAppointmentByPatient"
 
-  idChirurgie!:number;
+  idChirurgie!:string;
 
   private user!: MedecinModel;
   private errorMessage!: string;
@@ -59,7 +60,7 @@ export class ShareServiceService {
 
   //Get chirurgie By Id
 
-  getChirurgirById(id : number):Observable<TypeChirurgie>{
+  getChirurgirById(id : string):Observable<TypeChirurgie>{
     return this.http.get<TypeChirurgie>(`${this.Url}/${id}`);
   }
 
@@ -71,7 +72,7 @@ export class ShareServiceService {
 
   //Update Chirurgie by id
 
-  updateChirurgie(id : number , chirurgie : TypeChirurgie):Observable<Object>{
+  updateChirurgie(id: string, chirurgie: TypeChirurgie):Observable<Object>{
     return this.http.put(`${this.urlPut}/${id}`,chirurgie, ).pipe(
       tap(()=>{
         this._refreshrequired.next()
@@ -229,15 +230,10 @@ export class ShareServiceService {
 
 
 
-  createAppointment(appointment: AppointmentRequest): Observable<AppointmentRequest> {
-    const apiUrl = `${environment.api}Appointements/createAppointement`;
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    const token = this.userAuthService.getToken();
+  createAppointment(appointment: AppointmentRequest): Observable<any> {
 
-    if (token) {
-      headers.set('Authorization', `Bearer ${token}`);
-    }
-    return this.http.post<AppointmentRequest>(apiUrl, appointment);
+
+    return this.http.post(environment.api+"Appointements/createAppointement", appointment);
   }
 
   getAllAppointments():Observable<AppointementResult[]>{
@@ -256,8 +252,8 @@ export class ShareServiceService {
     return this.http.get<AppointementResult[]>(environment.api+"appointments/appointmentsWithoutdoctor");
   }
 
-  affecterMedecin(id:string,request:UpdateAppointmentRequest):Observable<UpdateAppointmentRequest>{
-    return this.http.put<UpdateAppointmentRequest>(`${this.urlAffecterMedecin}/${id}`,request);
+  affecterMedecin(idAp: string, idD: UpdateAppointmentRequest):Observable<UpdateAppointmentRequest>{
+    return this.http.put<UpdateAppointmentRequest>(`${this.urlAffecterMedecin}/${idAp}`,idD);
   }
 
 
@@ -267,4 +263,28 @@ export class ShareServiceService {
 
 
 
+  findMostFrequentSurgeryId(): Observable<string> {
+    return this.http.get<string>(environment.api+"appointments/mostFrequentSurgeryId");
+  }
+
+  getDoctorCount(): Observable<number> {
+    return this.http.get<number>(environment.api+'accounts/doctor-count');
+  }
+  getPatientCount(): Observable<number> {
+    return this.http.get<number>(environment.api+'accounts/patient-count');
+  }
+
+  getChirurgieCount(): Observable<number> {
+    return this.http.get<number>(environment.api+'chirurgies/chirurgie-count');
+  }
+
+  getAppointmentStatsByDoctor(doctorId: string): Observable<AppointmentStatsResult> {
+    return this.http.get<AppointmentStatsResult>(environment.api+`appointments/getAppointmentStatsByDoctor/${doctorId}`);
+  }
+
+  getDoctorsByChirurgie(chirurgieId : string):Observable<MedecinModel[]>{
+    return this.http.get<MedecinModel[]>(environment.api+`doctors/surgery/${chirurgieId}`);
+
+  }
 }
+

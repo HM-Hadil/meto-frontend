@@ -46,7 +46,7 @@ import { SignUpComponent } from './Admin/sign-up/sign-up.component';
 import {
   DetailMsgPatientComponent
 } from "./detail-profile/detail-profileA/detail-msg-patient/detail-msg-patient.component";
-import {AffecterMedecinComponent} from "./detail-profile/detail-profileA/affecter-medecin/affecter-medecin.component";
+import {AffecterMedecinComponent} from "./detail-profile/detail-profileA/affecterMedecin/affecter-medecin/affecter-medecin.component";
 import {AuthGuard} from "./Auth/auth.guard";
 import {ListPatientComponent} from "./detail-profile/detail-profileA/patient/list-patient/list-patient.component";
 import {ListMedecinComponent} from "./detail-profile/detail-profileA/medecin/list-medecin/list-medecin.component";
@@ -55,9 +55,14 @@ import {
   RdvAvecMedecinComponent
 } from "./detail-profile/detail-profileA/rendez-vous/rdv-sans-medecin/rdv-avec-medecin.component";
 import {ListeRendezVousComponent} from "./detail-profile/detail-profileP/liste-rendez-vous/liste-rendez-vous.component";
+import {AproposComponent} from "./apropos/apropos.component";
+import {
+  AfficherDetailMedcComponent
+} from "./detail-profile/detail-profileA/affecterMedecin/afficher-detail-medc/afficher-detail-medc.component";
 
 const routes: Routes = [
   {path : '', component: AcceuilContentComponent},
+  {path : 'apropos' , component: AproposComponent},
   {path : 'chirurgie', component: ChirurgiesComponent},
   {path : 'sejours', component: SejoursComponent},
   {path : 'inscrire', component: InscrireComponent},
@@ -94,7 +99,8 @@ const routes: Routes = [
       {path : 'modifierchirurgie' , component:ModifierChirurgieComponent },
       {path : 'updatedchirurgie/:id' , component: UpdateChirurgieComponent},
       {path : 'detailMsgPatient/:id' , component:  DetailMsgPatientComponent},
-      {path : 'affecterMedecin' , component: AffecterMedecinComponent},
+      {path : 'affecterMedecin/:idC/:idAp' , component: AffecterMedecinComponent},
+      {path : 'detailProfileMed/:idD/:idAp' , component:AfficherDetailMedcComponent},
       {path : 'listePatient', component: ListPatientComponent},
       {path : 'listeMedecin' , component: ListMedecinComponent},
       {path : 'detailMedecin/:id' , component: DetailMedecinComponent},
@@ -118,8 +124,8 @@ const routes: Routes = [
   },
 
 
-  {path : 'chirurgieSelecionnee',  component : ChirurgieSelecionneeComponent},
-  {path : 'detailParcoursMedecin' , component : DetailParcoursMedcComponent},
+  {path : 'chirurgieSelecionnee/:id',  component : ChirurgieSelecionneeComponent},
+  {path : 'detailParcoursMedecin/:id' , component : DetailParcoursMedcComponent},
 
   {path : '**' , component: NotFound404Component ,pathMatch: 'full' },
 ];

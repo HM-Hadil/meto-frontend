@@ -23,7 +23,8 @@ export class ComptesMedecinDetailComponent implements OnInit {
       this.medecin = data;
     });
   }
-
+  getSpecialiteWithoutBrackets(specialite: string): string {
+    return specialite.replace(/\[|\]/g, '');}
 
   activateDoctor(id: number) {
     this.share.activateAccountDoctor(id).subscribe(data => {

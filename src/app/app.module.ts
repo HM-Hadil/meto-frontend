@@ -47,7 +47,7 @@ import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule} from "@angul
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpClientXsrfModule} from "@angular/common/http";
 import { UpdateChirurgieComponent } from './detail-profile/detail-profileA/update-chirurgie/update-chirurgie.component';
 import { DetailMsgPatientComponent } from './detail-profile/detail-profileA/detail-msg-patient/detail-msg-patient.component';
-import { AffecterMedecinComponent } from './detail-profile/detail-profileA/affecter-medecin/affecter-medecin.component';
+import { AffecterMedecinComponent } from './detail-profile/detail-profileA/affecterMedecin/affecter-medecin/affecter-medecin.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -61,7 +61,10 @@ import { ListMedecinComponent } from './detail-profile/detail-profileA/medecin/l
 import { DetailMedecinComponent } from './detail-profile/detail-profileA/medecin/detail-medecin/detail-medecin.component';
 import {HighchartsChartModule} from "highcharts-angular";
 import { RdvAvecMedecinComponent } from './detail-profile/detail-profileA/rendez-vous/rdv-sans-medecin/rdv-avec-medecin.component';
-
+import { AproposComponent } from './apropos/apropos.component';
+import { NgChartsModule } from 'ng2-charts';
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import { AfficherDetailMedcComponent } from './detail-profile/detail-profileA/affecterMedecin/afficher-detail-medc/afficher-detail-medc.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,31 +110,36 @@ import { RdvAvecMedecinComponent } from './detail-profile/detail-profileA/rendez
     ListMedecinComponent,
     DetailMedecinComponent,
     RdvAvecMedecinComponent,
+    AproposComponent,
+    AfficherDetailMedcComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatSidenavModule,
-    MatDividerModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatOptionModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
-    MatTableModule,
-    CommonModule,
-    MatPaginatorModule,
-    BrowserAnimationsModule,
-    HighchartsChartModule,
-    HttpClientXsrfModule.withOptions({
-      cookieName: 'XSRF-TOKEN',
-      headerName: 'X-XSRF-TOKEN',
-    }),
+    imports: [
+        BrowserModule,
+        NgChartsModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        MatSidenavModule,
+        MatDividerModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatOptionModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientModule,
+        MatTableModule,
+        CommonModule,
+        MatPaginatorModule,
+        BrowserAnimationsModule,
+        HighchartsChartModule,
+        HttpClientXsrfModule.withOptions({
+            cookieName: 'XSRF-TOKEN',
+            headerName: 'X-XSRF-TOKEN',
+        }),
+        DragDropModule,
 
-  ],
+    ],
   providers: [AuthGuard,
 /**
 { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

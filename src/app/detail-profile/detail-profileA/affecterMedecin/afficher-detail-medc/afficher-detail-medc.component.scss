@@ -1,13 +1,11 @@
 .allCard{
   width:100%;
   height: auto;
-  margin: auto !important;
+  margin:auto !important;
   text-align: center;
   align-content: center;
-  border: 1px solid black ;
-  padding-top: 4rem !important;
-}
 
+}
 .parcours{
   width: 45rem;
   height: 11rem;
@@ -40,12 +38,6 @@
   height: 100%;
   margin: auto;
 }
-
-h4{
-  color: #0066FF;
-}
-h5{ color: #5e72e4}
-
 .btns  {
   width: 26rem;
   height: 2rem;
@@ -54,17 +46,19 @@ h5{ color: #5e72e4}
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-.btn2 {
-  width: 16rem;
-  height: 2.5rem;
+.btn2{
+  width: 12rem;
+  height: 2rem;
   background-color: #0066FF;
   color: white;
   border-radius: 10px;
   border: none;
   margin-left: 1rem;
-
-  font-size: 20px;
 }
+h4{
+  color: #0066FF;
+}
+h5{ color: #5e72e4}
 .btn2:hover{
   background-color: transparent;
   color: #0066FF;
@@ -86,4 +80,3 @@ h5{ color: #5e72e4}
   border: none;
   transition: 1s;
 }
-
