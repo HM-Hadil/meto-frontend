@@ -6,7 +6,7 @@
       <h3>{{apntmnt.patient.firstname}} {{apntmnt.patient.lastname}}</h3>
       <h6 style="margin-top: 1rem">{{apntmnt.surgery.name}} </h6>
 
-      <h6 style="font-weight: bold">{{apntmnt.dateRDV }}
+      <h6 style="font-weight: bold">{{apntmnt.dateRDV | date: 'yyyy-MM-dd / hh:mm a'}}
         <span><i class="bi bi-calendar-date-fill" style="color: indianred ; float: right ;"></i></span>
       </h6>
       <div class="btn">

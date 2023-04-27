@@ -3,7 +3,7 @@ export class AppointementResult {
 
     public age: number,
     public createdOn: string,
-    public dateRDV: string,
+    public dateRDV: Date,
 
     public doctor: {
     address: string,

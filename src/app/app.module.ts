@@ -2,6 +2,8 @@ import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
 import { HeaderComponent } from './composants/header/header.component';
 import { FooterComponent } from './composants/footer/footer.component';
 import { AcceuilContentComponent } from './acceuil-content/acceuil-content.component';
@@ -65,6 +67,11 @@ import { AproposComponent } from './apropos/apropos.component';
 import { NgChartsModule } from 'ng2-charts';
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import { AfficherDetailMedcComponent } from './detail-profile/detail-profileA/affecterMedecin/afficher-detail-medc/afficher-detail-medc.component';
+import { AccepterRdvComponent } from './detail-profile/detail-profileM/accepter-rdv/accepter-rdv.component';
+import { ValiderFactureComponent } from './detail-profile/detail-profileM/valider-facture/valider-facture.component';
+import { DetailAccptedApntComponent } from './detail-profile/detail-profileM/detail-accpted-apnt/detail-accpted-apnt.component';
+import { RdvSansMedComponent } from './detail-profile/detail-profileP/rdv-sans-med/rdv-sans-med.component';
+import { RdvAvecMedComponent } from './detail-profile/detail-profileP/rdv-avec-med/rdv-avec-med.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,6 +119,11 @@ import { AfficherDetailMedcComponent } from './detail-profile/detail-profileA/af
     RdvAvecMedecinComponent,
     AproposComponent,
     AfficherDetailMedcComponent,
+    AccepterRdvComponent,
+    ValiderFactureComponent,
+    DetailAccptedApntComponent,
+    RdvSansMedComponent,
+    RdvAvecMedComponent,
   ],
     imports: [
         BrowserModule,
@@ -131,6 +143,7 @@ import { AfficherDetailMedcComponent } from './detail-profile/detail-profileA/af
         MatTableModule,
         CommonModule,
         MatPaginatorModule,
+        ScrollingModule,
         BrowserAnimationsModule,
         HighchartsChartModule,
         HttpClientXsrfModule.withOptions({

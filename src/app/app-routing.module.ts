@@ -59,6 +59,13 @@ import {AproposComponent} from "./apropos/apropos.component";
 import {
   AfficherDetailMedcComponent
 } from "./detail-profile/detail-profileA/affecterMedecin/afficher-detail-medc/afficher-detail-medc.component";
+import {AccepterRdvComponent} from "./detail-profile/detail-profileM/accepter-rdv/accepter-rdv.component";
+import {ValiderFactureComponent} from "./detail-profile/detail-profileM/valider-facture/valider-facture.component";
+import {
+  DetailAccptedApntComponent
+} from "./detail-profile/detail-profileM/detail-accpted-apnt/detail-accpted-apnt.component";
+import {RdvSansMedComponent} from "./detail-profile/detail-profileP/rdv-sans-med/rdv-sans-med.component";
+import {RdvAvecMedComponent} from "./detail-profile/detail-profileP/rdv-avec-med/rdv-avec-med.component";
 
 const routes: Routes = [
   {path : '', component: AcceuilContentComponent},
@@ -81,6 +88,9 @@ const routes: Routes = [
       {path : 'dashboardMed' , component : DashboardComponent},
       {path : 'parametreMed' , component : ParametresMComponent},
       {path : 'detailMsg/:id' , component : DetailMessageComponent},
+      {path: 'acceptedRdv' , component: AccepterRdvComponent},
+      {path : 'validerFacture/:idAp', component: ValiderFactureComponent},
+      {path: 'detailAccptedApnt/:id', component: DetailAccptedApntComponent}
     ] , canActivate:[AuthGuard], data:{role:['DOCTOR']}
   },
   {path : 'profileP' , component : ProfilePatientComponent },
@@ -118,7 +128,10 @@ const routes: Routes = [
       {path : 'formuleRndv', component : FormuleRndvComponent, canActivate:[AuthGuard], data:{role:['PATIENT']}},
       { path: 'messagesfromAdmin' , component: MessagesfromAdminComponent},
       {path : 'dashboardAdmin' , component: DashboardAdminComponent , canActivate:[AuthGuard], data:{role:['PATIENT']}},
-      {path : "listRdv" , component: ListeRendezVousComponent ,  canActivate:[AuthGuard], data:{role:['PATIENT']}}
+      {path : "listRdv" , component: ListeRendezVousComponent ,  canActivate:[AuthGuard], data:{role:['PATIENT']}},
+      {path : "rdvSansMedecin", component: RdvSansMedComponent, canActivate:[AuthGuard], data:{role:['PATIENT']}},
+      {path : "rdvAvecMed", component: RdvAvecMedComponent, canActivate:[AuthGuard], data:{role:['PATIENT']}}
+
     ]
 
   },

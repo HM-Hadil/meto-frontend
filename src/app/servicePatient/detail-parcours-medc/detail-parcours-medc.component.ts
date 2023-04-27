@@ -33,4 +33,11 @@ export class DetailParcoursMedcComponent implements OnInit {
     // Navigate back to the previous page
     this.router.navigate(['../'], { relativeTo: this.route });
   }**/
+
+
+  prendreRdvMedecin(id: any) {
+    this.share.setIdDoctor(id);
+    this.router.navigate(['/signPatient'])
+
+  }
 }

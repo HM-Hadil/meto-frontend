@@ -3,7 +3,8 @@ import {ShareServiceService} from "../../../Services/share-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {AppointementResult} from "../../../Models/AppointementResult";
-
+import { DatePipe } from '@angular/common';
+import * as moment from 'moment';
 @Component({
   selector: 'app-liste-rendez-vous',
   templateUrl: './liste-rendez-vous.component.html',
@@ -15,7 +16,8 @@ listRdv : AppointementResult[] = [];
   constructor(private share: ShareServiceService,
               private router: Router,
               private route : ActivatedRoute,
-              private http: HttpClient) { }
+              private http: HttpClient,
+             ) { }
 
   ngOnInit() {
     this.listAppointment();
@@ -39,5 +41,15 @@ listAppointment(){
 
   getToken() {
     return localStorage.getItem("token") ;
+  }
+
+  getSpecialiteWithoutBrackets(specialite: any) {
+
+  }
+
+
+
+  voirDetail() {
+
   }
 }

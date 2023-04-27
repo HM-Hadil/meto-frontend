@@ -13,20 +13,21 @@ import {UserAuthService} from "../../../Services/interceptor/user-auth.service";
   styleUrls: ['./parametres-m.component.scss']
 })
 export class ParametresMComponent implements OnInit {
-
-  medecin! : MedecinModel;
-  MedecinForm!:FormGroup;
+  changePhotoForm: FormGroup;
+  medecin!: MedecinModel;
+  MedecinForm!: FormGroup;
   userFile: any;
   public imagePath: any;
   imgURL: any = '';
   changePasswordForm!: FormGroup;
-   passwordChanged=false;
+  passwordChanged = false;
   errorMessage = '';
-  constructor(private  share: ShareServiceService,
+
+  constructor(private share: ShareServiceService,
               private router: Router,
               private http: HttpClient,
               private fb: FormBuilder,
-              private  authService : UserAuthService) {
+              private authService: UserAuthService) {
     this.MedecinForm = this.fb.group({
 
       adresse: ['', Validators.required],
@@ -43,26 +44,43 @@ export class ParametresMComponent implements OnInit {
     this.changePasswordForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       oldPassword: new FormControl('', Validators.required),
-      newPassword: new FormControl('',[ Validators.required,Validators.minLength(6)]),
-      confirmPassword: new FormControl('', Validators.required ),
+      newPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      confirmPassword: new FormControl('', Validators.required),
 
     }, {
       validators: this.passwordMatchValidator()
-    }
+    });
 
-);
+    this.changePhotoForm = this.fb.group({
+      adresse: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      firstname: ['', Validators.required],
+      gender: ['', Validators.required],
+      image: ['', Validators.required],
+      lastname: ['', Validators.required],
+
+      experience: this.fb.array([]),
+
+      parcours: this.fb.array([]),
+      password: ['', Validators.required],
+      specialite:  [''],
+      surgeries: this.fb.array([]),
+      telephone: ['', Validators.required],
+      ville: ['', Validators.required]
+    });
 
 
   }
+
   passwordMatchValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: boolean } | null => {
       const newPassword = control.get('newPassword')?.value;
       const confirmPassword = control.get('confirmPassword')?.value;
-      console.log("newPass =", newPassword, "confirm pass=",confirmPassword)
+      console.log("newPass =", newPassword, "confirm pass=", confirmPassword)
 
-      return newPassword === confirmPassword ? null : { passwordMismatch: true };    };
+      return newPassword === confirmPassword ? null : {passwordMismatch: true};
+    };
   }
-
 
 
   ngOnInit(): void {
@@ -85,48 +103,50 @@ export class ParametresMComponent implements OnInit {
           image: this.imgURL,
           ville: this.medecin.ville,
           parcours: [],
-          experience:[]
+          experience: []
         })
 
 
-      for (const item of this.medecin.parcours) {
-        const parcoursFormGroup = this.fb.group({
-          diploma: [item.diploma, Validators.required],
-          establishment: [item.establishment, Validators.required],
-          field: [item.field, Validators.required],
-        });
+        for (const item of this.medecin.parcours) {
+          const parcoursFormGroup = this.fb.group({
+            diploma: [item.diploma, Validators.required],
+            establishment: [item.establishment, Validators.required],
+            field: [item.field, Validators.required],
+          });
 
-        // Add the form group to the form array
-        this.parcours.push(parcoursFormGroup);
+          // Add the form group to the form array
+          this.parcours.push(parcoursFormGroup);
 
-      }
+        }
 
 
         for (const item of this.medecin.experience) {
           const experienceFormGroup = this.fb.group({
-            establishment : [item.establishment, Validators.required],
-            specialty : [item.specialty, Validators.required],
+            establishment: [item.establishment, Validators.required],
+            specialty: [item.specialty, Validators.required],
           });
 
           // Add the form group to the form array
           this.experience.push(experienceFormGroup);
 
         }
-      console.log("info users by id :", this.medecin)
+        console.log("info users by id :", this.medecin)
       });
     }
   }
+
   get parcours() {
-    return  this.MedecinForm.controls["parcours"] as FormArray;
+    return this.MedecinForm.controls["parcours"] as FormArray;
 
   }
+
   get experience() {
-    return  this.MedecinForm.controls["experience"] as FormArray;
+    return this.MedecinForm.controls["experience"] as FormArray;
 
   }
 
-  addNewParcours(){
-    const parcoursFormGroup =this.fb.group({
+  addNewParcours() {
+    const parcoursFormGroup = this.fb.group({
       diploma: ['', Validators.required],
       establishment: ['', Validators.required],
       field: ['', Validators.required],
@@ -135,8 +155,8 @@ export class ParametresMComponent implements OnInit {
 
   }
 
-  addNewExperience(){
-    const experienceFormGroup =this.fb.group({
+  addNewExperience() {
+    const experienceFormGroup = this.fb.group({
       speciality: ['', Validators.required],
       establishment: ['', Validators.required],
 
@@ -148,14 +168,14 @@ export class ParametresMComponent implements OnInit {
   remove(Index: number) {
     this.parcours.removeAt(Index);
   }
+
   removeEx(Index: number) {
     this.experience.removeAt(Index);
   }
 
   getToken() {
-    return localStorage.getItem("token") ;
+    return localStorage.getItem("token");
   }
-
 
 
   onSubmit(): void {
@@ -187,8 +207,13 @@ export class ParametresMComponent implements OnInit {
     }
   }
 
-  get oldPassword() { return this.changePasswordForm.get('oldPassword'); }
-  get newPassword() { return this.changePasswordForm.get('newPassword'); }
+  get oldPassword() {
+    return this.changePasswordForm.get('oldPassword');
+  }
+
+  get newPassword() {
+    return this.changePasswordForm.get('newPassword');
+  }
 
 
   //upload Image
@@ -202,10 +227,38 @@ export class ParametresMComponent implements OnInit {
 
       this.imagePath = file;
       reader.readAsDataURL(file);
-      reader.onload = (_event) => {
+      reader.onload = (e: any) => {
         this.imgURL = reader.result;
+        this.imagePath = e.target.result;
       };
     }
   }
 
+  changePhoto() {
+    let data = this.changePhotoForm.value;
+    const token = this.getToken();
+    let medecins = new MedecinModel(
+      data.id,
+      data.firstname,
+      data.lastname,
+      data.email,
+      data.password,
+      data.ville,
+      data.adresse,
+      data.specialite,
+      data.gender,
+      this.imagePath,
+      data.telephone,
+      data.experience,
+      data.parcours,
+      data.surgeries
+    );
+
+    if (token) {
+      //Decode the token to get the payload (which contains user information
+      const payload = JSON.parse(window.atob(token.split('.')[1]));
+      const id = payload.sub;
+        this.share.updatePhoto(id,medecins).subscribe();
+    }
+  }
 }

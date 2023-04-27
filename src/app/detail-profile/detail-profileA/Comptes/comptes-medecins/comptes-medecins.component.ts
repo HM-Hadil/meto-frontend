@@ -44,6 +44,7 @@ return this.share.getDisableddoctor().subscribe(
   }
   getSpecialiteWithoutBrackets(specialite: string): string {
     return specialite.replace(/\[|\]/g, '');}
+
   seeDetails(id:number){
     this.router.navigate(['detail-compte-Medecin',id]);
 

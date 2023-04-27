@@ -36,10 +36,12 @@ export class ChirurgiesComponent implements OnInit {
     } catch (e) {}
   }
 
-  prendreRDV(id:string){
-    this.router.navigate(['signPatient'])
-    this.share.idChirurgie=id;
-    console.log('id chirurgie', id)
+  prendreRDV(idC:string){
+    this.router.navigate(['/loginPatient'])
+    console.log('id chirurgie', idC)
+
+      this.share.setIdChirurgie(idC);
+
 
   }
 

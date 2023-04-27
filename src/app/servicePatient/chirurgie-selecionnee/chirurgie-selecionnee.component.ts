@@ -32,6 +32,7 @@ medecins: MedecinModel[]=[];
 
   voirDetails(id: string) {
     this.router.navigate(['detailParcoursMedecin',id])
+    this.share.setIdChirurgie(this.id);
 
   }
 }

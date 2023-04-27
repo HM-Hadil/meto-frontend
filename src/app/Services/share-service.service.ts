@@ -14,6 +14,8 @@ import {AppointementResult} from "../Models/AppointementResult";
 import {UpdateAppointmentRequest} from "../Models/UpdateAppointmentRequest";
 import { AppointmentStatsResult } from '../Models/appointmentStatsResult';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,7 +33,21 @@ export class ShareServiceService {
   urlAffecterMedecin="http://localhost:8800/appointments/affecterMedecin"
   urlRdvPatient="http://localhost:8800/appointments/getAppointmentByPatient"
 
-  idChirurgie!:string;
+
+  public setIdChirurgie(idChirurgie: string) {
+    localStorage.setItem("idChirurgie", JSON.stringify(idChirurgie));
+  }
+
+  public getIdChirurgie() {
+    return localStorage.getItem("idChirurgie");
+  }
+
+  public setIdDoctor(idDoctor :string){
+    return localStorage.setItem("idDoctor",JSON.stringify(idDoctor))
+  }
+  public getIdDoctor(){
+    return localStorage.getItem("idDoctor")
+  }
 
   private user!: MedecinModel;
   private errorMessage!: string;
@@ -230,10 +246,11 @@ export class ShareServiceService {
 
 
 
-  createAppointment(appointment: AppointmentRequest): Observable<any> {
-
-
-    return this.http.post(environment.api+"Appointements/createAppointement", appointment);
+  createAppointment(request: AppointmentRequest): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post('http://localhost:8800/appointments/createAppointement',  request,{headers} );
   }
 
   getAllAppointments():Observable<AppointementResult[]>{
@@ -284,7 +301,21 @@ export class ShareServiceService {
 
   getDoctorsByChirurgie(chirurgieId : string):Observable<MedecinModel[]>{
     return this.http.get<MedecinModel[]>(environment.api+`doctors/surgery/${chirurgieId}`);
-
   }
+
+  accepterRdv(idAp: string):Observable<AppointementResult>{
+    return this.http.put<AppointementResult>(environment.api+`appointments/accepterAppointment/${idAp}`,null);
+  }
+  rejectRdv(idAp: string):Observable<AppointementResult>{
+    return this.http.put<AppointementResult>(environment.api+`appointments/rejectAppointment/${idAp}`,null);
+  }
+
+  getAllAcceptedAppointementByDcotorId(id: string):Observable<AppointementResult[]>{
+    return this.http.get<AppointementResult[]>(environment.api+`appointments/getAccptedAppointmentByDoctor/${id}`);
+  }
+  updatePhoto(idD: string, req:MedecinModel):Observable<MedecinModel>{
+    return this.http.put<MedecinModel>(environment.api+`doctors/updatePhotoDoctor/${idD}`,req);
+  }
+
 }
 

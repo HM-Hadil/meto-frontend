@@ -37,6 +37,8 @@ medecin! : MedecinModel;
       return null;
     }
   }
+  getSpecialiteWithoutBrackets(specialite: string): string {
+    return specialite.replace(/\[|\]/g, '');}
 
 
   getToken() {

@@ -1,6 +1,7 @@
 import {PatientModel} from "./PatientModel";
 export class AppointmentRequest {
   public constructor(
+    public id : string,
     public age: number,
     public dateRDV: Date,
     public doctorId: number,

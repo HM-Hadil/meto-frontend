@@ -55,7 +55,7 @@
     <span style="color: #336DA5 ; margin-top: 1rem">
       Date de rendez-vous
     </span>
-    <h6 style="font-weight: bold">{{apntmnt.dateRDV}}
+    <h6 style="font-weight: bold">{{apntmnt.dateRDV | date: 'yyyy-MM-dd / hh:mm a'}}
       <span><i class="bi bi-calendar-date-fill" style="color: indianred ;"></i></span>
     </h6>
   </div>
@@ -76,14 +76,9 @@
 
   </div>
 
-  <div class=" row
-  btn2">
-        <button >Rejeter Demande</button>
-      </div>
-
-      <div class="btn">
-        <button (click)="affecterMedecin(apntmnt.surgery.id,apntmnt.id)">Affecter un Medecin</button>
-      </div>
-
+  <div class="row btns">
+    <button class="btn1" >Rejeter Demande</button>
+    <button class="btn2"  (click)="affecterMedecin(apntmnt.surgery.id,apntmnt.id)">Affecter un Medecin</button>
+  </div>
 
 </div>

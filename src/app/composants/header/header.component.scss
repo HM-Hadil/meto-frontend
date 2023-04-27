@@ -8,6 +8,28 @@ a{
 .right{
   float: right !important;
 }
+.navbar {
+  transition: background-color 0.3s ease-in-out; /* Add a smooth transition effect */
+}
+.navbar-scroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  /* Add other styles as needed */
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: transparent; /* Change to the desired background color */
+}
+.navbar-nav > li:not(:last-child) {
+  margin-right: 6rem; /* Adjust the margin value as needed */
+}
 .image{
   width: 3rem;
   height: 3rem;
@@ -28,11 +50,8 @@ a{
 }
 
 nav{
-
-  margin-top: 0.5rem;
-
-  height: 3rem;
-  background-color: transparent;
+  height: 5rem;
+  background-color: transparent !important;
 
   width: 100%;
   padding: 15px 50px;

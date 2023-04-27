@@ -23,7 +23,11 @@ this.getUserInfo();
 
   }
 
-   openNav() {
+  getSpecialiteWithoutBrackets(specialite: string): string {
+    return specialite.replace(/\[|\]/g, '');}
+
+
+  openNav() {
 
      const closebtnOpen= document.getElementById(
        'openbtn' ,

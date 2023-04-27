@@ -1,27 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from "@angular/router";
-import { AppointmentRequest } from 'src/app/Models/AppointmentRequest';
-import {ShareServiceService} from "../../../Services/share-service.service";
-import {UserAuthService} from "../../../Services/interceptor/user-auth.service";
 import {PatientModel} from "../../../Models/PatientModel";
-import {TypeChirurgie} from "../../../Models/typeChirurgie/type-chirurgie";
-import * as alertify from "alertifyjs"
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {UserAuthService} from "../../../Services/interceptor/user-auth.service";
+import {ShareServiceService} from "../../../Services/share-service.service";
+import {AppointmentRequest} from "../../../Models/AppointmentRequest";
+import alertify from "alertifyjs";
+import {MedecinModel} from "../../../Models/MedecinModel";
+
 @Component({
-  selector: 'app-formule-rndv',
-  templateUrl: './formule-rndv.component.html',
-  styleUrls: ['./formule-rndv.component.scss']
+  selector: 'app-rdv-avec-med',
+  templateUrl: './rdv-avec-med.component.html',
+  styleUrls: ['./rdv-avec-med.component.scss']
 })
-export class FormuleRndvComponent implements OnInit {
-idCh!:string;
-name!:any;
-idP!:string;
-patient! : PatientModel;
-appointmentForm!: FormGroup;
+export class RdvAvecMedComponent implements OnInit {
+
+  idChirurgie!:any;
+  idDoctor!:any;
+  name!:any;
+  idP!:string;
+  medecin!:MedecinModel;
+  patient! : PatientModel;
+  appointmentForm!: FormGroup;
   userFile: any;
   imagePath: any ='';
   imgURL: any = '';
-  chirurgieList: TypeChirurgie[]= [];
   constructor(private route:ActivatedRoute,
               private router: Router,
               private userAuth : UserAuthService,
@@ -35,7 +38,7 @@ appointmentForm!: FormGroup;
       image: ['', Validators.required],
       note: ['', Validators.required],
       phone: ['', Validators.required],
-     // surgeryId: [this.idCh, Validators.required],
+      // surgeryId: [this.idCh, Validators.required],
       typeSang: ['', Validators.required],
       ville: ['', Validators.required],
       weight: ['', Validators.required],
@@ -44,13 +47,16 @@ appointmentForm!: FormGroup;
   }
 
   ngOnInit(): void {
-    this.getListChirurgie();
     this.getChirurgieById();
     this.getPatientInfo();
+    this.getDoctorById()
     this.appointmentForm.patchValue({patientId:this.idP,
-      //surgeryId:this.idCh,
-      });
+      surgeries  :this.idChirurgie.replace(/"/g, ''),
+      doctorId:this.idDoctor.replace(/"/g, '')
+    });
   }
+
+
 
 
   changeEventChirurgie(event: any) {
@@ -59,59 +65,58 @@ appointmentForm!: FormGroup;
     selectedSurgeries.push(new FormControl(surgery));
   }
 
-  //get All Chirurgie
-  getListChirurgie() {
-    this.share.getAllChirurgie().subscribe(
-      (response) => {
-        this.chirurgieList = response;
-        console.log('reload data ==>>', this.chirurgieList);
-      },
-
-      (err) => {
-        console.error('Error ', err);
-      }
-    );
-  }
 
   getChirurgieById(){
-    this.share.getChirurgirById(this.idCh).subscribe(res=>{
+
+    this.idChirurgie = this.share.getIdChirurgie()
+    console.log("id chirurgie", this.idChirurgie)
+
+    this.share.getChirurgirById(this.idChirurgie.replace(/"/g, '')).subscribe(res=>{
       this.name=res.name;
-      console.log("chirurgie",this.name);
+      console.log("name",this.name);
+    })
+  }
+  getDoctorById(){
+    this.idDoctor = this.share.getIdDoctor()
+    console.log("id doctor", this.idDoctor)
+
+    this.share.getActivateDoctor(this.idDoctor.replace(/"/g, '')).subscribe(res=>{
+      this.medecin=res;
     })
   }
 
   onSubmit() {
-    if (this.appointmentForm.invalid) {
+    if (this.appointmentForm.valid) {
       let data=this.appointmentForm.value;
       console.log("data form:", data);
-    const appointmentRequest = new AppointmentRequest(
-      data.id,
-      data.age,
-      data.dateRDV,
-      data.doctorId,
-      this.imagePath,
-      data.note,
-      data.patientId,
-      data.phone,
-      data.surgeries,
-      data.typeSang,
-      data.ville,
-      data.weight,
+      const appointmentRequest = new AppointmentRequest(
+        data.id,
+        data.age,
+        data.dateRDV,
+        data.doctorId,
+        this.imagePath,
+        data.note,
+        data.patientId,
+        data.phone,
+        data.surgeries,
+        data.typeSang,
+        data.ville,
+        data.weight,
 
-    );
-    console.log(appointmentRequest);
+      );
+      console.log(appointmentRequest);
 
-    this.share.createAppointment(appointmentRequest).subscribe(resultRDV=>{
-      console.log(resultRDV);
+      this.share.createAppointment(appointmentRequest).subscribe(resultRDV=>{
+        console.log(resultRDV);
 
-    })
+      })
       alertify.success("chirurgie ajoutée ")
     }
     else {
-        alertify.error("insérer données valide ! ")
+      alertify.error("insérer données valide ! ")
 
-      }
     }
+  }
 
 
 
@@ -158,4 +163,6 @@ appointmentForm!: FormGroup;
   changeEventSpecialite($event: Event) {
 
   }
+
+
 }

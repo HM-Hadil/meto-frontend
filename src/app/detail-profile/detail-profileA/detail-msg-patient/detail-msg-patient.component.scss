@@ -30,43 +30,52 @@ p{
   background-color: transparent;
 }
 .btn button{
-  width: 14rem;
+  width: 10rem;
   height: 2rem;
-  text-align: center;
-  border: none;
-  border-radius:15px;
-  background-color: #1580EB;
-  color: white;
+  border-radius: 10px;
+  margin: auto;
 
-}
-.btn button:hover{
-  background-color:white ;
-  color: #1580EB;
-  transition: 1s;
-  border: 1px solid #1580EB;
 }
 .btn{
   border: none;
 }
-
-.btn2 button{
-  width: 14rem;
+.btns  {
+  width: 26rem;
   height: 2rem;
-  text-align: center;
+  margin: auto;
   border: none;
-  border-radius:20px;
-  background-color: white;
-  color: #1580EB;
-
-  border: 1px solid #1580EB;
-
-
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.btn2{
+  width: 12rem;
+  height: 2rem;
+  background-color: #0066FF;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  margin-left: 1rem;
 }
 
-.btn2 button:hover{
-  background-color:#1580EB ;
-  color: white;
+.btn2:hover{
+  background-color: transparent;
+  color: #0066FF;
+  border: 1px solid #0066FF ;
   transition: 1s;
-  border: 1px solid #1580EB;
+}
+.btn1{
+  width: 12rem;
+  height: 2rem;
+  background-color: transparent;
+  color: #0066FF;
+  border-radius: 10px;
+  border: 1px solid #0066FF ;
+
+}
+.btn1:hover{
+  background-color: #0066FF;
+  color: #D2E9FF;
+  border: none;
+  transition: 1s;
 }
 

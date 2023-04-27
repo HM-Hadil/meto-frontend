@@ -10,11 +10,6 @@
                 <div class="p-5">
                   <h3 class="fw-normal mb-5" style="color: #5e72e4;">Infomation Generale </h3>
 
-
-
-
-
-
                   <div class="row">
                     <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
 
@@ -57,9 +52,8 @@
 
                     </div>
                     <input type="text" formControlName="patientId"  required style="display: none"/>
+                    <input type="text" formControlName="doctorId" required style="display: none"/>
 
-                    <input type="text" formControlName="surgeryId"  required style="display: none"/>
-                    <input type="text" formControlName="doctorId"  required style="display: none"/>
 
                   </div>
                   <div class="form-group mt-4">
@@ -82,12 +76,13 @@
                       <div class="mb-6 pb-2 ">
                         <div class="form-outline form-white">
                           <div><label class="form-label" >Type de chirurgie</label></div>
-                          <h5>{{name}}</h5>
-                          <!--  <select >
-                              <option >chirurgie des valves cardiaque</option>
-                              <option>chirurgie orphépidique</option>
-                              <option>chirurgie esthetique</option>
-                            </select>-->
+                          <select  formControlName="surgeries"
+                                   (change)=" changeEventChirurgie
+                                   ($event)" >
+
+                            <option value=""><span>Selectionner Chirurgie </span> </option>
+                            <option *ngFor="let chirurgie of chirurgieList" [value]="chirurgie.id">{{ chirurgie.name }}</option>
+                          </select>
                         </div>
                       </div>
 
@@ -98,7 +93,7 @@
                         <div class="form-outline form-white">
                           <div><label class="form-label" >choisire Médecin</label></div>
 
-                          <select disabled>
+                          <select disabled >
                             <option >---</option>
                             <option>Docteur Mohammed karim </option>
                             <option>Docteur Maya rjab</option>

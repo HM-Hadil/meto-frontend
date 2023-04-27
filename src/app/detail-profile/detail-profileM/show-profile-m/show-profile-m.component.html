@@ -6,7 +6,7 @@
       <img src="{{medecin.image}}">
     </div>
     <h4 style="margin-top: 1rem">Docteur {{medecin.firstname}} {{medecin.lastname}}</h4>
-    <h6 style="color: #0066FF" >{{medecin.specialite}}</h6>
+    <h6 style="color: #0066FF" >{{getSpecialiteWithoutBrackets(medecin.specialite)}}</h6>
   </div>
 
   <div class="card scnd-info">
