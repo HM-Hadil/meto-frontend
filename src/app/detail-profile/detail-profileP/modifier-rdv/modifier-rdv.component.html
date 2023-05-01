@@ -1,0 +1,171 @@
+<section class="h-100 h-custom gradient-custom-2">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <form [formGroup]="RdvForm" (ngSubmit)="onSubmit()">
+          <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+            <div class="card-body p-0">
+              <div class="row g-0">
+                <div class="col-lg-6">
+                  <div class="p-5">
+                    <h3 class="fw-normal mb-5" style="color: #5e72e4;">Infomation Generale </h3>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
+
+                        <div class="form-outline">
+                          <label class="form-label" for="form3Examplev5">Ville</label>
+                          <input type="text" id="form3Examplev5" class="form-control form-control-lg" formControlName="ville" required/>
+
+                        </div>
+
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
+
+                        <div class="form-outline">
+                          <label class="form-label" for="form3Examplev6">Age</label>
+                          <input type="text" id="form3Examplev6" class="form-control form-control-lg" formControlName="age" required/>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="row" style="margin-top: 2rem">
+                      <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
+
+                        <div class="form-outline">
+                          <label class="form-label" for="form3Examplev7">Numéro téléphone</label>
+                          <input type="text" id="form3Examplev7" class="form-control form-control-lg" formControlName="phone" required/>
+
+                        </div>
+
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
+
+                        <div class="form-outline">
+                          <label class="form-label" for="form3Examplev77">Poids</label>
+                          <input type="number" id="form3Examplev77" class="form-control form-control-lg" formControlName="weight" required />
+
+                        </div>
+
+                      </div>
+                      <input type="text" formControlName="patientId"  required style="display: none"/>
+
+
+                    </div>
+                    <div class="form-group mt-4">
+                      <label for="exampleFormControlTextarea1">Description</label>
+                      <textarea type="text" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                formControlName="note" required></textarea>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <div class="col-lg-6 bg-indigo text-white">
+                  <div class="p-5">
+                    <h3 class="fw-normal mb-5">Information Sensible</h3>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
+
+                        <div class="mb-6 pb-2 ">
+                          <div class="form-outline form-white">
+                            <div><label class="form-label" >Type de chirurgie</label></div>
+                            <select  formControlName="surgeries"
+                                     (change)=" changeEventChirurgie
+                                   ($event)" >
+
+                              <option value=""><span>Selectionner Chirurgie </span> </option>
+                              <option *ngFor="let chirurgie of chirurgieList" [value]="chirurgie.id">{{ chirurgie.name }}</option>
+
+                            </select>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
+
+                        <div class="mb-6 pb-2 ">
+                          <div class="form-outline form-white">
+                            <div  *ngIf="rdvmodel"><label class="form-label" >choisire Médecin</label></div>
+
+                            <select formControlName="doctorId" >
+                              <option  *ngFor="let doctor of medecinList" [value]="doctor.id">{{ doctor.firstname }} {{doctor.lastname}}</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+
+
+
+
+
+                    <div class="row">
+                      <div class="col-md-5 mt-4 mb-4 pb-2">
+                        <label >Reserver date</label>
+                        <div class="md-form md-outline input-with-post-icon datepicker" id="customDays">
+                          <input type="datetime-local" id="datetime" name="datetime" formControlName="dateRDV"
+>
+                        </div>
+
+                      </div>
+                      <div class="col-md-4 mb-4 ml-4 pt-4 mb-md-0 pb-md-0">
+                        <div class="form-outline">
+                          <div><label class="form-label" for="form3Examplev11">Type de sang</label></div>
+
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="typeSang" value="A" id="form3Examplev11" formControlName="typeSang">
+                            <label class="form-check-label" for="form3Examplev11">A</label>
+                          </div>
+
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="typeSang" value="B" id="form3Examplev12"  formControlName="typeSang">
+                            <label class="form-check-label" for="form3Examplev12">B</label>
+                          </div>
+
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="typeSang" value="AB" id="form3Examplev13" formControlName="typeSang">
+                            <label class="form-check-label" for="form3Examplev13">AB</label>
+                          </div>
+
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="typeSang" value="O" id="form3Examplev14"  formControlName="typeSang">
+                            <label class="form-check-label" for="form3Examplev14">O</label>
+                          </div>
+
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="typeSang" value="inconnu" id="form3Examplev15"  formControlName="typeSang">
+                            <label class="form-check-label" for="form3Examplev15">Inconnu</label>
+                          </div>
+
+                        </div>
+                      </div>
+
+
+                    </div>
+
+
+
+                  </div>
+                </div>
+
+                <button class="btn" routerLinkActive="listRdv"  style="background-color: whitesmoke;
+                color: #2e59d9;border:1px solid #2e59d9"
+                >Annuler</button>
+                <button type="submit" class="btn" >Modifier</button>
+
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

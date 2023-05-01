@@ -72,6 +72,7 @@ import { ValiderFactureComponent } from './detail-profile/detail-profileM/valide
 import { DetailAccptedApntComponent } from './detail-profile/detail-profileM/detail-accpted-apnt/detail-accpted-apnt.component';
 import { RdvSansMedComponent } from './detail-profile/detail-profileP/rdv-sans-med/rdv-sans-med.component';
 import { RdvAvecMedComponent } from './detail-profile/detail-profileP/rdv-avec-med/rdv-avec-med.component';
+import { ModifierRdvComponent } from './detail-profile/detail-profileP/modifier-rdv/modifier-rdv.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,6 +125,7 @@ import { RdvAvecMedComponent } from './detail-profile/detail-profileP/rdv-avec-m
     DetailAccptedApntComponent,
     RdvSansMedComponent,
     RdvAvecMedComponent,
+    ModifierRdvComponent,
   ],
     imports: [
         BrowserModule,

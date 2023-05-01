@@ -1,0 +1,94 @@
+@media (min-width: 1025px) {
+  .h-custom {
+    height: 100vh !important;
+  }
+}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
+}
+.card-registration .select-arrow {
+  top: 13px;
+}
+
+.gradient-custom-2 {
+
+}
+
+.bg-indigo {
+  background-color: #5e72e4;
+}
+@media (min-width: 992px) {
+  .card-registration-2 .bg-indigo {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+}
+@media (max-width: 991px) {
+  .card-registration-2 .bg-indigo {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+}
+.btn{
+  width: 12rem;
+  margin: 2rem auto;
+  background-color: #5e72e4;
+  height: 2.5rem;
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+}
+.btn:hover
+{
+  color: #5e72e4;
+  background-color: transparent;
+  border: 1px solid #5e72e4;
+  transition: 1s;
+}
+
+select{
+  border-radius: 10px;
+  color: #5e72e4;
+  height: 2rem;
+  width: 14rem;
+  border: 1px solid  white;
+  border: none;
+
+}
+option{
+  color: black;
+}
+.file{
+  width: 18rem;
+  height: 2rem;
+  border: 1px solid white;
+  border: none;
+
+}
+/* Style for the input element */
+input[type=datetime-local] {
+  /* Set font size, font family and background color */
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+
+  /* Set border properties */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+
+  /* Set padding and margin */
+  padding: 6px 10px;
+  margin: 10px 0;
+}
+
+/* Style for the label */
+label[for=datetime] {
+  /* Set font size and font family */
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  margin-right: 10px; /* Add some space between label and input */
+}

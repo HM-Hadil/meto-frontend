@@ -13,6 +13,7 @@ import {AppointmentRequest} from "../Models/AppointmentRequest";
 import {AppointementResult} from "../Models/AppointementResult";
 import {UpdateAppointmentRequest} from "../Models/UpdateAppointmentRequest";
 import { AppointmentStatsResult } from '../Models/appointmentStatsResult';
+import {updateAppointmentReq} from "../Models/updateAppointmentReq";
 
 
 
@@ -317,5 +318,13 @@ export class ShareServiceService {
     return this.http.put<MedecinModel>(environment.api+`doctors/updatePhotoDoctor/${idD}`,req);
   }
 
+
+  getRdvtPerMonth(id:string):Observable<any>{
+    return this.http.get(environment.api+`appointments/appointmentsPerMont/${id}`);
+  }
+  updateAppointment(idApp:string,req:updateAppointmentReq):Observable<updateAppointmentReq> {
+    return this.http.put<updateAppointmentReq>(environment.api + `appointments/updateAppointment/${idApp}`, req)
+
+  }
 }
 

@@ -105,7 +105,8 @@ appointmentForm!: FormGroup;
       console.log(resultRDV);
 
     })
-      alertify.success("chirurgie ajoutée ")
+      alertify.success("Rendez-vous  ajoutée ")
+      this.router.navigate(['listRdv'])
     }
     else {
         alertify.error("insérer données valide ! ")

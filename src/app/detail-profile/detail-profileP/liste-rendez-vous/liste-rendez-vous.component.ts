@@ -52,4 +52,9 @@ listAppointment(){
   voirDetail() {
 
   }
+
+  modifier(id: string) {
+    this.router.navigate(['modifierRdv', id])
+
+  }
 }

@@ -68,6 +68,7 @@ export class DashboardAdminComponent implements OnInit {
 
 
   }
+
 getMostFrequentDoctor(){
   this.http.get('http://localhost:8800/appointments/mostFrequentDoctorId').subscribe(
     (response:any)=>{
@@ -77,6 +78,7 @@ getMostFrequentDoctor(){
       this.d_image=response[0][3];
       this.d_count=response[0][4]
       this.medecin=response[0][3];
+      console.log("model",response)
       console.log("image mdc",this.medecin)
     }
   )
@@ -90,8 +92,6 @@ getMostFrequentDoctor(){
         this.image= response[0][1]
         this.count = response[0][2];
         console.log("image",this.image)
-
-
 
         // Set chart data and labels
         this.doughnutChartData.labels = [this.name];

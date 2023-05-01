@@ -13,7 +13,6 @@ import * as alertify from "alertifyjs"
 })
 export class AjoutChirurgieComponent implements OnInit {
   ChirurgieForm!: FormGroup;
-  //imageUrl : string ='assets/image/medcin4.jfif';
   userFile: any;
   public imagePath: any;
   imgURL: any = '';
@@ -38,7 +37,7 @@ export class AjoutChirurgieComponent implements OnInit {
     });
 
   }
-  
+
 
   ngOnInit(): void {}
 
@@ -53,7 +52,7 @@ export class AjoutChirurgieComponent implements OnInit {
       data.description,
       this.imgURL,
       data.duration,
- 
+
     );
     console.log(typeChirurgie);
 
@@ -84,7 +83,7 @@ export class AjoutChirurgieComponent implements OnInit {
         this.imgURL = reader.result;
       };
     }
-    
+
   }
 
 }
