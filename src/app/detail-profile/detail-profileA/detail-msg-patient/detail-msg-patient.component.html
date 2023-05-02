@@ -1,5 +1,5 @@
-
-<div class="col" >
+<div class="row" style="display: flex">
+<div class="col" style="width: auto; height: auto" >
   <div class="row"  *ngIf="apntmnt" style="margin-top: 2rem">
     <div style="float: left">
       <h3 style="color: #0066FF">{{apntmnt.patient.firstname}} {{apntmnt.patient.lastname}}</h3>
@@ -59,8 +59,6 @@
       <span><i class="bi bi-calendar-date-fill" style="color: indianred ;"></i></span>
     </h6>
   </div>
-
-
   <div class="card content" >
     <h5 style="color: #3F6589">Description</h5>
     <p>
@@ -69,16 +67,21 @@
 
   </div>
 
+</div>
+<div style="width: auto; height: auto">
+
   <div class="card contentimg" >
     <div class="image">
       <img src="{{apntmnt.image}}">
     </div>
 
   </div>
+</div>
+</div>
 
   <div class="row btns">
-    <button class="btn1" >Rejeter Demande</button>
+    <button class="btn1" (click)="rejeterAp(apntmnt.id)">Rejeter Demande</button>
     <button class="btn2"  (click)="affecterMedecin(apntmnt.surgery.id,apntmnt.id)">Affecter un Medecin</button>
   </div>
 
-</div>
+

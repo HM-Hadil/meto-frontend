@@ -57,4 +57,12 @@ export class DetailMsgPatientComponent implements OnInit {
     this.router.navigate(['affecterMedecin',idD,idAp])
 
   }
+
+  rejeterAp(id: string) {
+    this.share.rejectRdv(id).subscribe(data => {
+      console.log("new data for rejected status", data)
+
+    })
+    this.router.navigate(['/rdvAvecMedecin']);
+  }
 }

@@ -326,5 +326,9 @@ export class ShareServiceService {
     return this.http.put<updateAppointmentReq>(environment.api + `appointments/updateAppointment/${idApp}`, req)
 
   }
+  updateDoctor(idD: string, req:MedecinModel):Observable<MedecinModel>{
+    return this.http.put<MedecinModel>(environment.api+`doctors/updateDoctor/${idD}`,req);
+  }
+
 }
 

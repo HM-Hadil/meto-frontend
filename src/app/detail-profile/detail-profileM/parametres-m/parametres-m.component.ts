@@ -22,6 +22,7 @@ export class ParametresMComponent implements OnInit {
   changePasswordForm!: FormGroup;
   passwordChanged = false;
   errorMessage = '';
+  id!:string
 
   constructor(private share: ShareServiceService,
               private router: Router,
@@ -257,8 +258,47 @@ export class ParametresMComponent implements OnInit {
     if (token) {
       //Decode the token to get the payload (which contains user information
       const payload = JSON.parse(window.atob(token.split('.')[1]));
-      const id = payload.sub;
-        this.share.updatePhoto(id,medecins).subscribe();
+    const id = payload.sub;
+        this.share.updatePhoto(this.id,medecins).subscribe();
     }
   }
+
+  updateDoctor() {
+    let data = this.MedecinForm.value;
+    console.log("data from form-->",data);
+    let medecins = new MedecinModel(
+      data.id,
+      data.firstname,
+      data.lastname,
+      data.email,
+      data.password,
+      data.ville,
+      data.adresse,
+      data.specialite,
+      data.gender,
+      this.imgURL,
+      data.telephone,
+      data.experience,
+      data.parcours,
+      data.surgeries
+
+
+    );
+    const token = this.getToken();
+    if (token) {
+      //Decode the token to get the payload (which contains user information
+      const payload = JSON.parse(window.atob(token.split('.')[1]));
+      const id = payload.sub;
+      this.share.updatePhoto(id,medecins).subscribe();
+
+    this.share.updateDoctor(id,medecins).subscribe(data=>{
+      console.log("back form",data)
+      alertify.success("La mise à jours de votre profile a été effectuée avec succès ")
+      window.location.reload();
+    })}
+  }
+  getSpecialiteWithoutBrackets(specialite: string): string {
+    return specialite.replace(/\[|\]/g, '');}
+
+
 }
