@@ -42,8 +42,9 @@ export class UpdateChirurgieComponent implements OnInit {
       this.ChirurgieForm.setValue({
         name: this.chirurgieModel.name,
         description: this.chirurgieModel.description,
-        image: this.imgURL,
-        duration: this.chirurgieModel.duration
+        duration: this.chirurgieModel.duration  ,
+        image: this.chirurgieModel.image,
+
       });
     });
   }

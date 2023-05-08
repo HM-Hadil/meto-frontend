@@ -57,8 +57,8 @@ export class SignUpPatientComponent implements OnInit {
       this.router.navigate(['loginPatient']);
       console.log('>>>> Add patient', usersPatient);
       alertify.success("votre inscription a réussi  ")
-      alert("vos données ont été envoyées au admin " +
-        "Attendez, votre compte sera activé aprés la vérification ! ")
+      alert("vos données ont été envoyées avec succée" +
+        "Attendez,vous recevrez un e-mail pour activer votre compte ! ")
 
 
 

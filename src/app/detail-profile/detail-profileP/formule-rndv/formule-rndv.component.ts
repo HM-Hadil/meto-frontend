@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from "@angular/router";
 import { AppointmentRequest } from 'src/app/Models/AppointmentRequest';
@@ -7,12 +7,17 @@ import {UserAuthService} from "../../../Services/interceptor/user-auth.service";
 import {PatientModel} from "../../../Models/PatientModel";
 import {TypeChirurgie} from "../../../Models/typeChirurgie/type-chirurgie";
 import * as alertify from "alertifyjs"
+import {DoctorNotAvailableException} from "../../../Exception/DoctorNotAvailableException";
+import {ErrorModalComponent} from "../../../error-modal/error-modal.component";
+
+
 @Component({
   selector: 'app-formule-rndv',
   templateUrl: './formule-rndv.component.html',
   styleUrls: ['./formule-rndv.component.scss']
 })
 export class FormuleRndvComponent implements OnInit {
+  @Input() errorMessage: string | undefined;
 idCh!:string;
 name!:any;
 idP!:string;
@@ -22,13 +27,19 @@ appointmentForm!: FormGroup;
   imagePath: any ='';
   imgURL: any = '';
   chirurgieList: TypeChirurgie[]= [];
+  showDiabete = false;
+  showTension = false;
+  showAutreMaladie=false;
+  showAncienOp=false
   constructor(private route:ActivatedRoute,
               private router: Router,
               private userAuth : UserAuthService,
-              private  share: ShareServiceService ,private fb: FormBuilder) {
+              private  share: ShareServiceService ,
+              private fb: FormBuilder,
+          ) {
 
     this.appointmentForm = this.fb.group({
-      age: ['', Validators.required],
+      age: ['',[Validators.required, Validators['min'](1), Validators['max'](100)]],
       dateRDV: ['', Validators.required],
       doctorId: [''],
       patientId: ['', Validators.required],
@@ -38,8 +49,22 @@ appointmentForm!: FormGroup;
      // surgeryId: [this.idCh, Validators.required],
       typeSang: ['', Validators.required],
       ville: ['', Validators.required],
-      weight: ['', Validators.required],
+      weight: ['',[Validators.required, Validators['min'](1), Validators['max'](300)]],
       surgeries: ['', Validators.required],
+      alcoolique: ['', Validators.required],
+      tension: ['', Validators.required],
+      diabete: ['', Validators.required],
+      fumee: ['', Validators.required],
+      mesureTension: [''],
+      mesureDiabete: [''],
+      analyseDiabete: [''],
+      autreMaladie: [''],
+      desAutreMaladie: ['', Validators.required],
+      analyseAutreMaladie: [''],
+      ancienOperation: ['', Validators.required],
+      nomAncienOperation: [''],
+      analyseAncienOperation: [''],
+      autreAnalyse: [''],
     });
   }
 
@@ -52,6 +77,43 @@ appointmentForm!: FormGroup;
       });
   }
 
+  showDiabeteFields(event: Event) {
+    if ((event.target as HTMLInputElement).value === 'oui') {
+      this.showDiabete = true;
+    }
+  }
+
+  showAutreMaladieFields(event: Event) {
+    if ((event.target as HTMLInputElement).value === 'oui') {
+      this.showAutreMaladie = true;
+    }
+
+  }
+  showTensionFields(event: Event) {
+    if ((event.target as HTMLInputElement).value === 'oui') {
+      this.showTension = true;
+    }
+
+  }
+  showAncienOpFields(event: Event) {
+    if ((event.target as HTMLInputElement).value === 'oui') {
+      this.showAncienOp = true;
+    }
+  }
+
+  hideDiabeteFields() {
+    this.showDiabete = false;
+  }
+  hideTensionFields() {
+    this.showTension = false;
+  }
+  hideAncienOpFields() {
+    this.showAncienOp=false
+  }
+
+  hideAutreMaladieFields() {
+    this.showAutreMaladie=false;
+  }
 
   changeEventChirurgie(event: any) {
     const selectedSurgeries = this.appointmentForm.controls['surgeries'] as FormArray;
@@ -82,39 +144,59 @@ appointmentForm!: FormGroup;
 
   onSubmit() {
     if (this.appointmentForm.invalid) {
-      let data=this.appointmentForm.value;
-      console.log("data form:", data);
-    const appointmentRequest = new AppointmentRequest(
-      data.id,
-      data.age,
-      data.dateRDV,
-      data.doctorId,
-      this.imagePath,
-      data.note,
-      data.patientId,
-      data.phone,
-      data.surgeries,
-      data.typeSang,
-      data.ville,
-      data.weight,
+      let data=this.appointmentForm.value;}
+    const data = this.appointmentForm.value;
+    console.log("data form:", data);
 
-    );
-    console.log(appointmentRequest);
+        const appointmentRequest = new AppointmentRequest(
+          data.id,
+          data.note,
+          this.imagePath,
+          data.age,
+          data.patientId,
+          data.ville,
+          data.weight,
+        data.dateRDV,
+          data.typeSang,
+          data.phone,
+          data.surgeries,
+        data.doctorId,
+        data.alcoolique,
+        data.tension,
+        data.diabete,
+        data.fumee,
+        data.mesureTension,
+        data.mesureDiabete,
+          this.imagePath,
+        data.autreMaladie,
+        data.desAutreMaladie,
+          this.imagePath,
+        data.ancienOperation,
+        data.nomAncienOperation,
+          this.imagePath,
+          this.imagePath,
+      );
+      console.log("appopntment request",appointmentRequest);
+// Check if the dateRDV already exists in appointments
+    this.share.getAllAppointments().subscribe(appointments => {
+      const filteredAppointments = appointments.filter(a => a.dateRDV === appointmentRequest.dateRDV);
+      if (filteredAppointments.length
+        > 0) {
+        alertify.error("Le médecin a déjà un rendez-vous à cette date.");
+        return;
+      }});
+      this.share.createAppointment(appointmentRequest).subscribe(resultRDV => {
+        console.log("appointmenr result",resultRDV);
+      });
 
-    this.share.createAppointment(appointmentRequest).subscribe(resultRDV=>{
-      console.log(resultRDV);
-
-    })
-      alertify.success("Rendez-vous  ajoutée ")
-      this.router.navigate(['listRdv'])
-    }
-    else {
-        alertify.error("insérer données valide ! ")
-
-      }
-    }
+      alertify.success("Rendez-vous ajoutée ");
+      this.router.navigate(['listRdv']);
 
 
+
+
+
+}
 
   getPatientInfo():any {
     const token = this.getToken();

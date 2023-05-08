@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PatientModel} from "../../../Models/PatientModel";
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators, AbstractControl, ValidationErrors} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserAuthService} from "../../../Services/interceptor/user-auth.service";
 import {ShareServiceService} from "../../../Services/share-service.service";
@@ -15,9 +15,13 @@ import {MedecinModel} from "../../../Models/MedecinModel";
 })
 export class RdvAvecMedComponent implements OnInit {
 
+
+
   idChirurgie!:any;
   idDoctor!:any;
   name!:any;
+  nomMed!:any;
+  prenomMed!:any;
   idP!:string;
   medecin!:MedecinModel;
   patient! : PatientModel;
@@ -25,13 +29,19 @@ export class RdvAvecMedComponent implements OnInit {
   userFile: any;
   imagePath: any ='';
   imgURL: any = '';
+  showDiabete = false;
+  showTension = false;
+  showAutreMaladie=false;
+  showAncienOp=false
+
+
   constructor(private route:ActivatedRoute,
               private router: Router,
               private userAuth : UserAuthService,
               private  share: ShareServiceService ,private fb: FormBuilder) {
 
     this.appointmentForm = this.fb.group({
-      age: ['', Validators.required],
+      age: ['',[Validators.required, Validators['min'](1), Validators['max'](100)]],
       dateRDV: ['', Validators.required],
       doctorId: [''],
       patientId: ['', Validators.required],
@@ -41,8 +51,22 @@ export class RdvAvecMedComponent implements OnInit {
       // surgeryId: [this.idCh, Validators.required],
       typeSang: ['', Validators.required],
       ville: ['', Validators.required],
-      weight: ['', Validators.required],
+      weight: ['',[Validators.required, Validators['min'](1), Validators['max'](300)]],
       surgeries: ['', Validators.required],
+      alcoolique: ['', Validators.required],
+      tension: ['', Validators.required],
+      diabete: ['', Validators.required],
+      fumee: ['', Validators.required],
+      mesureTension: [''],
+      mesureDiabete: [''],
+      analyseDiabete: [''],
+      autreMaladie: [''],
+      desAutreMaladie: ['', Validators.required],
+      analyseAutreMaladie: [''],
+      ancienOperation: ['', Validators.required],
+      nomAncienOperation: [''],
+      analyseAncienOperation: [''],
+      autreAnalyse: [''],
     });
   }
 
@@ -57,8 +81,43 @@ export class RdvAvecMedComponent implements OnInit {
   }
 
 
+  showDiabeteFields(event: Event) {
+    if ((event.target as HTMLInputElement).value === 'oui') {
+      this.showDiabete = true;
+    }
+  }
 
+  showAutreMaladieFields(event: Event) {
+    if ((event.target as HTMLInputElement).value === 'oui') {
+      this.showAutreMaladie = true;
+    }
 
+  }
+  showTensionFields(event: Event) {
+    if ((event.target as HTMLInputElement).value === 'oui') {
+      this.showTension = true;
+    }
+
+  }
+  showAncienOpFields(event: Event) {
+    if ((event.target as HTMLInputElement).value === 'oui') {
+      this.showAncienOp = true;
+    }
+  }
+
+  hideDiabeteFields() {
+    this.showDiabete = false;
+  }
+  hideTensionFields() {
+    this.showTension = false;
+  }
+  hideAncienOpFields() {
+  this.showAncienOp=false
+  }
+
+  hideAutreMaladieFields() {
+    this.showAutreMaladie=false;
+  }
   changeEventChirurgie(event: any) {
     const selectedSurgeries = this.appointmentForm.controls['surgeries'] as FormArray;
     const surgery = event.target.value;
@@ -81,8 +140,10 @@ export class RdvAvecMedComponent implements OnInit {
     console.log("id doctor", this.idDoctor)
 
     this.share.getActivateDoctor(this.idDoctor.replace(/"/g, '')).subscribe(res=>{
-      this.medecin=res;
-    })
+       this.nomMed=res.firstname;
+       this.prenomMed=res.lastname;
+       console.log("nom et prenom med",this.nomMed,this.prenomMed);
+     })
   }
 
   onSubmit() {
@@ -91,17 +152,31 @@ export class RdvAvecMedComponent implements OnInit {
       console.log("data form:", data);
       const appointmentRequest = new AppointmentRequest(
         data.id,
-        data.age,
-        data.dateRDV,
-        data.doctorId,
-        this.imagePath,
         data.note,
+        this.imagePath,
+        data.age,
         data.patientId,
-        data.phone,
-        data.surgeries,
-        data.typeSang,
         data.ville,
         data.weight,
+        data.dateRDV,
+        data.typeSang,
+        data.phone,
+        data.surgeries,
+        data.doctorId,
+        data.alcoolique,
+        data.tension,
+        data.diabete,
+        data.fumee,
+        data.mesureTension,
+        data.mesureDiabete,
+        this.imagePath,
+        data.autreMaladie,
+        data.desAutreMaladie,
+        this.imagePath,
+        data.ancienOperation,
+        data.nomAncienOperation,
+        this.imagePath,
+        this.imagePath,
 
       );
       console.log(appointmentRequest);
@@ -164,6 +239,7 @@ export class RdvAvecMedComponent implements OnInit {
   changeEventSpecialite($event: Event) {
 
   }
+
 
 
 }

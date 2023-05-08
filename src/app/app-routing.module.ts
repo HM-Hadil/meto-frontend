@@ -64,9 +64,10 @@ import {ValiderFactureComponent} from "./detail-profile/detail-profileM/valider-
 import {
   DetailAccptedApntComponent
 } from "./detail-profile/detail-profileM/detail-accpted-apnt/detail-accpted-apnt.component";
-import {RdvSansMedComponent} from "./detail-profile/detail-profileP/rdv-sans-med/rdv-sans-med.component";
 import {RdvAvecMedComponent} from "./detail-profile/detail-profileP/rdv-avec-med/rdv-avec-med.component";
 import {ModifierRdvComponent} from "./detail-profile/detail-profileP/modifier-rdv/modifier-rdv.component";
+import {DonnerAvisComponent} from "./detail-profile/detail-profileP/opinion/donner-avis/donner-avis.component";
+import {AvisPatientComponent} from "./detail-profile/detail-profileA/avis-patient/avis-patient.component";
 
 const routes: Routes = [
   {path : '', component: AcceuilContentComponent},
@@ -116,6 +117,7 @@ const routes: Routes = [
       {path : 'listeMedecin' , component: ListMedecinComponent},
       {path : 'detailMedecin/:id' , component: DetailMedecinComponent},
       {path : 'rdvAvecMedecin' , component:RdvAvecMedecinComponent },
+      {path : 'avisPatient' , component: AvisPatientComponent}
 
     ]
   },
@@ -130,9 +132,9 @@ const routes: Routes = [
       { path: 'messagesfromAdmin' , component: MessagesfromAdminComponent},
       {path : 'dashboardAdmin' , component: DashboardAdminComponent , canActivate:[AuthGuard], data:{role:['PATIENT']}},
       {path : "listRdv" , component: ListeRendezVousComponent ,  canActivate:[AuthGuard], data:{role:['PATIENT']}},
-      {path : "rdvSansMedecin", component: RdvSansMedComponent, canActivate:[AuthGuard], data:{role:['PATIENT']}},
       {path : "rdvAvecMed", component: RdvAvecMedComponent, canActivate:[AuthGuard], data:{role:['PATIENT']}}
-      ,{path : "modifierRdv/:id" , component: ModifierRdvComponent}
+      ,{path : "modifierRdv/:id" , component: ModifierRdvComponent},
+      {path: "donnerAvis", component: DonnerAvisComponent}
     ]
 
   },

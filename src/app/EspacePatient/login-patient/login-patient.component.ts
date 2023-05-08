@@ -46,7 +46,20 @@ export class LoginPatientComponent implements OnInit {
         console.log('reload data ==>>', auth);
         this.userAuth.setRole(response.role);
         this.userAuth.setToken(response.token);
-        this.router.navigate(['/formuleRndv']);
+        if(this.share.getIdDoctor()== null && this.share.getIdChirurgie()!==null){
+
+          this.router.navigate(['/rdvAvecMed']);
+
+        }
+        else if(this.share.getIdDoctor()!== null &&  this.share.getIdChirurgie()!==null){
+
+          this.router.navigate(['/rdvAvecMed']);
+
+        }
+        else if(this.share.getIdDoctor()== null &&  this.share.getIdChirurgie()==null){
+          this.router.navigate(['/listRdv']);
+
+        }
       },(error) => {
         console.error('An error occurred:', error);
         // Add code here to show an alert or take other actions as needed

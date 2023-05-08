@@ -1,21 +1,25 @@
 .allContent{
   width: 100%;
-  height: 40rem;
+  height: 25rem;
   display: flex;
   flex-wrap: wrap;
-  margin: auto;
+  justify-content: center;
 }
 .image{
-  width: 30%;
-  height: 40rem;
+  width: 40%;
+  height: 25rem;
 }
 .image img{
   width: 100%;
   height: 100%;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 20px;
 }
 .divForm{
-  width: 70%;
-  height: 40rem;
+  width: 60%;
+  height: 20rem;
   display: flex;
   flex-direction: column;
 }
@@ -24,6 +28,9 @@ textarea{
   width: 45rem;
   height: 10rem;
   border-radius: 30px 30px 0px 30px ;
+  padding-left: 2rem;
+  padding-top: 1rem;
+  font-size:22px;
 }
 
 button{
@@ -31,9 +38,20 @@ button{
   width: 14rem;
   height: 2.5rem;
   border-radius: 10px;
-  margin-left: 35%;
+  margin-left: 25%;
   color: whitesmoke;
-  background-color: #0066FF;
+  background-color: #5e72e4;
   border: none;
+}
+
+button:hover{
+  cursor: pointer;
+  background-color: whitesmoke;
+  color: #5e72e4;
+  transition: 1s;
+  border: 1px solid #5e72e4;
+}
+h3{
+  color: #5e72e4;
 
 }

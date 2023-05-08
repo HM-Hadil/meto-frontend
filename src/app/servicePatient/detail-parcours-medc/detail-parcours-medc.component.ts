@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ShareServiceService} from "../../Services/share-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MedecinModel} from "../../Models/MedecinModel";
+import {UserAuthService} from "../../Services/interceptor/user-auth.service";
 
 @Component({
   selector: 'app-detail-parcours-medc',
@@ -12,7 +13,7 @@ export class DetailParcoursMedcComponent implements OnInit {
   id!:number;
   medecin!:MedecinModel;
   constructor(private share: ShareServiceService,private route: ActivatedRoute,
-              private router:Router) { }
+              private router:Router,private authService : UserAuthService) { }
 
   ngOnInit(): void {
     this.getDetailsDoctor()
@@ -36,8 +37,14 @@ export class DetailParcoursMedcComponent implements OnInit {
 
 
   prendreRdvMedecin(id: any) {
-    this.share.setIdDoctor(id);
-    this.router.navigate(['/signPatient'])
+    if(this.authService.getRole()==='PATIENT'!==null){
+      this.router.navigate(['/rdvAvecMed'])
+      this.share.setIdDoctor(id);
 
+    }
+    else {
+      this.share.setIdDoctor(id);
+      this.router.navigate(['/signPatient'])
+    }
   }
 }

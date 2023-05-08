@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light"
-     style="background-color: transparent ; width: 100%;
+     style="background-color: white!important; height: 6rem!important; width: 100%;
 "
      [ngClass]="{'navbar-scroll': navbarScrolled}">
   <div class="image">
-    <img src="../assets/image/848.jpg">
+    <img src="../assets/image/1-removebg-preview.png" >
   </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -29,25 +29,21 @@
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" style="color: #001B35;" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link "  style="color: #001B35;" (click)="navigateTo()">
           Espace Patient
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-          <a class="dropdown-item" href="signPatient">S'inscrire</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="loginPatient">S'authentifier</a>
-        </div>
+
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" style="color: #001B35;" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link " style="color: #001B35;"   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
           Espace Médecin
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="inscrire">S'inscrire</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="authentifier">S'authentifier</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/inscrire">inscrire</a>
+          <a class="dropdown-item" href="/authentifier">authentifier</a>
         </div>
+
       </li>
     </ul>
   </div>

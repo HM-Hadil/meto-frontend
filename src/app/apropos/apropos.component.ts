@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ShareServiceService} from "../Services/share-service.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {OpinionResult} from "../Models/opinionResult";
 
 @Component({
   selector: 'app-apropos',
@@ -23,13 +24,16 @@ export class AproposComponent implements OnInit {
   countTo!: number ;
   count: number = 0;
   chirurgieCount!:number;
+  opinion : OpinionResult[] = [];
 
-  constructor(private userService: ShareServiceService) { }
+
+  constructor(private userService: ShareServiceService,private share: ShareServiceService) { }
 
   ngOnInit() {
   this.getDoctorCount();
   this.getPatientCount();
    this.getChirurgieCount();
+   this.getEnableOpinion();
   }
 
   getDoctorCount(){
@@ -56,4 +60,12 @@ export class AproposComponent implements OnInit {
   }
 
 
+  getEnableOpinion(){
+    this.share.getAllEnableOpinion().subscribe((data)=>{
+      this.opinion=data;
+
+      console.log("opinion",this.opinion)
+    })
+
+  }
 }

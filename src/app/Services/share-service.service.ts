@@ -14,6 +14,8 @@ import {AppointementResult} from "../Models/AppointementResult";
 import {UpdateAppointmentRequest} from "../Models/UpdateAppointmentRequest";
 import { AppointmentStatsResult } from '../Models/appointmentStatsResult';
 import {updateAppointmentReq} from "../Models/updateAppointmentReq";
+import {OpinionRequest} from "../Models/opinion";
+import {OpinionResult} from "../Models/opinionResult";
 
 
 
@@ -251,7 +253,11 @@ export class ShareServiceService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post('http://localhost:8800/appointments/createAppointement',  request,{headers} );
+    return this.http.post('http://localhost:8800/appointments/createAppointement',  request,{headers} ).pipe(
+      tap(()=>{
+        this._refreshrequired.next()
+      })
+    );;
   }
 
   getAllAppointments():Observable<AppointementResult[]>{
@@ -305,17 +311,29 @@ export class ShareServiceService {
   }
 
   accepterRdv(idAp: string):Observable<AppointementResult>{
-    return this.http.put<AppointementResult>(environment.api+`appointments/accepterAppointment/${idAp}`,null);
+    return this.http.put<AppointementResult>(environment.api+`appointments/accepterAppointment/${idAp}`,null).pipe(
+      tap(()=>{
+        this._refreshrequired.next()
+      })
+    );;
   }
   rejectRdv(idAp: string):Observable<AppointementResult>{
-    return this.http.put<AppointementResult>(environment.api+`appointments/rejectAppointment/${idAp}`,null);
+    return this.http.put<AppointementResult>(environment.api+`appointments/rejectAppointment/${idAp}`,null).pipe(
+      tap(()=>{
+        this._refreshrequired.next()
+      })
+    );;
   }
 
   getAllAcceptedAppointementByDcotorId(id: string):Observable<AppointementResult[]>{
     return this.http.get<AppointementResult[]>(environment.api+`appointments/getAccptedAppointmentByDoctor/${id}`);
   }
   updatePhoto(idD: string, req:MedecinModel):Observable<MedecinModel>{
-    return this.http.put<MedecinModel>(environment.api+`doctors/updatePhotoDoctor/${idD}`,req);
+    return this.http.put<MedecinModel>(environment.api+`doctors/updatePhotoDoctor/${idD}`,req).pipe(
+      tap(()=>{
+        this._refreshrequired.next()
+      })
+    );;
   }
 
 
@@ -323,12 +341,56 @@ export class ShareServiceService {
     return this.http.get(environment.api+`appointments/appointmentsPerMont/${id}`);
   }
   updateAppointment(idApp:string,req:updateAppointmentReq):Observable<updateAppointmentReq> {
-    return this.http.put<updateAppointmentReq>(environment.api + `appointments/updateAppointment/${idApp}`, req)
+    return this.http.put<updateAppointmentReq>(environment.api + `appointments/updateAppointment/${idApp}`, req).pipe(
+      tap(()=>{
+        this._refreshrequired.next()
+      })
+    );
 
   }
   updateDoctor(idD: string, req:MedecinModel):Observable<MedecinModel>{
-    return this.http.put<MedecinModel>(environment.api+`doctors/updateDoctor/${idD}`,req);
+    return this.http.put<MedecinModel>(environment.api+`doctors/updateDoctor/${idD}`,req).pipe(
+      tap(()=>{
+        this._refreshrequired.next()
+      })
+    );;
+  }
+  addOpinion( req:OpinionRequest):Observable<any>{
+    return this.http.post<any>(environment.api+"opinion/createOpinion",req).pipe(
+      tap(()=>{
+        this._refreshrequired.next()
+      })
+    );
+  }
+  getAllEnabledOpinion( ):Observable<OpinionResult[]>{
+    return this.http.get<OpinionResult[]>(environment.api+"opinion/");
+  }
+  getAllEnableOpinion( ):Observable<OpinionResult[]>{
+    return this.http.get<OpinionResult[]>(environment.api+"opinion/getAllOpinionTrue");
   }
 
+  appointmentExists(date: string): Observable<boolean> {
+    const selectedDate = new Date(date); // convert date to a Date object
+    return this.getAllAppointments().pipe(
+      map(appointments => appointments.some(appointment => appointment.dateRDV.getTime() === selectedDate.getTime()))
+    );
+  }
+
+  accepterAvis(id: string):Observable<OpinionRequest>{
+    return this.http.put<OpinionRequest>(environment.api +`opinion/accepterAvis/${id}`, null).pipe(
+      tap(()=>{
+        this._refreshrequired.next()
+      })
+    );
+  }
+  supprimerOpinion(id:string):Observable<any>{
+    return this.http.delete<any>(environment.api +`opinion/delete/${id}`).pipe(
+      tap(()=>{
+        this._refreshrequired.next()
+      })
+    );
+
+  }
 }
+
 

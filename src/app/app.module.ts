@@ -70,9 +70,11 @@ import { AfficherDetailMedcComponent } from './detail-profile/detail-profileA/af
 import { AccepterRdvComponent } from './detail-profile/detail-profileM/accepter-rdv/accepter-rdv.component';
 import { ValiderFactureComponent } from './detail-profile/detail-profileM/valider-facture/valider-facture.component';
 import { DetailAccptedApntComponent } from './detail-profile/detail-profileM/detail-accpted-apnt/detail-accpted-apnt.component';
-import { RdvSansMedComponent } from './detail-profile/detail-profileP/rdv-sans-med/rdv-sans-med.component';
 import { RdvAvecMedComponent } from './detail-profile/detail-profileP/rdv-avec-med/rdv-avec-med.component';
 import { ModifierRdvComponent } from './detail-profile/detail-profileP/modifier-rdv/modifier-rdv.component';
+import { ErrorModalComponent } from './error-modal/error-modal.component';
+import { AvisPatientComponent } from './detail-profile/detail-profileA/avis-patient/avis-patient.component';
+import { DonnerAvisComponent } from './detail-profile/detail-profileP/opinion/donner-avis/donner-avis.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -123,9 +125,11 @@ import { ModifierRdvComponent } from './detail-profile/detail-profileP/modifier-
     AccepterRdvComponent,
     ValiderFactureComponent,
     DetailAccptedApntComponent,
-    RdvSansMedComponent,
     RdvAvecMedComponent,
     ModifierRdvComponent,
+    ErrorModalComponent,
+    AvisPatientComponent,
+    DonnerAvisComponent,
   ],
     imports: [
         BrowserModule,

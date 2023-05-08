@@ -84,134 +84,24 @@
     <h2>Que disent les gens ?</h2>
   </div>
   <div class="displaytMsg">
-  <div class="l-card">
-    <section class="l-card__text">
-      <p>
-        This is a comment card appearing above a dotted background, and that's really cool!
-      </p>
-    </section>
-    <section class="l-card__user">
-      <div class="l-card__userImage">
-        <img src="https://avatars.githubusercontent.com/u/20525486?v=4" alt="Naruto">
-      </div>
-      <div class="l-card__userInfo">
-        <span>Naruto Uzumaki</span>
-        <span>Seventh Hokage</span>
-      </div>
-    </section>
-  </div>
-    <div class="l-card">
+
+    <div class="l-card" *ngFor="let op of opinion">
       <section class="l-card__text">
         <p>
-          This is a comment card appearing above a dotted background, and that's really cool!
+        {{op.message}}
         </p>
       </section>
       <section class="l-card__user">
         <div class="l-card__userImage">
-          <img src="https://avatars.githubusercontent.com/u/20525486?v=4" alt="Naruto">
+          <img src="{{op.image}}" alt="Naruto">
         </div>
         <div class="l-card__userInfo">
-          <span>Naruto Uzumaki</span>
-          <span>Seventh Hokage</span>
+          <span>{{op.patient.firstname}} {{op.patient.lastname}}</span>
+
         </div>
       </section>
     </div>
-    <div class="l-card">
-      <section class="l-card__text">
-        <p>
-          This is a comment card appearing above a dotted background, and that's really cool!
-        </p>
-      </section>
-      <section class="l-card__user">
-        <div class="l-card__userImage">
-          <img src="https://avatars.githubusercontent.com/u/20525486?v=4" alt="Naruto">
-        </div>
-        <div class="l-card__userInfo">
-          <span>Naruto Uzumaki</span>
-          <span>Seventh Hokage</span>
-        </div>
-      </section>
-    </div>
-    <div class="l-card">
-      <section class="l-card__text">
-        <p>
-          This is a comment card appearing above a dotted background, and that's really cool!
-        </p>
-      </section>
-      <section class="l-card__user">
-        <div class="l-card__userImage">
-          <img src="https://avatars.githubusercontent.com/u/20525486?v=4" alt="Naruto">
-        </div>
-        <div class="l-card__userInfo">
-          <span>Naruto Uzumaki</span>
-          <span>Seventh Hokage</span>
-        </div>
-      </section>
-    </div>
-    <div class="l-card">
-      <section class="l-card__text">
-        <p>
-          This is a comment card appearing above a dotted background, and that's really cool!
-        </p>
-      </section>
-      <section class="l-card__user">
-        <div class="l-card__userImage">
-          <img src="https://avatars.githubusercontent.com/u/20525486?v=4" alt="Naruto">
-        </div>
-        <div class="l-card__userInfo">
-          <span>Naruto Uzumaki</span>
-          <span>Seventh Hokage</span>
-        </div>
-      </section>
-    </div>
-    <div class="l-card">
-      <section class="l-card__text">
-        <p>
-          This is a comment card appearing above a dotted background, and that's really cool!
-        </p>
-      </section>
-      <section class="l-card__user">
-        <div class="l-card__userImage">
-          <img src="https://avatars.githubusercontent.com/u/20525486?v=4" alt="Naruto">
-        </div>
-        <div class="l-card__userInfo">
-          <span>Naruto Uzumaki</span>
-          <span>Seventh Hokage</span>
-        </div>
-      </section>
-    </div>
-    <div class="l-card">
-      <section class="l-card__text">
-        <p>
-          This is a comment card appearing above a dotted background, and that's really cool!
-        </p>
-      </section>
-      <section class="l-card__user">
-        <div class="l-card__userImage">
-          <img src="https://avatars.githubusercontent.com/u/20525486?v=4" alt="Naruto">
-        </div>
-        <div class="l-card__userInfo">
-          <span>Naruto Uzumaki</span>
-          <span>Seventh Hokage</span>
-        </div>
-      </section>
-    </div>
-    <div class="l-card">
-      <section class="l-card__text">
-        <p>
-          This is a comment card appearing above a dotted background, and that's really cool!
-        </p>
-      </section>
-      <section class="l-card__user">
-        <div class="l-card__userImage">
-          <img src="https://avatars.githubusercontent.com/u/20525486?v=4" alt="Naruto">
-        </div>
-        <div class="l-card__userInfo">
-          <span>Naruto Uzumaki</span>
-          <span>Seventh Hokage</span>
-        </div>
-      </section>
-    </div>
+
   </div>
 
 </section>

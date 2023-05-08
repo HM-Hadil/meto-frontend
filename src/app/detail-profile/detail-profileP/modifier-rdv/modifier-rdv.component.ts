@@ -22,6 +22,13 @@ id!:string;
   medecinList:MedecinModel[]=[];
   idChirurgie!:string
   idP!:string;
+  userFile: any;
+  imagePath: any ='';
+  imgURL: any = '';
+  showDiabete = false;
+  showTension = false;
+  showAutreMaladie=false;
+  showAncienOp=false
 
   constructor(private share: ShareServiceService,
               private router: Router,
@@ -30,7 +37,7 @@ id!:string;
               private fb: FormBuilder) {
 
     this.RdvForm = this.fb.group({
-      age: ['', Validators.required],
+      age: ['',[Validators.required, Validators['min'](1), Validators['max'](100)]],
       dateRDV: ['', Validators.required],
       doctorId: [''],
       patientId: ['', Validators.required],
@@ -39,8 +46,22 @@ id!:string;
       phone: ['', Validators.required],
       typeSang: ['', Validators.required],
       ville: ['', Validators.required],
-      weight: ['', Validators.required],
+      weight: ['',[Validators.required, Validators['min'](1), Validators['max'](300)]],
       surgeries: ['', Validators.required],
+      alcoolique: ['', Validators.required],
+      tension: ['', Validators.required],
+      diabete: ['', Validators.required],
+      fumee: ['', Validators.required],
+      mesureTension: [''],
+      mesureDiabete: [''],
+      analyseDiabete: [''],
+      autreMaladie: [''],
+      desAutreMaladie: ['', Validators.required],
+      analyseAutreMaladie: [''],
+      ancienOperation: ['', Validators.required],
+      nomAncienOperation: [''],
+      analyseAncienOperation: [''],
+      autreAnalyse: [''],
     });
   }
 
@@ -68,7 +89,13 @@ id!:string;
       typeSang:this.rdvmodel.typeSang,phone:this.rdvmodel.phone,dateRDV:this.rdvmodel.dateRDV,
         surgeries: this.rdvmodel.surgery.id
         , doctorId: this.rdvmodel.doctor.id,
-        patientId:this.idP
+        patientId:this.idP,alcoolique:this.rdvmodel.alcoolique,diabete:this.rdvmodel.diabete,
+        tension:this.rdvmodel.tension,fumee:this.rdvmodel.fumee,mesureTension:this.rdvmodel.mesureTension,
+        analyseDiabete:this.rdvmodel.analyseDiabete,autreMaladie:this.rdvmodel.autreMaladie,
+        desAutreMaladie:this.rdvmodel.desAutreMaladie,analyseAutreMaladie:this.rdvmodel.analyseAutreMaladie,
+        ancienOperation:this.rdvmodel.ancienOperation,nomAncienOperation:this.rdvmodel.nomAncienOperation,
+        mesureDiabete:this.rdvmodel.mesureDiabete,
+
 
     });
 
@@ -76,6 +103,44 @@ id!:string;
 
     })}
     this.getListChirugie();
+  }
+
+  showDiabeteFields(event: Event) {
+    if ((event.target as HTMLInputElement).value === 'oui') {
+      this.showDiabete = true;
+    }
+  }
+
+  showAutreMaladieFields(event: Event) {
+    if ((event.target as HTMLInputElement).value === 'oui') {
+      this.showAutreMaladie = true;
+    }
+
+  }
+  showTensionFields(event: Event) {
+    if ((event.target as HTMLInputElement).value === 'oui') {
+      this.showTension = true;
+    }
+
+  }
+  showAncienOpFields(event: Event) {
+    if ((event.target as HTMLInputElement).value === 'oui') {
+      this.showAncienOp = true;
+    }
+  }
+
+  hideDiabeteFields() {
+    this.showDiabete = false;
+  }
+  hideTensionFields() {
+    this.showTension = false;
+  }
+  hideAncienOpFields() {
+    this.showAncienOp=false
+  }
+
+  hideAutreMaladieFields() {
+    this.showAutreMaladie=false;
   }
 
 
@@ -112,6 +177,20 @@ id!:string;
       data.typeSang,
       data.ville,
       data.weight,
+      data.alcoolique,
+      data.tension,
+      data.diabete,
+      data.fumee,
+      data.mesureTension,
+      data.mesureDiabete,
+      this.imagePath,
+      data.autreMaladie,
+      data.desAutreMaladie,
+      this.imagePath,
+      data.ancienOperation,
+      data.nomAncienOperation,
+      this.imagePath,
+      this.imagePath,
     )
    this.share.updateAppointment(this.id ,rdvModel).subscribe(data=>{
      console.log("updating data", data)
@@ -124,4 +203,14 @@ id!:string;
       return localStorage.getItem("token") ;
     }
 
+  //upload Image
+  onSelectFile(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.imagePath = e.target.result;
+      };
+    }
+  }
   }

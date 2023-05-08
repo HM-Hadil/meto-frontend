@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ShareServiceService} from "../../Services/share-service.service";
 import {TypeChirurgie} from "../../Models/typeChirurgie/type-chirurgie";
 import {ActivatedRoute, Router} from "@angular/router";
+import {UserAuthService} from "../../Services/interceptor/user-auth.service";
 
 @Component({
   selector: 'app-chirurgies',
@@ -13,7 +14,7 @@ export class ChirurgiesComponent implements OnInit {
  private fragment!: string ;
 
   constructor(private share: ShareServiceService,private route: ActivatedRoute,
-  private router:Router) {
+  private router:Router, private authService : UserAuthService) {
     this.route.fragment.subscribe(fragment => {
       if (fragment != null) {
         this.fragment = fragment;
@@ -37,10 +38,22 @@ export class ChirurgiesComponent implements OnInit {
   }
 
   prendreRDV(idC:string){
-    this.router.navigate(['/loginPatient'])
-    console.log('id chirurgie', idC)
+    if(this.authService.getRole()==='PATIENT'!==null){
+      this.router.navigate(['/rdvAvecMed'])
+      console.log('id chirurgie', idC)
 
       this.share.setIdChirurgie(idC);
+
+    }
+    else{
+      this.router.navigate(['/loginPatient'])
+      console.log('id chirurgie', idC)
+
+      this.share.setIdChirurgie(idC);
+
+
+    }
+
 
 
   }

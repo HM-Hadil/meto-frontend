@@ -1,13 +1,15 @@
 <section class="allContent">
   <div class="image">
-    <img src="../assets/image/feedback image2.png">
+    <img src="../assets/image/feedbackimage.png">
   </div>
   <div class="col divForm">
-    <h5>Vous pouvez donner ton avis !</h5>
-    <form>
-      <input type="file">
+    <h3>Vous pouvez donner ton avis !</h3>
+    <form [formGroup]="opinionForm" (ngSubmit)="addOpinion()" style="margin-top: 1rem">
+      <input type="file" accept="image/*" (change)="onSelectFile($event)" class="form-control-file"
+             id="exampleFormControlFile1" formControlName="image">
       <br>
-      <textarea>
+      <input type="text" formControlName="patient" style="display: none">
+      <textarea formControlName="message">
 
       </textarea>
       <br>

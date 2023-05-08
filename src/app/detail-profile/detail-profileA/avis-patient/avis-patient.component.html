@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="chat_container">
+        <div class="job-box">
+
+          <div class="inbox-message">
+            <ul>
+              <li  *ngFor="let op of opinion">
+                <a href="#">
+                  <div class="message-avatar">
+                    <img  src="{{op.image}}" alt="">
+                  </div>
+                  <div class="message-body">
+                    <div class="message-body-heading">
+                  <!--    <h5>{{op.patientId.firstname}} </h5>-->
+                      <span>{{op.createdOn | date}}</span>
+                    </div>
+                    <p>{{op.message}}</p>
+                    </div>
+                </a>
+                <button style="margin-left:8rem" (click)="accepter(op.id)">accepter</button>
+                <button style="margin-left:8rem" (click)="supprimer(op.id)">supprimer</button>
+
+              </li>
+
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

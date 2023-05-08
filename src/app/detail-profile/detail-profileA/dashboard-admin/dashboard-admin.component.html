@@ -11,9 +11,9 @@
     <div class="col-xl-8 col-lg-7">
 
       <!-- Area Chart -->
-      <div class="card shadow mb-4">
+      <div class="card shadow mb-4" style="width:100%">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">demande la plus fréquente </h6>
+          <h6 class="m-0 font-weight-bold text-primary">Demande la plus fréquente </h6>
         </div>
         <div class="card-body" style="display: flex ;flex-wrap: wrap; width: 850px !important; padding-left: 1rem;">
 
@@ -24,9 +24,9 @@
 
               </div>
               <div class="flip-card-back" >
-                <h4>Chirurgie la plus requis</h4>
-                <h5>{{name}}</h5>
-                <h6>{{count}} patient ont choisi ce chirurgie.</h6>
+                <h4>Chirurgie la plus requise:</h4>
+                <h4 style="color: #2e59d9">" {{name}} "</h4>
+                <h5><b style="color: #2e59d9" >{{count}}</b> patients qui  choisissent cette chirurgie.</h5>
               </div>
             </div>
 
@@ -39,8 +39,8 @@
               </div>
               <div class="flip-card-back">
                 <h4>Médecin le plus requis</h4>
-                <h5>{{d_firstname}} {{d_lastname}}</h5>
-                <h6>{{d_count}} rendez-vous ont choisi ce Médecin.</h6>
+                <h4 style="color: #2e59d9"> " {{d_firstname}} {{d_lastname}} "</h4>
+                <h5><b style="color: #2e59d9" >{{d_count}}</b> rendez-vous  choisissent ce Médecin.</h5>
                 <p>{{d_specialite}}</p>
               </div>
             </div>
@@ -54,8 +54,8 @@
               </div>
               <div class="flip-card-back">
                 <h4>pays le plus requis</h4>
-                <h5>{{city_name}}</h5>
-                <h6>{{city_count}} rendez-vous de méme pays</h6>
+                <h4 style="color: #0066FF">" {{city_name}} "</h4>
+                <h5><b style="color: #2e59d9" >{{city_count}} </b>rendez-vous de même pays</h5>
               </div>
             </div>
 
@@ -64,39 +64,10 @@
         </div>
       </div>
 
-      <!-- Bar Chart -->
-      <div class="card shadow mb-4">
-        <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
-        </div>
-        <div class="card-body">
-          <div class="chart-bar">
-            <canvas id="myBarChart"></canvas>
-          </div>
-          <hr>
-          Styling for the bar chart
-        </div>
-      </div>
+
 
     </div>
 
-    <!-- Donut Chart -->
-    <div class="col-xl-4 col-lg-5">
-      <div class="card shadow mb-4">
-        <!-- Card Header - Dropdown -->
-        <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
-        </div>
-        <!-- Card Body -->
-        <div class="card-body">
-          <div class="chart-pie pt-4">
-            <canvas id="myPieChart"></canvas>
-          </div>
-          <hr>
-          Styling for the donut chart
-        </div>
-      </div>
-    </div>
   </div>
 
 </div>

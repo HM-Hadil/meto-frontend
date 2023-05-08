@@ -21,8 +21,14 @@ listRdv : AppointementResult[] = [];
 
   ngOnInit() {
     this.listAppointment();
+    this.share.RequiredRefresh.subscribe(r=>{
+      this.listAppointment();
+    })
+
 
   }
+  //get All Chirurgie
+
 listAppointment(){
   const token = this.getToken();
   console.log("token:", token);
@@ -32,7 +38,6 @@ listAppointment(){
     this.id = payload.sub;
     this.share.getRdvByPatient(this.id).subscribe(data => {
       this.listRdv = data;
-
       console.log("liste RDV =>", this.listRdv);
     })
 
