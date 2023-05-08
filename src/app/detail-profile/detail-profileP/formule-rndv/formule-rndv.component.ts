@@ -23,7 +23,6 @@ name!:any;
 idP!:string;
 patient! : PatientModel;
 appointmentForm!: FormGroup;
-  userFile: any;
   imagePath: any ='';
   imgURL: any = '';
   chirurgieList: TypeChirurgie[]= [];
@@ -31,6 +30,11 @@ appointmentForm!: FormGroup;
   showTension = false;
   showAutreMaladie=false;
   showAncienOp=false
+  ImageDiabeteAnalyse: any ='';
+  ImageAnalyseancienOp: any ='';
+  ImageautreAnalyse: any ='';
+  ImageAnalyseAutreMaladie: any ='';
+
   constructor(private route:ActivatedRoute,
               private router: Router,
               private userAuth : UserAuthService,
@@ -167,14 +171,14 @@ appointmentForm!: FormGroup;
         data.fumee,
         data.mesureTension,
         data.mesureDiabete,
-          this.imagePath,
+        this.ImageDiabeteAnalyse,
         data.autreMaladie,
         data.desAutreMaladie,
-          this.imagePath,
+        this.ImageAnalyseAutreMaladie,
         data.ancienOperation,
         data.nomAncienOperation,
-          this.imagePath,
-          this.imagePath,
+          this.ImageAnalyseancienOp,
+          this.ImageautreAnalyse,
       );
       console.log("appopntment request",appointmentRequest);
 // Check if the dateRDV already exists in appointments
@@ -238,7 +242,50 @@ appointmentForm!: FormGroup;
     }
   }
 
-  changeEventSpecialite($event: Event) {
 
+
+
+
+  onSelectFileDiabeteAnalyse(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.ImageDiabeteAnalyse = e.target.result;
+      };
+    }
+  }
+
+
+
+  onSelectFileAnalyseancienOp(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.ImageAnalyseancienOp = e.target.result;
+      };
+    }
+  }
+
+
+  onSelectFileautreAnalyse(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.ImageautreAnalyse = e.target.result;
+      };
+    }
+  }
+
+  onSelectFileAnalyseAutreMaladie(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.ImageAnalyseAutreMaladie = e.target.result;
+      };
+    }
   }
 }

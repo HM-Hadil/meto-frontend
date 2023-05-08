@@ -42,9 +42,8 @@
           </svg>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item"  (click)="voirDetail()"> <i class="bi bi-eye-fill" style="color: #3F6589"></i>  Voir Détails</a>
-          <a class="dropdown-item"  ><i class="bi bi-trash3-fill"  style="color: #3F6589"></i>  Supprimer</a>
-          <a  class="dropdown-item" (click)="modifier(rdv.id)" *ngIf="rdv.status === 'IN_PROGRESS'" ><i class="bi bi-pencil-square"  style="color: #3F6589"></i> Modifier</a>
+          <a class="dropdown-item"  (click)="voirDetail(rdv.id)"> <i class="bi bi-eye-fill" style="color: #3F6589"></i>  Voir Détails</a>
+          <a  class="dropdown-item" (click)="modifier(rdv.id)" *ngIf="rdv.status === 'IN_PROGRESS' " ><i class="bi bi-pencil-square"  style="color: #3F6589"></i> Modifier</a>
 
         </div>
       </div>

@@ -68,6 +68,7 @@ import {RdvAvecMedComponent} from "./detail-profile/detail-profileP/rdv-avec-med
 import {ModifierRdvComponent} from "./detail-profile/detail-profileP/modifier-rdv/modifier-rdv.component";
 import {DonnerAvisComponent} from "./detail-profile/detail-profileP/opinion/donner-avis/donner-avis.component";
 import {AvisPatientComponent} from "./detail-profile/detail-profileA/avis-patient/avis-patient.component";
+import {DetailRdvPatientComponent} from "./detail-profile/detail-profileP/detail-rdv-patient/detail-rdv-patient.component";
 
 const routes: Routes = [
   {path : '', component: AcceuilContentComponent},
@@ -134,7 +135,8 @@ const routes: Routes = [
       {path : "listRdv" , component: ListeRendezVousComponent ,  canActivate:[AuthGuard], data:{role:['PATIENT']}},
       {path : "rdvAvecMed", component: RdvAvecMedComponent, canActivate:[AuthGuard], data:{role:['PATIENT']}}
       ,{path : "modifierRdv/:id" , component: ModifierRdvComponent},
-      {path: "donnerAvis", component: DonnerAvisComponent}
+      {path: "donnerAvis", component: DonnerAvisComponent},
+      {path : 'detailRdvPatient/:id', component: DetailRdvPatientComponent}
     ]
 
   },

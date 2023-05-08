@@ -12,7 +12,7 @@ export class AppointmentRequest {
     public typeSang: string,
     public phone: string,
     public surgeryId: string,
-    public doctorId: number,
+    public doctorId: string,
     public alcoolique:String ,
     public tension:String ,
     public diabete:String ,

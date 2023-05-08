@@ -1,13 +1,15 @@
 .content{
-  width:40rem ;
+  width:100% ;
   height: auto;
-  margin: auto;
-  text-align: center;
   padding: 1rem;
   background-color: transparent;
   border: none;
-}
+  border: 1px solid white;
+  background-color: white;
+  margin-top: 2rem;
+  border-top: 1px solid #1DA1F2;
 
+}
 p{
   text-align: justify;
 }
@@ -80,3 +82,25 @@ h5{ color: #5e72e4}
   transition: 1s;
 }
 
+
+table {
+  width: auto;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+tr td{
+  background-color: white !important;
+}
+th {
+  background-color: #1DA1F2!important ;
+  color: whitesmoke !important;
+  font-size: 18px!important;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}

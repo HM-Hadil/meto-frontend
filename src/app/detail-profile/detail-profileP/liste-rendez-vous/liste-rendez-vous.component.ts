@@ -54,8 +54,8 @@ listAppointment(){
 
 
 
-  voirDetail() {
-
+  voirDetail(id:string) {
+    this.router.navigate(['/detailRdvPatient', id])
   }
 
   modifier(id: string) {

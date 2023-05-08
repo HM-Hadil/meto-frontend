@@ -146,6 +146,7 @@ export class InscrireComponent implements OnInit {
       alertify.success("votre inscription a réussi  ")
     alert("vos données ont été envoyées au admin " +
       "Attendez, votre compte sera activé aprés la vérification ! ")
+    window.location.reload();
 
    }
   //upload Image

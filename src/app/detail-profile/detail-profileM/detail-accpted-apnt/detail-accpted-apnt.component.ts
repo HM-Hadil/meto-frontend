@@ -36,4 +36,18 @@ apntmnt!:AppointementResult;
   ValiderFacture(idAp:string) {
    this.router.navigate(['validerFacture',idAp]);
   }
+
+  openImage(imageUrl: any): void {
+    const imageWindow = window.open("", "_blank");
+    if (imageWindow) {
+      const fileName = imageUrl.substring(imageUrl.lastIndexOf('/')+1);
+      imageWindow.document.write("<html><head><title>Tourisme Médical Image</title></head>" +
+        "<body style='text-align:center'><h2 style='color: #0066FF'>Clicker sur l'image pour le télécharger:" +
+        "</h2><a href='" + imageUrl + "' download='" + fileName + "'><img src='" + imageUrl + "' />" +
+        "</a></body></html>");
+      imageWindow.document.close();
+    }
+  }
+
+
 }

@@ -70,6 +70,7 @@ export class DonnerAvisComponent implements OnInit {
       this.share.addOpinion(opinion).subscribe(data=>{
         console.log("opinion=>", data)
         alertify.success("votre avis est bien ajoutée ")
+        window.location.reload();
 
       });
 

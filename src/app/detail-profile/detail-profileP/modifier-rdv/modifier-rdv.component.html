@@ -23,9 +23,19 @@
                       <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
 
                         <div class="form-outline">
-                          <label class="form-label" for="form3Examplev6">Age</label>
-                          <input type="text" id="form3Examplev6" class="form-control form-control-lg" formControlName="age" required/>
-
+                          <label class="form-label" for="form337Examplev6">Age</label>
+                          <input type="number" id="form37Examplev6" class="form-control form-control-lg" formControlName="age" required/>
+                          <div *ngIf="RdvForm.controls['age'].invalid && (RdvForm.controls['age'].dirty || RdvForm.controls['age'].touched)">
+                            <div class="alert alert-danger mt-2" *ngIf="RdvForm.controls['age'].errors?.['required']">
+                              Age is required.
+                            </div>
+                            <div class="alert alert-danger mt-2" *ngIf="RdvForm.controls['age'].errors?.['min']">
+                              Age minimum est  1 ans.
+                            </div>
+                            <div class="alert alert-danger mt-2" *ngIf="RdvForm.controls['age'].errors?.['max']">
+                              Age ne dépasse pas 100 ans.
+                            </div>
+                          </div>
                         </div>
 
                       </div>
@@ -45,11 +55,21 @@
                       <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
 
                         <div class="form-outline">
-                          <label class="form-label" for="form3Examplev77">Poids</label>
-                          <input type="number" id="form3Examplev77" class="form-control form-control-lg" formControlName="weight" required />
+                          <label class="form-label" for="form3Examplev6768">Poids</label>
+                          <input type="number" id="form3Examplev6768" class="form-control form-control-lg" formControlName="weight" required/>
+                          <div *ngIf="RdvForm.controls['weight'].invalid && (RdvForm.controls['weight'].dirty || RdvForm.controls['weight'].touched)">
+                            <div class="alert alert-danger mt-2" *ngIf="RdvForm.controls['weight'].errors?.['required']">
+                              poids is required.
+                            </div>
+                            <div class="alert alert-danger mt-2" *ngIf="RdvForm.controls['weight'].errors?.['min']">
+                              poids minimum est  1 kg.
+                            </div>
+                            <div class="alert alert-danger mt-2" *ngIf="RdvForm.controls['weight'].errors?.['max']">
+                              poids ne dépasse pas 300 kg.
+                            </div>
+                          </div>
 
-                        </div>
-
+                      </div>
                       </div>
                       <input type="text" formControlName="patientId"  required style="display: none"/>
 
@@ -206,7 +226,7 @@
 
                             <div class="form-outline mt-3" *ngIf="showDiabete">
                               <label class="form-label" for="diabeteAnalyse">Dernière analyse de diabète</label>
-                              <input type="file" accept="image/*" (change)="onSelectFile($event)"  id="diabeteAnalyse" class="form-control" formControlName="analyseDiabete">
+                              <input type="file" accept="image/*" (change)="onSelectFileDiabeteAnalyse($event)"  id="diabeteAnalyse" class="form-control" formControlName="analyseDiabete">
                             </div>
                             <div class="form-outline mt-3" *ngIf="showDiabete">
                               <label class="form-label" for="diabeteMesure">Dernière mesure de diabète</label>
@@ -266,7 +286,7 @@
                             </div>
                             <div class="form-outline mt-3" *ngIf="showAutreMaladie">
                               <label class="form-label" for="AnalyseAutreMaladie">Analyse de votre maladie</label>
-                              <input type="file" accept="image/*" (change)="onSelectFile($event)"  id="AnalyseAutreMaladie" class="form-control" formControlName="analyseAutreMaladie">
+                              <input type="file" accept="image/*" (change)="onSelectFileAnalyseAutreMaladie($event)"  id="AnalyseAutreMaladie" class="form-control" formControlName="analyseAutreMaladie">
                             </div>
                           </div>
 
@@ -293,7 +313,7 @@
                             </div>
                             <div class="form-outline mt-3" *ngIf="showAncienOp">
                               <label class="form-label" for="AnalyseancienOp">Analyse d'ancien operation</label>
-                              <input type="file" accept="image/*" (change)="onSelectFile($event)"  id="AnalyseancienOp" class="form-control" formControlName="analyseAncienOperation">
+                              <input type="file" accept="image/*" (change)="onSelectFileAnalyseancienOp($event)"  id="AnalyseancienOp" class="form-control" formControlName="analyseAncienOperation">
                             </div>
                           </div>
 
@@ -314,7 +334,7 @@
                         <div class="col-md-4 mb-4 ml-0 pt-4 mb-md-0 pb-md-0">
                           <div class="form-outline">
                             <div><label class="form-label" >autre fichier</label></div>
-                            <input type="file" accept="image/*" (change)="onSelectFile($event)"   class="form-control-file" id="exampleFormControlFile12" formControlName="autreAnalyse">
+                            <input type="file" accept="image/*" (change)="onSelectFileautreAnalyse($event)"   class="form-control-file" id="exampleFormControlFile12" formControlName="autreAnalyse">
 
                           </div>
                         </div>

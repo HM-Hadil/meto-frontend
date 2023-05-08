@@ -1,0 +1,106 @@
+.content{
+  width:100% ;
+  height: auto;
+  padding: 1rem;
+  background-color: transparent;
+  border: none;
+  border: 1px solid white;
+  background-color: white;
+  margin-top: 2rem;
+  border-top: 1px solid #1DA1F2;
+
+}
+
+p{
+  text-align: justify;
+}
+.image{
+  width: 20rem;
+  height: 15rem;
+  margin: auto;
+}
+.image img{
+  width: 100%;
+  height: 100%;
+}
+.contentimg{
+  width: auto;
+  height: auto;
+  text-align: center;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  border: none;
+  background-color: transparent;
+}
+.btn button{
+  width: 10rem;
+  height: 2rem;
+  border-radius: 10px;
+  margin: auto;
+
+}
+.btn{
+  border: none;
+}
+.btns  {
+  width: 26rem;
+  height: 2rem;
+  margin: auto;
+  border: none;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.btn2{
+  width: 12rem;
+  height: 2rem;
+  background-color: #0066FF;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  margin-left: 1rem;
+}
+
+h5{ color: #5e72e4}
+.btn2:hover{
+  background-color: transparent;
+  color: #0066FF;
+  border: 1px solid #0066FF ;
+  transition: 1s;
+}
+.btn1{
+  width: 12rem;
+  height: 2rem;
+  background-color: transparent;
+  color: #0066FF;
+  border-radius: 10px;
+  border: 1px solid #0066FF ;
+
+}
+.btn1:hover{
+  background-color: #0066FF;
+  color: #D2E9FF;
+  border: none;
+  transition: 1s;
+}
+
+table {
+  width: auto;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+tr td{
+  background-color: white !important;
+}
+th {
+  background-color: #1DA1F2!important ;
+  color: whitesmoke !important;
+  font-size: 18px!important;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}

@@ -22,7 +22,7 @@ export class RdvAvecMedComponent implements OnInit {
   name!:any;
   nomMed!:any;
   prenomMed!:any;
-  idP!:string;
+  idP!:number;
   medecin!:MedecinModel;
   patient! : PatientModel;
   appointmentForm!: FormGroup;
@@ -33,7 +33,10 @@ export class RdvAvecMedComponent implements OnInit {
   showTension = false;
   showAutreMaladie=false;
   showAncienOp=false
-
+  ImageDiabeteAnalyse: any ='';
+  ImageAnalyseancienOp: any ='';
+  ImageautreAnalyse: any ='';
+  ImageAnalyseAutreMaladie: any ='';
 
   constructor(private route:ActivatedRoute,
               private router: Router,
@@ -44,7 +47,7 @@ export class RdvAvecMedComponent implements OnInit {
       age: ['',[Validators.required, Validators['min'](1), Validators['max'](100)]],
       dateRDV: ['', Validators.required],
       doctorId: [''],
-      patientId: ['', Validators.required],
+      patientId: [, Validators.required],
       image: ['', Validators.required],
       note: ['', Validators.required],
       phone: ['', Validators.required],
@@ -52,7 +55,7 @@ export class RdvAvecMedComponent implements OnInit {
       typeSang: ['', Validators.required],
       ville: ['', Validators.required],
       weight: ['',[Validators.required, Validators['min'](1), Validators['max'](300)]],
-      surgeries: ['', Validators.required],
+      surgeries: [, Validators.required],
       alcoolique: ['', Validators.required],
       tension: ['', Validators.required],
       diabete: ['', Validators.required],
@@ -75,7 +78,7 @@ export class RdvAvecMedComponent implements OnInit {
     this.getPatientInfo();
     this.getDoctorById()
     this.appointmentForm.patchValue({patientId:this.idP,
-      surgeries  :this.idChirurgie.replace(/"/g, ''),
+      surgeries:this.idChirurgie.replace(/"/g, ''),
       doctorId:this.idDoctor.replace(/"/g, '')
     });
   }
@@ -135,6 +138,7 @@ export class RdvAvecMedComponent implements OnInit {
       console.log("name",this.name);
     })
   }
+
   getDoctorById(){
     this.idDoctor = this.share.getIdDoctor()
     console.log("id doctor", this.idDoctor)
@@ -147,7 +151,7 @@ export class RdvAvecMedComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.appointmentForm.valid) {
+
       let data=this.appointmentForm.value;
       console.log("data form:", data);
       const appointmentRequest = new AppointmentRequest(
@@ -155,28 +159,28 @@ export class RdvAvecMedComponent implements OnInit {
         data.note,
         this.imagePath,
         data.age,
-        data.patientId,
+        this.idP,
         data.ville,
         data.weight,
         data.dateRDV,
         data.typeSang,
         data.phone,
-        data.surgeries,
-        data.doctorId,
+        this.idChirurgie.replace(/"/g, ''),
+        data.doctorId.replace(/"/g, ''),
         data.alcoolique,
         data.tension,
         data.diabete,
         data.fumee,
         data.mesureTension,
         data.mesureDiabete,
-        this.imagePath,
+        this.ImageDiabeteAnalyse,
         data.autreMaladie,
         data.desAutreMaladie,
-        this.imagePath,
+        this.ImageAnalyseAutreMaladie,
         data.ancienOperation,
         data.nomAncienOperation,
-        this.imagePath,
-        this.imagePath,
+        this.ImageAnalyseancienOp,
+        this.ImageautreAnalyse,
 
       );
       console.log(appointmentRequest);
@@ -188,12 +192,6 @@ export class RdvAvecMedComponent implements OnInit {
       alertify.success("Rendez-vous ajoutée ")
       this.router.navigate(['listRdv'])
     }
-    else {
-      alertify.error("insérer données valide ! ")
-
-    }
-  }
-
 
 
   getPatientInfo():any {
@@ -236,10 +234,48 @@ export class RdvAvecMedComponent implements OnInit {
     }
   }
 
-  changeEventSpecialite($event: Event) {
 
+  onSelectFileDiabeteAnalyse(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.ImageDiabeteAnalyse = e.target.result;
+      };
+    }
   }
 
 
+
+  onSelectFileAnalyseancienOp(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.ImageAnalyseancienOp = e.target.result;
+      };
+    }
+  }
+
+
+  onSelectFileautreAnalyse(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.ImageautreAnalyse = e.target.result;
+      };
+    }
+  }
+
+  onSelectFileAnalyseAutreMaladie(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.ImageAnalyseAutreMaladie = e.target.result;
+      };
+    }
+  }
 
 }

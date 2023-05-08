@@ -1,80 +1,160 @@
-<div class="row" style="display: flex;margin-left: 1rem;margin-right: 1rem" >
-  <div class="col" style="width: auto; height: auto" >
-    <div class="row"  *ngIf="apntmnt" style="margin-top: 2rem">
-      <div style="float: left">
-        <h3 style="color: #0066FF">{{apntmnt.patient.firstname}} {{apntmnt.patient.lastname}}</h3>
-        <h5 style="color: #3F6589">{{apntmnt.surgery.name}} </h5>
+<div  style=" margin-left: 1rem; margin-right: 1rem;">
+  <div class="col" style="width: 100%; height: auto;">
+    <div class="row" *ngIf="apntmnt" style="margin-top: 2rem;">
+      <div style="float: left;">
+        <h3 style="color: #0066FF;">{{apntmnt.patient.firstname}} {{apntmnt.patient.lastname}}</h3>
+        <h5 style="color: #3F6589;">{{apntmnt.surgery.name}}</h5>
       </div>
-      <div style="float: right">
-    <span style="color: #336DA5 ; margin-top: 1rem">
-      Email:
-    </span>
-        <p >{{apntmnt.patient.email}}</p>
+      <div style="float: right;">
+        <span style="color: #0066FF; margin-top: 1rem;">Email:</span>
+        <p>{{apntmnt.patient.email}}</p>
+      </div>
+      <div style="float: right;">
+        <span style="color: #0066FF;">Date de rendez-vous:</span>
+        <h6 style="font-weight: bold;">{{apntmnt.dateRDV | date: 'yyyy-MM-dd / hh:mm a'}}  <span> <i class="bi bi-calendar-date-fill" style="color: indianred ;"></i></span></h6>
+
+
+      </div>
+    </div>
+
+    <section class="row" style="display: flex; flex-wrap: wrap; width: 100%; height: auto">
+      <div style="width: auto; height: auto" >
+        <h5 style="margin-top: 1rem; color: #0066FF">Informations générales</h5>
+        <table>
+          <tr>
+            <td><span style="color: #336DA5;">Age:</span></td>
+            <td><h6 style="font-weight: bold;">{{apntmnt.age}} ans</h6></td>
+            <td><span style="color: #336DA5;">Ville:</span></td>
+            <td><h6 style="font-weight: bold;">{{apntmnt.ville}}</h6></td>
+          </tr>
+          <tr>
+            <td><span style="color: #336DA5;">Poids:</span></td>
+            <td><h6 style="font-weight: bold;">{{apntmnt.weight}} Kg</h6></td>
+            <td><span style="color: #336DA5;">Type de sang:</span></td>
+            <td><h6 style="font-weight: bold;">{{apntmnt.typeSang}}</h6></td>
+          </tr>
+          <tr>
+            <td><span style="color: #336DA5;">Téléphone:</span></td>
+            <td><h6 style="font-weight: bold;">{{apntmnt.phone}}</h6></td>
+            <td><span style="color: #336DA5;">Alcoolique:</span></td>
+            <td><h6 style="font-weight: bold;">{{apntmnt.alcoolique}}</h6></td>
+          </tr>
+          <tr>
+            <td><span style="color: #336DA5;">Fumee:</span></td>
+            <td><h6 style="font-weight: bold;">{{apntmnt.fumee}}</h6></td>
+          </tr>
+        </table>
       </div>
 
+      <div style="width: auto; height: auto">
+        <h5 style="margin-top: 1rem; color: #0066FF">Diabéte</h5>
+        <table>
+          <tr >
+            <th style="color: #336DA5;" >Diabete</th>
+            <th style="color: #336DA5;">derniere mesure</th>
+            <th style="color: #336DA5;">analyse de diabete</th>
+          </tr>
+          <tr>
+            <td>{{apntmnt.diabete}}</td>
+            <td>{{apntmnt.mesureDiabete}}</td>
+
+            <td>
+              <a (click)="openImage(apntmnt.analyseDiabete)">
+                <img src="{{apntmnt.analyseDiabete}}" style="width: 5rem; height: 5rem">
+              </a>
+
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div style="width: auto; height: auto">
+
+        <h5 style="margin-top: 1rem; color: #0066FF">Tension </h5>
+        <table>
+          <tr>
+            <th style="color: #336DA5;">Tension</th>
+            <th style="color: #336DA5;">Derniere Mesure Tension</th>
+
+          </tr>
+          <tr>
+            <td>{{apntmnt.tension}}</td>
+            <td>{{apntmnt.mesureTension}}</td>
+          </tr>
+
+        </table>
+      </div>
+      <div style="width: auto; height: auto">
+        <h5 style="margin-top: 2rem; color: #0066FF">Autre Maladie</h5>
+        <table>
+          <tr>
+            <th style="color: #336DA5;">Autre Maladie</th>
+            <th style="color: #336DA5;">Maladie et descriptoin de maladie</th>
+            <th style="color: #336DA5;">Analyse de maladie</th>
+
+          </tr>
+          <tr>
+            <td>{{apntmnt.autreMaladie}}</td>
+            <td>{{apntmnt.desAutreMaladie}}</td>
+
+            <td [style.display]="apntmnt.analyseAutreMaladie ? 'block' : 'none'" >
+              <a (click)="openImage(apntmnt.analyseAutreMaladie)" >
+                <img   src="{{apntmnt.analyseAutreMaladie}}" style="width: 5rem; height: 5rem" >
+              </a>
+
+            </td>
+          </tr>
+
+        </table>
+      </div>
+
+      <div style="width: auto; height: auto">
+        <h5 style="margin-top: 2rem; color: #0066FF">Ancien Opération</h5>
+        <table>
+          <tr>
+            <th style="color: #336DA5;">Ancien opération</th>
+            <th style="color: #336DA5;">type de chirurgie</th>
+            <th style="color: #336DA5;">Analyse d'opération</th>
+
+          </tr>
+          <tr>
+            <td>{{apntmnt.ancienOperation}}</td>
+            <td>{{apntmnt.nomAncienOperation}}</td>
+            <td>
+              <a (click)="openImage(apntmnt.analyseAncienOperation)">
+                <img src="{{apntmnt.analyseAncienOperation}}" style="width: 5rem; height: 5rem">
+              </a>
+
+            </td>
+          </tr>
+
+        </table>
+      </div>
+
+    </section>
+    <div class="card content">
+      <h4 style="color: #0066FF;">Description de l'état du patient :</h4>
+      <p>{{apntmnt.note}}</p>
     </div>
-
-    <div >
-    <span style="color: #336DA5 ; margin-top: 1rem">
-      Age:
-    </span>
-      <h6 style="font-weight: bold">{{apntmnt.age}} ans</h6>
-    </div>
-
-    <div >
-    <span style="color: #336DA5 ; margin-top: 1rem">
-      Ville :
-    </span>
-      <h6 style="font-weight: bold">{{apntmnt.ville}} </h6>
-    </div>
-
-    <div >
-    <span style="color: #336DA5 ; margin-top: 1rem">
-      Poids :
-    </span>
-      <h6 style="font-weight: bold">{{apntmnt.weight}} Kg</h6>
-    </div>
-
-
-    <div >
-    <span style="color: #336DA5 ; margin-top: 1rem">
-      Type de sang:
-    </span>
-      <h6 style="font-weight: bold">{{apntmnt.typeSang}} </h6>
-    </div>
-    <div >
-    <span style="color: #336DA5 ; margin-top: 1rem">
-      téléphone :
-    </span>
-      <h6 style="font-weight: bold">{{apntmnt.phone}} </h6>
-    </div>
-
-
-
-    <div >
-    <span style="color: #336DA5 ; margin-top: 1rem">
-      Date de rendez-vous
-    </span>
-      <h6 style="font-weight: bold">{{apntmnt.dateRDV | date: 'yyyy-MM-dd / hh:mm a'}}
-        <span><i class="bi bi-calendar-date-fill" style="color: indianred ;"></i></span>
-      </h6>
-    </div>
-    <div class="card content" >
-      <h5 style="color: #3F6589">Description</h5>
-      <p>
-        {{apntmnt.note}}
-      </p>
-
-    </div>
-
   </div>
-  <div style="width: auto; height: auto">
 
-    <div class="card contentimg" >
+
+
+  <div style="width: auto; height: auto; display: flex">
+    <div class="card contentimg">
+      <h4 style="color: #0066FF;">Analyse de chirurgie</h4>
+
       <div class="image">
-        <img src="{{apntmnt.image}}">
+        <img src="{{apntmnt.image}}" >
       </div>
+    </div>
 
+    <div class="card contentimg" style="margin-left: 2rem">
+      <h4 style="color: #0066FF;">Autre Analyse de chirurgie</h4>
+
+      <div class="image">
+        <img src="{{apntmnt.autreAnalyse}}">
+      </div>
     </div>
   </div>
 </div>

@@ -1,86 +1,55 @@
-<div class="row" style="display: flex">
-<div class="col" style="width: auto; height: auto" >
-  <div class="row"  *ngIf="apntmnt" style="margin-top: 2rem">
-    <div style="float: left">
-      <h3 style="color: #0066FF">{{apntmnt.patient.firstname}} {{apntmnt.patient.lastname}}</h3>
-      <h5 style="color: #3F6589">{{apntmnt.surgery.name}} </h5>
-    </div>
-    <div style="float: right">
-    <span style="color: #336DA5 ; margin-top: 1rem">
-      Email:
-    </span>
-      <p >{{apntmnt.patient.email}}</p>
-    </div>
-
-  </div>
-
-  <div >
-    <span style="color: #336DA5 ; margin-top: 1rem">
-      Age:
-    </span>
-    <h6 style="font-weight: bold">{{apntmnt.age}} ans</h6>
-  </div>
-
-  <div >
-    <span style="color: #336DA5 ; margin-top: 1rem">
-      Ville :
-    </span>
-    <h6 style="font-weight: bold">{{apntmnt.ville}} </h6>
-  </div>
-
-  <div >
-    <span style="color: #336DA5 ; margin-top: 1rem">
-      Poids :
-    </span>
-    <h6 style="font-weight: bold">{{apntmnt.weight}} Kg</h6>
-  </div>
+<div  style=" margin-left: 1rem; margin-right: 1rem;">
+  <div class="col" style="width: 100%; height: auto;">
+    <div class="row" *ngIf="apntmnt" style="margin-top: 2rem;">
+      <div style="float: left;">
+        <h3 style="color: #0066FF;">{{apntmnt.patient.firstname}} {{apntmnt.patient.lastname}}</h3>
+        <h5 style="color: #3F6589;">{{apntmnt.surgery.name}}</h5>
+      </div>
+      <div style="float: right;">
+        <span style="color: #0066FF; margin-top: 1rem;">Email:</span>
+        <p>{{apntmnt.patient.email}}</p>
+      </div>
+      <div style="float: right;">
+        <span style="color: #0066FF;">Date de rendez-vous:</span>
+        <h6 style="font-weight: bold;">{{apntmnt.dateRDV | date: 'yyyy-MM-dd / hh:mm a'}}  <span> <i class="bi bi-calendar-date-fill" style="color: indianred ;"></i></span></h6>
 
 
-  <div >
-    <span style="color: #336DA5 ; margin-top: 1rem">
-      Type de sang:
-    </span>
-    <h6 style="font-weight: bold">{{apntmnt.typeSang}} </h6>
-  </div>
-  <div >
-    <span style="color: #336DA5 ; margin-top: 1rem">
-      téléphone :
-    </span>
-    <h6 style="font-weight: bold">{{apntmnt.phone}} </h6>
-  </div>
-
-
-
-  <div >
-    <span style="color: #336DA5 ; margin-top: 1rem">
-      Date de rendez-vous
-    </span>
-    <h6 style="font-weight: bold">{{apntmnt.dateRDV | date: 'yyyy-MM-dd / hh:mm a'}}
-      <span><i class="bi bi-calendar-date-fill" style="color: indianred ;"></i></span>
-    </h6>
-  </div>
-  <div class="card content" >
-    <h5 style="color: #3F6589">Description</h5>
-    <p>
-      {{apntmnt.note}}
-    </p>
-
-  </div>
-
-</div>
-<div style="width: auto; height: auto">
-
-  <div class="card contentimg" >
-    <div class="image">
-      <img src="{{apntmnt.image}}">
+      </div>
     </div>
 
+    <section class="row" style="display: flex; flex-wrap: wrap; width: 100%; height: auto">
+      <div style="width: auto; height: auto" >
+        <h5 style="margin-top: 1rem; color: #0066FF">Informations générales</h5>
+        <table>
+          <tr>
+            <td><span style="color: #336DA5;">Age:</span></td>
+            <td><h6 style="font-weight: bold;">{{apntmnt.age}} ans</h6></td>
+            <td><span style="color: #336DA5;">Ville:</span></td>
+            <td><h6 style="font-weight: bold;">{{apntmnt.ville}}</h6></td>
+          </tr>
+          <tr>
+            <td><span style="color: #336DA5;">Téléphone:</span></td>
+            <td><h6 style="font-weight: bold;">{{apntmnt.phone}}</h6></td>
+
+          </tr>
+
+        </table>
+      </div>
+
+
+
+
+    </section>
+
   </div>
-</div>
+
+
+
 </div>
 
-  <div class="row btns">
-    <button class="btn1" (click)="rejeterAp(apntmnt.id)">Rejeter Demande</button>
+
+<div class="row btns">
+
     <button class="btn2"  (click)="affecterMedecin(apntmnt.surgery.id,apntmnt.id)">Affecter un Medecin</button>
   </div>
 

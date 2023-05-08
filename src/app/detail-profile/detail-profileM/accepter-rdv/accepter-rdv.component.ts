@@ -21,6 +21,9 @@ appointment : AppointementResult[]=[];
 
   ngOnInit(): void {
     this.getAcceptedApnt();
+    this.share.RequiredRefresh.subscribe(r=>{
+      this.getAcceptedApnt();
+    })
   }
 
   getAcceptedApnt(){

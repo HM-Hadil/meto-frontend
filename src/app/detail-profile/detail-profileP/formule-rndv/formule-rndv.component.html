@@ -231,7 +231,7 @@
 
                           <div class="form-outline mt-3" *ngIf="showDiabete">
                             <label class="form-label" for="diabeteAnalyse">Dernière analyse de diabète</label>
-                            <input type="file" accept="image/*" (change)="onSelectFile($event)"  id="diabeteAnalyse" class="form-control" formControlName="analyseDiabete">
+                            <input type="file" accept="image/*" (change)="onSelectFileDiabeteAnalyse($event)"  id="diabeteAnalyse" class="form-control" formControlName="analyseDiabete">
                           </div>
                           <div class="form-outline mt-3" *ngIf="showDiabete">
                             <label class="form-label" for="diabeteMesure">Dernière mesure de diabète</label>
@@ -291,7 +291,7 @@
                           </div>
                           <div class="form-outline mt-3" *ngIf="showAutreMaladie">
                             <label class="form-label" for="AnalyseAutreMaladie">Analyse de votre maladie</label>
-                            <input type="file" accept="image/*" (change)="onSelectFile($event)"  id="AnalyseAutreMaladie" class="form-control" formControlName="analyseAutreMaladie">
+                            <input type="file" accept="image/*" (change)="onSelectFileAnalyseAutreMaladie($event)"  id="AnalyseAutreMaladie" class="form-control" formControlName="analyseAutreMaladie">
                           </div>
                         </div>
 
@@ -318,7 +318,7 @@
                           </div>
                           <div class="form-outline mt-3" *ngIf="showAncienOp">
                             <label class="form-label" for="AnalyseancienOp">Analyse d'ancien operation</label>
-                            <input type="file" accept="image/*" (change)="onSelectFile($event)"  id="AnalyseancienOp" class="form-control" formControlName="analyseAncienOperation">
+                            <input type="file" accept="image/*" (change)="onSelectFileAnalyseancienOp($event)"  id="AnalyseancienOp" class="form-control" formControlName="analyseAncienOperation">
                           </div>
                         </div>
 
@@ -339,7 +339,7 @@
                       <div class="col-md-4 mb-4 ml-0 pt-4 mb-md-0 pb-md-0">
                         <div class="form-outline">
                           <div><label class="form-label" >autre fichier</label></div>
-                          <input type="file" accept="image/*" (change)="onSelectFile($event)"   class="form-control-file" id="exampleFormControlFile12" formControlName="autreAnalyse">
+                          <input type="file" accept="image/*" (change)="onSelectFileautreAnalyse($event)"   class="form-control-file" id="exampleFormControlFile12" formControlName="autreAnalyse">
 
                         </div>
                       </div>

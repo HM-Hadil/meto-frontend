@@ -75,6 +75,7 @@ import { ModifierRdvComponent } from './detail-profile/detail-profileP/modifier-
 import { ErrorModalComponent } from './error-modal/error-modal.component';
 import { AvisPatientComponent } from './detail-profile/detail-profileA/avis-patient/avis-patient.component';
 import { DonnerAvisComponent } from './detail-profile/detail-profileP/opinion/donner-avis/donner-avis.component';
+import { DetailRdvPatientComponent } from './detail-profile/detail-profileP/detail-rdv-patient/detail-rdv-patient.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -130,6 +131,7 @@ import { DonnerAvisComponent } from './detail-profile/detail-profileP/opinion/do
     ErrorModalComponent,
     AvisPatientComponent,
     DonnerAvisComponent,
+    DetailRdvPatientComponent,
   ],
     imports: [
         BrowserModule,

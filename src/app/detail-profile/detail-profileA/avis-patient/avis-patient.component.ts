@@ -31,7 +31,9 @@ opinion : OpinionResult[] = [];
   accepter(id:string) {
     this.share.accepterAvis(id).subscribe(data=>{
       console.log(data);
+      window.location.reload();
     })
+
 
   }
 

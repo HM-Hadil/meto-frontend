@@ -10,14 +10,21 @@ import {MedecinModel} from "../../Models/MedecinModel";
 })
 export class ChirurgieSelecionneeComponent implements OnInit {
 id!:string;
+nomChirurgie:any;
 medecins: MedecinModel[]=[];
   constructor(private share: ShareServiceService,private route: ActivatedRoute,
               private router:Router) { }
 
   ngOnInit(): void {
    this. getDoctorsByChirurgie();
+   this.getChirurgie();
   }
 
+  getChirurgie(){
+    this.share.getChirurgirById(this.id).subscribe(data=>{
+      this.nomChirurgie=data.name;
+    })
+  }
   getSpecialiteWithoutBrackets(specialite: string): string {
     return specialite.replace(/\[|\]/g, '');}
 

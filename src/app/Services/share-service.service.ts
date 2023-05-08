@@ -16,6 +16,7 @@ import { AppointmentStatsResult } from '../Models/appointmentStatsResult';
 import {updateAppointmentReq} from "../Models/updateAppointmentReq";
 import {OpinionRequest} from "../Models/opinion";
 import {OpinionResult} from "../Models/opinionResult";
+import {DevisReq} from "../Models/DevisReq";
 
 
 
@@ -391,6 +392,10 @@ export class ShareServiceService {
     );
 
   }
+createDevis(idAp:string,req:DevisReq):Observable<any>{
+    return this.http.post(environment.api +`appointments/${idAp}/devis`,req);
+}
+
 }
 
 

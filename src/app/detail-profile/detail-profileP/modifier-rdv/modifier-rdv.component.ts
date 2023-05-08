@@ -29,6 +29,10 @@ id!:string;
   showTension = false;
   showAutreMaladie=false;
   showAncienOp=false
+  ImageDiabeteAnalyse: any ='';
+  ImageAnalyseancienOp: any ='';
+  ImageautreAnalyse: any ='';
+  ImageAnalyseAutreMaladie: any ='';
 
   constructor(private share: ShareServiceService,
               private router: Router,
@@ -86,6 +90,7 @@ id!:string;
 
       this.RdvForm.patchValue({
       age:oldData.age,note:oldData.note,ville:oldData.ville,weight:this.rdvmodel.weight,
+        image:this.imagePath,
       typeSang:this.rdvmodel.typeSang,phone:this.rdvmodel.phone,dateRDV:this.rdvmodel.dateRDV,
         surgeries: this.rdvmodel.surgery.id
         , doctorId: this.rdvmodel.doctor.id,
@@ -98,7 +103,6 @@ id!:string;
 
 
     });
-
 
 
     })}
@@ -167,31 +171,34 @@ id!:string;
     console.log("data form =>" ,data);
     let rdvModel = new updateAppointmentReq(
       data.id,
-      data.age,
-      data.dateRDV,
-      data.doctorId,
       data.note,
+      this.imagePath,
+      data.age,
       data.patientId,
-      data.phone,
-      data.surgeries,
-      data.typeSang,
       data.ville,
       data.weight,
+      data.dateRDV,
+      data.typeSang,
+      data.phone,
+      data.surgeries,
+      data.doctorId,
       data.alcoolique,
       data.tension,
       data.diabete,
       data.fumee,
       data.mesureTension,
       data.mesureDiabete,
-      this.imagePath,
+      this.ImageDiabeteAnalyse,
       data.autreMaladie,
       data.desAutreMaladie,
-      this.imagePath,
+      this.ImageAnalyseAutreMaladie,
       data.ancienOperation,
       data.nomAncienOperation,
-      this.imagePath,
-      this.imagePath,
+      this.ImageAnalyseancienOp,
+      this.ImageautreAnalyse,
+
     )
+    console.log("appointmentRequest", this.rdvmodel)
    this.share.updateAppointment(this.id ,rdvModel).subscribe(data=>{
      console.log("updating data", data)
      this.router.navigate(['listRdv'])
@@ -213,4 +220,49 @@ id!:string;
       };
     }
   }
+
+
+  onSelectFileDiabeteAnalyse(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.ImageDiabeteAnalyse = e.target.result;
+      };
+    }
   }
+
+
+
+  onSelectFileAnalyseancienOp(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.ImageAnalyseancienOp = e.target.result;
+      };
+    }
+  }
+
+
+  onSelectFileautreAnalyse(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.ImageautreAnalyse = e.target.result;
+      };
+    }
+  }
+
+  onSelectFileAnalyseAutreMaladie(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.ImageAnalyseAutreMaladie = e.target.result;
+      };
+    }
+  }
+
+}
