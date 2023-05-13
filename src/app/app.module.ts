@@ -76,6 +76,8 @@ import { ErrorModalComponent } from './error-modal/error-modal.component';
 import { AvisPatientComponent } from './detail-profile/detail-profileA/avis-patient/avis-patient.component';
 import { DonnerAvisComponent } from './detail-profile/detail-profileP/opinion/donner-avis/donner-avis.component';
 import { DetailRdvPatientComponent } from './detail-profile/detail-profileP/detail-rdv-patient/detail-rdv-patient.component';
+import { DetailRdvDevisComponent } from './detail-profile/detail-profileA/rendez-vous/detail-rdv-devis/detail-rdv-devis.component';
+import { ConfirmerRDVComponent } from './confirmer-rdv/confirmer-rdv.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -132,6 +134,8 @@ import { DetailRdvPatientComponent } from './detail-profile/detail-profileP/deta
     AvisPatientComponent,
     DonnerAvisComponent,
     DetailRdvPatientComponent,
+    DetailRdvDevisComponent,
+    ConfirmerRDVComponent,
   ],
     imports: [
         BrowserModule,

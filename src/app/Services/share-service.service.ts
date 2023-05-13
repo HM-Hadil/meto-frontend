@@ -395,6 +395,34 @@ export class ShareServiceService {
 createDevis(idAp:string,req:DevisReq):Observable<any>{
     return this.http.post(environment.api +`appointments/${idAp}/devis`,req);
 }
+updateDevisByAdmin(idAp:string,req:DevisReq):Observable<any>{
+  return this.http.put(environment.api +`appointments/${idAp}/updateDevis`,req);
+
+}
+approveDevisByPatient(idAp:string):Observable<any>{
+  return this.http.put(environment.api +`appointments/${idAp}/confirmeDevis`,null);
+
+}
+ getAllCreatedDevisByDoctor():Observable<AppointementResult[]>{
+    return this.http.get<AppointementResult[]>(environment.api +"appointments/created-devis");
+
+}
+getAllUpdatedDevisByAdmin():Observable<AppointementResult[]>{
+    return this.http.get<AppointementResult[]>(environment.api +"appointments/updated-devisByAdmin");
+
+}
+getAllApprovedDevisByPatient():Observable<AppointementResult[]>{
+    return this.http.get<AppointementResult[]>(environment.api +"appointments/approved-devisByPatient");
+
+}
+
+getCreatedAppointmentById(idAp:string):Observable<AppointementResult>{
+    return this.http.get<AppointementResult>(environment.api+`appointments/getCreatedDevisById/${idAp}`)
+}
+getChangedAppointmentByAdmin(idAp:string):Observable<AppointementResult>{
+    return this.http.get<AppointementResult>(environment.api+`appointments/getChangeddDevisByAdmin/${idAp}`)
+}
+
 
 }
 

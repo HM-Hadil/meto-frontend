@@ -61,7 +61,13 @@ export class AppointementResult {
     public ancienOperation:String ,
     public nomAncienOperation:String ,
     public analyseAncienOperation:String ,
-    public autreAnalyse:String
+    public autreAnalyse:String,
+  public devis: {
+    id:string,
+    cost: any,
+    createdOn: Date,
+    status: string,
+  }
 
 ){}
 }

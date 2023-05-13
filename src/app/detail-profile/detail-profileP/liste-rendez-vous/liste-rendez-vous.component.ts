@@ -62,4 +62,10 @@ listAppointment(){
     this.router.navigate(['modifierRdv', id])
 
   }
+
+  confirmerRdv(id: string) {
+    this.router.navigate(['confirmerRdv', id])
+
+
+  }
 }

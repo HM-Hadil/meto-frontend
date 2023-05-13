@@ -3,7 +3,9 @@
   scroll-behavior: smooth;
 }
 a{
-    color: #001B35;
+  color: #001B35 !important;
+  font-weight: bold;
+  font-size: 18px ;
 }
 .right{
   float: right !important;

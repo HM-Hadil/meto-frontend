@@ -1,0 +1,61 @@
+<div  style=" margin-left: 1rem; margin-right: 1rem;">
+  <div class="col" style="width: 100%; height: auto;">
+    <div class="row" *ngIf="apntmnt" style="margin-top: 1rem;">
+
+    </div>
+
+    <section class="row" style="display: flex; flex-wrap: wrap; width: 100%; height: auto">
+
+      <div style="width: 100% !important; height: auto">
+        <h5 style="margin-top: 1rem; color: #0066FF">Informations générales</h5>
+        <table>
+          <tr >
+            <th style="color: #336DA5;" >Nom et Prenom</th>
+            <th style="color: #336DA5;">Email</th>
+            <th style="color: #336DA5;">Téléphone</th>
+            <th style="color: #336DA5;">Ville</th>
+            <th style="color: #336DA5;">Age</th>
+            <th style="color: #336DA5;">Type de chirugie</th>
+            <th style="color: #336DA5;">Médecin</th>
+
+            <th style="color: #336DA5;">Date de rendez-vous</th>
+
+          </tr>
+          <tr>
+            <td>{{apntmnt.patient.firstname}} {{apntmnt.patient.lastname}}</td>
+            <td>{{apntmnt.patient.email}}</td>
+            <td>{{apntmnt.phone}}</td>
+            <td>{{apntmnt.ville}}</td>
+            <td>{{apntmnt.age}} ans</td>
+            <td>{{apntmnt.surgery.name}} </td>
+            <td>{{apntmnt.doctor.firstname}} {{apntmnt.doctor.lastname}}</td>
+
+            <td>{{apntmnt.dateRDV | date: 'yyyy-MM-dd / hh:mm a'}}  </td>
+
+
+
+          </tr>
+        </table>
+      </div>
+
+
+    </section>
+
+  </div>
+
+
+
+</div>
+<div style="margin-left: 2rem;margin-top: 2rem">
+  <h3>Prix de l'operation : </h3>
+  <h4>- {{apntmnt.devis.cost}} TND</h4>
+  <h4>- {{ apntmnt.devis.cost * 0.041 }} ZAR</h4>
+
+
+    <div class="row btns">
+      <button class="btn1">Rejeter</button>
+      <button class="btn2" type="submit"  (click)="ConfirmerDevis()">Confirmer</button>
+    </div>
+
+</div>
+
