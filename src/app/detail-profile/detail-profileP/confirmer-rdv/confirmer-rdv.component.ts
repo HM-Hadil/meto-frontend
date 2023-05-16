@@ -29,5 +29,11 @@ this.share.approveDevisByPatient(this.id).subscribe(result=>{
   console.log("result: approve devis ", result);
 })
   }
+
+  reject() {
+    this.share.rejectDevisByPatient(this.id).subscribe(result=>{
+      console.log("resultRejectDevis:",result);
+    })
+  }
 }
 
