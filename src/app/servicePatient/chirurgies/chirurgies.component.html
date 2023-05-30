@@ -7,14 +7,14 @@
     <div class="row align-content-center content-info" id="{{chirurgie.id}}">
 
       <div class="content" >
-        <p>{{chirurgie.description}}</p>
+        <p style="font-size: 18px!important;">{{chirurgie.description}}</p>
       </div>
       <div class="image" style="margin-top: 1rem" >
         <img src="{{chirurgie.image}}">
       </div>
     </div>
   <!---- <h5 style="margin-top:3rem">{{chirurgie.du}}</h5>-->
-    <div class="row col-md-12">
+    <div class="row col-md-12" style="margin-top: 4.5rem">
       <div class="btn2 col-md-6">
         <button (click)="choisirMedecin(chirurgie.id)">Choisir un Médecin</button>
       </div>
@@ -27,7 +27,5 @@
   </div>
 
 
-
-
-
 </div>
+<app-footer></app-footer>

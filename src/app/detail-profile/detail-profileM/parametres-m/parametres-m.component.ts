@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import alertify from "alertifyjs";
 import {HttpClient} from "@angular/common/http";
 import {UserAuthService} from "../../../Services/interceptor/user-auth.service";
+import {UpdatePhotoReq} from "../../../Models/UpdatePhotoReq";
 
 @Component({
   selector: 'app-parametres-m',
@@ -53,21 +54,9 @@ export class ParametresMComponent implements OnInit {
     });
 
     this.changePhotoForm = this.fb.group({
-      adresse: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      firstname: ['', Validators.required],
-      gender: ['', Validators.required],
+
       image: ['', Validators.required],
-      lastname: ['', Validators.required],
 
-      experience: this.fb.array([]),
-
-      parcours: this.fb.array([]),
-      password: ['', Validators.required],
-      specialite:  [''],
-      surgeries: this.fb.array([]),
-      telephone: ['', Validators.required],
-      ville: ['', Validators.required]
     });
 
 
@@ -237,29 +226,22 @@ export class ParametresMComponent implements OnInit {
 
   changePhoto() {
     let data = this.changePhotoForm.value;
-    const token = this.getToken();
-    let medecins = new MedecinModel(
-      data.id,
-      data.firstname,
-      data.lastname,
-      data.email,
-      data.password,
-      data.ville,
-      data.adresse,
-      data.specialite,
-      data.gender,
+
+    let medecins = new UpdatePhotoReq(
+
       this.imagePath,
-      data.telephone,
-      data.experience,
-      data.parcours,
-      data.surgeries
+
     );
 
+    const token = this.getToken();
     if (token) {
       //Decode the token to get the payload (which contains user information
       const payload = JSON.parse(window.atob(token.split('.')[1]));
-    const id = payload.sub;
-        this.share.updatePhoto(this.id,medecins).subscribe();
+      const id = payload.sub;
+      this.share.updatePhoto(id, medecins).subscribe(data => {
+        console.log(data);
+        window.location.reload();
+      });
     }
   }
 
@@ -289,8 +271,6 @@ export class ParametresMComponent implements OnInit {
       //Decode the token to get the payload (which contains user information
       const payload = JSON.parse(window.atob(token.split('.')[1]));
       const id = payload.sub;
-      this.share.updatePhoto(id,medecins).subscribe();
-
     this.share.updateDoctor(id,medecins).subscribe(data=>{
       console.log("back form",data)
       alertify.success("La mise à jours de votre profile a été effectuée avec succès ")

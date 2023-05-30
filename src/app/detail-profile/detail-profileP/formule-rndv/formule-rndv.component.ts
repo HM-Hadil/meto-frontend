@@ -34,7 +34,7 @@ appointmentForm!: FormGroup;
   ImageAnalyseancienOp: any ='';
   ImageautreAnalyse: any ='';
   ImageAnalyseAutreMaladie: any ='';
-
+  isInvalidDate: boolean = false;
   constructor(private route:ActivatedRoute,
               private router: Router,
               private userAuth : UserAuthService,
@@ -79,7 +79,60 @@ appointmentForm!: FormGroup;
     this.appointmentForm.patchValue({patientId:this.idP,
       //surgeryId:this.idCh,
       });
+    this. getAppointmentByChirurgie();
   }
+
+  getCurrentDate(): string {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+    const day = ('0' + currentDate.getDate()).slice(-2);
+    const hours = ('0' + currentDate.getHours()).slice(-2);
+    const minutes = ('0' + currentDate.getMinutes()).slice(-2);
+
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  }
+
+  getAppointmentDates(appointments: any[]): string[] {
+    const appointmentDates: string[] = [];
+
+    for (const appointment of appointments) {
+      const dateRdv = new Date(appointment.dateRDV);
+      if (dateRdv) {
+        appointmentDates.push(dateRdv.toDateString());
+      }
+    }
+
+    return appointmentDates;
+  }
+  getAppointmentByChirurgie() {
+    const userDate = new Date(this.appointmentForm.value.dateRDV); // Get the user input date
+
+    if (userDate < new Date()) {
+      this.isInvalidDate = true;
+    } else {
+      this.isInvalidDate = false;
+      // Perform any other necessary actions
+    }
+    let data=this.appointmentForm.value;
+      this.share.getAllAppointementByChirurgieIdAndStatus(data.surgeries)
+        .subscribe((resultDoctorCh: any) => {
+          console.log(resultDoctorCh);
+          const appointmentDates = this.getAppointmentDates(resultDoctorCh); // Get the list of appointment dates
+
+          if (appointmentDates.includes(userDate.toDateString())) {
+            alert('Date déja reservé, choisissez un autre date!');
+            const dateInput = document.getElementById('dateInput') as HTMLInputElement;
+            dateInput.value = '';
+          }
+
+          if (appointmentDates.length > 0) {
+            console.log('Appointment dates:', appointmentDates);
+          } else {
+            console.log('No valid appointment dates found');
+          }
+        });
+    }
 
   showDiabeteFields(event: Event) {
     if ((event.target as HTMLInputElement).value === 'oui') {
@@ -151,35 +204,10 @@ appointmentForm!: FormGroup;
       let data=this.appointmentForm.value;}
     const data = this.appointmentForm.value;
     console.log("data form:", data);
+    const dateRDV: Date | null = data.dateRDV ? new Date(data.dateRDV) : null; // Convert dateRDV to Date object or set it as null
 
-        const appointmentRequest = new AppointmentRequest(
-          data.id,
-          data.note,
-          this.imagePath,
-          data.age,
-          data.patientId,
-          data.ville,
-          data.weight,
-        data.dateRDV,
-          data.typeSang,
-          data.phone,
-          data.surgeries,
-        data.doctorId,
-        data.alcoolique,
-        data.tension,
-        data.diabete,
-        data.fumee,
-        data.mesureTension,
-        data.mesureDiabete,
-        this.ImageDiabeteAnalyse,
-        data.autreMaladie,
-        data.desAutreMaladie,
-        this.ImageAnalyseAutreMaladie,
-        data.ancienOperation,
-        data.nomAncienOperation,
-          this.ImageAnalyseancienOp,
-          this.ImageautreAnalyse,
-      );
+        const appointmentRequest = new AppointmentRequest(data.id, data.note, this.imagePath, data.age, data.patientId, data.ville, data.weight,      dateRDV instanceof Date ? dateRDV : undefined,
+          data.typeSang, data.phone, data.surgeries, data.doctorId, data.alcoolique, data.tension, data.diabete, data.fumee, data.mesureTension, data.mesureDiabete, this.ImageDiabeteAnalyse, data.autreMaladie, data.desAutreMaladie, this.ImageAnalyseAutreMaladie, data.ancienOperation, data.nomAncienOperation, this.ImageAnalyseancienOp, this.ImageautreAnalyse);
       console.log("appopntment request",appointmentRequest);
 // Check if the dateRDV already exists in appointments
     this.share.getAllAppointments().subscribe(appointments => {

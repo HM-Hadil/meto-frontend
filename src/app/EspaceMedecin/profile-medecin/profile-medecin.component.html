@@ -13,13 +13,15 @@
         </div>
         <h5 style="margin-top: 1rem">Dr {{infoMed.firstname}} {{infoMed.lastname}}</h5>
         <h6>{{getSpecialiteWithoutBrackets(infoMed.specialite)}}</h6>
+
         <div>
          <ul>
-           <li><a href="showProfileMedecin"><i class="bi bi-person-fill" style="color: white; margin-right: 0.5rem"></i>Profile</a></li>
-           <li><a href="messagesM"><i class="bi bi-envelope-fill" style="color: white; margin-right: 0.5rem"></i>Demande Rendez-vous</a></li>
-           <li><a href="acceptedRdv"><i class="bi bi-envelope-fill" style="color: white; margin-right: 0.5rem"></i>Rendez-vous Accepté</a></li>
-           <li><a href="dashboardMed"><i class="bi bi-pie-chart-fill" style="color: white; margin-right: 0.5rem"></i>Dashboard</a></li>
-           <li><a href="parametreMed"><i class="bi bi-gear-fill" style="color: white; margin-right: 0.5rem"></i>Paramètres</a></li>
+           <li><a href="showProfileMedecin"><i class="bi bi-person" style="color: white; margin-right: 0.5rem"></i>Profile</a></li>
+           <li><a href="messagesM"><i class="bi bi-calendar3" style="color: white; margin-right: 0.5rem"></i>Demande Rendez-vous</a></li>
+           <li><a href="acceptedRdv"><i class="bi bi-calendar-check" style="color: white; margin-right: 0.5rem"></i>Rendez-vous Accepté</a></li>
+           <li><a href="rdvConfirme"><i class="bi bi-calendar2-check" style="color: white; margin-right: 0.5rem"></i>Rendez-vous confirmé</a></li>
+           <li><a href="dashboardMed"><i class="bi bi-pie-chart" style="color: white; margin-right: 0.5rem"></i>Dashboard</a></li>
+           <li><a href="parametreMed"><i class="bi bi-gear" style="color: white; margin-right: 0.5rem"></i>Paramètres</a></li>
            <li style="margin-top: 5rem"><a (click)="logOut()"><i class="bi bi-box-arrow-left" style="color: white; margin-right:5px" ></i>Déconnexion</a></li>
          </ul>
         </div>

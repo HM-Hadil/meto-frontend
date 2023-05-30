@@ -2,39 +2,36 @@
 <div class="container-fluid">
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Charts</h1>
+  <h5 class="h3 mb-2 text-gray-800">Dashboard</h5>
 
 
   <!-- Content Row -->
   <div class="row">
 
-    <div class="col-xl-8 col-lg-7">
+    <div class="col-xl-8 " style="width: 600px; height: 230px; display: block;">
 
       <!-- Area Chart -->
       <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header " style="width:600x">
           <h6 class="m-0 font-weight-bold text-primary">nombre des rendez-vous par mois</h6>
         </div>
-        <div class="card-body">
           <div class="chart-area">
-            <div id="container" style="width: 800px; height: 400px; display: block;">
+            <div id="container" style="width: 600px; height: 250px; display: block;">
 
 
             </div>
           </div>
-          <hr>
-          Styling for the area chart
-        </div>
+
       </div>
 
       <!-- Bar Chart -->
-      <div class="card shadow mb-4" style="height: 32rem">
+      <div class="card shadow mb-4"style=" height: 350px" >
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Nombres des patients Female, Male, Total</h6>
         </div>
-        <div class="card-body">
-          <div class="chart-bar" >
-            <div>
+
+          <div class="chart-bar" style="width: 600px; height: 200px" >
+            <div style="width: 600px; height: 250px">
               <canvas baseChart
                       [datasets]="barChartData"
                       [labels]="barChartLabels"
@@ -44,8 +41,7 @@
             </div>
           </div>
 
-        </div>
-      </div>
+
 
     </div>
 

@@ -16,7 +16,7 @@
 
                         <div class="form-outline">
                           <label class="form-label" for="form3Examplev5">Ville</label>
-                          <input type="text" id="form3Examplev5" class="form-control form-control-lg" formControlName="ville" required/>
+                          <input type="text" id="form3Examplev5" class="form-control form-control-lg" formControlName="ville" required autocomplete="off"/>
 
                         </div>
 
@@ -25,7 +25,7 @@
 
                         <div class="form-outline">
                           <label class="form-label" for="form337Examplev6">Age</label>
-                          <input type="number" id="form37Examplev6" class="form-control form-control-lg" formControlName="age" required/>
+                          <input type="number" id="form37Examplev6" class="form-control form-control-lg" formControlName="age" required autocomplete="off"/>
                           <div *ngIf="appointmentForm.controls['age'].invalid && (appointmentForm.controls['age'].dirty || appointmentForm.controls['age'].touched)">
                             <div class="alert alert-danger mt-2" *ngIf="appointmentForm.controls['age'].errors?.['required']">
                               Age is required.
@@ -48,13 +48,13 @@
 
                         <div class="form-outline">
                           <label class="form-label" for="form3Examplev7">Numéro téléphone</label>
-                          <input type="text" id="form3Examplev7" class="form-control form-control-lg" formControlName="phone" required/>
+                          <input type="text" id="form3Examplev7" class="form-control form-control-lg" formControlName="phone" required autocomplete="off"/>
                         </div>
                       </div>
                       <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
                           <div class="form-outline">
                           <label class="form-label" for="form3Examplev6768">Poids</label>
-                          <input type="number" id="form3Examplev6768" class="form-control form-control-lg" formControlName="weight" required/>
+                          <input type="number" id="form3Examplev6768" class="form-control form-control-lg" formControlName="weight" required autocomplete="off"/>
                           <div *ngIf="appointmentForm.controls['weight'].invalid && (appointmentForm.controls['weight'].dirty || appointmentForm.controls['weight'].touched)">
                             <div class="alert alert-danger mt-2" *ngIf="appointmentForm.controls['weight'].errors?.['required']">
                               poids is required.
@@ -80,7 +80,7 @@
                     <div class="form-group mt-4">
                       <label for="exampleFormControlTextarea1">Description</label>
                       <textarea type="text" class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                formControlName="note" required></textarea>
+                                formControlName="note" required autocomplete="off"></textarea>
                     </div>
 
                   </div>
@@ -119,8 +119,10 @@
                       <div class="col-md-5 mt-4 mb-4 pb-2">
                         <label >Reserver date</label>
                         <div class="md-form md-outline input-with-post-icon datepicker" id="customDays">
-                          <input type="datetime-local" id="datetime" name="datetime" formControlName="dateRDV">
+                          <input type="datetime-local" id="dateInput" name="datetime" formControlName="dateRDV" (input)="getDoctorByChirurgie()"  min="{{ getCurrentDate() }}">
                         </div>
+                        <div class="alert alert-danger" *ngIf="isInvalidDate">Ce date ne convienbt pas. Choisissez un autre date à partir de date actuelle!.</div>
+
 
                       </div>
                       <div class="col-md-4 mb-4 ml-4 pt-4 mb-md-0 pb-md-0">

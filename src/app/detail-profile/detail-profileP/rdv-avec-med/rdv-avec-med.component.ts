@@ -37,6 +37,8 @@ export class RdvAvecMedComponent implements OnInit {
   ImageAnalyseancienOp: any ='';
   ImageautreAnalyse: any ='';
   ImageAnalyseAutreMaladie: any ='';
+  isInvalidDate: boolean = false;
+
 
   constructor(private route:ActivatedRoute,
               private router: Router,
@@ -81,7 +83,77 @@ export class RdvAvecMedComponent implements OnInit {
       surgeries:this.idChirurgie.replace(/"/g, ''),
       doctorId:this.idDoctor.replace(/"/g, '')
     });
+    this. getDoctorByChirurgie();
   }
+  getAppointmentDates(appointments: any[]): string[] {
+    const appointmentDates: string[] = [];
+
+    for (const appointment of appointments) {
+      const dateRdv = new Date(appointment.dateRDV);
+      if (dateRdv) {
+        appointmentDates.push(dateRdv.toDateString());
+      }
+    }
+
+    return appointmentDates;
+  }
+
+  getCurrentDate(): string {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+    const day = ('0' + currentDate.getDate()).slice(-2);
+    const hours = ('0' + currentDate.getHours()).slice(-2);
+    const minutes = ('0' + currentDate.getMinutes()).slice(-2);
+
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  }
+  getDoctorByChirurgie() {
+    const userDate = new Date(this.appointmentForm.value.dateRDV); // Get the user input date
+
+    if (userDate < new Date()) {
+      this.isInvalidDate = true;
+    } else {
+      this.isInvalidDate = false;
+      // Perform any other necessary actions
+    }
+   if (this.share.getIdDoctor()== null ){
+
+     this.share.getAllAppointementByChirurgieIdAndStatus(this.idChirurgie.replace(/"/g, ''))
+       .subscribe((resultDoctorCh: any) => {
+         console.log(resultDoctorCh);
+         const appointmentDates = this.getAppointmentDates(resultDoctorCh); // Get the list of appointment dates
+
+         if (appointmentDates.includes(userDate.toDateString())) {
+           alert('Date déja reservé, choisissez un autre date!');
+           const dateInput = document.getElementById('dateInput') as HTMLInputElement;
+           dateInput.value = '';
+         }
+
+         if (appointmentDates.length > 0) {
+           console.log('Appointment dates:', appointmentDates);
+         } else {
+           console.log('No valid appointment dates found');
+         }
+       });
+   }
+    this.share.getAllAppointementByDcotorIdAndStatus(this.idDoctor.replace(/"/g, ''))
+      .subscribe((resultDoctorCh: any) => {
+        console.log(resultDoctorCh);
+        const appointmentDates = this.getAppointmentDates(resultDoctorCh); // Get the list of appointment dates
+
+        if (appointmentDates.includes(userDate.toDateString())) {
+          alert('Date already reserved, please choose another date!');
+        }
+
+        if (appointmentDates.length > 0) {
+          console.log('Appointment dates:', appointmentDates);
+        } else {
+          console.log('No valid appointment dates found');
+        }
+      });
+  }
+
 
 
   showDiabeteFields(event: Event) {
@@ -154,7 +226,9 @@ export class RdvAvecMedComponent implements OnInit {
 
       let data=this.appointmentForm.value;
       console.log("data form:", data);
-      const appointmentRequest = new AppointmentRequest(
+    const dateRDV: Date | null = data.dateRDV ? new Date(data.dateRDV) : null; // Convert dateRDV to Date object or set it as null
+
+    const appointmentRequest = new AppointmentRequest(
         data.id,
         data.note,
         this.imagePath,
@@ -162,7 +236,7 @@ export class RdvAvecMedComponent implements OnInit {
         this.idP,
         data.ville,
         data.weight,
-        data.dateRDV,
+      dateRDV instanceof Date ? dateRDV : undefined,
         data.typeSang,
         data.phone,
         this.idChirurgie.replace(/"/g, ''),

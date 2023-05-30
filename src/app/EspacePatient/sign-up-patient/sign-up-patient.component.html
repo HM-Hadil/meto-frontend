@@ -118,6 +118,9 @@
                   <div *ngIf="patientForm.controls['password'].errors?.['required']">
                     Ce champ est obligatoire !.                  </div>
                 </div>
+                <div *ngIf="patientForm.controls['password'].errors?.['minlength']"  >
+                  Longeur du mot passe au moins 6 caractéres.
+                </div>
               </div>
 
               <div class="field padding-bottom--24 btn">

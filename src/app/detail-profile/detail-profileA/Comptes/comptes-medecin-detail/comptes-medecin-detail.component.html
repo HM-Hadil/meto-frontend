@@ -1,40 +1,69 @@
-<div class="col allCard>"  *ngIf="medecin">
-
-  <div class="image">
-    <img src="{{medecin.image}}">
-  </div>
-  <div class="card infotxt" >
-  <h4>{{medecin.firstname}} {{medecin.lastname}}</h4>
-  <h5>{{getSpecialiteWithoutBrackets(medecin.specialite)}}</h5>
-    <address><b>Ville : {{medecin.ville}}</b></address>
-    <p><b>Email :</b> {{medecin.email}}</p>
-  <p><b>Téléphone :</b> {{medecin.telephone}}</p>
-  <!--<p><b>Etablissement :</b> clinique l Ben arous</p>-->
-  </div>
-
-    <div class="col content">
-  <div class="card parcours">
-   <h5 style="text-align: center ; color: #3F6589">Parcours</h5>
 
 
-    <p  *ngFor="let par of medecin.parcours">- {{par.field}} {{par.diploma}} ,  {{par.establishment}} </p>
 
-  </div>
+<div class="page-content page-container" id="page-content" *ngIf="medecin">
 
-  <div class="card parcours" style="text-align: justify ; margin-top: 1rem;">
+  <div class="row container d-flex ">
+    <div class="">
+      <div class="card user-card-full">
+        <div class="row m-l-0 m-r-0" >
+          <div class="col-md-4 bg-c-lite-green user-profile">
+            <div class="card-block text-center text-white">
+              <div class="m-b-25">
+                <img src="{{medecin.image}}" class="img-radius" alt="User-Profile-Image">
+              </div>
+              <h4 class="f-w-600">{{medecin.firstname}} {{medecin.lastname}}</h4>
+              <h5>{{getSpecialiteWithoutBrackets(medecin.specialite)}}</h5>
+              <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card-block">
+              <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information Génerale</h6>
+              <div class="row">
+                <div class="col-sm-4">
+                  <p class="m-b-10 f-w-600">Email</p>
+                  <h6 class="text-muted f-w-400">{{medecin.email}}</h6>
+                </div>
+                <div class="col-sm-4">
+                  <p class="m-b-10 f-w-600">Phone</p>
+                  <h6 class="text-muted f-w-400">+216 {{medecin.telephone}}</h6>
+                </div> <div class="col-sm-4">
+                <p class="m-b-10 f-w-600">Ville</p>
+                <h6 class="text-muted f-w-400">{{medecin.ville}}</h6>
+              </div>
+              </div>
+              <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Expérience</h6>
 
-    <h5 style="text-align: center ; color: #3F6589 ;">Expérience Professionnelle</h5>
+              <div class="card parcours">
+                <h5 style="text-align: center ; color: #3F6589">Parcours</h5>
 
-    <p *ngFor="let exp of medecin.experience">- {{exp.specialty}} , {{exp.establishment}}</p>
-  </div>
 
-  <div class="row btns">
-    <button class="btn1" (click)="deleteUser(medecin.id)">Supprimer</button>
-    <button class="btn2" (click)="activateDoctor(medecin.id)">Valider</button>
-  </div>
+                <p  *ngFor="let par of medecin.parcours">- {{par.field}} {{par.diploma}} ,  {{par.establishment}} </p>
+
+              </div>
+
+
+              <div class="card parcours" style="text-align: justify ; margin-top: 1rem;">
+
+                <h5 style="text-align: center ; color: #3F6589 ;">Expérience Professionnelle</h5>
+
+                <p *ngFor="let exp of medecin.experience">- {{exp.specialty}} , {{exp.establishment}}</p>
+              </div>
+
+
+              <div class="row btns">
+                <button class="btn1" (click)="deleteUser(medecin.id)">Supprimer</button>
+                <button class="btn2" (click)="activateDoctor(medecin.id)">Valider</button>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
-
-
 

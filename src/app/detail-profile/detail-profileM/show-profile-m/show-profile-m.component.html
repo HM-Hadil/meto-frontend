@@ -1,35 +1,86 @@
-<div class="col all-content">
-<h5>Profile</h5>
 
-  <div class="card first-info" *ngIf="medecin">
-    <div class="image">
-      <img src="{{medecin.image}}">
-    </div>
-    <h4 style="margin-top: 1rem">Docteur {{medecin.firstname}} {{medecin.lastname}}</h4>
-    <h6 style="color: #0066FF" >{{getSpecialiteWithoutBrackets(medecin.specialite)}}</h6>
-  </div>
+<head>
 
-  <div class="card scnd-info">
-    <h6>Email</h6>
-    <p>{{medecin.email}}</p>
-    <h6>Téléphone</h6>
-    <p>+216{{medecin.telephone}}</p>
-    <h6>Adresse</h6>
-    <p>{{medecin.adresse}}</p>
-  </div>
-  <div class="card parcoursExp">
-    <h5>Parcours</h5>
-    <div class="card parcours shadow-sm p-3 mb-5 bg-#EAF9F8 rounded">
-      <p *ngFor="let par of medecin.parcours">- {{par.field}} {{par.diploma}} ,  {{par.establishment}} </p>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
-    </div>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
+</head>
 
-    <h5>Expérience professionnelle</h5>
-    <div class="card parcours shadow-sm p-3 mb-5 bg-#EAF9F8  rounded">
-      <p *ngFor="let exp of medecin.experience">- {{exp.specialty}} , {{exp.establishment}}</p>
+<div class="box">
+  <div id="overlay">
+
+      <div class="image">
+        <img src="{{medecin.image}}">
+      </div>
+
+    <ul class="text">Docteur {{medecin.firstname}} {{medecin.lastname}}</ul>
+    <div class="text1">{{getSpecialiteWithoutBrackets(medecin.specialite)}}
     </div>
 
 
-  </div>
 
-</div>
+
+    <div class="panel-body" style="width: 60rem !important;margin: auto" >
+      <div class="panel panel-default">
+        <div class="panel-heading " role="tab" id="headingOne">
+          <h4 class="panel-title ">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="" aria-controls="collapseOne">
+              <div class="title  btn btn-danger btn-outline btn-lg" style="background-color: #1DA1F2;color: whitesmoke">Information Générale</div>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" >
+          <div class="panel-body" >
+            <div class="card parcours shadow-sm p-3 mb-5 bg-#EAF9F8  rounded">
+
+              <div class="row">
+                <div class="col-sm-4">
+                  <p class="m-b-10 f-w-600">Email</p>
+                  <h6 class="text-muted f-w-400">{{medecin.email}}</h6>
+                </div>
+                <div class="col-sm-4">
+                  <p class="m-b-10 f-w-600">Phone</p>
+                  <h6 class="text-muted f-w-400">+216 {{medecin.telephone}}</h6>
+                </div> <div class="col-sm-4">
+                <p class="m-b-10 f-w-600">Ville</p>
+                <h6 class="text-muted f-w-400">{{medecin.ville}}</h6>
+              </div>
+              </div>
+            </div>          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo" >
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <div class="title btn btn-danger btn-outline btn-lg" style="background-color: #1DA1F2;color: whitesmoke">Parcours</div>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            <div class="card parcours shadow-sm p-3 mb-5 bg-#EAF9F8 rounded">
+              <p *ngFor="let par of medecin.parcours">- {{par.field}} {{par.diploma}} ,  {{par.establishment}} </p>
+
+            </div>     </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree" >
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <div class="title btn btn-danger btn-outline btn-lg" style="background-color: #1DA1F2;color: whitesmoke">Expérience professionnelle</div>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+
+            <div class="card parcours shadow-sm p-3 mb-5 bg-#EAF9F8  rounded">
+              <p *ngFor="let exp of medecin.experience">- {{exp.specialty}} , {{exp.establishment}}</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>

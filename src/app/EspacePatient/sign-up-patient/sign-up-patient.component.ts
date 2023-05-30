@@ -25,7 +25,7 @@ export class SignUpPatientComponent implements OnInit {
         firstname: new FormControl('', [Validators.required]),
         lastname: new FormControl('', [Validators.required]),
         email: new FormControl('', [Validators.required]),
-        password: new FormControl('', [Validators.required]),
+        password: new FormControl('', [Validators.required, Validators.minLength(6)]),
         gender: new FormControl('', [Validators.required]),
       };
       this.patientForm = this.fb.group(formControles);

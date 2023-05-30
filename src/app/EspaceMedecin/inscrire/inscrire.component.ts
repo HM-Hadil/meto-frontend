@@ -39,7 +39,7 @@ export class InscrireComponent implements OnInit {
         experience: this.fb.array([]),
 
         parcours: this.fb.array([]),
-        password: ['', Validators.required],
+        password: ['', [Validators.required, Validators.minLength(6)]],
         specialite:  [''],
         surgeries: this.fb.array([]),
         telephone: ['', Validators.required],

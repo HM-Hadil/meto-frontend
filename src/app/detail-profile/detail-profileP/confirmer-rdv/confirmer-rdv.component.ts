@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ShareServiceService} from "../Services/share-service.service";
+import {ShareServiceService} from "../../../Services/share-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
-import {AppointementResult} from "../Models/AppointementResult";
+import {AppointementResult} from "../../../Models/AppointementResult";
 
 @Component({
   selector: 'app-confirmer-rdv',
@@ -27,12 +27,15 @@ id!:string;
   ConfirmerDevis() {
 this.share.approveDevisByPatient(this.id).subscribe(result=>{
   console.log("result: approve devis ", result);
+  this.router.navigate(['/rdvConfirmé']);
+
 })
   }
 
   reject() {
     this.share.rejectDevisByPatient(this.id).subscribe(result=>{
       console.log("resultRejectDevis:",result);
+      this.router.navigate(['/listRdv']);
     })
   }
 }

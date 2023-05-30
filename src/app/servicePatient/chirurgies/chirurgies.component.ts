@@ -26,16 +26,6 @@ export class ChirurgiesComponent implements OnInit {
     this.reloadData();
   }
 
-  ngAfterViewInit(): void {
-    try {
-      const fragment = document.querySelector('#' + this.fragment);
-      if (fragment != null) {
-        fragment.scrollIntoView();
-        console.log("link active");
-      }
-
-    } catch (e) {}
-  }
 
   prendreRDV(idC:string){
     if(this.authService.getRole()==='PATIENT'!==null){

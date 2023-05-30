@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild, ElementRef } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ShareServiceService} from "../../../Services/share-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -16,12 +16,13 @@ export class UpdateChirurgieComponent implements OnInit {
    imagePath: any ='';
   imgURL: any = '';
   id!:string;
+
   constructor(private share: ShareServiceService , private fb:FormBuilder ,
               private router : Router , private route: ActivatedRoute,) {
                 this.ChirurgieForm = this.fb.group({
                   name:['',Validators.required],
                   description:['',Validators.required] ,
-                  image:['',Validators.required],
+                  image:[this.imgURL,Validators.required],
                   duration: this.fb.group({
                     days: [''],
                     hours: [''],
@@ -43,7 +44,7 @@ export class UpdateChirurgieComponent implements OnInit {
         name: this.chirurgieModel.name,
         description: this.chirurgieModel.description,
         duration: this.chirurgieModel.duration  ,
-        image: this.chirurgieModel.image,
+        image: this.imgURL,
 
       });
     });
@@ -76,13 +77,26 @@ export class UpdateChirurgieComponent implements OnInit {
 
   //upload Image
   onSelectFile(event: any) {
-    if (event.target.files && event.target.files[0]) {
+    if (event.target.files && event.target.files.length > 0) {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (e: any) => {
-
         this.imagePath = e.target.result;
+        // Update the imgURL property to display the selected image
+        this.imgURL = this.imagePath;
       };
+    } else {
+      // No image selected, reset the imagePath and imgURL
+      this.imagePath = null;
+      this.imgURL = null;
     }
+
+    // Set the value of the file input element to trigger its change event
   }
+
+
+
+
+
+
 }

@@ -1,64 +1,120 @@
-.all-content{
+body {
+  background: url('https://img.freepik.com/free-photo/abstract-grunge-decorative-relief-navy-blue-stucco-wall-texture-wide-angle-rough-colored-background_1258-28311.jpg?w=2000') no-repeat center center;
+  background-size: 100% 700px;
+  background-position: 30%;
+  background-attachment: fixed;
   width: 100%;
-  height: 100%;
-  padding: 1rem;
-  background-color: transparent;
 }
-.first-info{
-  width: auto;
-  height: auto;
-  margin:auto;
+
+
+.text {
+  font-family: Dosis;
+  font-size: 30px;
+  position: absolute center;
   text-align: center;
-  border: none;
-  background-color: transparent;
+  padding-left: 0%;
+  color: #000;
+  margin-top: 50px;
 }
-.image{
-  width: 20rem;
-  height: 16rem;
+
+.text1 {
+  font-family: Dosis;
+  font-size: 21px;
+  text-align: center;
+  color: #0066FF;
+}
+
+.image {
+  text-align: center;
+  width: 200px;
+  /* Container's dimensions */
+
+  height: 200px;
+  -webkit-border-radius: 75%;
+  -moz-border-radius: 75%;
+  box-shadow: 0 0 0 1px #eee;
+  background-size: cover;
   margin: auto;
-  border-radius: 15px;
+  margin-top: 20px;
+  margin-bottom: -30px;
+  align-content: center;
 }
+
 .image img{
   width: 100%;
   height: 100%;
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
+  border-top-right-radius: 75%;
+  border-top-left-radius: 75%;
+  border-bottom-left-radius: 75%;
+  border-bottom-right-radius: 75%;
 }
-.scnd-info{
-  text-align: justify;
-  border: none;
-  padding: 2rem;
-  background-color: transparent;
-}
-.parcoursExp{
-  width: auto;
-  height: auto;
+
+
+
+
+
+#overlay {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  padding: 0 0 0 0;
+  opacity: 1.0;
+  -webkit-transition: opacity 2.25s ease;
+  -moz-transition: opacity 10.25s ease;
   margin: auto;
+}
+
+#box:hover #overlay {
+  opacity: 1;
+}
+
+
+.panel-group{
+  width:350px;
+  margin:auto;
+  /*margin:50px 400px 50px 400px;*/
+  max-width:100%;
+}
+
+.panel-heading{
+  background-color:transparent !important;
+}
+
+.title{
   text-align: center;
-  border: none;
+  background-color:transparent;
+  color:#000;
+  font-family:lato;
+  font-weight:300;
+  font-size:15px;
+  max-width:100%;
+}
+
+#accordion{
   background-color: transparent;
-
-}
-.parcours{
-  background-color: #EAF9F8 !important;
-  text-align: justify;
-  padding: 2rem !important;
-  border: none;
+  width: 40rem;
+  height: auto;
+  margin-bottom:200px;
 }
 
-h5{
-  color: #0066FF;
+.btn-outline {
+  color: inherit;
+  transition: all 1.4s;
+  background-color: transparent;
+}
+/* button CSS */
 
+.btn-danger.btn-outline {
+  margin-top: 9px;
+  background-color: transparent;
+  color: #000;
+  border-color: #000;
+  padding:auto;
+  padding:10px 0px 10px 0px;
+  margin: 1px 5px 1px 0px;
+  width: 100%;
+  text-align:center;
+  font-family: raleway;
+  font-weight: 300;
+  max-width:100%;
 }
-h3{
-  color: #0066FF;
 
-}
-h6{
-  color: #001B35;
-}
-p{
-  color: #3F6589;
-}

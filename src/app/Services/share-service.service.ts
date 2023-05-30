@@ -17,6 +17,7 @@ import {updateAppointmentReq} from "../Models/updateAppointmentReq";
 import {OpinionRequest} from "../Models/opinion";
 import {OpinionResult} from "../Models/opinionResult";
 import {DevisReq} from "../Models/DevisReq";
+import {UpdatePhotoReq} from "../Models/UpdatePhotoReq";
 
 
 
@@ -329,8 +330,14 @@ export class ShareServiceService {
   getAllAcceptedAppointementByDcotorId(id: string):Observable<AppointementResult[]>{
     return this.http.get<AppointementResult[]>(environment.api+`appointments/getAccptedAppointmentByDoctor/${id}`);
   }
-  updatePhoto(idD: string, req:MedecinModel):Observable<MedecinModel>{
-    return this.http.put<MedecinModel>(environment.api+`doctors/updatePhotoDoctor/${idD}`,req).pipe(
+  getAllAppointementByDcotorIdAndStatus(id: string):Observable<AppointementResult[]>{
+    return this.http.get<AppointementResult[]>(environment.api+`appointments/getAllAppointmentByDoctorAndStatus/${id}`);
+  }
+  getAllAppointementByChirurgieIdAndStatus(id: string):Observable<AppointementResult[]>{
+    return this.http.get<AppointementResult[]>(environment.api+`appointments/getAllAppointmentByChirurgieAndStatus/${id}`);
+  }
+  updatePhoto(idD: string, req:UpdatePhotoReq):Observable<any>{
+    return this.http.put<any>(environment.api+`doctors/updatePhotoDoctor/${idD}`,req).pipe(
       tap(()=>{
         this._refreshrequired.next()
       })
@@ -403,6 +410,9 @@ approveDevisByPatient(idAp:string):Observable<any>{
   return this.http.put(environment.api +`appointments/${idAp}/confirmeDevis`,null);
 
 }
+rejectDevisByPatient(idAp:string):Observable<any>{
+  return this.http.put(environment.api +`appointments/${idAp}/rejectDevis`,null);
+}
  getAllCreatedDevisByDoctor():Observable<AppointementResult[]>{
     return this.http.get<AppointementResult[]>(environment.api +"appointments/created-devis");
 
@@ -414,6 +424,12 @@ getAllUpdatedDevisByAdmin():Observable<AppointementResult[]>{
 getAllApprovedDevisByPatient():Observable<AppointementResult[]>{
     return this.http.get<AppointementResult[]>(environment.api +"appointments/approved-devisByPatient");
 
+}
+getAllConfirmededDevisByPatientId(idP:string):Observable<AppointementResult[]>{
+    return this.http.get<AppointementResult[]>(environment.api +`appointments/confirmed-devisByPatient/${idP}`);
+}
+getAllConfirmededDevisByDoctorId(idD:string):Observable<AppointementResult[]>{
+    return this.http.get<AppointementResult[]>(environment.api +`appointments/confirmed-devisByDoctorId/${idD}`);
 }
 
 getCreatedAppointmentById(idAp:string):Observable<AppointementResult>{

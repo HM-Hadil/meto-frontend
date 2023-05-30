@@ -70,7 +70,10 @@ import {DonnerAvisComponent} from "./detail-profile/detail-profileP/opinion/donn
 import {AvisPatientComponent} from "./detail-profile/detail-profileA/avis-patient/avis-patient.component";
 import {DetailRdvPatientComponent} from "./detail-profile/detail-profileP/detail-rdv-patient/detail-rdv-patient.component";
 import {DetailRdvDevisComponent} from "./detail-profile/detail-profileA/rendez-vous/detail-rdv-devis/detail-rdv-devis.component";
-import {ConfirmerRDVComponent} from "./confirmer-rdv/confirmer-rdv.component";
+import {ConfirmerRDVComponent} from "./detail-profile/detail-profileP/confirmer-rdv/confirmer-rdv.component";
+import {RdvConfirmeeComponent} from "./detail-profile/detail-profileP/rdv-confirmee/rdv-confirmee.component";
+import {RdvConfirmeComponent} from "./detail-profile/detail-profileM/rdv-confirme/rdv-confirme.component";
+import {RdvConfirmeeAComponent} from "./detail-profile/detail-profileA/rdv-confirmee-a/rdv-confirmee-a.component";
 
 const routes: Routes = [
   {path : '', component: AcceuilContentComponent},
@@ -95,10 +98,12 @@ const routes: Routes = [
       {path : 'detailMsg/:id' , component : DetailMessageComponent},
       {path: 'acceptedRdv' , component: AccepterRdvComponent},
       {path : 'validerFacture/:idAp', component: ValiderFactureComponent},
-      {path: 'detailAccptedApnt/:id', component: DetailAccptedApntComponent}
+      {path : "rdvConfirme" , component:RdvConfirmeComponent},
+      {path: 'detailAccptedApnt/:id', component: DetailAccptedApntComponent},
     ] , canActivate:[AuthGuard], data:{role:['DOCTOR']}
   },
   {path : 'profileP' , component : ProfilePatientComponent },
+
 
   //admin
   {path : '' , component : ProfilAdminComponent
@@ -122,6 +127,8 @@ const routes: Routes = [
       {path : 'rdvAvecMedecin' , component:RdvAvecMedecinComponent },
       {path : 'avisPatient' , component: AvisPatientComponent},
       {path: 'detailRdvDevis/:id', component: DetailRdvDevisComponent},
+      {path: 'listeRdvConfirmé', component: RdvConfirmeeAComponent}
+
 
     ]
   },
@@ -140,7 +147,8 @@ const routes: Routes = [
       ,{path : "modifierRdv/:id" , component: ModifierRdvComponent},
       {path: "donnerAvis", component: DonnerAvisComponent},
       {path : 'detailRdvPatient/:id', component: DetailRdvPatientComponent},
-      {path : "confirmerRdv/:id", component: ConfirmerRDVComponent}
+      {path : "confirmerRdv/:id", component: ConfirmerRDVComponent},
+      {path: "rdvConfirmé", component: RdvConfirmeeComponent},
     ]
 
   },

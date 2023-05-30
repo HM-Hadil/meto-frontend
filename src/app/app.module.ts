@@ -77,7 +77,10 @@ import { AvisPatientComponent } from './detail-profile/detail-profileA/avis-pati
 import { DonnerAvisComponent } from './detail-profile/detail-profileP/opinion/donner-avis/donner-avis.component';
 import { DetailRdvPatientComponent } from './detail-profile/detail-profileP/detail-rdv-patient/detail-rdv-patient.component';
 import { DetailRdvDevisComponent } from './detail-profile/detail-profileA/rendez-vous/detail-rdv-devis/detail-rdv-devis.component';
-import { ConfirmerRDVComponent } from './confirmer-rdv/confirmer-rdv.component';
+import { ConfirmerRDVComponent } from './detail-profile/detail-profileP/confirmer-rdv/confirmer-rdv.component';
+import { RdvConfirmeeComponent } from './detail-profile/detail-profileP/rdv-confirmee/rdv-confirmee.component';
+import { RdvConfirmeComponent } from './detail-profile/detail-profileM/rdv-confirme/rdv-confirme.component';
+import { RdvConfirmeeAComponent } from './detail-profile/detail-profileA/rdv-confirmee-a/rdv-confirmee-a.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -136,6 +139,9 @@ import { ConfirmerRDVComponent } from './confirmer-rdv/confirmer-rdv.component';
     DetailRdvPatientComponent,
     DetailRdvDevisComponent,
     ConfirmerRDVComponent,
+    RdvConfirmeeComponent,
+    RdvConfirmeComponent,
+    RdvConfirmeeAComponent,
   ],
     imports: [
         BrowserModule,

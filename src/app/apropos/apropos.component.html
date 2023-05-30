@@ -6,15 +6,15 @@
       <img src="../assets/image/asiatique-jeune-groupe-principal-hopital-professionnel.jpg">
     </div>
     <div class="parag">
-      <p>L’objectif principal de notre application est devenu le plus utiliser dans l’Afrique,
-      <p> de permettre aux patients de trouver tout ce qu’ils veulent dans le site,
+      <p  style="font-size: 22px!important;">L’objectif principal de notre application est devenu le plus utiliser dans l’Afrique,
+      <p  style="font-size: 22px!important;"> de permettre aux patients de trouver tout ce qu’ils veulent dans le site,
        ils trouvent tous les types des chirurgies avec des médecins très compétant en Tunisie,
        ils prendre des rendez-vous en ligne qu’il est approuvé par le médecin et l’administrateur,
-       <p> après un dossier médical sera créé contenant les données relatives au patient y compris le type de chirurgie
+       <p  style="font-size: 22px!important;"> après un dossier médical sera créé contenant les données relatives au patient y compris le type de chirurgie
       et le médecin spécialiste choisi.L’objectif principal de notre application est devenu le plus
       utiliser dans l’Afrique, de permettre aux patients de trouver tout ce qu’ils veulent dans le
       site,
-          <p>ils trouvent tous les types des chirurgies avec des médecins très compétant en Tunisie,
+          <p  style="font-size: 22px!important;">ils trouvent tous les types des chirurgies avec des médecins très compétant en Tunisie,
       ils prendre des rendez-vous en ligne qu’il est approuvé par le médecin et l’administrateur,
       après un dossier médical sera créé contenant les données relatives au patient y compris le type
             de chirurgie et le médecin spécialiste choisi.</p>
@@ -36,7 +36,7 @@
       <img src="../assets/image/doc.png" class="rounded-circle">
       </div>
       <div class="statq">
-        <p [@countAnimation]="doctorCount" class="count" >{{ doctorCount }} </p>
+        <p [@countAnimation]="doctorCount" class="count" style="font-size: 60px !important;" >{{ doctorCount }} </p>
         <h3 >Doctors</h3>
       </div>
 
@@ -46,17 +46,17 @@
         <img src="../assets/image/chirugie.png" class="rounded-circle">
       </div>
       <div class="statq">
-        <p>{{chirurgieCount}}</p>
+        <p style="font-size: 60px !important;">{{chirurgieCount}}</p>
         <h3>Chirurgies</h3>
       </div>
 
     </div>
     <div class="contenticon">
       <div class="image">
-        <img src="../assets/image/People-Patient-Male-icon.png"  class="rounded-circle">
+        <img src="../assets/image/icons patient.png"  class="rounded-circle">
       </div>
       <div class="statq">
-        <p >{{patientCount}}</p>
+        <p style="font-size: 60px !important;" >{{patientCount}}</p>
         <h3>Patients</h3>
       </div>
 
@@ -66,7 +66,7 @@
         <img src="../assets/image/clnq.png"  class="rounded-circle">
       </div>
       <div class="statq">
-        <p>3</p>
+        <p style="font-size: 60px !important;">3</p>
         <h3>Cliniques</h3>
       </div>
 
@@ -93,8 +93,9 @@
       </section>
       <section class="l-card__user">
         <div class="l-card__userImage">
-          <img src="{{op.image}}" alt="Naruto">
+          <img src="{{op.image}}" alt="Naruto"  >
         </div>
+
         <div class="l-card__userInfo">
           <span>{{op.patient.firstname}} {{op.patient.lastname}}</span>
 
@@ -105,3 +106,55 @@
   </div>
 
 </section>
+<app-footer></app-footer>
+<!--
+<nav class="navbar navbar-expand-lg navbar-light bg-light"
+     style="background-color: white!important; height: 6rem!important; width: 100%;
+"
+     [ngClass]="{'navbar-scroll': navbarScrolled}">
+  <div class="image">
+
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav" style="justify-content: space-between !important; padding-left: 4rem;">
+      <li class="nav-item active">
+        <a class="nav-link" href="">Accueil</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" style="color: #001B35;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Services
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/chirurgie">Chirurgies</a>
+        </div>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/apropos">A Propos</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link "  style="color: #001B35;" (click)="navigateTo()">
+          Espace Patient
+        </a>
+
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link " style="color: #001B35;"   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+          Espace Médecin
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/inscrire">inscrire</a>
+          <a class="dropdown-item" href="/authentifier">authentifier</a>
+        </div>
+
+      </li>
+    </ul>
+  </div>
+</nav>-->

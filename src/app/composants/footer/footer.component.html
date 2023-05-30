@@ -1,31 +1,79 @@
 
-<footer>
-  <div class="row rowaall">
 
-    <div class="row rowcard" >
-      <h4>CATÉGORIES</h4>
-      <div class="card content" >
-        <ul>
-          <li><a>chirurgie cardio vasculaire</a></li>
-          <li><a>chirurgie ophtalmologique</a></li>
-          <li><a>Chirurgie orthopédique</a></li>
-        </ul>
+<!--footer starts from here-->
+<footer class="footer" style="margin-top: 2rem">
+  <div class="container bottom_border">
+    <div class="row">
+      <div class=" col-sm-4 col-md col-sm-4  col-12 col">
+        <h5 class="headin5_amrc col_white_amrc pt2"></h5>
+        <img src="../assets/image/1-removebg-preview.png" style="width: 16rem;height: 14rem;margin-left: -4.5rem;margin-top: -6rem">
+        <!--headin5_amrc-->
+        <p style="color:#0066FF;font-size: 16px"><i class="fa fa-location-arrow"></i><span style="color: whitesmoke">Email: </span>hadilhammami670@gmail.com</p>
+        <p style="color:#0066FF;font-size: 16px"><i class="fa fa fa-phone"></i><span style="color: whitesmoke">Phone: </span>+216 24308496  </p>
+
+
       </div>
-      <div class="card content">
-        <ul>
-          <li><a>chirurgie de l’obésité</a></li>
-          <li><a>chirurgie digestive</a></li>
-          <li><a>La chirurgie dentaire</a></li>
+
+
+      <div class=" col-sm-4 col-md  col-6 col">
+        <h5 class="headin5_amrc col_white_amrc pt2">Chirurgies</h5>
+        <!--headin5_amrc-->
+        <ul class="footer_ul_amrc" *ngFor="let chirurgie of ModelChirurgie">
+          <li><a style="font-size: 18px!important;" href="/chirurgie">{{chirurgie.name}}</a></li>
+
         </ul>
+        <!--footer_ul_amrc ends here-->
+      </div>
+
+
+      <div class=" col-sm-4 col-md  col-6 col">
+        <h5 class="headin5_amrc col_white_amrc pt2">Tourisme Médiale</h5>
+        <!--headin5_amrc-->
+        <ul class="footer_ul_amrc" >
+          <li><a style="font-size: 18px!important;" (click)="alert0()">Cliniques</a></li>
+          <li><a style="font-size: 18px!important;"(click)="alert1()">Séjour</a></li>
+          <li><a style="font-size: 18px!important;"(click)="alert2()" >Hotels</a></li>
+          <li><a style="font-size: 18px!important;" (click)="alert3()">Chirurgiens</a></li>
+          <li><a style="font-size: 18px!important;" (click)="alert4()">Devis</a></li>
+        </ul>
+        <!--footer_ul_amrc ends here-->
+      </div>
+
+
+      <div class=" col-sm-4 col-md  col-12 col">
+        <h5 class="headin5_amrc col_white_amrc pt2">Gallery</h5>
+        <!--headin5_amrc ends here-->
+       <div>
+       <img src="../assets/image/modern-equipment-in-operating-room-medical-devices-for-neurosurgery.jpg" style="width: 7rem; height: 6rem">
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRMTkRGlSshCX3J9Kge0V0cyRa1ZJeqnY4lw&usqp=CAU"style="width: 7rem; height: 6rem; margin-left: 1rem;">
+       <img src="../assets/image/medcin3.jpg"style="width: 7rem; height: 6rem;margin-top: 0.5rem">
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQTU42SWb1PEQ1bKyBtAa7oSML3ZcziBXdVg&usqp=CAU"style="width: 7rem; height: 6rem; margin-left: 1rem;margin-top: 0.5rem">
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJU20l_MZnqjuVZQ3yuuvnC0QIJMaV4reMlw&usqp=CAU"style="width: 7rem; height: 6rem;margin-top: 0.5rem ">
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtqW-0RJrqkvfVjFs5NrqXiTW4mXDn5vUNnsgqz3ZBNkSR7VH27WYo8VMCvDIw4jIF4sk&usqp=CAU"style="width: 7rem; height: 6rem; margin-left: 1rem;margin-top: 0.5rem">
+
+       </div>
+        <!--footer_ul2_amrc ends here-->
       </div>
     </div>
-   <!--- <div class="card contentSejours" >
-      <h4>Séjours Médicale</h4>
-    </div>-->
   </div>
-  <div style="width:100% ; background-color:#EAF9F8; height: 4rem; text-align: center; padding: 1rem">
-    <p style="color: #001B35; ">Made with  &#10084;&#65039; by	 Hadil Hammami   All Rights reserved © 2023.</p>
+
+
+  <div class="container">
+    <ul class="foote_bottom_ul_amrc">
+      <li><a style="font-size: 18px!important;" href="/">Home</a></li>
+      <li><a style="font-size: 18px!important;"href="/apropos">About</a></li>
+      <li><a style="font-size: 18px!important;" href="/chirurgie">Services</a></li>
+      <li><a style="font-size: 18px!important;" href="loginPatient">Espace patient</a></li>
+      <li><a style="font-size: 18px!important;" href="/authentifier">Espace Médecin</a></li>
+      <li><a style="font-size: 18px!important;" href="">Contact</a></li>
+    </ul>
+    <!--foote_bottom_ul_amrc ends here-->
+    <h6 class="text-center" style="color: #0066FF; ">Made with <img  src="https://medical-travel.fr/wp-content/uploads/2018/09/heart.png
+"> by	 Hadil Hammami   All Rights reserved © 2023.</h6>
+
+    <!--social_footer_ul ends here-->
   </div>
+
 </footer>
 
 

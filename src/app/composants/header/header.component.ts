@@ -40,6 +40,18 @@ role:any;
     }
   }
 
+  toggleNavbar() {
+    let navbarToggle = document.getElementById('navbar-toggle' ,)  as HTMLButtonElement | null;
+    if(navbarToggle !=null){
+      navbarToggle.classList.toggle('open');
 
+    }
+
+    let  navbarMenu = document.querySelector('ul' ,)  as HTMLButtonElement | null;
+    if(navbarMenu !=null){
+      navbarMenu.classList.toggle('open');
+    }
+
+  }
 
 }

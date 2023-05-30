@@ -1,1 +1,39 @@
-<p>rdv-confirme works!</p>
+<div  style=" margin-left: 1rem; margin-right: 1rem;margin-top: 2rem">
+  <div class="col" style="width: 100%; height: auto;">
+
+    <section class="row" style="display: flex; flex-wrap: wrap; width: 100%; height: auto">
+
+      <div style="width: 100% !important; height: auto">
+        <table>
+          <tr >
+            <th style="color: #336DA5;" >Nom et Prenom</th>
+            <th style="color: #336DA5;">Type de chirugie</th>
+            <th style="color: #336DA5;">Prix</th>
+            <th style="color: #336DA5;">Pays</th>
+            <th style="color: #336DA5;">Séjour</th>
+            <th style="color: #336DA5;">Date de rendez-vous</th>
+          </tr>
+
+          <tr *ngFor="let apntmnt of apntmnt" style="margin-top: 1rem">
+            <td>{{apntmnt.patient.firstname}} {{apntmnt.patient.lastname}}</td>
+            <td>{{apntmnt.surgery.name}} </td>
+            <td>{{apntmnt.devis.cost}} TND</td>
+            <td>{{apntmnt.ville}} </td>
+            <td>{{apntmnt.surgery.duration.days}} jours </td>
+            <td>{{apntmnt.dateRDV | date: 'yyyy-MM-dd / hh:mm a'}}  </td>
+
+
+
+          </tr>
+        </table>
+      </div>
+
+
+    </section>
+
+  </div>
+
+
+
+</div>
+
