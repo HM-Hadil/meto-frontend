@@ -11,24 +11,12 @@ import {ShareServiceService} from "../../Services/share-service.service";
 })
 export class HeaderComponent implements OnInit {
 role:any;
-  navbarScrolled: boolean = false;
-  constructor(private scrollDispatcher: ScrollDispatcher,
-              private router:Router,private authService : UserAuthService,private share: ShareServiceService) { }
+  constructor(
+    private router:Router,private authService : UserAuthService) { }
 
   ngOnInit() {
-    window.addEventListener('scroll', this.onWindowScroll);
    this.role = this.authService.getRole();
   }
-
-
-  onWindowScroll = () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    if (scrollTop > 0) {
-      this.navbarScrolled = true;
-    } else {
-      this.navbarScrolled = false;
-    }
-  };
 
 
   navigateTo() {
@@ -38,20 +26,6 @@ role:any;
     } else {
       this.router.navigate(['/loginPatient']);
     }
-  }
-
-  toggleNavbar() {
-    let navbarToggle = document.getElementById('navbar-toggle' ,)  as HTMLButtonElement | null;
-    if(navbarToggle !=null){
-      navbarToggle.classList.toggle('open');
-
-    }
-
-    let  navbarMenu = document.querySelector('ul' ,)  as HTMLButtonElement | null;
-    if(navbarMenu !=null){
-      navbarMenu.classList.toggle('open');
-    }
-
   }
 
 }

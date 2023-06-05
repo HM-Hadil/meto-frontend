@@ -9,6 +9,7 @@ import {TypeChirurgie} from "../../../Models/typeChirurgie/type-chirurgie";
 import * as alertify from "alertifyjs"
 import {DoctorNotAvailableException} from "../../../Exception/DoctorNotAvailableException";
 import {ErrorModalComponent} from "../../../error-modal/error-modal.component";
+import {MedecinModel} from "../../../Models/MedecinModel";
 
 
 @Component({
@@ -45,7 +46,7 @@ appointmentForm!: FormGroup;
     this.appointmentForm = this.fb.group({
       age: ['',[Validators.required, Validators['min'](1), Validators['max'](100)]],
       dateRDV: ['', Validators.required],
-      doctorId: [''],
+      doctor: new FormControl(null),
       patientId: ['', Validators.required],
       image: ['', Validators.required],
       note: ['', Validators.required],
@@ -54,7 +55,7 @@ appointmentForm!: FormGroup;
       typeSang: ['', Validators.required],
       ville: ['', Validators.required],
       weight: ['',[Validators.required, Validators['min'](1), Validators['max'](300)]],
-      surgeries: ['', Validators.required],
+      surgeries: this.fb.array([]),
       alcoolique: ['', Validators.required],
       tension: ['', Validators.required],
       diabete: ['', Validators.required],
@@ -70,6 +71,7 @@ appointmentForm!: FormGroup;
       analyseAncienOperation: [''],
       autreAnalyse: [''],
     });
+
   }
 
   ngOnInit(): void {
@@ -139,7 +141,6 @@ appointmentForm!: FormGroup;
       this.showDiabete = true;
     }
   }
-
   showAutreMaladieFields(event: Event) {
     if ((event.target as HTMLInputElement).value === 'oui') {
       this.showAutreMaladie = true;
@@ -167,17 +168,45 @@ appointmentForm!: FormGroup;
   hideAncienOpFields() {
     this.showAncienOp=false
   }
-
   hideAutreMaladieFields() {
     this.showAutreMaladie=false;
   }
 
   changeEventChirurgie(event: any) {
+    if (!this.appointmentForm.controls['surgeries']) {
+      console.error("The 'surgeries' control does not exist in the appointmentForm.");
+      return;
+    }
+
     const selectedSurgeries = this.appointmentForm.controls['surgeries'] as FormArray;
     const surgery = event.target.value;
-    selectedSurgeries.push(new FormControl(surgery));
-  }
 
+    this.share.getDoctorsByChirurgie(surgery).subscribe(
+      (doctors: MedecinModel[]) => {
+        if (doctors && doctors.length > 0) {
+          selectedSurgeries.clear(); // Clear existing surgeries
+          this.appointmentForm.controls['surgeries'].setValue('');
+
+          // Set the doctor FormControl value
+          this.appointmentForm.controls['doctor'].setValue(doctors[0]);
+        } else {
+          // Display an alert if no doctors are available for the selected surgery
+          alert('Aucun médecin disponible pour la chirurgie sélectionnée.');
+          this.appointmentForm.controls['surgeries'].setValue(null);
+          this.clearSelectedSurgeries(); // Clear selected surgeries
+
+
+        }
+      },
+      (error) => {
+        console.error("Error retrieving doctors for the selected surgery:", error);
+      }
+    );
+  }
+  clearSelectedSurgeries() {
+    const selectedSurgeries = this.appointmentForm.controls['surgeries'] as FormArray;
+    selectedSurgeries.clear();
+  }
   //get All Chirurgie
   getListChirurgie() {
     this.share.getAllChirurgie().subscribe(

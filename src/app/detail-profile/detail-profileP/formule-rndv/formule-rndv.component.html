@@ -95,12 +95,9 @@
 
                       <div class="mb-6 pb-2 ">
                         <div class="form-outline form-white">
-                          <div><label class="form-label" >Type de chirurgie</label></div>
-                          <select  formControlName="surgeries"
-                                   (change)=" changeEventChirurgie
-                                   ($event)" >
-
-                            <option value=""><span>Selectionner Chirurgie </span> </option>
+                          <div><label class="form-label">Type de chirurgie</label></div>
+                          <select formControlName="surgeries" (change)="changeEventChirurgie($event)">
+                            <option value=""><span>Selectionner Chirurgie</span></option>
                             <option *ngFor="let chirurgie of chirurgieList" [value]="chirurgie.id">{{ chirurgie.name }}</option>
                           </select>
                         </div>
