@@ -143,7 +143,7 @@ export class RdvAvecMedComponent implements OnInit {
         const appointmentDates = this.getAppointmentDates(resultDoctorCh); // Get the list of appointment dates
 
         if (appointmentDates.includes(userDate.toDateString())) {
-          alert('Date already reserved, please choose another date!');
+          alert('Date déja  reservé, choisissez un autre date!');
         }
 
         if (appointmentDates.length > 0) {

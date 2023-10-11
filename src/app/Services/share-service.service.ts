@@ -419,7 +419,6 @@ rejectDevisByPatient(idAp:string):Observable<any>{
 }
 getAllUpdatedDevisByAdmin():Observable<AppointementResult[]>{
     return this.http.get<AppointementResult[]>(environment.api +"appointments/updated-devisByAdmin");
-
 }
 getAllApprovedDevisByPatient():Observable<AppointementResult[]>{
     return this.http.get<AppointementResult[]>(environment.api +"appointments/approved-devisByPatient");

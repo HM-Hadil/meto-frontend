@@ -81,6 +81,7 @@ import { ConfirmerRDVComponent } from './detail-profile/detail-profileP/confirme
 import { RdvConfirmeeComponent } from './detail-profile/detail-profileP/rdv-confirmee/rdv-confirmee.component';
 import { RdvConfirmeComponent } from './detail-profile/detail-profileM/rdv-confirme/rdv-confirme.component';
 import { RdvConfirmeeAComponent } from './detail-profile/detail-profileA/rdv-confirmee-a/rdv-confirmee-a.component';
+import {ShareServiceService} from "./Services/share-service.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -143,7 +144,7 @@ import { RdvConfirmeeAComponent } from './detail-profile/detail-profileA/rdv-con
     RdvConfirmeComponent,
     RdvConfirmeeAComponent,
   ],
-    imports: [
+  imports: [
         BrowserModule,
         NgChartsModule,
         BrowserAnimationsModule,
@@ -171,7 +172,7 @@ import { RdvConfirmeeAComponent } from './detail-profile/detail-profileA/rdv-con
         DragDropModule,
 
     ],
-  providers: [AuthGuard,
+  providers: [AuthGuard,ShareServiceService
 /**
 { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
 **/

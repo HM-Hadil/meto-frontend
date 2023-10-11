@@ -18,7 +18,7 @@ apntmnt!:AppointementResult;
               private http: HttpClient) { }
 
   ngOnInit() {
-    this.id=this.route.snapshot.params['id'];
+    this.id=this.route.snapshot.params['idA'];
     this.share.getAppointementById(this.id).subscribe(data=>{
       this.apntmnt = data;
       console.log("data =>",this.apntmnt);
