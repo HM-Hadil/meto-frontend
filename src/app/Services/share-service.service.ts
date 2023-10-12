@@ -37,6 +37,7 @@ export class ShareServiceService {
   urlApntmntById="http://localhost:8800/appointments/getAppointmentById"
   urlAffecterMedecin="http://localhost:8800/appointments/affecterMedecin"
   urlRdvPatient="http://localhost:8800/appointments/getAppointmentByPatient"
+  api= 'http://localhost:8800/';
 
 
   public setIdChirurgie(idChirurgie: string) {
@@ -72,7 +73,7 @@ export class ShareServiceService {
   // Add chirurgie
 
   AddChirurgie(chirurgie: TypeChirurgie):Observable<any>{
-  return this.http.post(environment.api+"chirurgies/addChirurgie",chirurgie).pipe(
+  return this.http.post(this.api+"chirurgies/addChirurgie",chirurgie).pipe(
     tap(()=>{
       this._refreshrequired.next()
     })
@@ -88,7 +89,7 @@ export class ShareServiceService {
   //Get All chirurgie
 
   getAllChirurgie():Observable<TypeChirurgie[]>{
-    return this.http.get<TypeChirurgie[]>(environment.api+"chirurgies/getAllChirurgie");
+    return this.http.get<TypeChirurgie[]>(this.api+"chirurgies/getAllChirurgie");
   }
 
   //Update Chirurgie by id
@@ -103,7 +104,7 @@ export class ShareServiceService {
 
   //delete Chirurgie
   deleteChirurgie(id:number):Observable<any>{
-    return this.http.delete(environment.api+'chirurgies/DeleteChirurgie/'+id).pipe(
+    return this.http.delete(this.api+'chirurgies/DeleteChirurgie/'+id).pipe(
       tap(()=>{
         this._refreshrequired.next()
       })
@@ -114,19 +115,19 @@ export class ShareServiceService {
 
 //add patient
     signUpPatient(usersP : PatientModel):Observable<any>{
-      return this.http.post(environment.api+"register/patient",usersP);
+      return this.http.post(this.api+"register/patient",usersP);
 
     }
 
     //add medecins
     signUpMedecin(usersM : MedecinModel):Observable<any>{
-      return this.http.post(environment.api+"register/doctor",usersM);
+      return this.http.post(this.api+"register/doctor",usersM);
 
     }
 
       //add admin
       signUpAdmin(usersA : AdminModel):Observable<any>{
-        return this.http.post(environment.api+"register/admin",usersA);
+        return this.http.post(this.api+"register/admin",usersA);
       }
 
   checkEmailExists(email: string) {
@@ -137,7 +138,7 @@ export class ShareServiceService {
      login(request : Authentication):Observable<any>{
 
 
-       return this.http.post(environment.api+"authenticate",request,{headers:this.requestHeader});
+       return this.http.post(this.api+"authenticate",request,{headers:this.requestHeader});
      }
 
   public roleMatch(allowedRoles: any): boolean {
@@ -157,12 +158,12 @@ export class ShareServiceService {
 
      // get all disabled accounts doctors
      getDisableddoctor():Observable<MedecinModel[]>{
-    return  this.http.get<MedecinModel[]>(environment.api+"accounts/disabledDoctor");
+    return  this.http.get<MedecinModel[]>(this.api+"accounts/disabledDoctor");
      }
 
   // get all disabled accounts patients
   getDisabledPatient():Observable<PatientModel[]>{
-    return  this.http.get<PatientModel[]>(environment.api+"accounts/disabledPatient");
+    return  this.http.get<PatientModel[]>(this.api+"accounts/disabledPatient");
   }
      //get account doctor by id
      getDoctorByIdAndEnabledFalse(id: number):Observable<MedecinModel>{
@@ -171,7 +172,7 @@ export class ShareServiceService {
 
   // get all active accounts patients
   getAllActivePatient():Observable<PatientModel[]>{
-    return  this.http.get<PatientModel[]>(environment.api+"accounts/AllActivePatient");
+    return  this.http.get<PatientModel[]>(this.api+"accounts/AllActivePatient");
   }
   // get all active accounts Doctors
   getAllActiveDoctor(searchKeyWord: string =""):Observable<MedecinModel[]>{
@@ -186,7 +187,7 @@ export class ShareServiceService {
       params = params.append('specialitySearch', specialitySearch || '');
   **/
 
-    return  this.http.get<MedecinModel[]>(environment.api+"accounts/AllActiveDoctor", { params });
+    return  this.http.get<MedecinModel[]>(this.api+"accounts/AllActiveDoctor", { params });
   }
 
 
@@ -234,11 +235,11 @@ export class ShareServiceService {
 
 
   searchDoctors(fistname: string): Observable<MedecinModel[]> {
-    return this.http.get<MedecinModel[]>(environment.api+"accounts/search")
+    return this.http.get<MedecinModel[]>(this.api+"accounts/search")
 
   }
   getCountPatientPerGender() {
-    return this.http.get<Object[]>(environment.api+"accounts/count-patients-per-gender");
+    return this.http.get<Object[]>(this.api+"accounts/count-patients-per-gender");
   }
 
   changePassword(email: string, oldPassword: string, newPassword: string): Observable<any> {
@@ -246,7 +247,7 @@ export class ShareServiceService {
       oldPassword: oldPassword,
       newPassword: newPassword
     };
-    return this.http.put(`${environment.api}accounts/users/${email}/password`, body);
+    return this.http.put(`${this.api}accounts/users/${email}/password`, body);
   }
 
 
@@ -263,7 +264,7 @@ export class ShareServiceService {
   }
 
   getAllAppointments():Observable<AppointementResult[]>{
-    return this.http.get<AppointementResult[]>(environment.api+"appointments/")
+    return this.http.get<AppointementResult[]>(this.api+"appointments/")
   }
 
   getAllAppointementByDcotorId(id:number):Observable<AppointementResult[]>{
@@ -275,7 +276,7 @@ export class ShareServiceService {
   }
 
   getAllAppointementWithoutDcotorId():Observable<AppointementResult[]>{
-    return this.http.get<AppointementResult[]>(environment.api+"appointments/appointmentsWithoutdoctor");
+    return this.http.get<AppointementResult[]>(this.api+"appointments/appointmentsWithoutdoctor");
   }
 
   affecterMedecin(idAp: string, idD: UpdateAppointmentRequest):Observable<UpdateAppointmentRequest>{
@@ -290,37 +291,37 @@ export class ShareServiceService {
 
 
   findMostFrequentSurgeryId(): Observable<string> {
-    return this.http.get<string>(environment.api+"appointments/mostFrequentSurgeryId");
+    return this.http.get<string>(this.api+"appointments/mostFrequentSurgeryId");
   }
 
   getDoctorCount(): Observable<number> {
-    return this.http.get<number>(environment.api+'accounts/doctor-count');
+    return this.http.get<number>(this.api+'accounts/doctor-count');
   }
   getPatientCount(): Observable<number> {
-    return this.http.get<number>(environment.api+'accounts/patient-count');
+    return this.http.get<number>(this.api+'accounts/patient-count');
   }
 
   getChirurgieCount(): Observable<number> {
-    return this.http.get<number>(environment.api+'chirurgies/chirurgie-count');
+    return this.http.get<number>(this.api+'chirurgies/chirurgie-count');
   }
 
   getAppointmentStatsByDoctor(doctorId: string): Observable<AppointmentStatsResult> {
-    return this.http.get<AppointmentStatsResult>(environment.api+`appointments/getAppointmentStatsByDoctor/${doctorId}`);
+    return this.http.get<AppointmentStatsResult>(this.api+`appointments/getAppointmentStatsByDoctor/${doctorId}`);
   }
 
   getDoctorsByChirurgie(chirurgieId : string):Observable<MedecinModel[]>{
-    return this.http.get<MedecinModel[]>(environment.api+`doctors/surgery/${chirurgieId}`);
+    return this.http.get<MedecinModel[]>(this.api+`doctors/surgery/${chirurgieId}`);
   }
 
   accepterRdv(idAp: string):Observable<AppointementResult>{
-    return this.http.put<AppointementResult>(environment.api+`appointments/accepterAppointment/${idAp}`,null).pipe(
+    return this.http.put<AppointementResult>(this.api+`appointments/accepterAppointment/${idAp}`,null).pipe(
       tap(()=>{
         this._refreshrequired.next()
       })
     );;
   }
   rejectRdv(idAp: string):Observable<AppointementResult>{
-    return this.http.put<AppointementResult>(environment.api+`appointments/rejectAppointment/${idAp}`,null).pipe(
+    return this.http.put<AppointementResult>(this.api+`appointments/rejectAppointment/${idAp}`,null).pipe(
       tap(()=>{
         this._refreshrequired.next()
       })
@@ -328,16 +329,16 @@ export class ShareServiceService {
   }
 
   getAllAcceptedAppointementByDcotorId(id: string):Observable<AppointementResult[]>{
-    return this.http.get<AppointementResult[]>(environment.api+`appointments/getAccptedAppointmentByDoctor/${id}`);
+    return this.http.get<AppointementResult[]>(this.api+`appointments/getAccptedAppointmentByDoctor/${id}`);
   }
   getAllAppointementByDcotorIdAndStatus(id: string):Observable<AppointementResult[]>{
-    return this.http.get<AppointementResult[]>(environment.api+`appointments/getAllAppointmentByDoctorAndStatus/${id}`);
+    return this.http.get<AppointementResult[]>(this.api+`appointments/getAllAppointmentByDoctorAndStatus/${id}`);
   }
   getAllAppointementByChirurgieIdAndStatus(id: string):Observable<AppointementResult[]>{
-    return this.http.get<AppointementResult[]>(environment.api+`appointments/getAllAppointmentByChirurgieAndStatus/${id}`);
+    return this.http.get<AppointementResult[]>(this.api+`appointments/getAllAppointmentByChirurgieAndStatus/${id}`);
   }
   updatePhoto(idD: string, req:UpdatePhotoReq):Observable<any>{
-    return this.http.put<any>(environment.api+`doctors/updatePhotoDoctor/${idD}`,req).pipe(
+    return this.http.put<any>(this.api+`doctors/updatePhotoDoctor/${idD}`,req).pipe(
       tap(()=>{
         this._refreshrequired.next()
       })
@@ -346,10 +347,10 @@ export class ShareServiceService {
 
 
   getRdvtPerMonth(id:string):Observable<any>{
-    return this.http.get(environment.api+`appointments/appointmentsPerMont/${id}`);
+    return this.http.get(this.api+`appointments/appointmentsPerMont/${id}`);
   }
   updateAppointment(idApp:string,req:updateAppointmentReq):Observable<updateAppointmentReq> {
-    return this.http.put<updateAppointmentReq>(environment.api + `appointments/updateAppointment/${idApp}`, req).pipe(
+    return this.http.put<updateAppointmentReq>(this.api + `appointments/updateAppointment/${idApp}`, req).pipe(
       tap(()=>{
         this._refreshrequired.next()
       })
@@ -357,24 +358,24 @@ export class ShareServiceService {
 
   }
   updateDoctor(idD: string, req:MedecinModel):Observable<MedecinModel>{
-    return this.http.put<MedecinModel>(environment.api+`doctors/updateDoctor/${idD}`,req).pipe(
+    return this.http.put<MedecinModel>(this.api+`doctors/updateDoctor/${idD}`,req).pipe(
       tap(()=>{
         this._refreshrequired.next()
       })
     );;
   }
   addOpinion( req:OpinionRequest):Observable<any>{
-    return this.http.post<any>(environment.api+"opinion/createOpinion",req).pipe(
+    return this.http.post<any>(this.api+"opinion/createOpinion",req).pipe(
       tap(()=>{
         this._refreshrequired.next()
       })
     );
   }
   getAllEnabledOpinion( ):Observable<OpinionResult[]>{
-    return this.http.get<OpinionResult[]>(environment.api+"opinion/");
+    return this.http.get<OpinionResult[]>(this.api+"opinion/");
   }
   getAllEnableOpinion( ):Observable<OpinionResult[]>{
-    return this.http.get<OpinionResult[]>(environment.api+"opinion/getAllOpinionTrue");
+    return this.http.get<OpinionResult[]>(this.api+"opinion/getAllOpinionTrue");
   }
 
   appointmentExists(date: string): Observable<boolean> {
@@ -385,14 +386,14 @@ export class ShareServiceService {
   }
 
   accepterAvis(id: string):Observable<OpinionRequest>{
-    return this.http.put<OpinionRequest>(environment.api +`opinion/accepterAvis/${id}`, null).pipe(
+    return this.http.put<OpinionRequest>(this.api+`opinion/accepterAvis/${id}`, null).pipe(
       tap(()=>{
         this._refreshrequired.next()
       })
     );
   }
   supprimerOpinion(id:string):Observable<any>{
-    return this.http.delete<any>(environment.api +`opinion/delete/${id}`).pipe(
+    return this.http.delete<any>(this.api +`opinion/delete/${id}`).pipe(
       tap(()=>{
         this._refreshrequired.next()
       })
@@ -400,42 +401,42 @@ export class ShareServiceService {
 
   }
 createDevis(idAp:string,req:DevisReq):Observable<any>{
-    return this.http.post(environment.api +`appointments/${idAp}/devis`,req);
+    return this.http.post(this.api+`appointments/${idAp}/devis`,req);
 }
 updateDevisByAdmin(idAp:string,req:DevisReq):Observable<any>{
-  return this.http.put(environment.api +`appointments/${idAp}/updateDevis`,req);
+  return this.http.put(this.api +`appointments/${idAp}/updateDevis`,req);
 
 }
 approveDevisByPatient(idAp:string):Observable<any>{
-  return this.http.put(environment.api +`appointments/${idAp}/confirmeDevis`,null);
+  return this.http.put(this.api +`appointments/${idAp}/confirmeDevis`,null);
 
 }
 rejectDevisByPatient(idAp:string):Observable<any>{
-  return this.http.put(environment.api +`appointments/${idAp}/rejectDevis`,null);
+  return this.http.put(this.api+`appointments/${idAp}/rejectDevis`,null);
 }
  getAllCreatedDevisByDoctor():Observable<AppointementResult[]>{
-    return this.http.get<AppointementResult[]>(environment.api +"appointments/created-devis");
+    return this.http.get<AppointementResult[]>(this.api+"appointments/created-devis");
 
 }
 getAllUpdatedDevisByAdmin():Observable<AppointementResult[]>{
-    return this.http.get<AppointementResult[]>(environment.api +"appointments/updated-devisByAdmin");
+    return this.http.get<AppointementResult[]>(this.api +"appointments/updated-devisByAdmin");
 }
 getAllApprovedDevisByPatient():Observable<AppointementResult[]>{
-    return this.http.get<AppointementResult[]>(environment.api +"appointments/approved-devisByPatient");
+    return this.http.get<AppointementResult[]>(this.api+"appointments/approved-devisByPatient");
 
 }
 getAllConfirmededDevisByPatientId(idP:string):Observable<AppointementResult[]>{
-    return this.http.get<AppointementResult[]>(environment.api +`appointments/confirmed-devisByPatient/${idP}`);
+    return this.http.get<AppointementResult[]>(this.api+`appointments/confirmed-devisByPatient/${idP}`);
 }
 getAllConfirmededDevisByDoctorId(idD:string):Observable<AppointementResult[]>{
-    return this.http.get<AppointementResult[]>(environment.api +`appointments/confirmed-devisByDoctorId/${idD}`);
+    return this.http.get<AppointementResult[]>(this.api+`appointments/confirmed-devisByDoctorId/${idD}`);
 }
 
 getCreatedAppointmentById(idAp:string):Observable<AppointementResult>{
-    return this.http.get<AppointementResult>(environment.api+`appointments/getCreatedDevisById/${idAp}`)
+    return this.http.get<AppointementResult>(this.api+`appointments/getCreatedDevisById/${idAp}`)
 }
 getChangedAppointmentByAdmin(idAp:string):Observable<AppointementResult>{
-    return this.http.get<AppointementResult>(environment.api+`appointments/getChangeddDevisByAdmin/${idAp}`)
+    return this.http.get<AppointementResult>(this.api+`appointments/getChangeddDevisByAdmin/${idAp}`)
 }
 
 
